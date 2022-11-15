@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Customer\UsersFeedback;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -21,6 +24,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'gender',
+        'avatar',
+        'role',
     ];
 
     /**
@@ -41,4 +47,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+      * User Relationships
+      * User has a one to many relation with users_feedback model
+      *
+      * @return Illuminate\Database\Eloquent\Factories\Relationship
+      * @return Illuminate\Database\Eloquent\Relations\HasMany
+      */
+    public function users_feedback(): HasMany
+    {
+        return $this->hasMany(UsersFeedback::class);
+    }
 }
