@@ -1,6 +1,5 @@
 <div class="nav-header">
     <div class="brand-logo">
-        <strong class="text-white">{{ auth()->user()->role }}</strong>
         <a href="{{ route('dashboard') }}">
             <b class="logo-abbr"><img src="{{ asset('frontend/images/logo.png') }}" alt=""> </b>
             <span class="logo-compact"><img src="{{ asset('frontend/images/logo-compact.png') }}" alt=""></span>

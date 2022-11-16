@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,28 +22,19 @@ Route::get('/', function () {
 /**
  * Administrator Routes
  */
-Route::prefix('admin')->group( function() {
+Route::middleware(['auth', 'verified'])->group(function() {
 
-    Route::get('/dashboard', function () {
+    Route::controller(DashboardController::class)->group(function () {
 
-        return view('dashboard.Admin.dashboard');
+        Route::get('/dashboard', 'index')->name('dashboard');
 
-    })->middleware(['auth', 'isAdmin', 'verified'])
-    ->name('admin.dashboard');
+    });
 
-});
+    Route::controller(ProfileController::class)->group(function () {
 
-/**
- * User Routes
- */
-Route::prefix('user')->group( function() {
+        Route::get('/profile', 'index')->name('profile');
 
-    Route::get('/dashboard', function () {
-
-        return view('dashboard.Customer.dashboard');
-
-    })->middleware(['auth', 'isUser', 'verified'])
-    ->name('user.dashboard');
+    });
 
 });
 
