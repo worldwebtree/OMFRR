@@ -1,6 +1,15 @@
 <div class="nav-header">
     <div class="brand-logo">
-        <a href="{{ route('dashboard') }}">
+        @php
+        if (auth()->user()->role == "admin"){
+                $link = route('admin.dashboard');
+
+            }elseif (auth()->user()->role == "user") {
+                $link = route('customer.dashboard');
+        }
+        @endphp
+
+        <a href="{{ $link }}">
             <b class="logo-abbr"><img src="{{ asset('frontend/images/logo.png') }}" alt=""> </b>
             <span class="logo-compact"><img src="{{ asset('frontend/images/logo-compact.png') }}" alt=""></span>
             <span class="brand-title">

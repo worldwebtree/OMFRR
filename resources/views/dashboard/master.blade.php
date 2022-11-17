@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
     <!-- Custom Stylesheet -->
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
+
+    <!-- Pushed Style Css from the Chile Views -->
+    @stack('css')
 </head>
 
 <body>

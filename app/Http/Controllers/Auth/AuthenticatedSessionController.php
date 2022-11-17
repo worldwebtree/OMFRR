@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -18,6 +19,24 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         return view('auth.login');
+    }
+
+    /**
+     * Handles the authenticated user based on role
+     */
+    public function redirectTo()
+    {
+        $user = Auth::user();
+
+        if ($user->role == "admin") {
+            return redirect()->route('admin.dashboard');
+
+        }elseif ($user->role == "user") {
+            return redirect()->route('customer.dashboard');
+
+        }else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -32,7 +51,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('dashboard');
+        return $this->redirectTo();
     }
 
     /**

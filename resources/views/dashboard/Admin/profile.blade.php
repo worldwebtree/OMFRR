@@ -1,7 +1,14 @@
 @extends('dashboard.master')
 
 @push('css')
-
+<style>
+    .avatar-animation:hover > i {
+        cursor: pointer;
+        background: #324cdd;
+        transition: 0.4s ease;
+        color: #ffff;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -14,10 +21,21 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="media align-items-center mb-4">
-                                <img class="mr-3" src="images/avatar/11.png" width="80" height="80" alt="">
+                                @php
+                                    if (empty(auth()->user()->avatar) || auth()->user()->avarar == null) {
+                                        $src = asset('frontend/images/user/1.jpg');
+
+                                        }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar !== null) {
+                                        $src = public_path('storage/'.auth()->user()->avatar);
+                                    }
+                                @endphp
+                                <img class="mr-3" src="{{ $src }}" width="80" height="80" alt="">
                                 <div class="media-body">
-                                    <h3 class="mb-0">Pikamy Cha</h3>
-                                    <p class="text-muted mb-0">Canada</p>
+
+                                    @php($name = explode(" ", auth()->user()->name))
+
+                                    <h3 class="mb-0">{{ $name[0] }}</h3>
+                                    <p class="text-muted mb-0">{{ $name[1] ?? "" }}</p>
                                 </div>
                             </div>
 
@@ -59,9 +77,11 @@
                             </div>
                             <form action="#" method="post">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="Avatar">avatar</label>
-                                    <input type="file" name="avatar" id="Avatar" class="form-control">
+                                <div class="form-group text-center">
+                                    <label for="Avatar" class="avatar-animation border rounded-circle">
+                                        <i class="fa fa-camera fa-5x p-3 rounded-circle" aria-hidden="true"></i>
+                                        <input type="file" name="avatar" id="Avatar" class="form-control d-none">
+                                    </label>
                                 </div>
 
                                 <div class="form-group">

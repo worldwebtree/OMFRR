@@ -82,13 +82,17 @@
                     </div>
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">
+                            @php
+                                if (auth()->user()->role == "admin") {
+                                    $link = route('admin.profile');
+
+                                    }elseif (auth()->user()->role == "user") {
+                                    $link = route('customer.profile');
+                                }
+                            @endphp
                             <ul>
                                 <li>
-                                    @if (auth()->user()->role == "admin")
-                                        <a href="{{ route('profile') }}"><i class="icon-user"></i> <span>Profile</span></a>
-                                        @elseif (auth()->user()->role == "user")
-                                        <a href="{{ route('profile') }}"><i class="icon-user"></i> <span>Profile</span></a>
-                                    @endif
+                                    <a href="{{ $link }}"><i class="icon-user"></i> <span>Profile</span></a>
                                 </li>
                                 <li>
                                     <!-- Authentication -->
