@@ -80,7 +80,7 @@
                         $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
 
                         }elseif (!empty(auth()->user()->avatar) || auth()->user()->avatar !== null) {
-                        $src = public_path('storage/avatars/'.auth()->user()->avatar);
+                        $src = asset('storage/profile_img/'. auth()->user()->avatar);
                     }
                 @endphp
                 <li class="icons dropdown">

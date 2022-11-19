@@ -37,7 +37,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 
         Route::get('/profile', 'index')->name('admin.profile');
 
-        Route::get('/profile_update', 'store')->name('admin.profile.update');
+        Route::put('/profile/update', 'update')->name('admin.profile.update');
 
     });
 

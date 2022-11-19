@@ -35,9 +35,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string'],
-        ]);
+        //
     }
 
     /**
@@ -69,9 +67,38 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+            'gender' => ['required'],
+        ]);
+
+        $user = $request->user();
+
+        if (empty($request->hasFile('avatar')) && $request->file('avatar') == null) {
+            $avatarName = $user->avatar;
+        }else {
+
+            $file = $request->file('avatar');
+
+            $avatarName = $file->hashName();
+
+            $file->move(public_path('storage/profile_img', $avatarName));
+        }
+
+        $user->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => $request['password'],
+            'gender' => $request['gender'],
+            'avatar' => $avatarName
+        ]);
+
+        return redirect()->route('admin.profile')
+        ->with('updated', 'Profile has been updated');
     }
 
     /**

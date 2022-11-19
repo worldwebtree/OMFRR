@@ -20,15 +20,15 @@
                 <div class="col-lg-4 col-xl-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="media align-items-center mb-4">
-                                @php
-                                    if (empty(auth()->user()->avatar) || auth()->user()->avarar == null) {
-                                        $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
+                            @php
+                                if (empty(auth()->user()->avatar) || auth()->user()->avarar == null) {
+                                    $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
 
-                                        }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar !== null) {
-                                        $src = public_path('storage/'.auth()->user()->avatar);
-                                    }
-                                @endphp
+                                    }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar !== null) {
+                                    $src = asset('storage/profile_img/'. auth()->user()->avatar);
+                                }
+                            @endphp
+                            <div class="media align-items-center mb-4">
                                 <img class="mr-3" src="{{ $src }}" width="80" height="80" alt="">
                                 <div class="media-body">
 
@@ -53,11 +53,15 @@
                             <div class="card-title">
                                 <h1>update profile</h1>
                             </div>
-                            <form action="#" class="update_profile_form" method="post">
+                            <form action="{{ route('admin.profile.update') }}" class="update_profile_form"
+                             method="POST" enctype="multipart/form-data">
+                                <x-alert/>
+
+                                @method('PUT')
                                 @csrf
                                 <div class="form-group text-center">
                                     <label for="Avatar" class="avatar-animation">
-                                        <img src="{{ asset('frontend/images/avatar/user_icon-removebg-preview.png') }}" width="100" height="100" alt="" srcset="">
+                                        <img src="{{ $src }}" width="100" height="100" alt="" srcset="">
                                         <input type="file" name="avatar" id="Avatar" class="form-control d-none">
                                     </label>
                                 </div>
