@@ -9,11 +9,17 @@
         }
         @endphp
 
-        <a href="{{ $link }}">
-            <b class="logo-abbr"><img src="{{ asset('frontend/images/logo.png') }}" alt=""> </b>
-            <span class="logo-compact"><img src="{{ asset('frontend/images/logo-compact.png') }}" alt=""></span>
+        <a href="{{ $link }}" class="text-white">
+            @php
+                $name = auth()->user()->name;
+                $getChar = explode(" ", $name);
+            @endphp
+
+            <b class="logo-abbr">
+                {{ strtoupper($getChar[0][0]) }}
+            </b>
             <span class="brand-title">
-                <img src="{{ asset('frontend/images/logo-text.png') }}" alt="">
+                {{ auth()->user()->name }}
             </span>
         </a>
     </div>

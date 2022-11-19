@@ -75,10 +75,18 @@
                         </div>
                     </div>
                 </li>
+                @php
+                    if (empty(auth()->user()->avatar) || auth()->user()->avatar == null) {
+                        $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
+
+                        }elseif (!empty(auth()->user()->avatar) || auth()->user()->avatar !== null) {
+                        $src = public_path('storage/avatars/'.auth()->user()->avatar);
+                    }
+                @endphp
                 <li class="icons dropdown">
-                    <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                         <span class="activity active"></span>
-                        <img src="{{ ('frontend/images/user/1.png') }}" height="40" width="40" alt="">
+                        <img src="{{ $src }}" height="40" width="40" alt="default_user_icon">
                     </div>
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">
