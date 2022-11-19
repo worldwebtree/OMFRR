@@ -40,7 +40,8 @@
                             </div>
 
                             <ul class="card-profile__info">
-                                <li><strong class="text-dark mr-4">Email</strong> <span>{{ auth()->user()->email }}</span></li>
+                                <li><strong class="text-dark mr-4">Email</strong> <span>{{ auth()->user()->email }}</span></li><br>
+                                <li><strong class="text-dark mr-4">Gender</strong> <span>{{ auth()->user()->gender }}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -52,7 +53,7 @@
                             <div class="card-title">
                                 <h1>update profile</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="#" class="update_profile_form" method="post">
                                 @csrf
                                 <div class="form-group text-center">
                                     <label for="Avatar" class="avatar-animation">
@@ -60,33 +61,62 @@
                                         <input type="file" name="avatar" id="Avatar" class="form-control d-none">
                                     </label>
                                 </div>
-                                <div class="d-flex justify-content-around">
-                                    <div class="form-group">
-                                        <label for="Name">name</label>
-                                        <input type="text" name="name" id="Name" value="{{ auth()->user()->name }}" class="form-control" placeholder="Enter name" aria-describedby="helpId">
-                                      </div>
 
-                                      <div class="form-group">
-                                          <label for="Email">email</label>
-                                          <input type="email" name="email" id="Email" value="{{ auth()->user()->email }}" class="form-control" placeholder="Enter email" aria-describedby="helpId">
-                                      </div>
+                                <div class="form-group">
+                                    <label for="Name">name</label>
+                                    <input type="text" name="name" id="Name" value="{{ auth()->user()->name }}" class="form-control" placeholder="Enter name" aria-describedby="helpId">
+                                    </div>
+
+                                <div class="form-group">
+                                    <label for="Email">email</label>
+                                    <input type="email" name="email" id="Email" value="{{ auth()->user()->email }}" class="form-control" placeholder="Enter email" aria-describedby="helpId">
                                 </div>
 
-                                <div class="d-flex justify-content-around">
-                                    <div class="form-group">
-                                        <label for="Password">password</label>
-                                        <input type="password" name="password" id="Password" value="{{ auth()->user()->password }}" class="form-control" placeholder="Enter password" aria-describedby="helpId">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="Password">password</label>
+                                    <input type="password" name="password" id="Password" value="{{ auth()->user()->password }}" class="form-control" placeholder="Enter password" aria-describedby="helpId">
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="gender">gender</label>
-                                        <select name="gender" class="form-control" id="gender">
-                                            <option selected value="{{ auth()->user()->gender }}">{{ auth()->user()->gender }}</option>
-                                            <option value="male">male</option>
-                                            <option value="female">female</option>
-                                            <option value="custom">custom</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="gender">gender</label>
+                                    <select name="gender" class="form-control" id="gender">
+                                        <option selected value="{{ auth()->user()->gender }}">{{ auth()->user()->gender }}</option>
+                                        <option value="male">male</option>
+                                        <option value="female">female</option>
+                                        <option value="custom">custom</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary w-100">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body text-capitalize">
+                            <div class="card-title">
+                                <h1>password reset</h1>
+                            </div>
+                            <form action="#" class="password_reset_form" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="Passwrod">current password</label>
+                                    <input type="password" name="password" id="Password" value="{{ auth()->user()->password }}" class="form-control" placeholder="Enter password" aria-describedby="helpId">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="New_Password">new password</label>
+                                    <input type="password" name="new_password" id="New_Password" class="form-control" placeholder="Enter new password" aria-describedby="helpId">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Confirm_Password">confirm password</label>
+                                    <input type="password" name="password_confirmation" id="Confirm_Password" class="form-control" placeholder="Confirm new password" aria-describedby="helpId">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary w-100">Reset</button>
                                 </div>
                             </form>
                         </div>

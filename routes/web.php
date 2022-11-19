@@ -37,6 +37,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 
         Route::get('/profile', 'index')->name('admin.profile');
 
+        Route::get('/profile_update', 'store')->name('admin.profile.update');
+
     });
 
 });
@@ -56,7 +58,6 @@ Route::prefix('customer')->middleware(['auth', 'verified'])
     Route::controller(CustomerProfileController::class)->group(function () {
 
         Route::get('/profile', 'index')->name('customer.profile');
-
     });
 
 });
