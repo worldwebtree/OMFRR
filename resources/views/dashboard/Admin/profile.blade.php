@@ -2,11 +2,22 @@
 
 @push('css')
 <style>
-    .avatar-animation:hover {
-        border: 5px solid #dfddfd;
-        border-radius: 50%;
+    /* .avatar-animation > i {
         cursor: pointer;
-        transition: 0.3s ease;
+        color: #7571f9;
+        border-color: #7571f9;
+    }
+
+    .avatar-animation > i:hover {
+        color: #324cdd;
+        transition: 0.3s ease
+    } */
+
+    .avatar_text > span {
+        width: 20rem;
+        height: 10rem;
+        border-bottom: 2px solid #324cdd;
+        /* background-color: #324cdd; */
     }
 </style>
 @endpush
@@ -21,16 +32,16 @@
                     <div class="card">
                         <div class="card-body">
                             @php
-                                if (empty(auth()->user()->avatar) || auth()->user()->avarar == null) {
+                                if (empty(auth()->user()->avatar) || auth()->user()->avarar = null) {
                                     $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
 
-                                    }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar !== null) {
-                                    $src = public_path('storage/profile_img/'.auth()->user()->avatar);
+                                    }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar != null) {
+                                    $src = asset('storage/profile_img/'.auth()->user()->avatar);
                                 }
                             @endphp
-                            <div class="media align-items-center mb-4">
-                                <img class="mr-3" src="{{ $src }}" width="80" height="80" alt="">
-                                <div class="media-body">
+                            <div class="d-flex flex-column align-items-center mb-4">
+                                <img class="mr-3 rounded-circle" src="{{ $src }}" width="80" height="80" alt="">
+                                <div class="media-body mt-2">
 
                                     @php($name = explode(" ", auth()->user()->name))
 
@@ -59,11 +70,17 @@
 
                                 @method('PUT')
                                 @csrf
-                                <div class="form-group text-center">
+                                <div class="form-group mt-5 d-flex align-items-baseline">
                                     <label for="Avatar" class="avatar-animation">
-                                        <img src="{{ $src }}" width="100" height="100" alt="" srcset="">
+                                        <button class="btn btn-primary">
+                                            <i class="fa fa-camera fa-1x text-white" aria-hidden="true"></i>
+                                        </button>
                                         <input type="file" name="avatar" id="Avatar" class="form-control d-none">
                                     </label>
+                                    <div class="avatar_text ml-3">
+                                        <span class="avatar_text_area" id="avararTextArea">
+                                        </span>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -74,11 +91,6 @@
                                 <div class="form-group">
                                     <label for="Email">email</label>
                                     <input type="email" name="email" id="Email" value="{{ auth()->user()->email }}" class="form-control" placeholder="Enter email" aria-describedby="helpId">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Password">password</label>
-                                    <input type="password" name="password" id="Password" value="{{ auth()->user()->password }}" class="form-control" placeholder="Enter password" aria-describedby="helpId">
                                 </div>
 
                                 <div class="form-group">
@@ -135,5 +147,14 @@
 
 
 @push('js')
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Avatar').change(function (e) {
+            let fileName = e.target.files[0].name;
+            $("#avararTextArea").text(fileName);
+        });
+    });
+</script>
 
 @endpush

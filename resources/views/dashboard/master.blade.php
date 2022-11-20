@@ -111,6 +111,9 @@
 
     <script src="{{ asset('frontend/js/dashboard/dashboard-1.js') }}"></script>
 
+    <!-- Pushed JS from the Chile Views -->
+    @stack('js')
+
 </body>
 
 </html>

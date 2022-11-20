@@ -72,27 +72,27 @@ class ProfileController extends Controller
         $request->validate([
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
             'gender' => ['required'],
         ]);
 
         $user = $request->user();
 
-        if (empty($request->hasFile('avatar')) && $request->file('avatar') == null) {
+        if (!$request->hasFile('avatar')) {
+
             $avatarName = $user->avatar;
-        }else {
+
+        } else {
 
             $file = $request->file('avatar');
 
             $avatarName = $file->hashName();
 
-            $file->move(public_path('storage/profile_img', $avatarName));
+            $file->move(public_path('storage/profile_img/'), $avatarName);
         }
 
         $user->update([
             'name' => $request['name'],
             'email' => $request['email'],
-            'password' => $request['password'],
             'gender' => $request['gender'],
             'avatar' => $avatarName
         ]);
