@@ -50,6 +50,21 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-input-label for="gender" :value="__('Gender')" />
+
+                <select name="gender"
+                        class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        id="">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="custom">custom</option>
+                </select>
+
+                <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+            </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}

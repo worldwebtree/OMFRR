@@ -25,7 +25,7 @@
                                     $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
 
                                     }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar !== null) {
-                                    $src = asset('storage/profile_img/'. auth()->user()->avatar);
+                                    $src = public_path('storage/profile_img/'.auth()->user()->avatar);
                                 }
                             @endphp
                             <div class="media align-items-center mb-4">
