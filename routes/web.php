@@ -29,15 +29,21 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 
     Route::controller(DashboardController::class)->group(function () {
 
-        Route::get('/dashboard', 'index')->name('admin.dashboard');
+        Route::get('/dashboard', 'index')
+        ->name('admin.dashboard');
 
     });
 
     Route::controller(ProfileController::class)->group(function () {
 
-        Route::get('/profile', 'index')->name('admin.profile');
+        Route::get('/profile', 'index')
+        ->name('admin.profile');
 
-        Route::put('/profile/update', 'update')->name('admin.profile.update');
+        Route::put('/profile/update', 'update')
+        ->name('admin.profile.update');
+
+        Route::put('/password/reset', 'resetPassword')
+        ->name('admin.password.reset');
 
     });
 

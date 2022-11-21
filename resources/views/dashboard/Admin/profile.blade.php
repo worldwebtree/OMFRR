@@ -2,22 +2,10 @@
 
 @push('css')
 <style>
-    /* .avatar-animation > i {
-        cursor: pointer;
-        color: #7571f9;
-        border-color: #7571f9;
-    }
-
-    .avatar-animation > i:hover {
-        color: #324cdd;
-        transition: 0.3s ease
-    } */
-
     .avatar_text > span {
         width: 20rem;
         height: 10rem;
         border-bottom: 2px solid #324cdd;
-        /* background-color: #324cdd; */
     }
 </style>
 @endpush
@@ -72,9 +60,10 @@
                                 @csrf
                                 <div class="form-group mt-5 d-flex align-items-baseline">
                                     <label for="Avatar" class="avatar-animation">
-                                        <button class="btn btn-primary">
-                                            <i class="fa fa-camera fa-1x text-white" aria-hidden="true"></i>
-                                        </button>
+                                        <a class="btn btn-primary text-white">
+                                            Avatar
+                                            <i class="fa fa-camera fa-1x" aria-hidden="true"></i>
+                                        </a>
                                         <input type="file" name="avatar" id="Avatar" class="form-control d-none">
                                     </label>
                                     <div class="avatar_text ml-3">
@@ -114,21 +103,39 @@
                             <div class="card-title">
                                 <h1>password reset</h1>
                             </div>
-                            <form action="#" class="password_reset_form" method="post">
+                            <form action="{{ route('admin.password.reset') }}" class="password_reset_form" method="POST">
+                                @method('PUT')
+
+                                <x-error/>
+                                <x-alert/>
                                 @csrf
                                 <div class="form-group">
-                                    <label for="Passwrod">current password</label>
-                                    <input type="password" name="password" id="Password" value="{{ auth()->user()->password }}" class="form-control" placeholder="Enter password" aria-describedby="helpId">
+                                    <label for="New_Password">old password</label>
+                                    <div class="input-group">
+                                        <input type="password" name="old_password" id="Password" required class="form-control" placeholder="Enter old password" data-toggle="password">
+                                        <div class="input-group-append">
+                                          <span class="input-group-text">
+                                            <i class="fa fa-eye"></i>
+                                          </span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="New_Password">new password</label>
-                                    <input type="password" name="new_password" id="New_Password" class="form-control" placeholder="Enter new password" aria-describedby="helpId">
+                                    <div class="input-group">
+                                        <input type="password" name="new_password" id="New_Password" required class="form-control" placeholder="Enter new password" data-toggle="password">
+                                        <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-eye"></i>
+                                        </span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Confirm_Password">confirm password</label>
-                                    <input type="password" name="password_confirmation" id="Confirm_Password" class="form-control" placeholder="Confirm new password" aria-describedby="helpId">
+                                    <input type="password" name="new_password_confirmation" id="Confirm_Password" required class="form-control" placeholder="Re-enter new password" aria-describedby="helpId">
                                 </div>
 
                                 <div class="form-group">
@@ -147,6 +154,7 @@
 
 
 @push('js')
+<script src="{{ asset('frontend/js/plugins-init/bootstrap-show-password.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -156,5 +164,4 @@
         });
     });
 </script>
-
 @endpush

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Rules\AuthPassword;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -64,7 +65,6 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -99,6 +99,22 @@ class ProfileController extends Controller
 
         return redirect()->route('admin.profile')
         ->with('updated', 'Profile has been updated');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => ['required', 'string', new AuthPassword],
+            'new_password' => ['required', 'confirmed'],
+        ]);
+
+        // $user = $request->user();
     }
 
     /**
