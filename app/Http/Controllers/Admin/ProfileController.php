@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Rules\AuthPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -75,8 +77,10 @@ class ProfileController extends Controller
             'gender' => ['required'],
         ]);
 
+        // retrieving authenticated user
         $user = $request->user();
 
+        // checking if the $request variable contain's a file named avatar
         if (!$request->hasFile('avatar')) {
 
             $avatarName = $user->avatar;
@@ -85,11 +89,14 @@ class ProfileController extends Controller
 
             $file = $request->file('avatar');
 
+            // generating hashed file name
             $avatarName = $file->hashName();
 
+            // saving the file with hashed name in storage
             $file->move(public_path('storage/profile_img/'), $avatarName);
         }
 
+        // updating authenticated user's credentials
         $user->update([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -114,7 +121,17 @@ class ProfileController extends Controller
             'new_password' => ['required', 'confirmed'],
         ]);
 
-        // $user = $request->user();
+        // retrieving authenticated user
+        $user = $request->user();
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        // logging out authenticated user after updating password
+        Auth::logout($user);
+
+        return redirect()->route('welcome');
     }
 
     /**
