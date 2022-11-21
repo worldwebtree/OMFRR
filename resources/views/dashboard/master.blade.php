@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+    @routes
     <!--*******************
         Preloader start
     ********************-->
@@ -110,6 +110,7 @@
     <script src="{{ asset('frontend/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
 
     <script src="{{ asset('frontend/js/dashboard/dashboard-1.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
 
     <!-- Pushed JS from the Chile Views -->
     @stack('js')

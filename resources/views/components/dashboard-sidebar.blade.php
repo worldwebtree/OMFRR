@@ -9,7 +9,17 @@
                     </a>
                     <ul aria-expanded="false">
                         <li>
-                            <a class="" href="#">authentiacted user's</a>
+                            <a class="" href="{{ route('admin.users.manage') }}">authentiacted user's</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="fa fa-key"></i><span class="nav-text">keyword management</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a class="" href="{{ route('admin.users.manage') }}">add keyword</a>
                         </li>
                     </ul>
                 </li>

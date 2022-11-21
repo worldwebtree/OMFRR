@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 
         Route::put('/password/reset', 'resetPassword')
         ->name('admin.password.reset');
+    });
+
+    Route::controller(UserManageController::class)->group(function () {
+
+        Route::get('/users/manage', 'index')
+        ->name('admin.users.manage');
+
+        Route::get('/users/delete/{id}', 'destroy')
+        ->name('admin.users.destroy');
 
     });
 
