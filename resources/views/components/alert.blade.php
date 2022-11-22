@@ -1,27 +1,28 @@
 @if (session('created'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-        </button>
-        <strong>{{ session('created') }}</strong>
-    </div>
+    <script type="text/javascript">
+        swal.fire({
+            title: 'Created',
+            text: "{{ session('created') }}",
+            icon: 'success',
+        })
+    </script>
 
     @elseif (session('updated'))
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-        </button>
-        <strong>{{ session('updated') }}</strong>
-    </div>
+    <script type="text/javascript">
+        swal.fire({
+            title: 'Updated',
+            text: "{{ session('updated') }}",
+            icon: 'success',
+        })
+    </script>
 
     @elseif (session('deleted'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-        </button>
-        <strong>{{ session('deleted') }}</strong>
-    </div>
+    <script type="text/javascript">
+        swal.fire({
+            title: 'Deleted',
+            text: "{{ session('deleted') }}",
+            icon: 'success',
+        })
+    </script>
 @endif
+

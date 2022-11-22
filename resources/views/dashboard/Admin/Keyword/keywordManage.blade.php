@@ -12,34 +12,60 @@
         <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <div class="card-body text-capitalize">
+                            <div class="card-title mb-5">
+                                <h1>
+                                    keyword's management <i class="fa fa-key" aria-hidden="true"></i>
+                                </h1>
+                            </div>
+                            <form action="{{ route('admin.keyword.management.store') }}" class="add_keywords_form"
+                                method="POST">
+                                <x-error/>
+                                <x-alert/>
+                                @csrf
+
+                                <div class="form-title">
+                                    <h3>add keyword</h3>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Keyword">key name</label>
+                                    <input type="text" name="keyword_name" id="Keyword" class="form-control" required placeholder="Enter keyword name" aria-describedby="helpId">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Ratting">key ratting</label>
+                                    <input type="number" name="keyword_ratting" id="Ratting" min="1" max="5" class="form-control" required placeholder="Enter keyword ratting" aria-describedby="helpId">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary w-100">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
                         <div class="card-body">
-                            <h1 class="card-title text-capitalize">
-                                user's management <i class="fa fa-users" aria-hidden="true"></i>
-                            </h1>
+                            <h4 class="card-title text-capitalize">
+                                keyword's table <i class="fa fa-table" aria-hidden="true"></i>
+                            </h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-inverse">
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
-                                            <th>name</th>
-                                            <th>email</th>
-                                            <th>password</th>
-                                            <th>gender</th>
-                                            <th>avatar</th>
-                                            <th>role</th>
+                                            <th>keyword name</th>
+                                            <th>keyword ratting</th>
                                             <th>action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $user)
+                                            @foreach ($keywords as $keyword)
                                             <tr>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->password }}</td>
-                                                <td>{{ $user->gender }}</td>
-                                                <td>{{ $user->avatar }}</td>
-                                                <td>{{ $user->role }}</td>
+                                                <td>{{ $keyword->keyword_name }}</td>
+                                                <td>{{ $keyword->keyword_ratting }}</td>
                                                 <td>
-                                                    <a class="DeleteUserBtn" href="{{ route('admin.users.destroy', $user->id) }}">
+                                                    <a class="DeleteUserBtn" href="{{ route('admin.keyword.management.destroy', $keyword->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                     </a>
                                                 </td>

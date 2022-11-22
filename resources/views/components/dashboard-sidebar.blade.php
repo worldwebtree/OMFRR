@@ -3,25 +3,23 @@
         @if (auth()->user()->role == "admin")
             <ul class="metismenu text-capitalize" id="menu">
                 <li class="nav-label">Admin Dashboard</li>
-                <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="fa fa-users"></i><span class="nav-text">user management</span>
+
+                <li class="nav-list-item">
+                    <a class="nav-anchor-item" href="{{ route('admin.users.manage') }}" aria-expanded="false">
+                        <i class="fa fa-users"></i><span class="nav-text">user's management</span>
                     </a>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a class="" href="{{ route('admin.users.manage') }}">authentiacted user's</a>
-                        </li>
-                    </ul>
                 </li>
-                <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="fa fa-key"></i><span class="nav-text">keyword management</span>
+
+                <li class="nav-list-item">
+                    <a class="nav-anchor-item" href="{{ route('admin.keyword.management') }}" aria-expanded="false">
+                        <i class="fa fa-key"></i><span class="nav-text">keyword's management</span>
                     </a>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a class="" href="{{ route('admin.users.manage') }}">add keyword</a>
-                        </li>
-                    </ul>
+                </li>
+
+                <li class="nav-list-item">
+                    <a class="nav-anchor-item" href="{{ route('admin.restaurant.management') }}" aria-expanded="false">
+                        <i class="fa fa-home"></i><span class="nav-text">Restaurant Management</span>
+                    </a>
                 </li>
             </ul>
             @else

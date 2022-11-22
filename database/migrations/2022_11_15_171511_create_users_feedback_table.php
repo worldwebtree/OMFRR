@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\PostRestaurant;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,7 +22,12 @@ return new class extends Migration
             ->constrained()
             ->cascadeOnDelete();
 
+            $table->foreignIdFor(PostRestaurant::class)
+            ->constrained()
+            ->cascadeOnDelete();
+
             $table->string('username');
+
             $table->text('feedback');
 
             $table->timestamps();

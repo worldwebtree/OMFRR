@@ -16,7 +16,17 @@
     <link rel="stylesheet" href="{{ asset('frontend/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
     <!-- Custom Stylesheet -->
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
-`
+
+    {{-- Overwritten Styles --}}
+    <style>
+        .nav-list-item > a{
+            background-color: #ffffff !important;
+        }
+        .nav-list-item > a:hover{
+            background-color: #F3F1FA !important;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
     <!-- Pushed Style Css from the Chile Views -->
     @stack('css')
 </head>
@@ -109,8 +119,9 @@
     <script src="{{ asset('frontend/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
 
     <script src="{{ asset('frontend/js/dashboard/dashboard-1.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
 
+    {{-- CK editor CDN --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
     <!-- Pushed JS from the Chile Views -->
     @stack('js')
 

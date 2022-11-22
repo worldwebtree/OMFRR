@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KeywordManageController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RestaurantManageController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
@@ -54,6 +56,32 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 
         Route::get('/users/delete/{id}', 'destroy')
         ->name('admin.users.destroy');
+
+    });
+
+    Route::controller(KeywordManageController::class)->group(function () {
+
+        Route::get('/keywords/management', 'index')
+        ->name('admin.keyword.management');
+
+        Route::post('/keywords/management/add', 'store')
+        ->name('admin.keyword.management.store');
+
+        Route::get('/keywords/management/destroy/{id}', 'destroy')
+        ->name('admin.keyword.management.destroy');
+
+    });
+
+    Route::controller(RestaurantManageController::class)->group(function () {
+
+        Route::get('/restaurant/management', 'index')
+        ->name('admin.restaurant.management');
+
+        Route::post('/restaurant/management/add', 'store')
+        ->name('admin.restaurant.management.store');
+
+        Route::get('/restaurant/management/destroy/{id}', 'destroy')
+        ->name('admin.keyword.restaurant.destroy');
 
     });
 

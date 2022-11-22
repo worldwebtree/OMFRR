@@ -53,7 +53,8 @@
                                 <h1>update profile</h1>
                             </div>
                             <form action="{{ route('admin.profile.update') }}" class="update_profile_form"
-                             method="POST" enctype="multipart/form-data">
+                                method="POST" enctype="multipart/form-data">
+                                <x-error/>
                                 <x-alert/>
 
                                 @method('PUT')
