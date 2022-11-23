@@ -36,9 +36,48 @@ class RestaurantManageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, PostRestaurant $postRestaurant)
     {
-        //
+        $request->validate([
+            'restaurant_name' => ['required', 'string'],
+            'restaurant_description' => ['required', 'string'],
+        ]);
+
+        // dd($request->file('restaurant_images'));
+        // exit();
+
+        $files = $request->hasFile("restaurant_images");
+
+        // checking if the $request variable contain's a file named restaurant_images
+        if (!$files) {
+
+            $restaurantImages = $postRestaurant->images;
+
+        } else {
+
+            $images = $request->file('restaurant_images');
+
+            foreach ($images as $image) {
+
+                // generating hashed file name
+                $restaurantImages = $image->hashName();
+
+                $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
+
+                $restaurantImagesArray[] = $restaurantImages;
+            }
+
+            // saving the file with hashed name in storage
+        }
+
+        $postRestaurant->create([
+            'title' => ucfirst($request->restaurant_name),
+            'description' => strip_tags($request->restaurant_description),
+            'images' => json_encode($restaurantImagesArray),
+        ]);
+
+        return redirect()->route('admin.restaurant.management')
+        ->with('created', 'Restaurant post has been created successfully');
     }
 
     /**
@@ -81,8 +120,14 @@ class RestaurantManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PostRestaurant $postRestaurant, $id)
     {
-        //
+        $delete = $postRestaurant->findOrFail($id);
+
+        $delete->delete();
+
+        return redirect()->route('admin.restaurant.management')
+        ->with('deleted', 'Restaurant post has been deleted successfully');
+
     }
 }

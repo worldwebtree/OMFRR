@@ -81,7 +81,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
         ->name('admin.restaurant.management.store');
 
         Route::get('/restaurant/management/destroy/{id}', 'destroy')
-        ->name('admin.keyword.restaurant.destroy');
+        ->name('admin.restaurant.management.destroy');
 
     });
 
