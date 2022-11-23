@@ -26,7 +26,7 @@
                                 @csrf
 
                                 <div class="form-title">
-                                    <h3>add restaurant</h3>
+                                    <h3>add restaurant post</h3>
                                 </div>
 
                                 <div class="form-group">
@@ -36,8 +36,8 @@
 
                                 <div class="form-group">
                                     <label for="RestaurantImages">restaurant images</label>
-                                    <input type="file" multiple name="restaurant_images[]" id="RestaurantImages" class="form-control" aria-describedby="helpId">
-                                    <span id="show_images"></span>
+                                    <input type="file" multiple onchange="displayImages(this)" name="restaurant_images[]" id="RestaurantImages" class="form-control" aria-describedby="helpId">
+                                    <img src="" id="show_images">
                                 </div>
 
                                 <div class="form-group">
@@ -61,8 +61,9 @@
                                 <table class="table table-striped table-inverse">
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
-                                            <th>keyword name</th>
-                                            <th>keyword ratting</th>
+                                            <th>restaurant title</th>
+                                            <th>restaurant decription</th>
+                                            <th>restaurant images</th>
                                             <th>action</th>
                                         </tr>
                                         </thead>
@@ -101,23 +102,23 @@
             console.error( error );
         } );
 
-        $(document).ready(function () {
-            $("#RestaurantImages").change(function (e) {
+        function displayImages(input) {
 
-                if ($(this).files && $(this).files[0]) {
-                    var reader = new FileReader();
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        let images = $('#show_images').add('img');
+                reader.onload = function (e) {
+                    $('#show_images')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(100);
+                    // console.log(e.target.result);
+                };
 
-                        images.attr('src', e.target.result);
-                    }
+                reader.readAsDataURL(input.files[0]);
+            }
 
-                    reader.readAsDataURL($(this).files[0]);
-                }
-
-            });
-        });
+        }
 
     // $(document).ready(function () {
     //     $(".DeleteUserBtn").click(function (e) {
