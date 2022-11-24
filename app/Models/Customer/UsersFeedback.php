@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UsersFeedback extends Model
 {
@@ -41,10 +40,10 @@ class UsersFeedback extends Model
       * users_feedback has a one to many relation with PostRestaurant model
       *
       * @return Illuminate\Database\Eloquent\Factories\Relationship
-      * @return Illuminate\Database\Eloquent\Relations\HasMany
+      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
       */
-    public function post_restaurants(): HasMany
+    public function post_restaurant(): BelongsTo
     {
-        return $this->hasMany(PostRestaurant::class);
+        return $this->belongsTo(PostRestaurant::class);
     }
 }

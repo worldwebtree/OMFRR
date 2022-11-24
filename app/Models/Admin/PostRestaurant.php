@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PostRestaurant extends Model
 {
@@ -27,10 +27,10 @@ class PostRestaurant extends Model
       * PostRestaurant belongsTo users_feedback model
       *
       * @return Illuminate\Database\Eloquent\Factories\Relationship
-      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+      * @return Illuminate\Database\Eloquent\Relations\HasMany
       */
-      public function users_feedback(): BelongsTo
+      public function users_feedback(): HasMany
       {
-          return $this->belongsTo(UsersFeedback::class);
+          return $this->hasMany(UsersFeedback::class);
       }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PostRestaurant;
+use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 
 class RestaurantManageController extends Controller

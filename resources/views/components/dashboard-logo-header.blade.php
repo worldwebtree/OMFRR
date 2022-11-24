@@ -17,6 +17,7 @@
 
             <b class="logo-abbr">
                 {{ strtoupper($getChar[0][0]) }}
+                {{ isset($getChar[1]) ? strtoupper($getChar[1][0]) : " " }}
             </b>
             <span class="brand-title">
                 {{ auth()->user()->name }}

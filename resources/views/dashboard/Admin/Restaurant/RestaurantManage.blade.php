@@ -160,29 +160,6 @@
             console.error( error );
         } );
 
-        // function displayImages(input) {
-
-        //     if (input.files && input.files[0]) {
-
-        //         for (let index = 0; index < input.files.length; index++) {
-
-        //             let imageTag = document.createElement("img");
-
-        //             var reader = new FileReader();
-
-        //             reader.onload = function (e) {
-        //                 let previewImg = $("#preview_images").append(imageTag);
-
-        //                 imageTag.attr('src', e.target.result);
-        //             };
-
-        //         }
-
-        //         reader.readAsDataURL(input.files[0]);
-        //     }
-
-        // }
-
     $(document).ready(function () {
         $(".DeleteUserBtn").click(function (e) {
             e.preventDefault();

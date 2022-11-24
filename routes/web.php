@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KeywordManageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RestaurantManageController;
+use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
+use App\Http\Controllers\Customer\RestaurantManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,6 +87,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 
     });
 
+    Route::controller(UserFeedbackController::class)->group(function () {
+
+        Route::get('/users/feedback', 'index')
+        ->name('admin.users.feedback');
+
+        Route::get('/users/feedback/destroy/{id}', 'destroy')
+        ->name('admin.users.feedback.destroy');
+    });
+
 });
 
 /**
@@ -109,6 +120,13 @@ Route::prefix('customer')->middleware(['auth', 'verified'])
 
         Route::put('/password/reset', 'resetPassword')
         ->name('customer.password.reset');
+    });
+
+    Route::controller(RestaurantManagementController::class)->group(function () {
+
+        Route::get('/restaurant/management', 'index')
+        ->name('customer.restaurant.management');
+
     });
 
 });
