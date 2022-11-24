@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Rules\AuthPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -67,9 +70,69 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'gender' => ['required'],
+        ]);
+
+        // retrieving authenticated user
+        $user = $request->user();
+
+        // checking if the $request variable contain's a file named avatar
+        if (!$request->hasFile('avatar')) {
+
+            $avatarName = $user->avatar;
+
+        } else {
+
+            $file = $request->file('avatar');
+
+            // generating hashed file name
+            $avatarName = $file->hashName();
+
+            // saving the file with hashed name in storage
+            $file->move(public_path('storage/profile_img/'), $avatarName);
+        }
+
+        // updating authenticated user's credentials
+        $user->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'gender' => $request['gender'],
+            'avatar' => $avatarName
+        ]);
+
+        return redirect()->route('admin.profile')
+        ->with('updated', 'Profile has been updated');
+    }
+
+            /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => ['required', 'string', new AuthPassword],
+            'new_password' => ['required', 'confirmed'],
+        ]);
+
+        // retrieving authenticated user
+        $user = $request->user();
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        // logging out authenticated user after updating password
+        Auth::logout($user);
+
+        return redirect()->route('welcome');
     }
 
     /**

@@ -101,7 +101,14 @@ Route::prefix('customer')->middleware(['auth', 'verified'])
 
     Route::controller(CustomerProfileController::class)->group(function () {
 
-        Route::get('/profile', 'index')->name('customer.profile');
+        Route::get('/profile', 'index')
+        ->name('customer.profile');
+
+        Route::put('/profile/update', 'update')
+        ->name('customer.profile.update');
+
+        Route::put('/password/reset', 'resetPassword')
+        ->name('customer.password.reset');
     });
 
 });

@@ -25,16 +25,13 @@
             @else
             <ul class="metismenu text-capitalize" id="menu">
                 <li class="nav-label">Customer Dashboard</li>
-                <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="fa fa-users"></i><span class="nav-text">user management</span>
+
+                <li class="nav-list-item">
+                    <a class="nav-anchor-item" href="{{ route('admin.users.manage') }}" aria-expanded="false">
+                        <i class="fa fa-users"></i><span class="nav-text">user's management</span>
                     </a>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a class="" href="#">authentiacted user's</a>
-                        </li>
-                    </ul>
                 </li>
+
             </ul>
         @endif
     </div>
