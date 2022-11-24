@@ -73,6 +73,7 @@
                                             @endforeach
                                         </tbody>
                                 </table>
+                                {{ $keywords->links() }}
                             </div>
                         </div>
                     </div>

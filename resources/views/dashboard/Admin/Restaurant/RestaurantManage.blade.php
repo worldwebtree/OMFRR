@@ -2,6 +2,15 @@
 
 @push('css')
 
+<style>
+    .image-slider-btn:first-child img {
+        transition: .2s;
+    }
+    .image-slider-btn:first-child img:hover {
+        transform: scale(1.1);
+    }
+</style>
+
 @endpush
 
 @section('content')
@@ -63,51 +72,43 @@
                                         <tr>
                                             <th>restaurant title</th>
                                             <th>restaurant decription</th>
-                                            <th>restaurant images</th>
+                                            <th>preview restaurant images</th>
                                             <th>action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($restaurants as $restaurant)
+                                                @php($Image = json_decode($restaurant->images))
                                             <tr>
                                                 <td>{{ $restaurant->title }}</td>
                                                 <td>{{ $restaurant->description }}</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary btn text-capitalize" data-toggle="modal" data-target="#modelId">
-                                                      preview images <i class="fa fa-camera" aria-hidden="true"></i>
+                                                    <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
+                                                        <img width="70" height="70" src="{{ asset('storage/Restaurant/images/' . $Image[0]) }}" alt="First Image" srcset="">
                                                     </button>
 
                                                     <!-- Modal -->
                                                     <div class="modal fade text-capitalize" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">restaurant images</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                </div>
                                                                 <div class="modal-body">
                                                                     <div id="carouselId" class="carousel slide" data-ride="carousel">
                                                                         @php($count = 0)
                                                                         <ol class="carousel-indicators">
                                                                             <li data-target="#carouselId" data-slide-to="{{ $count }}" class="active"></li>
-                                                                            @foreach (json_decode($restaurant->images) as $key => $images)
+                                                                            @foreach ($Image as $key => $images)
                                                                                 @if ($key > 0)
                                                                                     <li data-target="#carouselId" data-slide-to="{{ $key }}"></li>
                                                                                 @endif
                                                                             @endforeach
                                                                         </ol>
 
-
-                                                                        @php($imgs = json_decode($restaurant->images))
-
                                                                         <div class="carousel-inner" role="listbox">
                                                                             <div class="carousel-item active">
-                                                                                <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $imgs[0]) }}" alt="First slide">
+                                                                                <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $Image[0]) }}" alt="First slide">
                                                                             </div>
-                                                                            @foreach (json_decode($restaurant->images) as $key => $images)
+                                                                            @foreach ($Image as $key => $images)
                                                                                 @if ($key > 0 )
                                                                                     <div class="carousel-item">
                                                                                         <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $images) }}" alt="restaurant_images" srcset="">
@@ -138,6 +139,7 @@
                                             @endforeach
                                         </tbody>
                                 </table>
+                                {{ $restaurants->links() }}
                             </div>
                         </div>
                     </div>

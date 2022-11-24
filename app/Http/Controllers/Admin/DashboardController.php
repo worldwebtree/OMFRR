@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PostRestaurant;
+use App\Models\Admin\RattingKeywords;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,9 +15,14 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user, RattingKeywords $rattingKeywords,
+    PostRestaurant $postRestaurant)
     {
-        return view('dashboard.Admin.dashboard');
+        $users = $user->count();
+        $keywords = $rattingKeywords->count();
+        $posts = $postRestaurant->count();
+
+        return view('dashboard.Admin.dashboard', compact('users', 'keywords', 'posts'));
     }
 
     /**
