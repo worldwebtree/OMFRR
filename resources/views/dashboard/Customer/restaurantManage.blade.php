@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="card-title text-capitalize">
-                                user's management <i class="fa fa-users" aria-hidden="true"></i>
+                                restaurant's feedback management <i class="fa fa-users" aria-hidden="true"></i>
                             </h1>
                             <div class="table-responsive">
                                 <table class="table table-striped table-inverse">
@@ -27,13 +27,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($restaurants as $restaurant)
+                                            @foreach ($feedbacks as $feedback)
                                                 <tr>
-                                                    <td>{{ $restaurant->user->name }}</td>
-                                                    <td>{{ $restaurant->post_restaurant->title }}</td>
-                                                    <td>{{ $restaurant->feedback }}</td>
+                                                    <td>{{ $feedback->user->name }}</td>
+                                                    <td>{{ $feedback->post_restaurant->title }}</td>
+                                                    <td>{{ $feedback->feedback }}</td>
                                                     <td>
-                                                        <a class="DeleteUserBtn" href="#">
+                                                        <a class="DeleteUserBtn"
+                                                        href="{{ route('customer.restaurant.management.feedback.destroy', $feedback->id) }}">
                                                             <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
@@ -41,7 +42,7 @@
                                             @endforeach
                                         </tbody>
                                 </table>
-                                {{-- {{ $restaurants->links() }} --}}
+                                {{ $feedbacks->links() }}
                             </div>
                         </div>
                     </div>

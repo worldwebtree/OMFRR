@@ -14,14 +14,14 @@ class RestaurantManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UsersFeedback $usersFeedback)
     {
         $user = Auth::user();
-        $restaurants = UsersFeedback::findOrFail($user->id)
-        ->with('post_restaurants')
-        ->get(10);
 
-        return view('dashboard.Customer.restaurantManage', compact('restaurants'));
+        $feedbacks = $usersFeedback->where('user_id', $user->id)
+        ->with('user', 'post_restaurant')->paginate(2);
+
+        return view('dashboard.Customer.restaurantManage', compact('feedbacks'));
     }
 
     /**
@@ -85,8 +85,13 @@ class RestaurantManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UsersFeedback $usersFeedback, $id)
     {
-        //
+        $delete = $usersFeedback->findOrFail($id);
+
+        $delete->delete();
+
+        return redirect()->route('customer.restaurant.management.feedback')
+        ->with('deleted', 'The feedback has been deleted successfully');
     }
 }

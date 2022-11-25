@@ -33,8 +33,8 @@
                 <li class="nav-label">Customer Dashboard</li>
 
                 <li class="nav-list-item">
-                    <a class="nav-anchor-item" href="{{ route('customer.restaurant.management') }}" aria-expanded="false">
-                        <i class="fa fa-users"></i><span class="nav-text">Restaurant Post's</span>
+                    <a class="nav-anchor-item" href="{{ route('customer.restaurant.management.feedback') }}" aria-expanded="false">
+                        <i class="fa fa-users"></i><span class="nav-text">Restaurant's Feedback</span>
                     </a>
                 </li>
 

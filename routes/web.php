@@ -124,8 +124,11 @@ Route::prefix('customer')->middleware(['auth', 'verified'])
 
     Route::controller(RestaurantManagementController::class)->group(function () {
 
-        Route::get('/restaurant/management', 'index')
-        ->name('customer.restaurant.management');
+        Route::get('/restaurant/management/feedback', 'index')
+        ->name('customer.restaurant.management.feedback');
+
+        Route::get('/restaurant/management/feedback/destroy/{id}', 'destroy')
+        ->name('customer.restaurant.management.feedback.destroy');
 
     });
 

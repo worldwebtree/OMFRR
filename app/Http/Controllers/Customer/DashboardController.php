@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -12,9 +13,12 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Auth $auth)
     {
-        return view('dashboard.Customer.dashboard');
+        $feedbacks = $auth::user()->users_feedback
+        ->count();
+
+        return view('dashboard.Customer.dashboard', compact('feedbacks'));
     }
 
     /**
