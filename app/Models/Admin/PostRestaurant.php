@@ -22,11 +22,13 @@ class PostRestaurant extends Model
         'images',
     ];
 
-        /**
-      * PostRestaurant Relationships
-      * PostRestaurant belongsTo users_feedback model
-      *
-      * @return Illuminate\Database\Eloquent\Factories\Relationship
+    /**
+     * Model Relationships
+     * @return Illuminate\Database\Eloquent\Factories\Relationship
+     */
+
+    /**
+      * PostRestaurant has a one to many relation with UsersFeedback model
       * @return Illuminate\Database\Eloquent\Relations\HasMany
       */
       public function users_feedback(): HasMany

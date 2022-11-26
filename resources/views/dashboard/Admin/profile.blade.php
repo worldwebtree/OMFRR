@@ -80,7 +80,7 @@
 
                                 <div class="form-group">
                                     <label for="Email">email</label>
-                                    <input type="email" name="email" id="Email" value="{{ auth()->user()->email }}" class="form-control" placeholder="Enter email" aria-describedby="helpId">
+                                    <input type="email" name="email" disabled id="Email" value="{{ auth()->user()->email }}" class="form-control" placeholder="Enter email" aria-describedby="helpId">
                                 </div>
 
                                 <div class="form-group">

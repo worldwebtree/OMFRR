@@ -17,9 +17,11 @@ class Administrator
     public function handle(Request $request, Closure $next)
     {
         if (! $request->user()->role == "admin") {
-            return $next($request);
+            return redirect()->route('customer.dashboard');
         }
 
-        return redirect()->route('admin.dashboard');
+        return $next($request);
+
+
     }
 }

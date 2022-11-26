@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin\PostRestaurant;
+use App\Models\Admin\RattingKeywords;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -23,6 +24,10 @@ return new class extends Migration
             ->cascadeOnDelete();
 
             $table->foreignIdFor(PostRestaurant::class)
+            ->constrained()
+            ->cascadeOnDelete();
+
+            $table->foreignIdFor(RattingKeywords::class)
             ->constrained()
             ->cascadeOnDelete();
 

@@ -3,6 +3,7 @@
 namespace App\Models\Customer;
 
 use App\Models\Admin\PostRestaurant;
+use App\Models\Admin\RattingKeywords;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,31 +20,41 @@ class UsersFeedback extends Model
      */
     protected $fillable = [
         'user_id',
+        'post_restaurant_id',
+        'ratting_keywords_id',
         'username',
         'feedback',
     ];
 
-     /**
-      * users_feedback Relationships
-      * users_feedback belongsTo user model
-      *
-      * @return Illuminate\Database\Eloquent\Factories\Relationship
-      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-      */
-      public function user(): BelongsTo
-      {
-          return $this->belongsTo(User::class);
-      }
+    /**
+     * Model Relationships
+     * @return Illuminate\Database\Eloquent\Factories\Relationship
+     */
 
     /**
-      * users_feedback Relationships
-      * users_feedback has a one to many relation with PostRestaurant model
-      *
-      * @return Illuminate\Database\Eloquent\Factories\Relationship
+      * UsersFeedback belongs to User model
+      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+      */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+      * UsersFeedback belongs to PostRestaurant model
       * @return Illuminate\Database\Eloquent\Relations\BelongsTo
       */
     public function post_restaurant(): BelongsTo
     {
         return $this->belongsTo(PostRestaurant::class);
+    }
+
+    /**
+      * UsersFeedback belongs to RattingKeywords model
+      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+      */
+    public function ratting_keywords(): BelongsTo
+    {
+        return $this->belongsTo(RattingKeywords::class);
     }
 }

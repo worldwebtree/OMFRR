@@ -29,7 +29,7 @@ Route::get('/', function () {
 /**
  * Administrator Routes
  */
-Route::prefix('admin')->middleware(['auth', 'verified'])
+Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
     ->group(function() {
 
     Route::controller(DashboardController::class)->group(function () {
@@ -101,7 +101,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])
 /**
  * Customer Routes
  */
-Route::prefix('customer')->middleware(['auth', 'verified'])
+Route::prefix('customer')->middleware(['auth', 'verified', 'isCustomer'])
     ->group(function() {
 
     Route::controller(CustomerDashboardController::class)->group(function () {

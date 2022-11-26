@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Controller;
 use App\Rules\AuthPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class ProfileController extends Controller
+class ProfileController extends AuthenticatedSessionController
 {
     /**
      * Display a listing of the resource.
@@ -74,7 +75,6 @@ class ProfileController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
             'gender' => ['required'],
         ]);
 
@@ -100,13 +100,12 @@ class ProfileController extends Controller
         // updating authenticated user's credentials
         $user->update([
             'name' => $request['name'],
-            'email' => $request['email'],
             'gender' => $request['gender'],
             'avatar' => $avatarName
         ]);
 
-        return redirect()->route('admin.profile')
-        ->with('updated', 'Profile has been updated');
+        return redirect()->route('customer.profile')
+        ->with('updated', 'Your Profile has been updated successfully');
     }
 
             /**
@@ -132,7 +131,11 @@ class ProfileController extends Controller
         // logging out authenticated user after updating password
         Auth::logout($user);
 
-        return redirect()->route('welcome');
+        // logging In authenticated user with updated password
+        Auth::login($user);
+
+        return $this->redirectTo()
+        ->with('updated', 'Your password has been reset successfully');
     }
 
     /**

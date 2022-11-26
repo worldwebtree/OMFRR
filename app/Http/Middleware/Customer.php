@@ -16,9 +16,10 @@ class Customer
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! $request->user()->role == "user")
-            return $next($request);
+        if (! $request->user()->role == "user"){
+            return redirect()->route('customer.dashboard');
+        }
 
-        return redirect()->route('customer.dashboard');
+        return $next($request);
     }
 }

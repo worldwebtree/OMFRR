@@ -12,7 +12,7 @@
         swal.fire({
             title: 'Updated',
             text: "{{ session('updated') }}",
-            icon: 'success',
+            icon: 'info',
         })
     </script>
 
@@ -21,7 +21,7 @@
         swal.fire({
             title: 'Deleted',
             text: "{{ session('deleted') }}",
-            icon: 'success',
+            icon: 'info',
         })
     </script>
 @endif
