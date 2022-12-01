@@ -44,9 +44,6 @@ class RestaurantManageController extends Controller
             'restaurant_description' => ['required', 'string'],
         ]);
 
-        // dd($request->file('restaurant_images'));
-        // exit();
-
         $files = $request->hasFile("restaurant_images");
 
         // checking if the $request variable contain's a file named restaurant_images

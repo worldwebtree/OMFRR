@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\KeywordsImport;
 use App\Models\Admin\RattingKeywords;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KeywordManageController extends Controller
 {
@@ -39,16 +41,17 @@ class KeywordManageController extends Controller
      */
     public function store(Request $request, RattingKeywords $rattingKeywords)
     {
-        $request->validate([
-            'keyword_name' => ['required', 'string'],
-            'keyword_ratting' => ['required', 'numeric', 'between:1,5'],
-        ]);
+        // $request->validate([
+        //     'keyword_name' => ['required', 'string'],
+        //     'keyword_ratting' => ['required', 'numeric', 'between:1,5'],
+        // ]);
 
+        Excel::import(new KeywordsImport, '');
 
-        $rattingKeywords->create([
-            'keyword_name' => $request->keyword_name,
-            'keyword_ratting' => $request->keyword_ratting,
-        ]);
+        // $rattingKeywords->create([
+        //     'keyword_name' => $request->keyword_name,
+        //     'keyword_ratting' => $request->keyword_ratting,
+        // ]);
 
         return redirect()->route('admin.keyword.management')
         ->with('created', 'Keyword has been added successfully.');

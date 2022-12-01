@@ -33,6 +33,7 @@
                                     <input type="text" name="keyword_name" id="Keyword" class="form-control" required placeholder="Enter keyword name" aria-describedby="helpId">
                                 </div>
 
+
                                 <div class="form-group">
                                     <label for="Ratting">key ratting</label>
                                     <input type="number" name="keyword_ratting" id="Ratting" min="1" max="5" class="form-control" required placeholder="Enter keyword ratting" aria-describedby="helpId">
