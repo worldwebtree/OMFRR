@@ -40,6 +40,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="file">Or Upload CSV</label>
+                                    <input type="file" class="form-control" accept=".xls,.xlsx">
+                                </div>
+
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary w-100">Add</button>
                                 </div>
                             </form>
