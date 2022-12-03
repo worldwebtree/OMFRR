@@ -31,20 +31,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="Keyword">key name</label>
-                                    <input type="text" name="keyword_name" id="Keyword" class="form-control" placeholder="Enter keyword name" aria-describedby="helpId">
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="Ratting">key ratting</label>
-                                    <input type="number" name="keyword_ratting" id="Ratting" min="1" max="5" class="form-control" placeholder="Enter keyword ratting" aria-describedby="helpId">
-                                </div>
-
-                                <div class="form-group">
                                     <label for="customInput">Or Upload Xlsx</label>
                                     <div class="custom-file">
-                                        <input type="file" onchange="getFileName(this)" name="Keyword_file" class="custom-file-input" id="customInput">
+                                        <input type="file" onchange="getFileName(this)"
+                                            name="Keyword_file"
+                                            class="custom-file-input"
+                                            accept=".xlsx"
+                                            id="customInput">
                                         <label class="custom-file-label" id="fileInputLabel" for="customInput">Choose file...</label>
                                     </div>
                                 </div>
@@ -60,11 +53,21 @@
                         <div class="card-body">
                             <h4 class="card-title text-capitalize">
                                 keyword's table <i class="fa fa-table" aria-hidden="true"></i>
+
+                                <button type="button" id="formDeleteButton" class="btn btn-danger text-capitalize float-right">
+                                    delete
+                                </button>
                             </h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-inverse">
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
+                                            <th>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="SelectAllCheckbox">
+                                                    <label class="form-check-label" for="SelectAllCheckbox">select all</label>
+                                                </div>
+                                            </th>
                                             <th>keyword name</th>
                                             <th>keyword ratting</th>
                                             <th>action</th>
@@ -73,6 +76,11 @@
                                         <tbody>
                                             @foreach ($keywords as $keyword)
                                             <tr>
+                                                <td>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input checkAll" id="">
+                                                    </div>
+                                                </td>
                                                 <td>{{ $keyword->keyword_name }}</td>
                                                 <td>{{ $keyword->keyword_ratting }}</td>
                                                 <td>
@@ -141,5 +149,28 @@
 
         $("#fileInputLabel").text(fileName);
     }
+
+    $(document).ready(function () {
+
+        $("#SelectAllCheckbox").click(function (e) {
+
+            $(".checkAll").prop("checked", true);
+        });
+
+        $("#formDeleteButton").click(function (e) {
+            e.preventDefault();
+
+            let checkbox = $(".form-check-input");
+
+            if (!checkbox.is(":checked")) {
+                swal.fire({
+                    title: 'Warning',
+                    text: "No checkbox has been checked!",
+                    icon: 'warning',
+                });
+            }
+
+        });
+    });
 </script>
 @endpush
