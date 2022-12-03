@@ -19,10 +19,12 @@
                                 </h1>
                             </div>
                             <form action="{{ route('admin.keyword.management.store') }}" class="add_keywords_form"
+                                enctype="multipart/form-data"
                                 method="POST">
+                                @csrf
+
                                 <x-error/>
                                 <x-alert/>
-                                @csrf
 
                                 <div class="form-title">
                                     <h3>add keyword</h3>
@@ -30,18 +32,21 @@
 
                                 <div class="form-group">
                                     <label for="Keyword">key name</label>
-                                    <input type="text" name="keyword_name" id="Keyword" class="form-control" required placeholder="Enter keyword name" aria-describedby="helpId">
+                                    <input type="text" name="keyword_name" id="Keyword" class="form-control" placeholder="Enter keyword name" aria-describedby="helpId">
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="Ratting">key ratting</label>
-                                    <input type="number" name="keyword_ratting" id="Ratting" min="1" max="5" class="form-control" required placeholder="Enter keyword ratting" aria-describedby="helpId">
+                                    <input type="number" name="keyword_ratting" id="Ratting" min="1" max="5" class="form-control" placeholder="Enter keyword ratting" aria-describedby="helpId">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="file">Or Upload CSV</label>
-                                    <input type="file" class="form-control" accept=".xls,.xlsx">
+                                    <label for="customInput">Or Upload Xlsx</label>
+                                    <div class="custom-file">
+                                        <input type="file" onchange="getFileName(this)" name="Keyword_file" class="custom-file-input" id="customInput">
+                                        <label class="custom-file-label" id="fileInputLabel" for="customInput">Choose file...</label>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -130,5 +135,11 @@
             })
         });
     });
+
+    function getFileName(input) {
+        let fileName = input.files[0].name;
+
+        $("#fileInputLabel").text(fileName);
+    }
 </script>
 @endpush

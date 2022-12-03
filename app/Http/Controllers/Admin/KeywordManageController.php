@@ -45,8 +45,9 @@ class KeywordManageController extends Controller
         //     'keyword_name' => ['required', 'string'],
         //     'keyword_ratting' => ['required', 'numeric', 'between:1,5'],
         // ]);
-
-        Excel::import(new KeywordsImport, '');
+        dd($request);
+        exit();
+        // Excel::import(new KeywordsImport, $request->file('document_Keyword_file'));
 
         // $rattingKeywords->create([
         //     'keyword_name' => $request->keyword_name,
