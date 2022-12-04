@@ -72,6 +72,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::get('/keywords/management/destroy/{id}', 'destroy')
         ->name('admin.keyword.management.destroy');
 
+        Route::get('/keywords/management/destroy/{ids}', 'destroyMultiple')
+        ->name('admin.keyword.management.multiple.destroy');
+
     });
 
     Route::controller(RestaurantManageController::class)->group(function () {

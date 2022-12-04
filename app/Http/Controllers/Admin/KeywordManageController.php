@@ -95,6 +95,22 @@ class KeywordManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function destroyMultiple(RattingKeywords $rattingKeywords, $ids)
+    {
+        dd($ids);
+        exit();
+        // $delete = $rattingKeywords->findOrFail($ids);
+
+        return redirect()->route('admin.keyword.management')
+        ->with('deleted', 'The keywords has been deleted.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(RattingKeywords $rattingKeywords, $id)
     {
         $delete = $rattingKeywords->findOrFail($id);

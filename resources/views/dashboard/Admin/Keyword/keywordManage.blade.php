@@ -27,11 +27,10 @@
                                 <x-alert/>
 
                                 <div class="form-title">
-                                    <h3>add keyword</h3>
+                                    <h3>upload keyword file</h3>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="customInput">Or Upload Xlsx</label>
                                     <div class="custom-file">
                                         <input type="file" onchange="getFileName(this)"
                                             name="Keyword_file"
@@ -54,9 +53,9 @@
                             <h4 class="card-title text-capitalize">
                                 keyword's table <i class="fa fa-table" aria-hidden="true"></i>
 
-                                <button type="button" id="formDeleteButton" class="btn btn-danger text-capitalize float-right">
+                                <a href="{{ route('admin.keyword.management.multiple.destroy', 'ids') }}" type="button" id="formDeleteButton" class="btn btn-danger text-capitalize float-right">
                                     delete
-                                </button>
+                                </a>
                             </h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-inverse">
@@ -78,7 +77,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="form-group form-check">
-                                                        <input type="checkbox" class="form-check-input checkAll" id="">
+                                                        <input type="checkbox" class="form-check-input checkAll" id="" value="{{ $keyword->id }}">
                                                     </div>
                                                 </td>
                                                 <td>{{ $keyword->keyword_name }}</td>
@@ -154,9 +153,23 @@
 
         $("#SelectAllCheckbox").click(function (e) {
 
-            $(".checkAll").prop("checked", true);
+            if ($(this).is(":checked")) {
+
+                window.checkboxValues = [];
+
+                let checked = $(".checkAll").prop("checked", true);
+
+                $(checked).each(function(i){
+                    checkboxValues[i] = $(this).val();
+                });
+            }else {
+
+                let Unchecked = $(".checkAll").prop("checked", false);
+            }
+
         });
 
+        // For multiple deletion of records
         $("#formDeleteButton").click(function (e) {
             e.preventDefault();
 
@@ -168,6 +181,42 @@
                     text: "No checkbox has been checked!",
                     icon: 'warning',
                 });
+
+            }else {
+
+                let url = $(this).attr('href');
+
+                // console.log(url);
+                let Url = url.replace('ids', checkboxValues);
+
+            swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                confirmButtonColor: '#28a745',
+                cancelButtonText: 'No, cancel!',
+                cancelButtonColor: '#d33',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    // redirect to the specified anchor href
+                    document.location.href = Url;
+
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swal.fire(
+                    'Cancelled',
+                    "User and it's data has not been deleted :)",
+                    'error'
+                    )
+                }
+            })
+
             }
 
         });
