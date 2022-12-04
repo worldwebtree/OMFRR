@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RestaurantManageController;
 use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
+use App\Http\Controllers\Customer\NotificationController as CustomerNotificationController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
 use App\Http\Controllers\Customer\RestaurantManagementController;
 use Illuminate\Support\Facades\Route;
@@ -140,6 +141,12 @@ Route::prefix('customer')->middleware(['auth', 'verified', 'isCustomer'])
         Route::get('/restaurant/management/feedback/destroy/{id}', 'destroy')
         ->name('customer.restaurant.management.feedback.destroy');
 
+    });
+
+    Route::controller(CustomerNotificationController::class)->group(function () {
+
+        Route::get('/notifications', 'index')
+        ->name('customer.notifications');
     });
 
 });

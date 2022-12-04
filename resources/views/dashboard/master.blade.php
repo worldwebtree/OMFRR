@@ -135,9 +135,6 @@
     <!-- include FilePond jQuery adapter -->
     <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
 
-    <!-- Axios Liberary CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-
     <!-- Pushed JS from the Chiled Views -->
     @stack('js')
 

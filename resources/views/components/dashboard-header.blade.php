@@ -15,8 +15,17 @@
                     <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
                         <div class="dropdown-content-body">
                             <ul>
+                                @php
+                                    if (auth()->user()->role == "admin") {
+                                        $link = route('admin.notifications');
+
+                                        }elseif (auth()->user()->role == "user"){
+
+                                        $link = route('customer.notifications');
+                                    }
+                                @endphp
                                 <li>
-                                    <a href="{{ route('admin.notifications') }}">
+                                    <a href="{{ $link }}">
                                         <span class="mr-3 avatar-icon bg-primary">
                                             <i class="fa fa-bell-o" aria-hidden="true"></i>
                                         </span>
