@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KeywordManageController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RestaurantManageController;
 use App\Http\Controllers\Admin\UserFeedbackController;
@@ -72,9 +73,6 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::get('/keywords/management/destroy/{id}', 'destroy')
         ->name('admin.keyword.management.destroy');
 
-        Route::get('/keywords/management/destroy/{ids}', 'destroyMultiple')
-        ->name('admin.keyword.management.multiple.destroy');
-
     });
 
     Route::controller(RestaurantManageController::class)->group(function () {
@@ -97,6 +95,12 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
         Route::get('/users/feedback/destroy/{id}', 'destroy')
         ->name('admin.users.feedback.destroy');
+    });
+
+    Route::controller(NotificationController::class)->group(function () {
+
+        Route::get('/notifications', 'index')
+        ->name('admin.notifications');
     });
 
 });

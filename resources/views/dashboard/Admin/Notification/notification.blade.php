@@ -2,6 +2,17 @@
 
 @push('css')
 
+<style>
+    .avatar-icon {
+    border-radius: 50px;
+    width: 2.5rem;
+    position: absolute;
+    top: 0.9625rem;
+    height: 2.5rem;
+    padding: 0.625rem 0.8125rem;
+}
+</style>
+
 @endpush
 
 @section('content')
@@ -15,40 +26,26 @@
                         <div class="card-body text-capitalize">
                             <div class="card-title mb-5">
                                 <h1>
-                                    keyword's management <i class="fa fa-key" aria-hidden="true"></i>
+                                    you'r notification's <i class="fa fa-bell" aria-hidden="true"></i>
                                 </h1>
                             </div>
-                            <form action="{{ route('admin.keyword.management.store') }}" class="add_keywords_form"
-                                enctype="multipart/form-data"
-                                method="POST">
-                                @csrf
-
-                                <x-error/>
-                                <x-alert/>
-
-                                <div class="form-title">
-                                    <h3>Upload keyword file</h3>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" onchange="getFileName(this)"
-                                            name="Keyword_file"
-                                            class="custom-file-input"
-                                            accept=".xlsx"
-                                            id="customInput">
-                                        <label class="custom-file-label" id="fileInputLabel" for="customInput">Choose file...</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary w-100">Add</button>
-                                </div>
-                            </form>
+                            <div class="notification-body">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:void()">
+                                            <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                            <div class="notification-content">
+                                                <h6 class="notification-heading">Events to Join</h6>
+                                                <span class="notification-text">After two days</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="card-body">
                             <h4 class="card-title text-capitalize">
                                 keyword's table <i class="fa fa-table" aria-hidden="true"></i>
@@ -79,7 +76,7 @@
                                 {{ $keywords->links() }}
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -90,7 +87,7 @@
 
 
 @push('js')
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function () {
         $(".DeleteUserBtn").click(function (e) {
             e.preventDefault();
@@ -156,5 +153,5 @@
 
         });
     });
-</script>
+</script> --}}
 @endpush

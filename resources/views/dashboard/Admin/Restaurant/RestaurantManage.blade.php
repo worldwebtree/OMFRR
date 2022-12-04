@@ -45,8 +45,17 @@
 
                                 <div class="form-group">
                                     <label for="RestaurantImages">restaurant images</label>
-                                    <input type="file" multiple name="restaurant_images[]" id="RestaurantImages" class="form-control" aria-describedby="helpId">
-                                    <div id="preview_images"></div>
+                                    <div class="custom-file">
+                                        <input type="file"
+                                                onchange="getFileName(this)"
+                                                multiple
+                                                name="restaurant_images[]"
+                                                id="RestaurantImages"
+                                                class="custom-file-input"
+                                                accept="images/png,jpg"
+                                                id="customInput">
+                                        <label class="custom-file-label" id="fileInputLabel" for="customInput">Choose file...</label>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -196,5 +205,19 @@
             })
         });
     });
+
+    function getFileName(input) {
+
+        var names = [];
+
+        for (var i = 0; i < input.files.length; i++) {
+
+            names.push(input.files[i].name);
+        }
+
+        var inputLabel = $("#fileInputLabel").text(names);
+
+        $(inputLabel).css("overflow", "hidden");
+    }
 </script>
 @endpush

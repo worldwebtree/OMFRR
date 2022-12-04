@@ -3,25 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Imports\KeywordsImport;
-use App\Models\Admin\RattingKeywords;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel as ExcelExcel;
-use Maatwebsite\Excel\Facades\Excel;
 
-class KeywordManageController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(RattingKeywords $rattingKeywords)
+    public function index()
     {
-        $keywords = $rattingKeywords->paginate(10);
-
-        return view('dashboard.Admin.Keyword.keywordManage', compact('keywords'));
+        return view('dashboard.Admin.Notification.notification');
     }
 
     /**
@@ -42,17 +35,7 @@ class KeywordManageController extends Controller
      */
     public function store(Request $request)
     {
-        /**
-         *  if the request contain the file with .xlsx
-         *  extension then this if statement will execute.
-         */
-
-        $file = $request->file('Keyword_file');
-
-        Excel::import(new KeywordsImport, $file);
-
-        return redirect()->route('admin.keyword.management')
-        ->with('created', 'Keyword has been added successfully.');
+        //
     }
 
     /**
@@ -95,13 +78,8 @@ class KeywordManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RattingKeywords $rattingKeywords, $id)
+    public function destroy($id)
     {
-        $delete = $rattingKeywords->findOrFail($id);
-
-        $delete->delete();
-
-        return redirect()->route('admin.keyword.management')
-        ->with('deleted', 'The keyword has been deleted.');
+        //
     }
 }
