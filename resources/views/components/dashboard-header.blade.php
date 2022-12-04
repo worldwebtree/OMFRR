@@ -10,14 +10,16 @@
             <ul class="clearfix">
                 <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
                         <i class="mdi mdi-bell-outline"></i>
-                        <span class="badge badge-pill gradient-2">3</span>
+                        <span class="badge badge-pill bg-primary">3</span>
                     </a>
                     <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
                                     <a href="{{ route('admin.notifications') }}">
-                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                        <span class="mr-3 avatar-icon bg-primary">
+                                            <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                        </span>
                                         <div class="notification-content">
                                             <h6 class="notification-heading">Events to Join</h6>
                                             <span class="notification-text">After two days</span>

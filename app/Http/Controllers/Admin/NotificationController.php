@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -14,7 +15,9 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        return view('dashboard.Admin.Notification.notification');
+        $notifications = Auth::user()->unreadNotifications;
+
+        return view('dashboard.Admin.Notification.notification', compact("notifications"));
     }
 
     /**
@@ -35,7 +38,13 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Auth::user()->unreadNotifications
+        ->when($request->id, function ($query) use ($request) {
+            return $query->where('id', $request->id);
+        })
+        ->markAsRead();
+
+        return response()->noContent();
     }
 
     /**

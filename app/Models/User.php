@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -54,7 +53,7 @@ class User extends Authenticatable
      * @return Illuminate\Database\Eloquent\Factories\Relationship
      */
 
-     /**
+    /**
       * User has a one to many relation with UsersFeedback model
       * @return Illuminate\Database\Eloquent\Relations\HasMany
       */

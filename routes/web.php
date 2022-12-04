@@ -101,6 +101,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
         Route::get('/notifications', 'index')
         ->name('admin.notifications');
+
+        Route::post('/notifications/mark', 'store')
+        ->name('admin.notifications.mark');
     });
 
 });
