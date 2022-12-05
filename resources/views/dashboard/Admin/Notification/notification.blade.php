@@ -36,15 +36,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title mb-5">
+                            <div class="card-title mb-5 text-capitalize">
                                 <h1>
                                     you'r notification's <i class="fa fa-bell" aria-hidden="true"></i>
                                 </h1>
                             </div>
                             <div class="card-body notification">
-                                <ul>
+                                <ul class="notification-ul">
                                     @foreach ($notifications as $notification)
-                                        <li>
+                                        <li class="notification-li">
                                             <div class="notification-body d-flex align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center p-3">
                                                     <i class="fa fa-bell-o text-white bg-primary p-2 rounded-circle" aria-hidden="true"></i>
@@ -59,13 +59,8 @@
                                                     </small>
                                                 </a>
                                             </div>
+                                            <hr>
                                         </li>
-                                        <hr>
-                                        @if($loop->last)
-                                            <a href="#" class="float-right" id="mark-all">
-                                                Mark all as read
-                                            </a>
-                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
@@ -103,16 +98,7 @@
             let request = sendMarkRequest($(this).data('id'));
 
             request.done(() => {
-                $(this).parents('div.notification-body').remove();
-            });
-
-            $('#mark-all').click(function() {
-
-            let request = sendMarkRequest();
-
-                request.done(() => {
-                    $('div.notification-body').remove();
-                })
+                $(this).parents('li.notification-li').remove();
             });
 
         });

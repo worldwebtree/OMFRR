@@ -36,7 +36,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title mb-5">
+                            <div class="card-title mb-5 text-capitalize">
                                 <h1>
                                     you'r notification's <i class="fa fa-bell" aria-hidden="true"></i>
                                 </h1>
@@ -46,7 +46,7 @@
                                     @foreach ($notifications as $notification)
                                         <li>
                                             <div class="notification-body d-flex align-items-center justify-content-between">
-                                                <div class="d-flex align-items-center p-3">
+                                                <div class="notification-main d-flex align-items-center p-3">
                                                     <i class="fa fa-bell-o text-white bg-primary p-2 rounded-circle" aria-hidden="true"></i>
                                                     <div class="notification-content">
                                                         <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['name'] }}</strong> has just registered as a new user.</h6>
@@ -81,7 +81,7 @@
 
 
 @push('js')
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function () {
 
         function sendMarkRequest(id = null) {
@@ -103,7 +103,7 @@
             let request = sendMarkRequest($(this).data('id'));
 
             request.done(() => {
-                $(this).parents('div.notification-body').remove();
+                $(this).parents('div.notification-main').remove();
             });
 
             $('#mark-all').click(function() {
@@ -111,11 +111,11 @@
             let request = sendMarkRequest();
 
                 request.done(() => {
-                    $('div.notification-body').remove();
+                    $('div.notification-main').remove();
                 })
             });
 
         });
     });
-</script>
+</script> --}}
 @endpush
