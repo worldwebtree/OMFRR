@@ -46,10 +46,13 @@
                                     @foreach ($notifications as $notification)
                                         <li>
                                             <div class="notification-body d-flex align-items-center justify-content-between">
-                                                <div class="notification-main d-flex align-items-center p-3">
+                                                <div class="d-flex align-items-center p-3">
                                                     <i class="fa fa-bell-o text-white bg-primary p-2 rounded-circle" aria-hidden="true"></i>
                                                     <div class="notification-content">
-                                                        <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['name'] }}</strong> has just registered as a new user.</h6>
+                                                        <h6 class="notification-heading"> <strong class="text-primary">You'r feedback has been deleted.</strong></h6>
+                                                            <span class="notification-text">
+                                                                {{ $notification->data['name'] }} you'r feedback {{ $notification->data['feedback'] }} has been deleted from restaurant {{ $notification->data['restaurant'] }} due to some reason.
+                                                            </span>
                                                         <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
                                                     </div>
                                                 </div>
@@ -61,11 +64,6 @@
                                             </div>
                                         </li>
                                         <hr>
-                                        @if($loop->last)
-                                            <a href="#" class="float-right" id="mark-all">
-                                                Mark all as read
-                                            </a>
-                                        @endif
                                     @endforeach
                                 </ul>
                             </div>

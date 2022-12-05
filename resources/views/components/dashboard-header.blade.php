@@ -8,36 +8,26 @@
         </div>
         <div class="header-right">
             <ul class="clearfix">
-                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
+                <li class="icons dropdown">
+                    @php
+                        if (auth()->user()->role == "admin") {
+                            $link = route('admin.notifications');
+
+                            $notifications = auth()->user()->unreadNotifications->count();
+
+                            }elseif (auth()->user()->role == "user") {
+
+                            $link = route('customer.notifications');
+
+                            $notifications = auth()->user()->unreadNotifications->count();
+                        }
+                    @endphp
+                    <a href="{{ $link }}">
                         <i class="mdi mdi-bell-outline"></i>
-                        <span class="badge badge-pill bg-primary">3</span>
+                        <span class="badge badge-pill bg-primary">
+                            {{ $notifications }}
+                        </span>
                     </a>
-                    <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
-                        <div class="dropdown-content-body">
-                            <ul>
-                                @php
-                                    if (auth()->user()->role == "admin") {
-                                        $link = route('admin.notifications');
-
-                                        }elseif (auth()->user()->role == "user"){
-
-                                        $link = route('customer.notifications');
-                                    }
-                                @endphp
-                                <li>
-                                    <a href="{{ $link }}">
-                                        <span class="mr-3 avatar-icon bg-primary">
-                                            <i class="fa fa-bell-o" aria-hidden="true"></i>
-                                        </span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Events to Join</h6>
-                                            <span class="notification-text">After two days</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </li>
                 @php
                     if (empty(auth()->user()->avatar) || auth()->user()->avatar == null) {
