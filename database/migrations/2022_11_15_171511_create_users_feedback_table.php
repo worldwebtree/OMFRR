@@ -27,12 +27,8 @@ return new class extends Migration
             ->constrained()
             ->cascadeOnDelete();
 
-            $table->foreignIdFor(RattingKeywords::class)
-            ->constrained()
-            ->cascadeOnDelete();
-
             $table->string('username');
-
+            $table->string('restaurant_name');
             $table->text('feedback');
 
             $table->timestamps();

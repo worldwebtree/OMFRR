@@ -19,7 +19,7 @@ class RestaurantManagementController extends Controller
         $user = Auth::user();
 
         $feedbacks = $usersFeedback->where('user_id', $user->id)
-        ->with('user', 'post_restaurant')->paginate(2);
+        ->with('user', 'post_restaurant')->paginate(10);
 
         return view('dashboard.Customer.restaurantManage', compact('feedbacks'));
     }

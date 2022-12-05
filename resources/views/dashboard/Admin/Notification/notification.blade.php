@@ -49,7 +49,10 @@
                                                 <div class="d-flex align-items-center p-3">
                                                     <i class="fa fa-bell-o text-white bg-primary p-2 rounded-circle" aria-hidden="true"></i>
                                                     <div class="notification-content">
-                                                        <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['name'] }}</strong> has just registered as a new user.</h6>
+                                                        <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['title'] }}</strong></h6>
+                                                        <span class="notification-text">
+                                                            <strong class="text-primary">{{ $notification->data['name'] }}</strong> {{ $notification->data['message'] }}
+                                                        </span><br>
                                                         <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
                                                     </div>
                                                 </div>

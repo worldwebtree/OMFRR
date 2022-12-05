@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer\UsersFeedback;
+use App\Notifications\UserFeedbackNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class UserFeedbackController extends Controller
 {
@@ -84,6 +86,10 @@ class UserFeedbackController extends Controller
     public function destroy(UsersFeedback $usersFeedback, $id)
     {
         $delete = $usersFeedback->findOrFail($id);
+
+        $user = $delete->user;
+
+        Notification::send($user, new UserFeedbackNotification($user));
 
         $delete->delete();
 

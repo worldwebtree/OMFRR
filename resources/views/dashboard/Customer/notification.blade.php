@@ -42,17 +42,17 @@
                                 </h1>
                             </div>
                             <div class="card-body notification">
-                                <ul>
+                                <ul class="notification-ul">
                                     @foreach ($notifications as $notification)
-                                        <li>
+                                        <li class="notification-li">
                                             <div class="notification-body d-flex align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center p-3">
                                                     <i class="fa fa-bell-o text-white bg-primary p-2 rounded-circle" aria-hidden="true"></i>
                                                     <div class="notification-content">
-                                                        <h6 class="notification-heading"> <strong class="text-primary">You'r feedback has been deleted.</strong></h6>
+                                                        <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['title'] }}</strong></h6>
                                                             <span class="notification-text">
-                                                                {{ $notification->data['name'] }} you'r feedback {{ $notification->data['feedback'] }} has been deleted from restaurant {{ $notification->data['restaurant'] }} due to some reason.
-                                                            </span>
+                                                                <strong class="text-primary">{{ $notification->data['name'] }}</strong> {{ $notification->data['message'] }}
+                                                            </span><br>
                                                         <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
                                                     </div>
                                                 </div>
@@ -62,8 +62,8 @@
                                                     </small>
                                                 </a>
                                             </div>
+                                            <hr>
                                         </li>
-                                        <hr>
                                     @endforeach
                                 </ul>
                             </div>
@@ -79,7 +79,7 @@
 
 
 @push('js')
-{{-- <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
 
         function sendMarkRequest(id = null) {
@@ -101,19 +101,10 @@
             let request = sendMarkRequest($(this).data('id'));
 
             request.done(() => {
-                $(this).parents('div.notification-main').remove();
-            });
-
-            $('#mark-all').click(function() {
-
-            let request = sendMarkRequest();
-
-                request.done(() => {
-                    $('div.notification-main').remove();
-                })
+                $(this).parents('li.notification-li').remove();
             });
 
         });
     });
-</script> --}}
+</script>
 @endpush

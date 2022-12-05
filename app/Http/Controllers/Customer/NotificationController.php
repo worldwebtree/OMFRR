@@ -17,9 +17,6 @@ class NotificationController extends Controller
     {
         $notifications = Auth::user()->unreadNotifications;
 
-        dd($notifications);
-        exit();
-
         return view('dashboard.Customer.notification', compact('notifications'));
     }
 

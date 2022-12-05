@@ -57,6 +57,8 @@ class NewUserNotification extends Notification
         return [
             'name'=> $this->user->name,
             'email'=> $this->user->email,
+            'title' => ucwords("new user registered"),
+            'message' => ucwords("has just registered as a new user.")
         ];
     }
 }
