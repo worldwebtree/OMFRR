@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\Admin\PostRestaurant;
-use App\Models\Admin\RattingKeywords;
-use App\Models\User;
+use App\Models\Admin\RestaurantCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,20 +14,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_feedback', function (Blueprint $table) {
+        Schema::create('post_restaurants', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignIdFor(User::class)
+            $table->foreignIdFor(RestaurantCategory::class)
             ->constrained()
             ->cascadeOnDelete();
 
-            $table->foreignIdFor(PostRestaurant::class)
-            ->constrained()
-            ->cascadeOnDelete();
-
-            $table->string('username');
-            $table->string('restaurant_name');
-            $table->text('feedback');
+            $table->string('title');
+            $table->text('description');
+            $table->string('images', 1500);
+            $table->string('city');
+            $table->text('address', 1000);
 
             $table->timestamps();
         });
@@ -42,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_feedback');
+        Schema::dropIfExists('post_restaurants');
     }
 };

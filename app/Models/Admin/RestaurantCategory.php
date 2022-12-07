@@ -2,12 +2,11 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Customer\UsersFeedback;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class RattingKeywords extends Model
+class RestaurantCategory extends Model
 {
     use HasFactory;
 
@@ -17,8 +16,7 @@ class RattingKeywords extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'keyword_name',
-        'keyword_ratting'
+        'category'
     ];
 
     /**
@@ -27,11 +25,11 @@ class RattingKeywords extends Model
      */
 
     /**
-    * RattingKeywords has a one to many relation with UsersFeedback model
+     * RestaurantCategory has a one to many relation with PostRestaurant model
     * @return Illuminate\Database\Eloquent\Relations\HasMany
     */
-    public function users_feedback(): HasMany
+    public function post_restaurant(): HasMany
     {
-        return $this->hasMany(UsersFeedback::class);
+        return $this->hasMany(PostRestaurant::class);
     }
 }

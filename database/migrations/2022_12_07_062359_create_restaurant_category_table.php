@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_restaurants', function (Blueprint $table) {
+        Schema::create('restaurant_categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            // $table->text('description');
-            $table->string('images', 1500);
+            $table->enum('category', ['Dine-in', 'Take-away']);
 
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_restaurant');
+        Schema::dropIfExists('restauran_category');
     }
 };
