@@ -58,10 +58,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="RestaurantDescription">restaurant description</label>
                                     <textarea name="restaurant_description" id="editor" cols="30" rows="10" class="form-control"></textarea>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary w-100">Add</button>
@@ -80,7 +80,7 @@
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
                                             <th>restaurant title</th>
-                                            <th>restaurant decription</th>
+                                            {{-- <th>restaurant decription</th> --}}
                                             <th>preview restaurant images</th>
                                             <th>action</th>
                                         </tr>
@@ -90,7 +90,7 @@
                                                 @php($Image = json_decode($restaurant->images))
                                             <tr>
                                                 <td>{{ $restaurant->title }}</td>
-                                                <td>{{ $restaurant->description }}</td>
+                                                {{-- <td>{{ $restaurant->description }}</td> --}}
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
@@ -163,11 +163,11 @@
 
 @push('js')
 <script type="text/javascript">
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    // ClassicEditor
+    //     .create( document.querySelector( '#editor' ) )
+    //     .catch( error => {
+    //         console.error( error );
+    //     } );
 
     $(document).ready(function () {
         $(".DeleteUserBtn").click(function (e) {

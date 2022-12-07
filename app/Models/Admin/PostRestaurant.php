@@ -18,7 +18,7 @@ class PostRestaurant extends Model
      */
     protected $fillable = [
         'title',
-        'description',
+        // 'description',
         'images',
     ];
 

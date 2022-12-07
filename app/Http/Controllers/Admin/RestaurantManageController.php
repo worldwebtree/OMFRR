@@ -41,7 +41,7 @@ class RestaurantManageController extends Controller
     {
         $request->validate([
             'restaurant_name' => ['required', 'string'],
-            'restaurant_description' => ['required', 'string'],
+            // 'restaurant_description' => ['required', 'string'],
         ]);
 
         $files = $request->hasFile("restaurant_images");
@@ -70,7 +70,7 @@ class RestaurantManageController extends Controller
 
         $postRestaurant->create([
             'title' => ucfirst($request->restaurant_name),
-            'description' => strip_tags($request->restaurant_description),
+            // 'description' => strip_tags($request->restaurant_description),
             'images' => json_encode($restaurantImagesArray),
         ]);
 
