@@ -18,7 +18,6 @@ class PostRestaurant extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'restaurant_category_id',
         'title',
         'description',
         'images',
@@ -30,15 +29,6 @@ class PostRestaurant extends Model
      * Model Relationships
      * @return Illuminate\Database\Eloquent\Factories\Relationship
      */
-
-    /**
-     * PostRestaurant belongs To RestaurantCategory model
-    * @return Illuminate\Database\Eloquent\Relations\HasMany
-    */
-    public function restaurant_category(): BelongsTo
-    {
-        return $this->belongsTo(RestaurantCategory::class);
-    }
 
     /**
       * PostRestaurant has a one to many relation with UsersFeedback model

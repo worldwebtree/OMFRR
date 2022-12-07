@@ -17,15 +17,12 @@ return new class extends Migration
         Schema::create('post_restaurants', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignIdFor(RestaurantCategory::class)
-            ->constrained()
-            ->cascadeOnDelete();
-
             $table->string('title');
             $table->text('description');
             $table->string('images', 1500);
             $table->string('city');
             $table->text('address', 1000);
+            $table->enum('category', ['Dine In', 'Take Away']);
 
             $table->timestamps();
         });

@@ -27,13 +27,10 @@ return new class extends Migration
             ->constrained()
             ->cascadeOnDelete();
 
-            $table->foreignIdFor(UsersFeedbackCategory::class)
-            ->constrained()
-            ->cascadeOnDelete();
-
             $table->string('username');
             $table->string('restaurant_name');
             $table->text('feedback');
+            $table->enum('category', ['Service', 'Food']);
 
             $table->timestamps();
         });

@@ -22,7 +22,6 @@ class UsersFeedback extends Model
     protected $fillable = [
         'user_id',
         'post_restaurant_id',
-        'users_feedback_category_id',
         'username',
         'feedback',
     ];
@@ -57,14 +56,5 @@ class UsersFeedback extends Model
     public function ratting_keywords(): BelongsTo
     {
         return $this->belongsTo(RattingKeywords::class);
-    }
-
-    /**
-     * UsersFeedback belongs to UsersFeedbackCategory model
-    * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-    */
-    public function users_feedback_category(): BelongsTo
-    {
-        return $this->belongsTo(UsersFeedbackCategory::class);
     }
 }

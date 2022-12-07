@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KeywordManageController;
 use App\Http\Controllers\Admin\NotificationController;
@@ -107,6 +109,35 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         ->name('admin.notifications.mark');
     });
 
+    Route::controller(AboutController::class)->group(function () {
+
+        Route::get('/about', 'index')
+        ->name('admin.about');
+
+        Route::post('/about/add', 'store')
+        ->name('admin.about.store');
+
+        Route::post('/about/update', 'update')
+        ->name('admin.about.update');
+
+        Route::get('/about/destroy/{id}', 'destroy')
+        ->name('admin.about.destroy');
+    });
+
+    Route::controller(ContactController::class)->group(function () {
+
+        Route::get('/contact', 'index')
+        ->name('admin.contact');
+
+        Route::post('/contact/add', 'store')
+        ->name('admin.contact.store');
+
+        Route::post('/contact/update', 'update')
+        ->name('admin.contact.update');
+
+        Route::post('/contact/destroy/{id}', 'destroy')
+        ->name('admin.contact.destroy');
+    });
 });
 
 /**
