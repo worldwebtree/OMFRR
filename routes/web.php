@@ -132,10 +132,10 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::post('/contact/add', 'store')
         ->name('admin.contact.store');
 
-        Route::post('/contact/update', 'update')
+        Route::put('/contact/update', 'update')
         ->name('admin.contact.update');
 
-        Route::post('/contact/destroy/{id}', 'destroy')
+        Route::get('/contact/destroy/{id}', 'destroy')
         ->name('admin.contact.destroy');
     });
 });

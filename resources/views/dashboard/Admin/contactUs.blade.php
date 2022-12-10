@@ -31,13 +31,13 @@
 
                                 <div class="form-group">
                                     <label for="Phone">phone</label>
-                                    <input type="text"
+                                    <input type="number"
                                       class="form-control" name="phone" id="Phone" aria-describedby="helpId" placeholder="Enter Phone Number">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Email">email</label>
-                                    <input type="text"
+                                    <input type="email"
                                       class="form-control" name="email" id="Email" aria-describedby="helpId" placeholder="Enter Email">
                                 </div>
 
@@ -49,7 +49,7 @@
 
                                 <div class="form-group">
                                   <label for="CustomerSupportEmail">customer suport email</label>
-                                  <input type="text"
+                                  <input type="email"
                                     class="form-control" name="customer_support_email" id="CustomerSupportEmail" aria-describedby="helpId" placeholder="Enter Email for Customer Support">
                                 </div>
 
@@ -77,20 +77,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($keywords as $keyword)
+                                            @foreach ($contact as $data)
                                             <tr>
-                                                <td>{{ $keyword->keyword_name }}</td>
-                                                <td>{{ $keyword->keyword_ratting }}</td>
+                                                <td>{{ $data->phone }}</td>
+                                                <td>{{ $data->email }}</td>
+                                                <td>{{ $data->address }}</td>
+                                                <td>{{ $data->customer_support_email }}</td>
                                                 <td>
-                                                    <a class="DeleteUserBtn" href="{{ route('admin.keyword.management.destroy', $keyword->id) }}">
+                                                    <a class="DeleteUserBtn" href="{{ route('admin.contact.destroy', $data->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                            @endforeach --}}
+                                            @endforeach
                                         </tbody>
                                 </table>
-                                {{-- {{ $keywords->links() }} --}}
                             </div>
                         </div>
                     </div>

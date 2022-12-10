@@ -39,7 +39,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'phone' => ['required', 'numeric', 'digits:15'],
+            'phone' => ['required', 'numeric', 'digits_between:10,15'],
             'email' => ['required', 'string'],
             'address' => ['required', 'string'],
             'customer_support_email' => ['required', 'string'],

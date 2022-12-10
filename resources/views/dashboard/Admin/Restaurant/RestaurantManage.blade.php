@@ -64,6 +64,28 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="RestaurantCity">restaurant city</label>
+                                    <select class="form-control" name="restaurant_city" id="RestaurantCity">
+                                        <option selected disabled>Select City</option>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="RestaurantAddress">restaurant address</label>
+                                    <input type="text" name="restaurant_address" id="RestaurantAddress" class="form-control" required placeholder="Enter address" aria-describedby="helpId">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="RestaurantCategory">restaurant category</label>
+                                    <select class="form-control" name="restaurant_category" id="RestaurantCategory">
+                                        <option selected disabled>Select Category</option>
+                                        <option value="">Dine In</option>
+                                        <option value="">Take Away</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary w-100">Add</button>
                                 </div>
                             </form>

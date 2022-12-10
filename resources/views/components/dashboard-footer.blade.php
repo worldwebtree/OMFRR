@@ -1,5 +1,5 @@
 <div class="footer">
     <div class="copyright">
-        <p>Copyright &copy; Designed & Developed by <a href="https://worldwebtree.com">WorldWebTree</a> 2022</p>
+        <p>Copyright &copy; Designed & Developed by <a href="https://worldwebtree.com" target="_blank">WorldWebTree</a> 2022</p>
     </div>
 </div>
