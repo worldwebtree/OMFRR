@@ -22,7 +22,8 @@ class PostRestaurant extends Model
         'description',
         'images',
         'city',
-        'address'
+        'address',
+        'category',
     ];
 
     /**

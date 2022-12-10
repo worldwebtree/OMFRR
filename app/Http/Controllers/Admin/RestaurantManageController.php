@@ -41,7 +41,11 @@ class RestaurantManageController extends Controller
     {
         $request->validate([
             'restaurant_name' => ['required', 'string'],
-            // 'restaurant_description' => ['required', 'string'],
+            'restaurant_description' => ['required', 'string'],
+            'restaurant_city' => ['required', 'string'],
+            'restaurant_address' => ['required', 'string'],
+            'restaurant_category' => ['required', 'string'],
+
         ]);
 
         $files = $request->hasFile("restaurant_images");
@@ -60,18 +64,20 @@ class RestaurantManageController extends Controller
                 // generating hashed file name
                 $restaurantImages = $image->hashName();
 
+                // saving the file with hashed name in storage
                 $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
 
                 $restaurantImagesArray[] = $restaurantImages;
             }
-
-            // saving the file with hashed name in storage
         }
 
         $postRestaurant->create([
-            'title' => ucfirst($request->restaurant_name),
-            // 'description' => strip_tags($request->restaurant_description),
+            'title' => ucwords($request->restaurant_name),
+            'description' => strip_tags($request->restaurant_description),
             'images' => json_encode($restaurantImagesArray),
+            'city' => $request->restaurant_city,
+            'address' => ucfirst($request->restaurant_address),
+            'category' => $request->restaurant_category,
         ]);
 
         return redirect()->route('admin.restaurant.management')
