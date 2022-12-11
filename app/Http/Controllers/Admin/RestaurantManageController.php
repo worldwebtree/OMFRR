@@ -45,7 +45,6 @@ class RestaurantManageController extends Controller
             'restaurant_city' => ['required', 'string'],
             'restaurant_address' => ['required', 'string'],
             'restaurant_category' => ['required', 'string'],
-
         ]);
 
         $files = $request->hasFile("restaurant_images");

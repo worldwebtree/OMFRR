@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->text('address', 1000);
             $table->string('customer_support_email');
+            $table->string('social_links');
 
             $table->timestamps();
         });

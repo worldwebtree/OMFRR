@@ -13,7 +13,10 @@ use App\Http\Controllers\Customer\DashboardController as CustomerDashboardContro
 use App\Http\Controllers\Customer\NotificationController as CustomerNotificationController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
 use App\Http\Controllers\Customer\RestaurantManagementController;
+use App\Http\Controllers\Frontend\AboutUsPageController;
+use App\Http\Controllers\Frontend\ContactUsPageController;
 use App\Http\Controllers\Frontend\FrontPageController;
+use App\Http\Controllers\Frontend\RestaurantListeningPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,8 +41,26 @@ Route::prefix('frontend')->group(function () {
 
     Route::controller(FrontPageController::class)->group(function () {
 
-        Route::get('/', 'index')
+        Route::get('/index', 'index')
         ->name('frontend.index.page');
+    });
+
+    Route::controller(AboutUsPageController::class)->group(function () {
+
+        Route::get('/about', 'index')
+        ->name('frontend.about.page');
+    });
+
+    Route::controller(ContactUsPageController::class)->group(function () {
+
+        Route::get('/contact', 'index')
+        ->name('frontend.contact.page');
+    });
+
+    Route::controller(RestaurantListeningPageController::class)->group(function () {
+
+        Route::get('/restaurant-listening', 'index')
+        ->name('frontend.restaurant-listening.page');
     });
 });
 
@@ -145,7 +166,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::post('/contact/add', 'store')
         ->name('admin.contact.store');
 
-        Route::put('/contact/update', 'update')
+        Route::put('/contact/update/{id}', 'update')
         ->name('admin.contact.update');
 
         Route::get('/contact/destroy/{id}', 'destroy')

@@ -28,6 +28,10 @@
         .nav-list-item > a:hover{
             background-color: #F3F1FA !important;
         }
+        .home-icon > i:hover {
+            color: #7571f9 !important;
+            transition: .2s ease;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
     <!-- Pushed Style Css from the Chile Views -->

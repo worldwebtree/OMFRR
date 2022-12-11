@@ -14,7 +14,7 @@ class ContactUsPageController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontEnd.contact-us');
     }
 
     /**

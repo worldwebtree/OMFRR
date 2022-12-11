@@ -34,37 +34,62 @@
                     </span>
                 </a>
             </div>
-            <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Toggle Button End -->
+        </div>
+        @auth
 
-            <!-- Topbar Request Quote End -->
+            @if (auth()->user()->role == "admin")
 
-            <div class="collapse navbar-collapse" id="navbarCollapse" data-hover="dropdown"
-                data-animations="slideInUp slideInUp slideInUp slideInUp">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about-us.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="search-result-page.html">Restaurants</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">Contact Us</a>
+                @php($link = route('admin.dashboard'))
+
+            @elseif (auth()->user()->role == "user")
+
+                @php($link = route('customer.dashboard'))
+
+            @endif
+                <!-- Topbar Request Quote Start -->
+                <span class="order-lg-last d-inline-flex ml-3">
+                    <a class="btn btn-primary" href="{{ $link }}">dashboard</a>
+                </span>
+                <!-- Toggle Button Start -->
+        @endauth
+
+        @guest
+            <!-- Topbar Request Quote Start -->
+            <span class="order-lg-last d-inline-flex ml-3">
+                <a class="btn btn-primary" href="{{ route('login') }}">login</a>
+            </span>
+            <!-- Toggle Button Start -->
+        @endguest
+
+        <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- Toggle Button End -->
+
+        <!-- Topbar Request Quote End -->
+
+        <div class="collapse navbar-collapse" id="navbarCollapse" data-hover="dropdown"
+            data-animations="slideInUp slideInUp slideInUp slideInUp">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.index.page') }}">Home</a>
                 </li>
-                </ul>
-                <!-- Main Navigation End -->
-            </div>
-
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.about.page') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.restaurant-listening.page') }}">Restaurants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.contact.page') }}">Contact</a>
+                </li>
+            </ul>
+            <!-- Main Navigation End -->
+        </div>
         </div>
     </nav>
     <!-- Main Navigation End -->

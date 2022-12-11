@@ -8,6 +8,11 @@
         </div>
         <div class="header-right">
             <ul class="clearfix">
+                <li class="icons">
+                    <a href="{{ route('frontend.index.page') }}" class="home-icon">
+                        <i class="fa fa-home text-light" aria-hidden="true"></i>
+                    </a>
+                </li>
                 <li class="icons dropdown">
                     @php
                         if (auth()->user()->role == "admin") {

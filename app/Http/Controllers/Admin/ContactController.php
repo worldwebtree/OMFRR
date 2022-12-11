@@ -43,6 +43,7 @@ class ContactController extends Controller
             'email' => ['required', 'string'],
             'address' => ['required', 'string'],
             'customer_support_email' => ['required', 'string'],
+            'socialLinks' => ['required', 'array'],
         ]);
 
         ContactUs::create([
@@ -50,6 +51,7 @@ class ContactController extends Controller
             'email' => $request->email,
             'address' => $request->address,
             'customer_support_email' => $request->customer_support_email,
+            'social_links' => json_encode($request->socialLinks),
         ]);
 
         return redirect()->route('admin.contact')
@@ -87,11 +89,12 @@ class ContactController extends Controller
      */
     public function update(Request $request, ContactUs $contactUs, $id)
     {
-        $request->validate([
-            'phone' => ['required', 'numeric', 'digits:15'],
+         $request->validate([
+            'phone' => ['required', 'numeric', 'digits_between:10,15'],
             'email' => ['required', 'string'],
             'address' => ['required', 'string'],
             'customer_support_email' => ['required', 'string'],
+            'socialLinks' => ['required', 'array'],
         ]);
 
         $contact = $contactUs->findOrFail($id);
@@ -101,6 +104,7 @@ class ContactController extends Controller
             'email' => $request->email,
             'address' => $request->address,
             'customer_support_email' => $request->customer_support_email,
+            'social_links' => json_encode($request->socialLinks),
         ]);
 
         return redirect()->route('admin.contact')

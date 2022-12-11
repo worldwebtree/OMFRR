@@ -37,8 +37,6 @@
         *   Page Content Start
         *
         =============================== -->
-        <!-- slider wrap -->
-        <x-frontend-slider-wrap/>
 
         <!-- main content -->
         @yield('content')

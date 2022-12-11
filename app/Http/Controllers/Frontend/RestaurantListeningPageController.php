@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RestaurantListningPageController extends Controller
+class RestaurantListeningPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RestaurantListningPageController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontEnd.search-result');
     }
 
     /**

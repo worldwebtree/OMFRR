@@ -18,6 +18,7 @@ class ContactUs extends Model
         'phone',
         'email',
         'address',
-        'customer_support_email'
+        'customer_support_email',
+        'social_links'
     ];
 }

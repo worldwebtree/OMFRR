@@ -5,6 +5,9 @@
 @endpush
 
 @section('content')
+<!-- slider wrap -->
+<x-frontend-slider-wrap/>
+
 <main id="body-content">
 
     <!-- Top Wedding Listings Start -->
