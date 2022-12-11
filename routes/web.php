@@ -13,6 +13,7 @@ use App\Http\Controllers\Customer\DashboardController as CustomerDashboardContro
 use App\Http\Controllers\Customer\NotificationController as CustomerNotificationController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
 use App\Http\Controllers\Customer\RestaurantManagementController;
+use App\Http\Controllers\Frontend\FrontPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,8 +28,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontEnd.index');
 })->name('welcome');
+
+/**
+ * Frontend Routes
+ */
+Route::prefix('frontend')->group(function () {
+
+    Route::controller(FrontPageController::class)->group(function () {
+
+        Route::get('/', 'index')
+        ->name('frontend.index.page');
+    });
+});
 
 /**
  * Administrator Routes

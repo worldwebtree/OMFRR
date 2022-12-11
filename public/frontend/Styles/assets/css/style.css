@@ -83,7 +83,7 @@ html {
   font-size: 16px;
 }
 body {
-  font-family: "muliregular";
+  font-family: "Helvetica" !important;
   font-size: 0.95rem;
   font-weight: 400;
   color: #444444;
@@ -91,9 +91,6 @@ body {
 }
 img {
   max-width: 100%;
-}
-strong {
-  font-family: "mulisemibold";
 }
 /* Links Setting */
 a,
