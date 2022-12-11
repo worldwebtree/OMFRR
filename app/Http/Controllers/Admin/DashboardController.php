@@ -19,7 +19,7 @@ class DashboardController extends Controller
     public function index(User $user, RattingKeywords $rattingKeywords,
     PostRestaurant $postRestaurant, UsersFeedback $usersFeedback)
     {
-        $users = $user->count();
+        $users = $user->where('role', 'user')->count();
         $keywords = $rattingKeywords->count();
         $posts = $postRestaurant->count();
         $feedbacks = $usersFeedback->count();
