@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
 use App\Http\Controllers\Frontend\FrontPageController;
 use App\Http\Controllers\Frontend\RestaurantListeningPageController;
+use App\Http\Controllers\Frontend\SingularRestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,18 @@ Route::prefix('frontend')->group(function () {
 
         Route::get('/restaurant-listening', 'index')
         ->name('frontend.restaurant-listening.page');
+
+        Route::post('/restaurant-listening/search/category', 'store')
+        ->name('frontend.restaurant-listening.search');
+
+        Route::post('/restaurant-listening/search', 'searchByName')
+        ->name('frontend.restaurant-listening.searchByName');
+    });
+
+    Route::controller(SingularRestaurantController::class)->group(function () {
+
+        Route::get('/singular-restaurant-listening/{id}', 'index')
+        ->name('frontend.singular.restaurant.listening.page');
     });
 });
 

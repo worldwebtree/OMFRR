@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\PostRestaurant;
 use Illuminate\Http\Request;
 
-class RestaurantListeningPageController extends Controller
+class SingularRestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PostRestaurant $postRestaurant)
+    public function index($id)
     {
-        $restaurants = $postRestaurant->paginate(15);
-
-        return view('frontEnd.search-result', compact('restaurants'));
+        return view('frontEnd.listing-singular');
     }
 
     /**
@@ -38,38 +35,7 @@ class RestaurantListeningPageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'category' => ['required', 'string'],
-            'location' => ['required', 'string'],
-        ]);
-
-        $restaurant = PostRestaurant::where([
-            'category' => $request->category,
-            'city' => $request->location,
-        ])->paginate(15);
-
-        return view('frontEnd.search-result', compact('restaurant'));
-    }
-
-        /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function searchByName(Request $request)
-    {
-        $request->validate([
-            'restaurant_name' => ['required', 'string'],
-            'restaurant_city' => ['required', 'string'],
-        ]);
-
-        $restaurantsByName = PostRestaurant::where([
-            'title' => ucwords($request->restaurant_name),
-            'city' => ucfirst($request->restaurant_city),
-        ])->paginate(15);
-
-        return view('frontEnd.search-result', compact('restaurantsByName'));
+        //
     }
 
     /**

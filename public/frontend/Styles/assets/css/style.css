@@ -1590,29 +1590,6 @@ blockquote footer cite,
 header {
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.019);
 }
-@media (min-width: 991.99px) {
-  header.header-anim.fixed .top-bar-stripe {
-    height: 0px;
-    overflow: hidden;
-    opacity: 0;
-    border: 0;
-    padding: 0;
-    min-height: auto;
-    -webkit-transition: all 0.15s linear;
-    -moz-transition: all 0.15s linear;
-    -o-transition: all 0.15s linear;
-    transition: all 0.15s linear;
-  }
-  header.header-anim.fixed .navbar {
-    padding: 0.5rem;
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.09);
-
-    -webkit-transition: all 0.15s linear;
-    -moz-transition: all 0.15s linear;
-    -o-transition: all 0.15s linear;
-    transition: all 0.15s linear;
-  }
-}
 /*---- Header Regular End ---*/
 
 /*---- 5.2 Header Top Bar ---*/
@@ -1738,7 +1715,6 @@ header {
 }
 .navbar {
   padding: 0 0.5rem;
-  background: #fff;
 
   -webkit-transition: all 0.15s linear;
   -moz-transition: all 0.15s linear;
@@ -1930,7 +1906,6 @@ header {
 /*---- 6.1 Main Home Slider Slider ---*/
 .slider-wrap {
   position: relative;
-  margin-top: 129px;
   min-height: 500px;
   background: #f8f8f8;
 }
@@ -4731,11 +4706,10 @@ header {
 
 /*----  9.10  Search Result Start ---*/
 .search-result-header {
-  background-image: url(../images/breadcrumbs_bg.jpg);
+  background-image: url(../images/restaurants/f3079065302403.5c7536075b74a.gif);
   background-repeat: no-repeat;
-  padding: 4rem 0 0 0;
+  padding: 5rem 0 10rem 0;
   background-position: top center;
-  margin-top: 129px;
   position: relative;
   margin-bottom: 1rem;
   background-size: cover;
@@ -6189,9 +6163,6 @@ footer .widget-listing li {
   }
   .top-bar-stripe .social-icons li {
     border: none !important;
-  }
-  header.fixed-top {
-    position: relative !important;
   }
   .breadcrumbs-page,
   .vendor-bg,

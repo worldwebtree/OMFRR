@@ -11,22 +11,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto">
-                    <h1>Find the Perfect Wedding Vendor</h1>
-                    <p class="lead">Search over 360,000 wedding vendors with reviews, pricing, availability and more</p>
-                    <div class="input-group">
-                        <input type="text" aria-label="First name" class="form-control form-light" placeholder="(E.g. Clifton Springs Weddings)">
-                        <input type="text" aria-label="Last name" class="form-control form-light left-border" placeholder="Where">
-                        <div class="input-group-prepend">
-                            <button type="submit" class="btn btn-default">Search Now</button>
+                    <h1>Find the Perfect Restaurant</h1>
+                    <p class="lead">Search over 360,000 Restaurants with reviews, pricing, availability and more</p>
+                    <form action="{{ route('frontend.restaurant-listening.searchByName') }}"
+                        method="POST"
+                        class="restaurant_search_form_with_name">
+                        @csrf
+
+                        <x-error/>
+                        <x-alert/>
+
+                        <div class="input-group">
+                            <input type="text" name="restaurant_name" class="form-control form-light" placeholder="Enter restaurant name">
+                            <input type="text" name="restaurant_city" class="form-control form-light left-border" placeholder="Enter city name">
+                            <div class="input-group-prepend">
+                                <button type="submit" class="btn btn-default">Search Now</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </div>
-            <div class="view-by">
-                <strong>View By</strong>
-                <a href="javascript:" class="selected-tags">New York <span>X</span></a>
-                <a href="javascript:" class="selected-tags">Buffalo <span>X</span></a>
-                <a href="javascript:" class="btn btn-link btn-link-primary">Clear all</a>
             </div>
         </div>
     </section>
@@ -53,16 +56,9 @@
                                                 <p><a href="javascript:"><strong>All Categories</strong></a></p>
 
                                                 <ul class="list-unstyled">
-                                                    <li><a href="javascript:">Barn & Farm Weddings</a></li>
-                                                    <li><a href="javascript:">Hotel Weddings</a></li>
-                                                    <li><a href="javascript:">Hotel Weddings</a></li>
-                                                    <li><a href="javascript:">Country Club Weddings</a></li>
-                                                    <li><a href="javascript:">Restaurant Weddings</a></li>
-                                                    <li><a href="javascript:">Rooftop Weddings</a></li>
+                                                    <li><a href="javascript:">Dine In</a></li>
+                                                    <li><a href="javascript:">Take Away</a></li>
                                                 </ul>
-                                                <div class="view-all">
-                                                    <a href="javascript:" class="btn btn-link-default p-0">+ View More</a>
-                                                </div>
                                             </div>
 
                                         </div>
@@ -79,10 +75,6 @@
                                     <div class="collapse show" id="city">
                                         <div>
                                             <div class="inner">
-                                                <p>
-                                                    <input type="text" class="form-control" placeholder="Enter city/town">
-                                                </p>
-
                                                 <ul class="list-unstyled">
                                                     <li><a href="javascript:">Buffalo</a></li>
                                                     <li><a href="javascript:">Rochester</a></li>
@@ -101,150 +93,8 @@
                                     </div>
                                 </div>
                                 <!-- Widget Wrap -->
-
-                                <!-- Widget Wrap -->
-                                <div class="widget search-result-toggle">
-                                    <a data-toggle="collapse" href="#availability" role="button" aria-expanded="false" class="link" aria-controls="availability">
-                                        <h3 class="widget-title">Availability<i class="fa fa-angle-up"></i></h3>
-                                    </a>
-
-                                    <div class="collapse show" id="availability">
-                                        <div>
-                                            <div class="inner">
-                                                <div class="datepicker-inline">
-                                                    <div data-toggle-inline="datepicker"></div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Widget Wrap -->
                             </div>
                             <!-- Sidebar Primary End -->
-
-                            <!-- Sidebar Secondary Start -->
-                            <div class="sidebar-secondary col-lg-12 col-md-6">
-                                <!-- Widget Wrap -->
-                                <div class="widget search-result-toggle">
-                                    <a data-toggle="collapse" href="#capacity" role="button" aria-expanded="false" class="link" aria-controls="capacity">
-                                        <h3 class="widget-title">Maximum Capacity <i class="fa fa-angle-up"></i></h3>
-                                    </a>
-
-                                    <div class="collapse show" id="capacity">
-                                        <div>
-                                            <div class="inner">
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="99">
-                                                    <label class="custom-control-label" for="99">0 - 99</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="199">
-                                                    <label class="custom-control-label" for="199">100 - 199</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="299">
-                                                    <label class="custom-control-label" for="299">200 - 299</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="399">
-                                                    <label class="custom-control-label" for="399">300 - 399</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="400+">
-                                                    <label class="custom-control-label" for="400+">400+</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Widget Wrap -->
-
-                                <!-- Widget Wrap -->
-                                <div class="widget search-result-toggle">
-                                    <a data-toggle="collapse" href="#settings" role="button" aria-expanded="false" class="link" aria-controls="settings">
-                                        <h3 class="widget-title">Settings<i class="fa fa-angle-up"></i></h3>
-                                    </a>
-
-                                    <div class="collapse show" id="settings">
-                                        <div>
-                                            <div class="inner">
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="indoor">
-                                                    <label class="custom-control-label" for="indoor">Indoor</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="covered">
-                                                    <label class="custom-control-label" for="covered">Covered Outdoor</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="uncovered">
-                                                    <label class="custom-control-label" for="uncovered">Uncovered Outdoor</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Widget Wrap -->
-
-                                <!-- Widget Wrap -->
-                                <div class="widget search-result-toggle">
-                                    <a data-toggle="collapse" href="#amenities" role="button" aria-expanded="false" class="link" aria-controls="amenities">
-                                        <h3 class="widget-title">Amenities<i class="fa fa-angle-up"></i></h3>
-                                    </a>
-
-                                    <div class="collapse show" id="amenities">
-                                        <div>
-                                            <div class="inner">
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="accommodations">
-                                                    <label class="custom-control-label" for="accommodations">Accommodations</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="barservices">
-                                                    <label class="custom-control-label" for="barservices">Bar Services</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="catering">
-                                                    <label class="custom-control-label" for="catering">Catering Services</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="cleanup">
-                                                    <label class="custom-control-label" for="cleanup">Clean Up</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="eventplanner">
-                                                    <label class="custom-control-label" for="eventplanner">Event Planner</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox form-dark mb-3">
-                                                    <input type="checkbox" class="custom-control-input" id="eventrentals">
-                                                    <label class="custom-control-label" for="eventrentals">Event Rentals</label>
-                                                </div>
-
-                                                <div class="view-all">
-                                                    <a href="javascript:" class="btn btn-link-default p-0">+ View More</a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Widget Wrap -->
-                            </div>
-                            <!-- Sidebar Secondary End -->
 
                         </aside>
                     </div>
@@ -263,292 +113,127 @@
                                     <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false"><i class="fa fa-map-marker"></i> Map</a>
                                 </li>
                             </ul>
-                            <!-- <span class="list-style-map">
-                                <a href="javascript:" class="active"></a>
-                                <a href="javascript:"></a>
-                                <a href="javascript:"></a>
-                            </span> -->
                         </div>
 
                         <div class="tab-content theme-tabbing search-result-tabbing" id="pills-tabContent">
                             <div class="tab-pane fade active show" id="pills-listing" role="tabpanel" aria-labelledby="pills-listing-tab">
                                 <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <span class="featured">
-                                                    <i class="fa fa-star"></i>
-                                                    <span>Featured</span>
-                                                </span>
-                                                <a href="javascript:"><img src="assets/images/search/search_img_1.jpg" alt="" class="rounded"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite active"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
+                                @isset($restaurant)
+                                    @foreach ($restaurant as $data)
+                                        <div class="result-list">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">
+                                                    <div class="img">
+                                                        @php($Image = json_decode($data->images))
+                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
+                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Search Result List -->
-
-                                <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <span class="featured">
-                                                    <i class="fa fa-star"></i>
-                                                    <span>Featured</span>
-                                                </span>
-                                                <a href="javascript:"><img src="assets/images/search/search_img_2.jpg" alt="" class="rounded"></a>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
+                                                <div class="col-md-8">
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">{{ $data->title }}</a></h3>
+                                                            <div class="rating">
+                                                                <span class="stars">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-half-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                                (22 review)  /  {{ $data->city }}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- Search Result List -->
+                                    @endforeach
+                                @endisset
 
-                                <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <a href="javascript:"><img src="assets/images/search/search_img_3.jpg" alt="" class="rounded"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
+                                @isset($restaurants)
+                                    @foreach ($restaurants as $restaurantData)
+                                        <div class="result-list">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">
+                                                    <div class="img">
+                                                        @php($Image = json_decode($restaurantData->images))
+                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
+                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Search Result List -->
-
-                                <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <a href="javascript:"><img src="assets/images/search/search_img_4.jpg" alt="" class="rounded"></a>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
+                                                <div class="col-md-8">
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">{{ $restaurantData->title }}</a></h3>
+                                                            <div class="rating">
+                                                                <span class="stars">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-half-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                                (22 review)  /  {{ $restaurantData->city }}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- Search Result List -->
+                                    @endforeach
+                                @endisset
 
-                                <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <a href="javascript:"><img src="assets/images/search/search_img_5.jpg" alt="" class="rounded"></a>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
+                                @isset($restaurantsByName)
+                                    @foreach ($restaurantsByName as $search)
+                                        <div class="result-list">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">
+                                                    <div class="img">
+                                                        @php($Image = json_decode($search->images))
+                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
+                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Search Result List -->
-
-                                <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <a href="javascript:"><img src="assets/images/search/search_img_6.jpg" alt="" class="rounded"></a>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
+                                                <div class="col-md-8">
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">{{ $search->title }}</a></h3>
+                                                            <div class="rating">
+                                                                <span class="stars">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-half-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                                (22 review)  /  {{ $search->city }}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- Search Result List -->
-
-                                <!-- Search Result List -->
-                                <div class="result-list">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img">
-                                                <a href="javascript:"><img src="assets/images/search/search_img_7.jpg" alt="" class="rounded"></a>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="content">
-                                                <div class="head">
-                                                    <a href="javascript:" class="favorite"><i class="fa fa-heart"></i></a>
-                                                    <h3><a href="javascript:">Lotus Wedding Florist</a></h3>
-                                                    <div class="rating">
-                                                        <span class="stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
-                                                        (22 review)  /  Surat, Gujrat, India
-                                                    </div>
-                                                </div>
-                                                <p>Nullam facilisis massa id elit ornare lobortised convallis purus ac tincidunt efficiturstibulum et rutrum onec vitae finibus quaenean dignissim nibh vel ante accumsan sagittis. Integer gravida aliquet auctor.</p>
-                                                <div class="bottom">
-                                                    <span class="badge border rounded p-2">Guests 1 to 200</span>
-                                                    <a href="javascript:" class="btn btn-outline-primary btn-rounded" data-toggle="modal" data-target="#request_quote">Request Pricing</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @endisset
                                 <!-- Search Result List -->
 
                                 <!-- Search Result Pagination -->
                                 <div class="theme-pagination">
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" aria-label="Previous">
-                                                    <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Next">
-                                                    <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                    @isset($restaurant)
+                                        {{ $restaurant->links() }}
+                                    @endisset
+
+                                    @isset($restaurants)
+                                        {{ $restaurants->links() }}
+                                    @endisset
+
+                                    @isset($restaurantsByName)
+                                        {{ $restaurantsByName->links() }}
+                                    @endisset
                                 </div>
                                 <!-- Post Pagination -->
                             </div>

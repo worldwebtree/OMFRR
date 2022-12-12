@@ -3,7 +3,7 @@
         <!-- Home Slider Images -->
         <div class="item">
             <div class="home-slider">
-                <img height="600" src="{{ asset('frontend/Styles/assets/images/restaurants/25459d1991189f8c04c6e63678f09336.gif') }}" alt="slider image 1">
+                <img height="650" src="{{ asset('frontend/Styles/assets/images/restaurants/25459d1991189f8c04c6e63678f09336.gif') }}" alt="slider image 1">
             </div>
         </div>
         <!-- Home Slider Images -->
@@ -15,33 +15,38 @@
                 <div class="col-xl-9 col-lg-12 mx-auto">
                     <h1>Find Review the Perfect Restaurants</h1>
                     <p class="lead txt-white text-center">Search over 360,000 restaurants with reviews, pricing, availability and more</p>
-                    <div class="slider-form rounded">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-12 col-md-5">
-                                <select class="form-light-select theme-combo home-select-1" name="state">
-                                    <option>Choose Vendor Type</option>
-                                    <option value="AL">Vendor Type 1</option>
-                                    <option value="WY">Vendor Type 2</option>
-                                    <option value="WY">Vendor Type 3</option>
-                                    <option value="WY">Vendor Type 4</option>
-                                    <option value="WY">Vendor Type 5</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-md-5 left-border">
-                                <select class="form-light-select theme-combo home-select-2" name="state">
-                                    <option>Choose Location</option>
-                                    <option value="AL">Mumbai</option>
-                                    <option value="WY">Goa</option>
-                                    <option value="WY">Surat</option>
-                                    <option value="WY">Delhi</option>
-                                    <option value="WY">Baroda</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-md-2">
-                                <a href="right-side-map-listing.html" class="btn btn-default text-nowrap btn-block" >Search Now</a>
+                    <form action="{{ route('frontend.restaurant-listening.search') }}" 
+                        method="POST" 
+                        class="restaurant-search-form">
+                        @csrf
+
+                        <x-error/>
+                        <x-alert/>
+
+                        <div class="slider-form rounded">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <select class="form-light-select theme-combo home-select-1" required name="category">
+                                        <option selected disabled>Choose Vendor Type</option>
+                                        <option value="Dine In">Dine In</option>
+                                        <option value="Take Away">Take Away</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-5 left-border">
+                                    @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
+                                    <select class="form-light-select theme-combo home-select-2" required name="location">
+                                        <option selected disabled>Choose Location</option>
+                                        @foreach ($location as $city)
+                                            <option value="{{ $city->city }}">{{ $city->city }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <button class="btn btn-default text-nowrap btn-block" type="submit">Search Now</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
