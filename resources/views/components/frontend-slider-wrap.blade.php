@@ -3,23 +3,7 @@
         <!-- Home Slider Images -->
         <div class="item">
             <div class="home-slider">
-                <img src="{{ asset('frontend/Styles/assets/images/slider/slider_img_1.jpg') }}" alt="slider image 1">
-            </div>
-        </div>
-        <!-- Home Slider Images -->
-
-        <!-- Home Slider Images -->
-        <div class="item">
-            <div class="home-slider">
-                <img src="{{ asset('frontend/Styles/assets/images/slider/slider_img_2.jpg') }}" alt="slider image 2">
-            </div>
-        </div>
-        <!-- Home Slider Images -->
-
-        <!-- Home Slider Images -->
-        <div class="item">
-            <div class="home-slider">
-                <img src="{{ asset('frontend/Styles/assets/images/slider/slider_img_3.jpg') }}" alt="slider image 3">
+                <img height="600" src="{{ asset('frontend/Styles/assets/images/restaurants/25459d1991189f8c04c6e63678f09336.gif') }}" alt="slider image 1">
             </div>
         </div>
         <!-- Home Slider Images -->

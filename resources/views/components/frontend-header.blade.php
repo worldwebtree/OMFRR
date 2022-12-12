@@ -6,8 +6,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-auto col-sm-12">
                         <div class="top-icons">
-                            <span><i class="fa fa-map-marker"></i>{{ $data->address }}</span>
-                            <span><a href="mailto:info@weddingdir.com"><i class="fa fa-envelope"></i>{{ $data->customer_support_email }}</a></span>
+                            <span><i class="fa fa-map-marker"></i> {{ $data->address }}</span>
+                            <span><i class="fa fa-envelope"></i> {{ $data->customer_support_email }}</span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg">
