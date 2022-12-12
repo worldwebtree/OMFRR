@@ -57,13 +57,13 @@
                                     <label for="SocialLinks">social links</label>
                                     <div class="d-flex">
                                         <input type="text"
-                                            class="form-control m-2" name="socialLinks[]" value="https://facebook.com/">
+                                            class="form-control m-2" name="facebook" value="https://facebook.com/">
                                         <input type="text"
-                                            class="form-control m-2" name="socialLinks[]" value="https://twitter.com/">
+                                            class="form-control m-2" name="twitter" value="https://twitter.com/">
                                         <input type="text"
-                                            class="form-control m-2" name="socialLinks[]" value="https://instagram.com/">
+                                            class="form-control m-2" name="instagram" value="https://instagram.com/">
                                         <input type="text"
-                                            class="form-control m-2" name="socialLinks[]" value="https://linkedin.com/">
+                                            class="form-control m-2" name="linkedin" value="https://linkedin.com/">
                                     </div>
                                   </div>
 
@@ -153,14 +153,25 @@
 
                                                                         <div class="form-group">
                                                                             <label for="SocialLinks">social links</label>
-                                                                            @foreach (json_decode($data->social_links) as $link)
+                                                                            @if (!empty($data->social_links) && $data->social_links != null)
+                                                                                @foreach (json_decode($data->social_links) as $name => $link)
+                                                                                    <input type="text"
+                                                                                        class="form-control m-2" name="{{ $name }}" value="{{ $link }}">
+                                                                                @endforeach
+                                                                                @else
                                                                                 <input type="text"
-                                                                                    class="form-control m-2" value="{{ $link }}" name="socialLinks[]" value="{{ $link }}">
-                                                                            @endforeach
+                                                                                    class="form-control m-2" name="facebook" value="https://facebook.com/">
+                                                                                <input type="text"
+                                                                                    class="form-control m-2" name="twitter" value="https://twitter.com/">
+                                                                                <input type="text"
+                                                                                    class="form-control m-2" name="instagram" value="https://instagram.com/">
+                                                                                <input type="text"
+                                                                                    class="form-control m-2" name="linkedin" value="https://linkedin.com/">
+                                                                            @endif
                                                                         </div>
 
                                                                     <div class="form-group">
-                                                                        <button type="submit" class="btn btn-primary w-100">update</button>
+                                                                        <button type="submit" class="btn btn-primary w-100">Update</button>
                                                                     </div>
                                                                 </form>
                                                             </div>

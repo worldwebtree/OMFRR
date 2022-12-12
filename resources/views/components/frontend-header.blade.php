@@ -1,24 +1,26 @@
 <header class="fixed-top header-anim">
     <div class="top-bar-stripe">
         <div class="container px-md-0">
-            <div class="row align-items-center">
-                <div class="col-lg-auto col-sm-12">
-                    <div class="top-icons">
-                        <span><i class="fa fa-map-marker"></i> 4998 Elk Creek Road Canton GA 30114</span>
-                        <span><a href="mailto:info@weddingdir.com"><i class="fa fa-envelope"></i> info@weddingdir.com</a></span>
+            @php($contact = App\Models\Admin\ContactUs::getContactInformation())
+            @foreach ($contact as $data)
+                <div class="row align-items-center">
+                    <div class="col-lg-auto col-sm-12">
+                        <div class="top-icons">
+                            <span><i class="fa fa-map-marker"></i>{{ $data->address }}</span>
+                            <span><a href="mailto:info@weddingdir.com"><i class="fa fa-envelope"></i>{{ $data->customer_support_email }}</a></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg">
+                        <div class="social-icons">
+                            <ul class="list-unstyled">
+                                @foreach (json_decode($data->social_links) as $name => $link)
+                                    <li><a href="{{ $link }}"><i class=" fa fa-{{ $name }}"></i></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg">
-                    <div class="social-icons">
-                        <ul class="list-unstyled">
-                            <li><a href="javascript:"><i class="fa fa-facebook-f"></i></a></li>
-                            <li><a href="javascript:"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="javascript:"><i class="fa fa-instagram"></i></a>
-                            <li><a href="javascript:"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
@@ -26,7 +28,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container text-nowrap bdr-nav px-0">
             <div class="d-flex mr-auto">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('frontend.index.page') }}">
                     <span>
                         <strong>
                             {{ config('app.name') }}

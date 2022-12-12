@@ -43,15 +43,25 @@ class ContactController extends Controller
             'email' => ['required', 'string'],
             'address' => ['required', 'string'],
             'customer_support_email' => ['required', 'string'],
-            'socialLinks' => ['required', 'array'],
+            'facebook' => ['required', 'string'],
+            'twitter' => ['required', 'string'],
+            'instagram' => ['required', 'string'],
+            'linkedin' => ['required', 'string'],
         ]);
+
+        $socialLinks = [
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'instagram' => $request->instagram,
+            'linkedin' => $request->linkedin,
+        ];
 
         ContactUs::create([
             'phone' => $request->phone,
             'email' => $request->email,
             'address' => $request->address,
             'customer_support_email' => $request->customer_support_email,
-            'social_links' => json_encode($request->socialLinks),
+            'social_links' => json_encode($socialLinks),
         ]);
 
         return redirect()->route('admin.contact')
@@ -94,17 +104,27 @@ class ContactController extends Controller
             'email' => ['required', 'string'],
             'address' => ['required', 'string'],
             'customer_support_email' => ['required', 'string'],
-            'socialLinks' => ['required', 'array'],
+            'facebook' => ['required', 'string'],
+            'twitter' => ['required', 'string'],
+            'instagram' => ['required', 'string'],
+            'linkedin' => ['required', 'string'],
         ]);
 
         $contact = $contactUs->findOrFail($id);
+
+        $socialLinks = [
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'instagram' => $request->instagram,
+            'linkedin' => $request->linkedin,
+        ];
 
         $contact->update([
             'phone' => $request->phone,
             'email' => $request->email,
             'address' => $request->address,
             'customer_support_email' => $request->customer_support_email,
-            'social_links' => json_encode($request->socialLinks),
+            'social_links' => json_encode($socialLinks),
         ]);
 
         return redirect()->route('admin.contact')

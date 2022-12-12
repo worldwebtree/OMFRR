@@ -7,7 +7,7 @@ Template Name:      WeddingDir - Wedding Directory HTML Template
 ------------------------------------------------------------------
 [CSS Table of contents]
 
-1.  Body / Typography 
+1.  Body / Typography
 2.  Form Elements
 3.  Buttons
 4.  General / Elements
@@ -69,13 +69,13 @@ Template Name:      WeddingDir - Wedding Directory HTML Template
 13. Modal Popups
 
 14. Jquery UI Calendar
- 
+
 15. Footers
 16. Media Queries
 ------------------------------------------------------------------- */
 
 /*-------------------------------------------------------------------
-1.  Body / Typography 
+1.  Body / Typography
 -------------------------------------------------------------------*/
 html {
   -webkit-font-smoothing: antialiased;
@@ -644,7 +644,7 @@ i[class*="weddingdir_"] {
   background: #c0c0c0;
   border: 3px solid #c0c0c0;
 }
-/*----------------------- 
+/*-----------------------
 Background Color / Color
 -------------------------*/
 
@@ -754,7 +754,7 @@ Background Color / Color
   background: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
-/*--------------------------- 
+/*---------------------------
 3. Buttons
 -----------------------------*/
 .btn {
@@ -1589,9 +1589,6 @@ blockquote footer cite,
 /*---- 5.1 Header Regular ---*/
 header {
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.019);
-}
-header .btn {
-  padding: 0.52rem 1.3rem;
 }
 @media (min-width: 991.99px) {
   header.header-anim.fixed .top-bar-stripe {
@@ -6589,12 +6586,12 @@ footer .widget-listing li {
 }
 }
 @media (max-width: 320px) {
-  
+
   .select2-container {
     z-index: 9;
     width: 100% !important;
   }
-  
+
 }
 
 #map-holder,
