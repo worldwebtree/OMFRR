@@ -53,11 +53,9 @@
                                     <div class="collapse show" id="categoriestypes">
                                         <div>
                                             <div class="inner">
-                                                <p><a href="javascript:"><strong>All Categories</strong></a></p>
-
                                                 <ul class="list-unstyled">
-                                                    <li><a href="javascript:">Dine In</a></li>
-                                                    <li><a href="javascript:">Take Away</a></li>
+                                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
+                                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
                                                 </ul>
                                             </div>
 
@@ -75,20 +73,15 @@
                                     <div class="collapse show" id="city">
                                         <div>
                                             <div class="inner">
+                                                @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
                                                 <ul class="list-unstyled">
-                                                    <li><a href="javascript:">Buffalo</a></li>
-                                                    <li><a href="javascript:">Rochester</a></li>
-                                                    <li><a href="javascript:">Canandaigua</a></li>
-                                                    <li><a href="javascript:">Geneva</a></li>
-                                                    <li><a href="javascript:">Niagara Falls</a></li>
-                                                    <li><a href="javascript:">Lockport</a></li>
-                                                    <li><a href="javascript:">East Aurora</a></li>
+                                                    @foreach ($location as $city)
+                                                        <li>
+                                                            <a href="{{ route('frontend.restaurant-listening.search.by.location', $city->city) }}">{{ $city->city }}</a>
+                                                        </li>
+                                                    @endforeach
                                                 </ul>
-                                                <div class="view-all">
-                                                    <a href="javascript:" class="btn btn-link-default p-0">+ View More</a>
-                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +212,74 @@
                                         </div>
                                     @endforeach
                                 @endisset
+
+                                @isset($restaurantsByCategory)
+                                    @foreach ($restaurantsByCategory as $searchCategory)
+                                        <div class="result-list">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">
+                                                    <div class="img">
+                                                        @php($Image = json_decode($searchCategory->images))
+                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
+                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">{{ $searchCategory->title }}</a></h3>
+                                                            <div class="rating">
+                                                                <span class="stars">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-half-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                                (22 review)  /  {{ $searchCategory->city }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endisset
+
+                                @isset($restaurantsByLocation)
+                                    @foreach ($restaurantsByLocation as $searchLocation)
+                                        <div class="result-list">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">
+                                                    <div class="img">
+                                                        @php($Image = json_decode($searchLocation->images))
+                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
+                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">{{ $searchLocation->title }}</a></h3>
+                                                            <div class="rating">
+                                                                <span class="stars">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-half-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                                (22 review)  /  {{ $searchLocation->city }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endisset
                                 <!-- Search Result List -->
 
                                 <!-- Search Result Pagination -->
@@ -233,6 +294,14 @@
 
                                     @isset($restaurantsByName)
                                         {{ $restaurantsByName->links() }}
+                                    @endisset
+
+                                    @isset($restaurantsByCategory)
+                                        {{ $restaurantsByCategory->links() }}
+                                    @endisset
+
+                                    @isset($restaurantsByLocation)
+                                        {{ $restaurantsByLocation->links() }}
                                     @endisset
                                 </div>
                                 <!-- Post Pagination -->

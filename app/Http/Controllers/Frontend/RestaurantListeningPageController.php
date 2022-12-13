@@ -51,8 +51,8 @@ class RestaurantListeningPageController extends Controller
         return view('frontEnd.search-result', compact('restaurant'));
     }
 
-        /**
-     * Store a newly created resource in storage.
+    /**
+     * Searches restaurants by name and city.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -70,6 +70,36 @@ class RestaurantListeningPageController extends Controller
         ])->paginate(15);
 
         return view('frontEnd.search-result', compact('restaurantsByName'));
+    }
+
+    /**
+     * Searches a restaurant with category name.
+     *
+     * @param  string  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByCategory($category)
+    {
+        $restaurantsByCategory = PostRestaurant::where([
+            'category' => $category,
+        ])->paginate(15);
+
+        return view('frontEnd.search-result', compact('restaurantsByCategory'));
+    }
+
+    /**
+     * Searches a restaurant with location name.
+     *
+     * @param  string  $location
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByLocation($location)
+    {
+        $restaurantsByLocation = PostRestaurant::where([
+            'city' => $location,
+        ])->paginate(15);
+
+        return view('frontEnd.search-result', compact('restaurantsByLocation'));
     }
 
     /**

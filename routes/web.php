@@ -68,6 +68,12 @@ Route::prefix('frontend')->group(function () {
 
         Route::post('/restaurant-listening/search', 'searchByName')
         ->name('frontend.restaurant-listening.searchByName');
+
+        Route::get('/restaurant-listening/search/by/category/{category}', 'searchByCategory')
+        ->name('frontend.restaurant-listening.search.by.category');
+
+        Route::get('/restaurant-listening/search/by/location/{location}', 'searchByLocation')
+        ->name('frontend.restaurant-listening.search.by.location');
     });
 
     Route::controller(SingularRestaurantController::class)->group(function () {
