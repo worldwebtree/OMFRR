@@ -47,27 +47,17 @@ class RestaurantManageController extends Controller
             'restaurant_category' => ['required', 'string'],
         ]);
 
-        $files = $request->hasFile("restaurant_images");
+        $images = $request->file('restaurant_images');
 
-        // checking if the $request variable contain's a file named restaurant_images
-        if (!$files) {
+        foreach ($images as $image) {
 
-            $restaurantImages = $postRestaurant->images;
+            // generating hashed file name
+            $restaurantImages = $image->hashName();
 
-        } else {
+            // saving the file with hashed name in storage
+            $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
 
-            $images = $request->file('restaurant_images');
-
-            foreach ($images as $image) {
-
-                // generating hashed file name
-                $restaurantImages = $image->hashName();
-
-                // saving the file with hashed name in storage
-                $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
-
-                $restaurantImagesArray[] = $restaurantImages;
-            }
+            $restaurantImagesArray[] = $restaurantImages;
         }
 
         $postRestaurant->create([
@@ -112,9 +102,45 @@ class RestaurantManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, PostRestaurant $postRestaurant)
     {
-        //
+        $request->validate([
+            'restaurant_name' => ['required', 'string'],
+            'restaurant_description' => ['required', 'string'],
+            'restaurant_city' => ['required', 'string'],
+            'restaurant_address' => ['required', 'string'],
+            'restaurant_category' => ['required', 'string'],
+        ]);
+
+        $restaurant = $postRestaurant->findOrFail($id);
+
+        dd($restaurant);
+        exit();
+
+        $images = $request->file('restaurant_images');
+
+        foreach ($images as $image) {
+
+            // generating hashed file name
+            $restaurantImages = $image->hashName();
+
+            // saving the file with hashed name in storage
+            $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
+
+            $restaurantImagesArray[] = $restaurantImages;
+        }
+
+        $restaurant->update([
+            'title' => ucwords($request->restaurant_name),
+            'description' => strip_tags($request->restaurant_description),
+            'images' => json_encode($restaurantImagesArray) || $restaurant->images,
+            'city' => $request->restaurant_city,
+            'address' => ucfirst($request->restaurant_address),
+            'category' => $request->restaurant_category,
+        ]);
+
+        return redirect()->route('admin.restaurant.management')
+        ->with('updated', 'Restaurant post has been updated successfully');
     }
 
     /**

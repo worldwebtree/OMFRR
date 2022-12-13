@@ -37,7 +37,7 @@
                 </a>
             </div>
         </div>
-        
+
         <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
             data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -67,13 +67,13 @@
                 @auth
 
                     @if (auth()->user()->role == "admin")
-        
+
                         @php($link = route('admin.dashboard'))
-        
+
                     @elseif (auth()->user()->role == "user")
-        
+
                         @php($link = route('customer.dashboard'))
-        
+
                     @endif
                         <!-- Topbar Request Quote Start -->
                         <li class="nav-item text-uppercase">
@@ -81,7 +81,7 @@
                         </li>
                         <!-- Toggle Button Start -->
                 @endauth
-        
+
                 @guest
                     <!-- Topbar Request Quote Start -->
                     <li class="nav-item text-uppercase">

@@ -62,8 +62,45 @@
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('admin.about.destroy', $data->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                    </a> |
+                                                    <a class="UpdateUserBtn"
+                                                        data-toggle="modal"
+                                                        data-target="#UpdateAboutModel">
+                                                        <i class="fa fa-edit text-primary" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="UpdateAboutModel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body text-capitalize">
+                                                                <form action="{{ route('admin.about.update', $data->id) }}" class="about_update_form"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
+
+                                                                    <x-error/>
+                                                                    <x-alert/>
+
+                                                                    <div class="form-title">
+                                                                        <h3>update about information</h3>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <textarea type="text"
+                                                                          class="form-control" name="description" id="secondEditor" cols="30" rows="10">
+                                                                          {{ $data->description }}
+                                                                        </textarea>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <button type="submit" class="btn btn-primary w-100">Update</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -83,11 +120,17 @@
 @push('js')
 <script type="text/javascript">
 
-ClassicEditor
+    ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
             console.error( error );
-        } );
+    } );
+
+    ClassicEditor
+        .create( document.querySelector( '#secondEditor' ) )
+        .catch( error => {
+            console.error( error );
+    } );
 
         // For warning alert message before deleting any records
     $(document).ready(function () {

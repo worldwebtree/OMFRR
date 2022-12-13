@@ -5,7 +5,7 @@
             <span class="sr-only">Close</span>
         </button>
         <ul>
-            @foreach ($errors->all( ) as $error)
+            @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>

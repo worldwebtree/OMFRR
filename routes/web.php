@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KeywordManageController;
+use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RestaurantManageController;
@@ -81,6 +82,12 @@ Route::prefix('frontend')->group(function () {
         Route::get('/singular-restaurant-listening/{id}', 'index')
         ->name('frontend.singular.restaurant.listening.page');
     });
+
+    Route::controller(NewsLetterController::class)->group(function () {
+
+        Route::post('restaurant/subscribe', 'store')
+        ->name('frontend.restaurant.news.letter.subscribe');
+    });
 });
 
 /**
@@ -139,6 +146,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::post('/restaurant/management/add', 'store')
         ->name('admin.restaurant.management.store');
 
+        Route::put('/restaurant/management/update/{id}', 'update')
+        ->name('admin.restaurant.management.update');
+
         Route::get('/restaurant/management/destroy/{id}', 'destroy')
         ->name('admin.restaurant.management.destroy');
 
@@ -170,7 +180,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::post('/about/add', 'store')
         ->name('admin.about.store');
 
-        Route::post('/about/update', 'update')
+        Route::put('/about/update/{id}', 'update')
         ->name('admin.about.update');
 
         Route::get('/about/destroy/{id}', 'destroy')

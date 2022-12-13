@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="footer-logo">
-                            <img src="assets/images/logo_light.svg" alt="">
+                            <h2 class="text-info">RateRestaurant</h2>
                             <p>Sed ut perspiciatis unde mnis iste natus error sit ptatem accus antium doloremque lauda ntium.</p>
                         </div>
                         <div><a href="javascript:" class="btn btn-primary">Know More</a></div>
@@ -15,12 +15,8 @@
                         <div class="footer-widget">
                             <h3 class="widget-title">Categories</h3>
                             <ul class="list-unstyled icons-listing mb-0 widget-listing arrow">
-                                <li><a href="javascript:">Venue</a></li>
-                                <li><a href="javascript:">Dresses</a></li>
-                                <li><a href="javascript:">Florist</a></li>
-                                <li><a href="javascript:">Cake</a></li>
-                                <li><a href="javascript:">Photographer</a></li>
-                                <li><a href="javascript:">Music DJ</a></li>
+                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
+                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
                             </ul>
                         </div>
                     </div>
@@ -28,13 +24,11 @@
                     <div class="col-md">
                         <div class="footer-widget">
                             <h3 class="widget-title">Locations</h3>
+                            @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
                             <ul class="list-unstyled icons-listing mb-0 widget-listing arrow">
-                                <li><a href="javascript:">Ahmedabad</a></li>
-                                <li><a href="javascript:">Vodadara</a></li>
-                                <li><a href="javascript:">Surat</a></li>
-                                <li><a href="javascript:">Rajkot</a></li>
-                                <li><a href="javascript:">Punjab</a></li>
-                                <li><a href="javascript:">Hariyana</a></li>
+                                @foreach ($location as $city)
+                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.location', $city->city) }}">{{ $city->city }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -43,31 +37,42 @@
 
             <div class="col-lg-5 mr-top-footer">
                 <div class="row">
+                @php($contact = App\Models\Admin\ContactUs::getContactInformation())
+                @foreach ($contact as $contactData)
                     <div class="col-md-6 col-12">
                         <div class="footer-widget">
                             <h3 class="widget-title">Contact Us</h3>
                             <div class="widget-contact">
-                                <p>4998 Elk Creek Road Canton, GA 30114</p>
-                                <p>Call : <a href="tel:+81-258-852-6699">+81 258 852 6699</a></p>
-                                <p>Mail : <a href="mailto:Info@weddingdir.com">Info@weddingdir.com</a></p>
+                                <p>{{ $contactData->address }}</p>
+                                <p>Call : {{ $contactData->phone }}</p>
+                                <p>Mail : {{ $contactData->customer_support_email }}</p>
                             </div>
                             <div class="social-icons-footers">
                                 <ul class="list-unstyled">
-                                    <li><a href="javascript:"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li><a href="javascript:"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="javascript:"><i class="fa fa-instagram"></i></a>
-                                    <li><a href="javascript:"><i class="fa fa-linkedin"></i></a></li>
+                                    @foreach (json_decode($contactData->social_links) as $name => $link)
+                                        <li><a href="{{ $link }}"><i class=" fa fa-{{ $name }}"></i></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
+                @endforeach
 
                     <div class="col-md-6 col-12">
                         <div class="footer-widget">
-                            <h3 class="widget-title">Newsletter</h3>
-                            <p>Subscribe to our newsletter  to receive exclusive offers and wedding tips.</p>
-                            <div class="mb-3"><input type="text" class="form-control form-light" id="exampleFormControlInput1" placeholder="Enter Email Address"></div>
-                            <button type="button" class="btn btn-default">Subscribe</button>
+                            <h3 class="widget-title">News Letter</h3>
+                            <p>Subscribe to our news letter  to receive every new restaurant entry information.</p>
+                            <form action="{{ route('frontend.restaurant.news.letter.subscribe') }}" method="POST">
+                                @csrf
+
+                                <x-error/>
+                                <x-alert/>
+
+                                <div class="mb-3">
+                                    <input type="email" required name="email" class="form-control form-light" id="exampleFormControlInput1" placeholder="Enter Email Address">
+                                </div>
+                                <button type="submit" class="btn btn-default">Subscribe</button>
+                            </form>
                         </div>
                     </div>
                 </div>

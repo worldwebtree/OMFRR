@@ -3,21 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\AboutUS;
+use App\Models\Admin\NewsLetterSubscribers;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class NewsLetterController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AboutUS $aboutUS)
+    public function index()
     {
-        $about = $aboutUS->get();
-
-        return view('dashboard.Admin.aboutUs', compact('about'));
+        //
     }
 
     /**
@@ -39,15 +38,24 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => ['required', 'string'],
+            'email' => ['required', 'string'],
         ]);
 
-        AboutUS::create([
-            'description' => strip_tags($request->description),
+        $AuthenticatedUser = User::where('email', $request->email)->first();
+
+        if ($AuthenticatedUser == null) {
+            $status = "UnAuthenticated";
+
+        }else {
+            $status = "Authenticated";
+        }
+
+        NewsLetterSubscribers::create([
+            'email' => $request->email,
+            'user_status' => $status,
         ]);
 
-        return redirect()->route('admin.about')
-        ->with('created', 'Website About has been added successfully');
+        return back()->with('created', 'You have successfully subscribed to our News Letter');
     }
 
     /**
@@ -81,18 +89,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'description' => ['required', 'string'],
-        ]);
-
-        $about = AboutUS::findOrFail($id);
-
-        $about->update([
-            'description' => strip_tags($request->description),
-        ]);
-
-        return redirect()->route('admin.about')
-        ->with('updated', 'Website About has been updated successfully');
+        //
     }
 
     /**
@@ -101,13 +98,8 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AboutUS $aboutUS, $id)
+    public function destroy($id)
     {
-        $about = $aboutUS->findOrFail($id);
-
-        $about->delete();
-
-        return redirect()->route('admin.about')
-        ->with('deleted', 'Website about has been deleted successfully');
+        //
     }
 }
