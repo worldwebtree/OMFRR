@@ -33,13 +33,19 @@
 
                 <li class="nav-list-item">
                     <a class="nav-anchor-item" href="{{ route('admin.about') }}" aria-expanded="false">
-                        <i class="fa fa-question" aria-hidden="true"></i><span class="nav-text">about us</span>
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i><span class="nav-text">about us</span>
                     </a>
                 </li>
 
                 <li class="nav-list-item">
                     <a class="nav-anchor-item" href="{{ route('admin.contact') }}" aria-expanded="false">
                         <i class="fa fa-phone" aria-hidden="true"></i><span class="nav-text">contact us</span>
+                    </a>
+                </li>
+
+                <li class="nav-list-item">
+                    <a class="nav-anchor-item" href="{{ route('admin.users.query') }}" aria-expanded="false">
+                        <i class="fa fa-question" aria-hidden="true"></i><span class="nav-text">user queries</span>
                     </a>
                 </li>
             </ul>

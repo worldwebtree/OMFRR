@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\RestaurantData;
 use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RestaurantManageController extends Controller
 {
@@ -65,9 +67,25 @@ class RestaurantManageController extends Controller
             'description' => strip_tags($request->restaurant_description),
             'images' => json_encode($restaurantImagesArray),
             'city' => $request->restaurant_city,
-            'address' => ucfirst($request->restaurant_address),
+            'address' => ucwords($request->restaurant_address),
             'category' => $request->restaurant_category,
         ]);
+
+        return redirect()->route('admin.restaurant.management')
+        ->with('created', 'Restaurant post has been created successfully');
+    }
+
+    /**
+     * Upload a data containing .xlsx file.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        $file = $request->file('restaurant_file');
+
+        Excel::import(new RestaurantData, $file);
 
         return redirect()->route('admin.restaurant.management')
         ->with('created', 'Restaurant post has been created successfully');

@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactUs extends Model
+class UserContact extends Model
 {
     use HasFactory;
 
@@ -15,15 +15,10 @@ class ContactUs extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'phone',
+        'firstName',
+        'lastName',
         'email',
-        'address',
-        'customer_support_email',
-        'social_links'
+        'mobile',
+        'message',
     ];
-
-    public static function getContactInformation()
-    {
-        return ContactUs::get();
-    }
 }

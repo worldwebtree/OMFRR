@@ -133,28 +133,5 @@
 
         $("#fileInputLabel").text(fileName);
     }
-
-    $(document).ready(function () {
-
-        $("#SelectAllCheckbox").click(function (e) {
-
-            $(".checkAll").prop("checked", true);
-        });
-
-        $("#formDeleteButton").click(function (e) {
-            e.preventDefault();
-
-            let checkbox = $(".form-check-input");
-
-            if (!checkbox.is(":checked")) {
-                swal.fire({
-                    title: 'Warning',
-                    text: "No checkbox has been checked!",
-                    icon: 'warning',
-                });
-            }
-
-        });
-    });
 </script>
 @endpush

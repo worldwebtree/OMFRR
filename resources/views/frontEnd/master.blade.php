@@ -20,6 +20,9 @@
         <!-- CSS ( Bootstrap + Owlcarouses + Fontawesome + Animate + Select2 + Custom Style )
         ======================================================================================= -->
         <link href="{{ asset('frontend/Styles/assets/css/base.css') }}" rel="stylesheet">
+
+        {{-- Sweet Alerts JS CDN--}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
     </head>
     <!-- end head -->
 

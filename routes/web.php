@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RestaurantManageController;
 use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\UserManageController;
+use App\Http\Controllers\Admin\UserQueryController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\NotificationController as CustomerNotificationController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
@@ -57,6 +58,9 @@ Route::prefix('frontend')->group(function () {
 
         Route::get('/contact', 'index')
         ->name('frontend.contact.page');
+
+        Route::post('/contact/send', 'store')
+        ->name('frontend.contact.store');
     });
 
     Route::controller(RestaurantListeningPageController::class)->group(function () {
@@ -146,6 +150,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::post('/restaurant/management/add', 'store')
         ->name('admin.restaurant.management.store');
 
+        Route::post('/restaurant/management/upload/file', 'upload')
+        ->name('admin.restaurant.management.upload');
+
         Route::get('/restaurant/management/destroy/{id}', 'destroy')
         ->name('admin.restaurant.management.destroy');
 
@@ -197,6 +204,12 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
         Route::get('/contact/destroy/{id}', 'destroy')
         ->name('admin.contact.destroy');
+    });
+
+    Route::controller(UserQueryController::class)->group(function () {
+
+        Route::get('users/contact/queries', 'index')
+        ->name('admin.users.query');
     });
 });
 

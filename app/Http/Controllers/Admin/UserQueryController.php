@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\UserContact;
 use Illuminate\Http\Request;
 
-class ContactUsPageController extends Controller
+class UserQueryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ContactUsPageController extends Controller
      */
     public function index()
     {
-        return view('frontEnd.contact-us');
+        return view('dashboard.Admin.User.UserQueries');
     }
 
     /**
@@ -36,24 +35,7 @@ class ContactUsPageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'firstName' => ['required', 'string'],
-            'lastName' => ['required', 'string'],
-            'email' => ['required', 'string'],
-            'mobile' => ['required', 'digits_between:10,15'],
-            'message' => ['required', 'string'],
-        ]);
-
-        UserContact::create([
-            'firstName' => $request->firstName,
-            'lastName' => $request->lastName,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'message' => $request->message,
-        ]);
-
-        return redirect()->route('frontend.contact.page')
-        ->with('created', 'Your query has been send successfully');
+        //
     }
 
     /**
