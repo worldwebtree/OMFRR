@@ -102,45 +102,9 @@ class RestaurantManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, PostRestaurant $postRestaurant)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'restaurant_name' => ['required', 'string'],
-            'restaurant_description' => ['required', 'string'],
-            'restaurant_city' => ['required', 'string'],
-            'restaurant_address' => ['required', 'string'],
-            'restaurant_category' => ['required', 'string'],
-        ]);
-
-        $restaurant = $postRestaurant->findOrFail($id);
-
-        dd($restaurant);
-        exit();
-
-        $images = $request->file('restaurant_images');
-
-        foreach ($images as $image) {
-
-            // generating hashed file name
-            $restaurantImages = $image->hashName();
-
-            // saving the file with hashed name in storage
-            $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
-
-            $restaurantImagesArray[] = $restaurantImages;
-        }
-
-        $restaurant->update([
-            'title' => ucwords($request->restaurant_name),
-            'description' => strip_tags($request->restaurant_description),
-            'images' => json_encode($restaurantImagesArray) || $restaurant->images,
-            'city' => $request->restaurant_city,
-            'address' => ucfirst($request->restaurant_address),
-            'category' => $request->restaurant_category,
-        ]);
-
-        return redirect()->route('admin.restaurant.management')
-        ->with('updated', 'Restaurant post has been updated successfully');
+        //
     }
 
     /**

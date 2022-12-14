@@ -146,9 +146,6 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         Route::post('/restaurant/management/add', 'store')
         ->name('admin.restaurant.management.store');
 
-        Route::put('/restaurant/management/update/{id}', 'update')
-        ->name('admin.restaurant.management.update');
-
         Route::get('/restaurant/management/destroy/{id}', 'destroy')
         ->name('admin.restaurant.management.destroy');
 
