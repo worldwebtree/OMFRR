@@ -127,15 +127,6 @@
     {{-- CK editor CDN --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
 
-    <!-- include FilePond library -->
-    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-    <!-- include FilePond plugins -->
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-
-    <!-- include FilePond jQuery adapter -->
-    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-
     <!-- Pushed JS from the Chiled Views -->
     @stack('js')
 

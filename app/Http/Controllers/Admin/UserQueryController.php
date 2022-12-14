@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\UserContact;
 use Illuminate\Http\Request;
 
 class UserQueryController extends Controller
@@ -12,9 +13,11 @@ class UserQueryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UserContact $userContact)
     {
-        return view('dashboard.Admin.User.UserQueries');
+        $queries = $userContact->paginate(15);
+
+        return view('dashboard.Admin.User.UserQueries', compact('queries'));
     }
 
     /**
@@ -80,6 +83,11 @@ class UserQueryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = UserContact::findOrFail($id);
+
+        $delete->delete();
+
+        return redirect()->route('admin.users.query')
+        ->with('deleted', 'User query has been deleted successfully');
     }
 }

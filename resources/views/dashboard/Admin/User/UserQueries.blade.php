@@ -29,7 +29,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($quries as $query)
+                                            @foreach ($queries as $query)
                                                 <tr>
                                                     <td>{{ $query->firstName }}</td>
                                                     <td>{{ $query->lastName }}</td>
@@ -37,7 +37,7 @@
                                                     <td>{{ $query->mobile }}</td>
                                                     <td>{{ $query->message }}</td>
                                                     <td>
-                                                        <a class="DeleteUserBtn" href="#">
+                                                        <a class="DeleteUserBtn" href="{{ route('admin.users.query.destroy', $query->id) }}">
                                                             <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
@@ -45,7 +45,7 @@
                                             @endforeach
                                         </tbody>
                                 </table>
-                                {{ $quries->links() }}
+                                {{ $queries->links() }}
                             </div>
                         </div>
                     </div>

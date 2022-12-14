@@ -64,6 +64,12 @@
         <script src="{{ asset('frontend/Styles/assets/library/isotope-layout/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('frontend/Styles/assets/library/datepicker/js/datepicker.js') }}"></script>
         <script src="{{ asset('frontend/Styles/assets/js/script.js') }}"></script>
+
+        {{-- CK editor CDN --}}
+        <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
+
+            <!-- Pushed JS from the Chiled Views -->
+            @stack('js')
     </body>
 
 <!-- Mirrored from wporganic.com/html/weddingdir/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Feb 2022 17:27:44 GMT -->

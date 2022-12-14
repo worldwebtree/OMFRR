@@ -18,6 +18,7 @@ use App\Http\Controllers\Customer\RestaurantManagementController;
 use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
 use App\Http\Controllers\Frontend\FrontPageController;
+use App\Http\Controllers\Frontend\RestaurantFeedbackController;
 use App\Http\Controllers\Frontend\RestaurantListeningPageController;
 use App\Http\Controllers\Frontend\SingularRestaurantController;
 use Illuminate\Support\Facades\Route;
@@ -86,6 +87,16 @@ Route::prefix('frontend')->group(function () {
         Route::get('/singular-restaurant-listening/{id}', 'index')
         ->name('frontend.singular.restaurant.listening.page');
     });
+
+    Route::controller(RestaurantFeedbackController::class)->group(function () {
+
+        Route::post('/restaurant/feedback/service/{id}', 'storeServiceFeedback')
+        ->name('frontend.restaurant.singular.feedback.page.service');
+
+        Route::post('/restaurant/feedback/food/{id}', 'storeFoodFeedback')
+        ->name('frontend.restaurant.singular.feedback.page.food');
+    });
+    
 
     Route::controller(NewsLetterController::class)->group(function () {
 
@@ -210,6 +221,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
         Route::get('users/contact/queries', 'index')
         ->name('admin.users.query');
+
+        Route::get('users/contact/queries/destroy/{id}', 'destroy')
+        ->name('admin.users.query.destroy');
     });
 });
 

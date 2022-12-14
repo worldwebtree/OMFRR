@@ -11,7 +11,7 @@
             <h1>About Us</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:"><i class="fa fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('frontend.index.page') }}"><i class="fa fa-home"></i></a></li>
                     <li class="breadcrumb-item active" aria-current="page">About Us</li>
                 </ol>
             </nav>
@@ -28,11 +28,9 @@
                     <div class="col-sm-10 mx-auto">
                         <div class="text-center">
                             <h2 class="fw-7">Who we are</h2>
-                            <p>WeddingDir is the largest and most trusted global directory connecting engaged couples with local wedding professionals.</p>
-
-                            <p>Maecenas semper dolor metus, a convallis ipsum condimentum ras eros ex, euismod vitae congue ullamcorper id ligula. Maecenas semper dolor metusm ras eros ex, euismod vitae congue ullamcorper id ligula.</p>
-
-
+                            <p>
+                                {{ $about }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -40,62 +38,19 @@
         </section>
         <!-- About Intro Start -->
 
-        <!-- About Slider Start -->
-        <section>
-            <div class="owl-carousel owl-theme" id="slider-about">
-                <!-- About Slider Images -->
-                <div class="item">
-                    <div class="about-slider">
-                        <img src="assets/images/about/slider_img_1.jpg" alt="">
-                    </div>
-                </div>
-                <!-- About Slider Images -->
-
-                <!-- About Slider Images -->
-                <div class="item">
-                    <div class="about-slider">
-                        <img src="assets/images/about/slider_img_3.jpg" alt="">
-                    </div>
-                </div>
-                <!-- About Slider Images -->
-
-                <!-- About Slider Images -->
-                <div class="item">
-                    <div class="about-slider">
-                        <img src="assets/images/about/slider_img_2.jpg" alt="">
-                    </div>
-                </div>
-                <!-- About Slider Images -->
-            </div>
-        </section>
-        <!-- About Slider End -->
-
         <!-- Why Choose Start -->
         <section class="wide-tb-90">
             <div class="container">
                 <div class="section-title text-center">
-                    <h1>Why Choose Wedding Dir</h1>
-                    <p>Excepteur sint occaecat cupidatat non proident sunt</p>
+                    <h1>Why Choose Rate Restaurant</h1>
                 </div>
                 <div class="row">
-                    <!-- Why Choose Icons -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="icon-box-style-2">
-                            <i class="weddingdir_heart_hand"></i>
-                            <h4>15 Years Experience</h4 >
-                            <p>Sed ut perspiciatis und omnis iste natus errors sit.</p>
-                            <a href="javascript:" class="btn btn-link btn-link-secondary">Read more</a>
-                        </div>
-                    </div>
-                    <!-- Why Choose Icons -->
 
                     <!-- Why Choose Icons -->
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <div class="icon-box-style-2">
-                            <i class="weddingdir_shopping_bag_heart"></i>
-                            <h4>350,000 Vendors</h4 >
-                            <p>Sed ut perspiciatis und omnis iste natus errors sit.</p>
-                            <a href="javascript:" class="btn btn-link btn-link-secondary">Read more</a>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <h4>Trsuted Restaurants</h4 >
                         </div>
                     </div>
                     <!-- Why Choose Icons -->
@@ -105,26 +60,20 @@
                     <!-- Spacer For Medium -->
 
                     <!-- Why Choose Icons -->
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <div class="icon-box-style-2">
-                            <i class="weddingdir_heart_envelope"></i>
-                            <h4>Trusted Services</h4 >
-                            <p>Sed ut perspiciatis und omnis iste natus errors sit.</p>
-                            <a href="javascript:" class="btn btn-link btn-link-secondary">Read more</a>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <h4>Real Users</h4 >
                         </div>
                     </div>
                     <!-- Why Choose Icons -->
 
-                    <!-- Why Choose Icons -->
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <div class="icon-box-style-2">
-                            <i class="weddingdir_heart_ring"></i>
-                            <h4>25K Real Weddings</h4 >
-                            <p>Sed ut perspiciatis und omnis iste natus errors sit.</p>
-                            <a href="javascript:" class="btn btn-link btn-link-secondary">Read more</a>
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            <h4>Trusted Feedbacks</h4 >
                         </div>
                     </div>
-                    <!-- Why Choose Icons -->
                 </div>
             </div>
         </section>
@@ -224,16 +173,15 @@
         <section class="callout-main">
             <div class="container-fluid pl-0">
                 <div class="row">
-                    <div class="col-lg-6" style="background: url(assets/images/callout_img.jpg) center center no-repeat; background-size: cover;">
-                        <img src="assets/images/callout_img.jpg" class="d-lg-none invisible" alt="">
+                    <div class="col-lg-6" style="background: url({{ asset('frontend/Styles/assets/images/restaurants/d5ec9c42cade6c696ef244cc33efedd3.gif') }}) center center no-repeat; background-size: cover;">
                     </div>
                     <div class="col-md-12 col-lg-6">
                         <div class="callout-text">
                             <div class="section-title">
-                                <h1>The Best Wedding Vendor Service</h1>
+                                <h1>The Best Restaurants Review System</h1>
                             </div>
-                            <p class="lead">Sed ut perspiciatis unde omnis iste oluptatem accusantium doloremque laud.</p>
-                            <a href="contact-us.html" class="btn btn-default btn-rounded btn-lg">Contact Us</a>
+                            <p class="lead">Have any queries!</p>
+                            <a href="{{ route('frontend.contact.page') }}" class="btn btn-default btn-rounded btn-lg">Contact Us</a>
                         </div>
                     </div>
                 </div>

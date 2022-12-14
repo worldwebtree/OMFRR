@@ -8,7 +8,7 @@
                             <h2 class="text-info">RateRestaurant</h2>
                             <p>Sed ut perspiciatis unde mnis iste natus error sit ptatem accus antium doloremque lauda ntium.</p>
                         </div>
-                        <div><a href="javascript:" class="btn btn-primary">Know More</a></div>
+                        <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary">Know More</a></div>
                     </div>
 
                     <div class="col-md">

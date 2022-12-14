@@ -117,6 +117,9 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
+                                                        <span class="featured text-white bg-info">
+                                                            <span>{{ $data->category }}</span>
+                                                        </span>
                                                         @php($Image = json_decode($data->images))
                                                         <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
                                                             <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
@@ -151,6 +154,9 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
+                                                        <span class="featured text-white bg-info">
+                                                            <span>{{ $restaurantData->category }}</span>
+                                                        </span>
                                                         @php($Image = json_decode($restaurantData->images))
                                                         <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
                                                             <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
@@ -185,6 +191,9 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
+                                                        <span class="featured text-white bg-info">
+                                                            <span>{{ $search->category }}</span>
+                                                        </span>
                                                         @php($Image = json_decode($search->images))
                                                         <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
                                                             <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
@@ -219,6 +228,9 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
+                                                        <span class="featured text-white bg-info">
+                                                            <span>{{ $searchCategory->category }}</span>
+                                                        </span>
                                                         @php($Image = json_decode($searchCategory->images))
                                                         <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
                                                             <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
@@ -253,6 +265,9 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
+                                                        <span class="featured text-white bg-info">
+                                                            <span>{{ $searchLocation->category }}</span>
+                                                        </span>
                                                         @php($Image = json_decode($searchLocation->images))
                                                         <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
                                                             <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">

@@ -1820,11 +1820,10 @@ header {
 
 /*---- 5.4 Page Header ---*/
 .breadcrumbs-page {
-  background-image: url(../images/breadcrumbs_bg.jpg);
+  background-image: url(../images/restaurants/animated_about.gif);
   background-repeat: no-repeat;
-  padding: 9rem 0 0 0;
-  background-position: top center;
-  margin-top: 129px;
+  padding: 30rem 0 0 0;
+  background-position: top;
   position: relative;
   margin-bottom: 1rem;
   background-size: cover;
@@ -1853,17 +1852,6 @@ header {
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.09);
   bottom: -26px;
   position: relative;
-}
-.breadcrumb::after {
-  position: absolute;
-  content: "\e921";
-  right: 15px;
-  top: 50%;
-  z-index: 99;
-  font-family: "icomoon" !important;
-  font-size: 2rem;
-  color: #00aeaf;
-  transform: translateY(-50%);
 }
 .breadcrumbs-page h1 {
   color: #fff;
@@ -3738,7 +3726,6 @@ header {
 }
 .vendor-single-slider {
   position: relative;
-  margin-top: 129px;
   background-color: #f3f3f3;
 }
 
@@ -3850,11 +3837,6 @@ header {
   font-size: 0.875rem;
   color: #fff;
   margin-right: 4px;
-}
-.vendor-nav-sticky {
-  position: sticky;
-  top: 80px;
-  z-index: 99;
 }
 .pos-rel {
   position: relative;
@@ -4815,7 +4797,7 @@ header {
 }
 .result-list .img .featured {
   background: #fff;
-  padding: 3px 10px 3px 3px;
+  padding: 5px 10px 5px 10px;
   white-space: nowrap;
   font-size: 0.875rem;
   position: absolute;
@@ -4834,7 +4816,7 @@ header {
   background: #ffc600;
 }
 .result-list .img .featured span {
-  padding: 0 4px;
+  text-align: center;
 }
 .result-list .content {
   height: 100%;

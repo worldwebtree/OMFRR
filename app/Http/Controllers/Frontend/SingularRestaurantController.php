@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PostRestaurant;
 use Illuminate\Http\Request;
 
 class SingularRestaurantController extends Controller
@@ -12,9 +13,11 @@ class SingularRestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(PostRestaurant $postRestaurant, $id)
     {
-        return view('frontEnd.listing-singular');
+        $restaurant = $postRestaurant->get();
+
+        return view('frontEnd.listing-singular', compact('restaurant'));
     }
 
     /**
