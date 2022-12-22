@@ -1,4 +1,3 @@
-
 @extends('frontEnd.master')
 
 @push('css')
@@ -73,11 +72,11 @@
                                     <div class="collapse show" id="city">
                                         <div>
                                             <div class="inner">
-                                                @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
                                                 <ul class="list-unstyled">
-                                                    @foreach ($location as $city)
+                                                    @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
+                                                    @foreach ($location as $index => $name)
                                                         <li>
-                                                            <a href="{{ route('frontend.restaurant-listening.search.by.location', $city->city) }}">{{ $city->city }}</a>
+                                                            <a href="{{ route('frontend.restaurant-listening.search.by.location', $name) }}">{{ $name }}</a>
                                                         </li>
                                                     @endforeach
                                                 </ul>
@@ -93,19 +92,21 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="result-count">
-                            <strong>244 results:</strong>
-                            <ul class="nav nav-pills theme-tabbing list-style-map" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link show active" id="pills-listing-tab" data-toggle="pill" href="#pills-listing" role="tab" aria-controls="pills-listing" aria-selected="false"><i class="fa fa-list-ul"></i> List</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " id="pills-images-tab" data-toggle="pill" href="#pills-images" role="tab" aria-controls="pills-images" aria-selected="true"><i class="fa fa-th-large"></i> Images</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false"><i class="fa fa-map-marker"></i> Map</a>
-                                </li>
-                            </ul>
+                            @isset($restaurant)
+                                <strong>{{ $restaurant->count() }} results:</strong>
+                            @endisset
+                            @isset($restaurants)
+                                <strong>{{ $restaurants->count() }} results:</strong>
+                            @endisset
+                            @isset($restaurantsByName)
+                                <strong>{{ $restaurantsByName->count() }} results:</strong>
+                            @endisset
+                            @isset($restaurantsByCategory)
+                                <strong>{{ $restaurantsByCategory->count() }} results:</strong>
+                            @endisset
+                            @isset($restaurantsByLocation)
+                                <strong>{{ $restaurantsByLocation->count() }} results:</strong>
+                            @endisset
                         </div>
 
                         <div class="tab-content theme-tabbing search-result-tabbing" id="pills-tabContent">
@@ -321,152 +322,7 @@
                                 </div>
                                 <!-- Post Pagination -->
                             </div>
-                            <div class="tab-pane fade" id="pills-images" role="tabpanel" aria-labelledby="pills-images-tab">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="wedding-listing">
-                                            <div class="img">
-                                                <a href="javascript:">
-                                                    <img src="assets/images/weddings/wedding_listing_1.jpg" alt="">
-                                                </a>
-                                                <div class="img-content">
-                                                    <div class="top">
-                                                        <span class="price">
-                                                            <i class="fa fa-tag"></i>
-                                                            <span>$500-$800</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <a class="tags" href="javascript.html">
-                                                            Fashion
-                                                        </a>
-                                                        <a class="favorite" href="javascript.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="content">
-                                                <div class="gap">
-                                                    <h3><a href="javascript:">Happy Wedding Fashions <span class="verified"><i class="fa fa-check-circle"></i></span></a></h3>
-                                                    <div><i class="fa fa-map-marker"></i> Surat, Gujrat, India</div>
-                                                </div>
-                                                <div class="reviews">
-                                                    <span class="stars">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </span>
-                                                    (6 review)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="wedding-listing">
-                                            <div class="img">
-                                                <a href="javascript:">
-                                                    <img src="assets/images/weddings/wedding_listing_2.jpg" alt="">
-                                                </a>
-                                                <div class="img-content">
-                                                    <div class="top">
-                                                        <span class="featured">
-                                                            <i class="fa fa-star"></i>
-                                                            <span>Featured</span>
-                                                        </span>
-                                                        <span class="price">
-                                                            <i class="fa fa-tag"></i>
-                                                            <span>$500-$800</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <a class="tags" href="javascript.html">
-                                                            Photography
-                                                        </a>
-                                                        <a class="favorite" href="javascript.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="content">
-                                                <div class="gap">
-                                                    <h3><a href="javascript:">Cool Wed Photography <span class="verified"><i class="fa fa-check-circle"></i></span></a></h3>
-                                                    <div><i class="fa fa-map-marker"></i> Surat, Gujrat, India</div>
-                                                </div>
-                                                <div class="reviews">
-                                                    <span class="stars">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </span>
-                                                    (6 review)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="wedding-listing">
-                                            <div class="img">
-                                                <a href="javascript:">
-                                                    <img src="assets/images/weddings/wedding_listing_3.jpg" alt="">
-                                                </a>
-                                                <div class="img-content">
-                                                    <div class="top">
-                                                        <span class="price">
-                                                            <i class="fa fa-tag"></i>
-                                                            <span>$500-$800</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <a class="tags" href="javascript.html">
-                                                            Flora
-                                                        </a>
-                                                        <a class="favorite" href="javascript.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="content">
-                                                <div class="gap">
-                                                    <h3><a href="javascript:">Lotus Wedding Florist <span class="verified"><i class="fa fa-check-circle"></i></span></a></h3>
-                                                    <div><i class="fa fa-map-marker"></i> Surat, Gujrat, India</div>
-                                                </div>
-                                                <div class="reviews">
-                                                    <span class="stars">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </span>
-                                                    (6 review)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                                <div id="map-holder">
-                                    <div id="map_extended" class="vendor-single-popup-wrap">
-                                        <p>This will be replaced with the Google Map.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

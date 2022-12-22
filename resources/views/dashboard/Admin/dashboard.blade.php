@@ -61,7 +61,7 @@
                         <div class="d-inline-block">
                             <h2 class="text-white">{{ $queries }}</h2>
                         </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-comments"></i></span>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-question"></i></span>
                     </div>
                 </div>
             </div>

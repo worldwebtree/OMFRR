@@ -66,6 +66,13 @@
                                 <a class="dropdown-item" target="_blank" href="https://instagram.com"><i class="fa fa-instagram"></i> Instagram</a>
                             </span>
                         </span>
+                        <span class="hover_out">
+                            <a href="https://www.google.com/maps/search/{{ $data->title }} {{ $data->city }}"
+                                target="_blank"
+                                class="btn btn-outline-white mb-2">
+                                <i class="fa fa-map-marker"></i> Location
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -77,7 +84,6 @@
             <div class="vendor-nav">
                 <a href="#description"><i class="fa fa-file-text"></i> Description</a>
                 <a href="#reviews"><i class="fa fa-star-half-full"></i> Reviews</a>
-                <a href="#location"><i class="fa fa-map-marker"></i> Location</a>
             </div>
         </div>
         <!-- Vendor Profile Navigation -->
@@ -164,9 +170,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-                            <div class="card-shadow-body d-md-flex justify-content-between align-items-center py-3">
-                                <strong>19 Overall Reviews </strong>
                             </div>
                             <div class="card-shadow-body border-top">
                                 <!-- Review Media -->
@@ -375,22 +378,6 @@
                             </div>
                         </div>
                         <!-- Write A Review -->
-
-                        <!-- Location -->
-                        <div class="card-shadow pos-rel">
-                            <a id="location" class="anchor-fake"></a>
-                            <div class="card-shadow-header">
-                                <h3><i class="fa fa-map-marker"></i> Location</h3>
-                            </div>
-                            <div class="card-shadow-body">
-                                <div id="map-holder">
-                                    <div id="map_extended" class="vendor-single-popup-wrap">
-                                        <p>This will be replaced with the Google Map.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Location -->
 
                     </div>
                     <!-- Vendor Single Content -->

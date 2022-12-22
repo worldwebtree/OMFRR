@@ -4875,6 +4875,8 @@ header {
 .search-result-toggle.widget {
   padding-bottom: 0;
   margin-bottom: 40px;
+  max-height: 500px;
+  overflow-y: auto;
 }
 .search-result-toggle.widget a.link {
   padding-bottom: 1.5rem;

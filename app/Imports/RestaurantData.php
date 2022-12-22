@@ -14,7 +14,7 @@ class RestaurantData implements ToModel
     */
     public function model(array $row)
     {
-        $fileArray = explode(",",$row[2]);
+        // $fileArray = explode(",",$row[2]);
 
         // foreach ($fileArray as $image) {
 
@@ -31,6 +31,7 @@ class RestaurantData implements ToModel
             'title' => ucwords($row[0]),
             'description' => $row[1],
             // 'images' => json_encode($restaurantImagesArray),
+            'images' => json_encode(['image.jpg','image.jpg','image.jpg','image.jpg']),
             'city' => $row[3],
             'address' => ucwords($row[4]),
             'category' => $row[5],

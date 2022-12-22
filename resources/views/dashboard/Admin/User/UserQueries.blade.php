@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="card-title text-capitalize">
-                                user's feedback <i class="fa fa-users" aria-hidden="true"></i>
+                                user's Queries <i class="fa fa-question" aria-hidden="true"></i>
                             </h1>
                             <div class="table-responsive">
                                 <table class="table table-striped table-inverse">

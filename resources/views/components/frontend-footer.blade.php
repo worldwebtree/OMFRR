@@ -20,18 +20,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="col-md">
-                        <div class="footer-widget">
-                            <h3 class="widget-title">Locations</h3>
-                            @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
-                            <ul class="list-unstyled icons-listing mb-0 widget-listing arrow">
-                                @foreach ($location as $city)
-                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.location', $city->city) }}">{{ $city->city }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
 
