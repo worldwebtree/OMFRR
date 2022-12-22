@@ -105,11 +105,11 @@
                         <div class="card-shadow pos-rel">
                             <a id="reviews" class="anchor-fake"></a>
                             <div class="card-shadow-header d-md-flex justify-content-between align-items-center">
-                                <h3><i class="fa fa-star-o"></i> Reviews For Matrimony Wedding Photography</h3>
+                                <h3><i class="fa fa-star-o"></i> Reviews</h3>
                                 <a href="#review-form" class="btn btn-sm btn-dark mt-3 mt-md-0" id="write-review-form">Write A Review</a>
                             </div>
                             <div class="card-shadow-body border-bottom">
-                                <div class="row no-gutters">
+                                <div class="no-gutters">
                                     <div class="col-md-auto">
                                         <div class="review-count">
                                             <span>3.8</span>
@@ -124,7 +124,7 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="row">
+                                        <div class="row justify-content-around">
                                             <!-- review-option -->
                                             <div class="col-md-4">
                                                 <div class="review-option">
@@ -132,7 +132,7 @@
                                                         <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
                                                     </div>
                                                     <div class="count">
-                                                        <strong>Quality Service</strong>
+                                                        <strong>Service</strong>
                                                         <div>
                                                             <div class="bar-base">
                                                                 <div class="bar-filled" style="width: 80%;">&nbsp;</div>
@@ -147,10 +147,10 @@
                                             <div class="col-md-4">
                                                 <div class="review-option">
                                                     <div class="icon">
-                                                        <i class="fa fa-exchange"></i> <span class="review-each-count">3.7</span>
+                                                        <i class="fa fa-cutlery" aria-hidden="true"></i> <span class="review-each-count">3.7</span>
                                                     </div>
                                                     <div class="count">
-                                                        <strong>Facilities</strong>
+                                                        <strong>Food</strong>
                                                         <div>
                                                             <div class="bar-base">
                                                                 <div class="bar-filled" style="width: 67%;">&nbsp;</div>
@@ -160,479 +160,92 @@
                                                 </div>
                                             </div>
                                             <!-- review-option -->
-
-                                            <!-- review-option -->
-                                            <div class="col-md-4">
-                                                <div class="review-option">
-                                                    <div class="icon">
-                                                        <i class="fa fa-male"></i> <span class="review-each-count">4.0</span>
-                                                    </div>
-                                                    <div class="count">
-                                                        <strong>Staff</strong>
-                                                        <div>
-                                                            <div class="bar-base">
-                                                                <div class="bar-filled" style="width: 75%;">&nbsp;</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- review-option -->
-
-                                            <!-- review-option -->
-                                            <div class="col-md-4">
-                                                <div class="review-option">
-                                                    <div class="icon">
-                                                        <i class="fa fa-sliders"></i> <span class="review-each-count">4.9</span>
-                                                    </div>
-                                                    <div class="count">
-                                                        <strong>Flexibility</strong>
-                                                        <div>
-                                                            <div class="bar-base">
-                                                                <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- review-option -->
-
-                                            <!-- review-option -->
-                                            <div class="col-md-4">
-                                                <div class="review-option">
-                                                    <div class="icon">
-                                                        <i class="fa fa-dollar"></i> <span class="review-each-count">4.9</span>
-                                                    </div>
-                                                    <div class="count">
-                                                        <strong>Value of money</strong>
-                                                        <div>
-                                                            <div class="bar-base">
-                                                                <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- review-option -->
-
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="card-shadow-body d-md-flex justify-content-between align-items-center py-3">
-                                <strong>19 Reviews for Matrimony Wedding Photography</strong>
-                                <div class="d-flex align-items-center col-md-5 col-12 p-0 mt-3 mt-md-0">
-                                    <small class="text-nowrap mr-3 ">Sort by</small>
-                                    <select class="theme-combo" name="state">
-                                        <option value="AL">Rating: Highest</option>
-                                        <option value="WY">Rating: Lowest</option>
-                                        <option value="WY">Rating: Dates</option>
-                                    </select>
-                                </div>
+                                <strong>19 Overall Reviews </strong>
                             </div>
                             <div class="card-shadow-body border-top">
                                 <!-- Review Media -->
-                                <div class="reviews-media">
-                                    <div class="media">
-                                        <img class="thumb" src="assets/images/thumb_img_1.jpg" alt="">
-                                        <div class="media-body">
-                                            <div class="heading-wrap no-gutters">
-                                                <div class="heading">
-                                                    <div class="col pl-0">
-                                                        <h4 class="mb-0">Karon Balina</h4>
-                                                        <div class="review-option-btn">
-                                                            <a data-toggle="collapse" href="#review-option-toggle-1" role="button" aria-expanded="false" class="collapsed">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                <span>4.2 <i class="fa fa-angle-down arrow"></i></span>
-                                                            </a>
+                                @foreach ($feedbacks as $feedback)
+                                    <div class="reviews-media">
+                                        <div class="media">
+                                            <img class="thumb" src="assets/images/thumb_img_1.jpg" alt="">
+                                            <div class="media-body">
+                                                <div class="heading-wrap no-gutters">
+                                                    <div class="heading">
+                                                        <div class="col pl-0">
+                                                            <h4 class="mb-0">{{ $feedback->username }}</h4>
+                                                            <div class="review-option-btn">
+                                                                <a data-toggle="collapse" href="#review-option-toggle-1" role="button" aria-expanded="false" class="collapsed">
+                                                                    <span class="stars">
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star-half-o"></i>
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    </span>
+                                                                    <span>4.2 <i class="fa fa-angle-down arrow"></i></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <small class="text-info">Reviewed on {{ $feedback->created_at->format('d-m-y') }}</small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-auto">
-                                                        <small>Married on 17, Sep, 2020</small>
-                                                    </div>
-                                                </div>
-                                                <div id="review-option-toggle-1" class="collapse" >
-                                                    <div class="row">
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Quality Service</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
+                                                    <div id="review-option-toggle-1" class="collapse" >
+                                                        <div class="row">
+                                                            <!-- review-option -->
+                                                            <div class="col-md-4">
+                                                                <div class="review-option">
+                                                                    <div class="icon">
+                                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
+                                                                    </div>
+                                                                    <div class="count">
+                                                                        <strong>Service</strong>
+                                                                        <div>
+                                                                            <div class="bar-base">
+                                                                                <div class="bar-filled" style="width: 80%;">&nbsp;</div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <!-- review-option -->
+                                                            <!-- review-option -->
 
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-exchange"></i> <span class="review-each-count">3.7</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Facilities</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 67%;">&nbsp;</div>
+                                                            <!-- review-option -->
+                                                            <div class="col-md-4">
+                                                                <div class="review-option">
+                                                                    <div class="icon">
+                                                                        <i class="fa fa-cutlery"></i> <span class="review-each-count">3.7</span>
+                                                                    </div>
+                                                                    <div class="count">
+                                                                        <strong>Food</strong>
+                                                                        <div>
+                                                                            <div class="bar-base">
+                                                                                <div class="bar-filled" style="width: 67%;">&nbsp;</div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <!-- review-option -->
                                                         </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-male"></i> <span class="review-each-count">4.0</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Staff</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 75%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-sliders"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Flexibility</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-dollar"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Value of money</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <h3 class="fw-7">Excellent service</h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Review Media -->
-
-                                <!-- Review Media -->
-                                <div class="reviews-media">
-                                    <div class="media">
-                                        <img class="thumb" src="assets/images/thumb_img_3.jpg" alt="">
-                                        <div class="media-body">
-                                            <div class="heading-wrap no-gutters">
-                                                <div class="heading">
-                                                    <div class="col pl-0">
-                                                        <h4 class="mb-0">Karon Balina</h4>
-                                                        <div class="review-option-btn">
-                                                            <a data-toggle="collapse" href="#review-option-toggle-2" role="button" aria-expanded="false" class="collapsed">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                <span>4.2 <i class="fa fa-angle-down arrow"></i></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <small>Married on 17, Sep, 2020</small>
-                                                    </div>
-                                                </div>
-                                                <div id="review-option-toggle-2" class="collapse" >
-                                                    <div class="row">
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Quality Service</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-exchange"></i> <span class="review-each-count">3.7</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Facilities</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 67%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-male"></i> <span class="review-each-count">4.0</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Staff</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 75%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-sliders"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Flexibility</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-dollar"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Value of money</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <h3 class="fw-7">Excellent service</h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                            <div class="media reply-box">
-                                                <img src="assets/images/thumb_img_2.jpg" alt="" class="thumb ">
-                                                <div class="media-body">
-                                                    <div class="d-md-flex justify-content-between mb-3">
-                                                        <h4 class="mb-0">Sofia Lorence</h4>
-                                                        <small class="txt-blue">17, Aug, 2020</small>
-                                                    </div>
-                                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
-                                                    purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                                                    vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                                </div>
+                                                <p>{{ $feedback->feedback }}</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Review Media -->
-
-                                <!-- Review Media -->
-                                <div class="reviews-media">
-                                    <div class="media">
-                                        <img class="thumb" src="assets/images/thumb_img_4.jpg" alt="">
-                                        <div class="media-body">
-                                            <div class="heading-wrap no-gutters">
-                                                <div class="heading">
-                                                    <div class="col pl-0">
-                                                        <h4 class="mb-0">Karon Balina</h4>
-                                                        <div class="review-option-btn">
-                                                            <a data-toggle="collapse" href="#review-option-toggle-3" role="button" aria-expanded="false" class="collapsed">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                <span>4.2 <i class="fa fa-angle-down arrow"></i></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <small>Married on 17, Sep, 2020</small>
-                                                    </div>
-                                                </div>
-                                                <div id="review-option-toggle-3" class="collapse" >
-                                                    <div class="row">
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Quality Service</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-exchange"></i> <span class="review-each-count">3.7</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Facilities</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 67%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-male"></i> <span class="review-each-count">4.0</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Staff</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 75%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-sliders"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Flexibility</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                        <!-- review-option -->
-                                                        <div class="col-md-4">
-                                                            <div class="review-option">
-                                                                <div class="icon">
-                                                                    <i class="fa fa-dollar"></i> <span class="review-each-count">4.9</span>
-                                                                </div>
-                                                                <div class="count">
-                                                                    <strong>Value of money</strong>
-                                                                    <div>
-                                                                        <div class="bar-base">
-                                                                            <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- review-option -->
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <h3 class="fw-7">Best weekend ever</h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <!-- Review Media -->
 
                                 <div class="text-center">
-                                    <a href="javascript:" class="btn btn-default btn-rounded">See more reviews</a>
+                                    {{ $feedbacks->links() }}
                                 </div>
                             </div>
                         </div>
@@ -699,7 +312,7 @@
                                   </li>
                                 </ul>
                               </div>
-                      
+
                               <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active p-3" id="Service" role="tabpanel" aria-labelledby="service-tab">
                                     <div class="card-shadow pos-rel">
@@ -727,7 +340,7 @@
                                                   <!-- Leave a Reply -->
                                               </form>
                                         </div>
-                                    </div>           
+                                    </div>
                                 </div>
 
                                 <div class="tab-pane fade p-3" id="Food" role="tabpanel" aria-labelledby="food-tab">
@@ -756,7 +369,7 @@
                                                 <!-- Leave a Reply -->
                                             </form>
                                         </div>
-                                    </div>            
+                                    </div>
                                 </div>
                               </div>
                             </div>

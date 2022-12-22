@@ -17,7 +17,7 @@ class Customer
     public function handle(Request $request, Closure $next)
     {
         if (! $request->user()->role == "user"){
-            return redirect()->route('customer.dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         return $next($request);

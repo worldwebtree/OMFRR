@@ -30,6 +30,7 @@ class PostRestaurant extends Model
     {
         return PostRestaurant::get('city');
     }
+
     /**
      * Model Relationships
      * @return Illuminate\Database\Eloquent\Factories\Relationship

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PostRestaurant;
+use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 
 class SingularRestaurantController extends Controller
@@ -15,9 +16,13 @@ class SingularRestaurantController extends Controller
      */
     public function index(PostRestaurant $postRestaurant, $id)
     {
-        $restaurant = $postRestaurant->get();
+        $restaurant = $postRestaurant->findOrFail($id)
+        ->get();
 
-        return view('frontEnd.listing-singular', compact('restaurant'));
+        $feedbacks = UsersFeedback::where('post_restaurant_id', $id)
+        ->paginate(10);
+
+        return view('frontEnd.listing-singular', compact('restaurant', 'feedbacks'));
     }
 
     /**

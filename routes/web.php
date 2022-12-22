@@ -88,7 +88,12 @@ Route::prefix('frontend')->group(function () {
         ->name('frontend.singular.restaurant.listening.page');
     });
 
-    Route::controller(RestaurantFeedbackController::class)->group(function () {
+    /**
+     * This route will only be accessed by Authenticated and the user
+     * that has the role user.
+     */
+    Route::controller(RestaurantFeedbackController::class)->middleware(['auth', 'isCustomer'])
+    ->group(function () {
 
         Route::post('/restaurant/feedback/service/{id}', 'storeServiceFeedback')
         ->name('frontend.restaurant.singular.feedback.page.service');
@@ -96,7 +101,7 @@ Route::prefix('frontend')->group(function () {
         Route::post('/restaurant/feedback/food/{id}', 'storeFoodFeedback')
         ->name('frontend.restaurant.singular.feedback.page.food');
     });
-    
+
 
     Route::controller(NewsLetterController::class)->group(function () {
 
