@@ -15,8 +15,8 @@
                 <div class="col-xl-9 col-lg-12 mx-auto">
                     <h1>Find Review the Perfect Restaurants</h1>
                     <p class="lead txt-white text-center">Search over 360,000 restaurants with reviews, pricing, availability and more</p>
-                    <form action="{{ route('frontend.restaurant-listening.search') }}" 
-                        method="POST" 
+                    <form action="{{ route('frontend.restaurant-listening.search') }}"
+                        method="POST"
                         class="restaurant-search-form">
                         @csrf
 
@@ -36,8 +36,8 @@
                                     @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
                                     <select class="form-light-select theme-combo home-select-2" required name="location">
                                         <option selected disabled>Choose Location</option>
-                                        @foreach ($location as $city)
-                                            <option value="{{ $city->city }}">{{ $city->city }}</option>
+                                        @foreach ($location as $index => $name)
+                                            <option value="{{ $name }}">{{ $name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
