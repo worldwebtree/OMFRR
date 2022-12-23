@@ -139,7 +139,7 @@
                                                                     <i class="fa fa-star-half-o"></i>
                                                                     <i class="fa fa-star-o"></i>
                                                                 </span>
-                                                                (22 review)  /  {{ $data->city }}
+                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $data->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -176,7 +176,7 @@
                                                                     <i class="fa fa-star-half-o"></i>
                                                                     <i class="fa fa-star-o"></i>
                                                                 </span>
-                                                                (22 review)  /  {{ $restaurantData->city }}
+                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $restaurantData->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -213,7 +213,7 @@
                                                                     <i class="fa fa-star-half-o"></i>
                                                                     <i class="fa fa-star-o"></i>
                                                                 </span>
-                                                                (22 review)  /  {{ $search->city }}
+                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $search->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -250,7 +250,7 @@
                                                                     <i class="fa fa-star-half-o"></i>
                                                                     <i class="fa fa-star-o"></i>
                                                                 </span>
-                                                                (22 review)  /  {{ $searchCategory->city }}
+                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchCategory->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -287,7 +287,7 @@
                                                                     <i class="fa fa-star-half-o"></i>
                                                                     <i class="fa fa-star-o"></i>
                                                                 </span>
-                                                                (22 review)  /  {{ $searchLocation->city }}
+                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchLocation->city }}
                                                             </div>
                                                         </div>
                                                     </div>

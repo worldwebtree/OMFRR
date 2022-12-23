@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Admin\PostRestaurant;
 use Maatwebsite\Excel\Concerns\ToModel;
+use stdClass;
 
 class RestaurantData implements ToModel
 {
@@ -14,24 +15,27 @@ class RestaurantData implements ToModel
     */
     public function model(array $row)
     {
-        // $fileArray = explode(",",$row[2]);
+        $fileArray =  explode(",",$row[2]);
+        // $object = new stdClass();
 
-        // foreach ($fileArray as $image) {
+        foreach ($fileArray as $index => $image) {
 
-        //     // generating hashed file name
-        //     $restaurantImages = $image->hashName();
+            // $object->$index = $image;
 
-        //     // saving the file with hashed name in storage
-        //     $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
+            // $restaurantImages = $image->hashName();
+            // dd($restaurantImages);
 
-        //     $restaurantImagesArray[] = $restaurantImages;
-        // }
+            // saving the file with hashed name in storage
+            // $image->move(public_path('storage/Restaurant/images'), $image);
+
+            // $restaurantImagesArray[] = $image;
+        }
+        exit();
 
         return new PostRestaurant([
             'title' => ucwords($row[0]),
             'description' => $row[1],
             // 'images' => json_encode($restaurantImagesArray),
-            'images' => json_encode(['image.jpg','image.jpg','image.jpg','image.jpg']),
             'city' => $row[3],
             'address' => ucwords($row[4]),
             'category' => $row[5],

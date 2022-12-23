@@ -9,7 +9,10 @@
         <div class="header-right">
             <ul class="clearfix">
                 <li class="icons">
-                    <a href="{{ route('frontend.index.page') }}" class="home-icon">
+                    <a href="{{ route('frontend.index.page') }}" class="home-icon"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Home">
                         <i class="fa fa-home text-light" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -27,7 +30,11 @@
                             $notifications = auth()->user()->unreadNotifications->count();
                         }
                     @endphp
-                    <a href="{{ $link }}">
+                    <a href="{{ $link }}"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Notifications">
+
                         <i class="mdi mdi-bell-outline"></i>
                         <span class="badge badge-pill bg-primary">
                             {{ $notifications }}
