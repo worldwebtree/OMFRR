@@ -3,7 +3,7 @@
         <div class="row no-gutters">
             <div class="col-lg-7">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         <div class="footer-logo">
                             <h2 class="text-info">RateRestaurant</h2>
                             <p>Sed ut perspiciatis unde mnis iste natus error sit ptatem accus antium doloremque lauda ntium.</p>
@@ -11,7 +11,7 @@
                         <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary">Know More</a></div>
                     </div>
 
-                    <div class="col-md">
+                    {{-- <div class="col-md">
                         <div class="footer-widget">
                             <h3 class="widget-title">Categories</h3>
                             <ul class="list-unstyled icons-listing mb-0 widget-listing arrow">
@@ -19,7 +19,7 @@
                                 <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-auto col-12">
-                    © WorldWebTree 2022 All rights reserved.
+                    © <a class="text-info" target="_blank" href="https://worldwebtree.com">WorldWebTree</a> 2022 All rights reserved.
                 </div>
                 <div class="col-md-auto col-12 copyrights-link ml-md-auto">
                     <a href="javascript:">Home</a> | <a href="javascript:">About</a> | <a href="javascript:">Contact Us</a> | <a href="javascript:">Terms & Conditions</a> |   <a href="javascript:">Privacy Policy</a>

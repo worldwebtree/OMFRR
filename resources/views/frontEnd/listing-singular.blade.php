@@ -176,7 +176,7 @@
                                 @foreach ($feedbacks as $feedback)
                                     <div class="reviews-media">
                                         <div class="media">
-                                            <img class="thumb" src="assets/images/thumb_img_1.jpg" alt="">
+                                            <img class="thumb rounded" src="{{ asset('storage/profile_img/' .$feedback->user->avatar) }}" alt="avatar">
                                             <div class="media-body">
                                                 <div class="heading-wrap no-gutters">
                                                     <div class="heading">
