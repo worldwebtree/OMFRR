@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.main-div{
+    background: linear-gradient(to bottom right, #1fc5a8, #faee9e);
+}
+
+.login-btn{
+    background-color: #50a496;
+}
+
+.login-btn:hover{
+    background-color: #1fc5a8;
+}
+.auth-forms input, .gender-input{
+    border-color: #1fc5a8;
+}

@@ -6,7 +6,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" class="auth-forms">
             @csrf
 
             <!-- Name -->
@@ -55,7 +55,7 @@
                 <x-input-label for="gender" :value="__('Gender')" />
 
                 <select name="gender"
-                        class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="gender-input block mt-1 w-full rounded-3xl shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         id="">
                     <option value="male">male</option>
                     <option value="female">female</option>
