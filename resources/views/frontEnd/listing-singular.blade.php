@@ -182,18 +182,6 @@
                                                     <div class="heading">
                                                         <div class="col pl-0">
                                                             <h4 class="mb-0">{{ $feedback->username }}</h4>
-                                                            <div class="review-option-btn">
-                                                                <a data-toggle="collapse" href="#review-option-toggle-1" role="button" aria-expanded="false" class="collapsed">
-                                                                    <span class="stars">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star-half-o"></i>
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </span>
-                                                                    <span>4.2 <i class="fa fa-angle-down arrow"></i></span>
-                                                                </a>
-                                                            </div>
                                                         </div>
                                                         <div class="col-auto">
                                                             <small class="text-info">Reviewed on {{ $feedback->created_at->format('d-m-y') }}</small>
