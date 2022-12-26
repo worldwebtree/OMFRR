@@ -55,6 +55,7 @@
                                                 <ul class="list-unstyled">
                                                     <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
                                                     <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
+                                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In & Take Away') }}">Dine In & Take Away</a></li>
                                                 </ul>
                                             </div>
 
@@ -132,14 +133,7 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">{{ $data->title }}</a></h3>
                                                             <div class="rating">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $data->city }}
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $data->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -169,14 +163,7 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">{{ $restaurantData->title }}</a></h3>
                                                             <div class="rating">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $restaurantData->city }}
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $restaurantData->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -206,14 +193,7 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">{{ $search->title }}</a></h3>
                                                             <div class="rating">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $search->city }}
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $search->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -243,14 +223,7 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">{{ $searchCategory->title }}</a></h3>
                                                             <div class="rating">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchCategory->city }}
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchCategory->city }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -280,14 +253,7 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">{{ $searchLocation->title }}</a></h3>
                                                             <div class="rating">
-                                                                <span class="stars">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                                (22 review)  <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchLocation->city }}
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchLocation->city }}
                                                             </div>
                                                         </div>
                                                     </div>

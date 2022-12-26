@@ -323,6 +323,7 @@
                                         <option selected disabled>Select Category</option>
                                         <option value="Dine In">Dine In</option>
                                         <option value="Take Away">Take Away</option>
+                                        <option value="Dine In & Take Away">Dine In & Take Away</option>
                                     </select>
                                 </div>
 

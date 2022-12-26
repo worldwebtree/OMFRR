@@ -3,7 +3,9 @@
 namespace App\Imports;
 
 use App\Models\Admin\PostRestaurant;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use stdClass;
 
 class RestaurantData implements ToModel
@@ -16,29 +18,34 @@ class RestaurantData implements ToModel
     public function model(array $row)
     {
         $fileArray =  explode(",",$row[2]);
+        // dd($row);
+        // exit();
+
         // $object = new stdClass();
 
-        foreach ($fileArray as $index => $image) {
+        foreach ($fileArray as $image) {
 
             // $object->$index = $image;
+            // dd($image);
+            // exit();
 
-            // $restaurantImages = $image->hashName();
-            // dd($restaurantImages);
+            $restaurantImages = Hash::make($image);
+            dd($restaurantImages);
 
             // saving the file with hashed name in storage
             // $image->move(public_path('storage/Restaurant/images'), $image);
 
             // $restaurantImagesArray[] = $image;
         }
-        exit();
+        // exit();
 
-        return new PostRestaurant([
-            'title' => ucwords($row[0]),
-            'description' => $row[1],
-            // 'images' => json_encode($restaurantImagesArray),
-            'city' => $row[3],
-            'address' => ucwords($row[4]),
-            'category' => $row[5],
-        ]);
+        // return new PostRestaurant([
+        //     'title' => ucwords($row[0]),
+        //     'description' => null,
+        //     'images' => json_encode($restaurantImagesArray),
+        //     'city' => $row[1],
+        //     'address' => ucwords($row[3]),
+        //     'category' => "Dine In & Take Away",
+        // ]);
     }
 }

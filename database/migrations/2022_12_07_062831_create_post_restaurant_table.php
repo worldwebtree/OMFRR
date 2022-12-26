@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('images', 1500);
             $table->string('city');
             $table->text('address', 1000);
-            $table->enum('category', ['Dine In', 'Take Away']);
+            $table->enum('category', ['Dine In', 'Take Away', 'Dine In & Take Away']);
 
             $table->timestamps();
         });
