@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KeywordManageController;
 use App\Http\Controllers\Admin\NewsLetterController;
+use App\Http\Controllers\Admin\NewsLetterSubscribersController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RestaurantManageController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Frontend\FrontPageController;
 use App\Http\Controllers\Frontend\RestaurantFeedbackController;
 use App\Http\Controllers\Frontend\RestaurantListeningPageController;
 use App\Http\Controllers\Frontend\SingularRestaurantController;
+use App\Models\Admin\NewsLetterSubscribers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -229,6 +231,15 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
         Route::get('users/contact/queries/destroy/{id}', 'destroy')
         ->name('admin.users.query.destroy');
+    });
+
+    Route::controller(NewsLetterSubscribersController::class)->group(function () {
+
+        Route::get('subscribers', 'index')
+        ->name('admin.subscribed.users');
+
+        Route::get('subscribers/destroy/{id}', 'destroy')
+        ->name('admin.subscribed.users.destroy');
     });
 });
 

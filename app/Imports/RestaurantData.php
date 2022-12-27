@@ -3,6 +3,8 @@
 namespace App\Imports;
 
 use App\Models\Admin\PostRestaurant;
+use Illuminate\Http\Testing\File as TestingFile;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -28,16 +30,21 @@ class RestaurantData implements ToModel
             // $object->$index = $image;
             // dd($image);
             // exit();
+            // dd(substr($image, 0, strpos($image, ".")));
+            // $fileName = pathinfo($image, PATHINFO_FILENAME);
+            $fileExtension = pathinfo($image, PATHINFO_EXTENSION);
 
-            $restaurantImages = Hash::make($image);
-            dd($restaurantImages);
+            // $check = new TestingFile($index, PATHINFO_ALL);
+
+            // $fileHashName = Hash::make($fileName);
+            dd($fileExtension);
 
             // saving the file with hashed name in storage
             // $image->move(public_path('storage/Restaurant/images'), $image);
 
             // $restaurantImagesArray[] = $image;
         }
-        // exit();
+        exit();
 
         // return new PostRestaurant([
         //     'title' => ucwords($row[0]),

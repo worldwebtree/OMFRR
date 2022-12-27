@@ -55,7 +55,7 @@ class RestaurantFeedbackController extends Controller
             'category' => "Service",
         ]);
 
-        return back()->with('created', 'Your Feedback has been added successfully');
+        return redirect()->back();
     }
 
         /**
@@ -84,7 +84,7 @@ class RestaurantFeedbackController extends Controller
             'category' => "Food",
         ]);
 
-        return back()->with('created', 'Your Feedback has been added successfully');
+        return redirect()->back();
     }
 
     /**

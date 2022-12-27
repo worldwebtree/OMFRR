@@ -48,6 +48,12 @@
                         <i class="fa fa-question" aria-hidden="true"></i><span class="nav-text">user queries</span>
                     </a>
                 </li>
+
+                <li class="nav-list-item">
+                    <a class="nav-anchor-item" href="{{ route('admin.subscribed.users') }}" aria-expanded="false">
+                        <i class="fa fa-users" aria-hidden="true"></i><span class="nav-text">subscribed user's</span>
+                    </a>
+                </li>
             </ul>
             @else
             {{-- Sidebar links for customer dashbaord --}}

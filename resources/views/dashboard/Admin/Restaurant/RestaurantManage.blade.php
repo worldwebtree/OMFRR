@@ -334,7 +334,7 @@
                         </div>
                     </div>
 
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="card-body text-capitalize">
                             <div class="card-title mb-5">
                                 <h1>
@@ -370,7 +370,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="card">
                         <div class="card-body">

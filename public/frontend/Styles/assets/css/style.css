@@ -5635,8 +5635,10 @@ header {
   font-family: "mulisemibold" !important;
 }
 .reviews-media .thumb {
-  width: 75px;
-  margin-right: 20px;
+width: 5%;
+height: 3rem !important;
+border-radius: 50%;
+margin-right: 20px;
 }
 .reviews-media .btn-theme {
   font-size: 0.75rem;

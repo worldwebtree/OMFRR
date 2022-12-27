@@ -176,7 +176,15 @@
                                 @foreach ($feedbacks as $feedback)
                                     <div class="reviews-media">
                                         <div class="media">
-                                            <img class="thumb rounded" src="{{ asset('storage/profile_img/' .$feedback->user->avatar) }}" alt="avatar">
+                                            @php
+                                                if (empty(auth()->user()->avatar) || auth()->user()->avarar = null) {
+                                                    $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
+
+                                                    }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar != null) {
+                                                    $src = asset('storage/profile_img/'.auth()->user()->avatar);
+                                                }
+                                            @endphp
+                                            <img class="thumb" src="{{ $src }}" alt="avatar">
                                             <div class="media-body">
                                                 <div class="heading-wrap no-gutters">
                                                     <div class="heading">
