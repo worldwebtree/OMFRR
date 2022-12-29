@@ -15,11 +15,17 @@
                 </div>
                 <div class="tab-pane show active" id="pills-hr-grid" role="tabpanel" aria-labelledby="pills-hr-grid-tab">
                     <div class="owl-carousel owl-theme" id="slider-vendor-single">
-                        @foreach (json_decode($data->images) as $image)
                             <!-- About Slider Images -->
+                        @if (is_array($data->images))
+                            @foreach (json_decode($data->images) as $image)
                             <div class="item" style="background-image: url({{ asset('storage/Restaurant/images/' . $image) }});"></div>
+                            @endforeach
+                            @elseif (!is_array($data->images))
+                            <a target="_blank" href="{{ str_replace('"', ' ', $data->images) }}">
+                                <div class="item" style="background-image: url({{ asset('frontend/images/default_restaurant_image/click-me.gif') }});"></div>
+                            </a>
+                        @endif
                             <!-- About Slider Images -->
-                        @endforeach
                     </div>
                 </div>
                 <div class="tab-pane" id="pills-streetview" role="tabpanel" aria-labelledby="pills-streetview-tab">
@@ -49,21 +55,21 @@
                             <h3>{{ $data->title }}</h3>
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address }}"</p>
                             <div class="reviews">
-                                <span class="badge"><i class="fa fa-star-half-full"></i> 3.9</span> 8 Reviews
+                                <span class="badge"><i class="fa fa-star"></i> 3.9</span> {{ $data->overall_ratting }} Reviews
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-6 text-lg-right mt-lg-0 mt-4">
                         <span class="dropdown hover_out">
-                            <a class="btn btn-outline-white mb-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="btn btn-outline-white mb-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-share-alt"></i> Share
                             </a>
 
                             <span class="dropdown-menu">
-                                <a class="dropdown-item" target="_blank" href="https://facebook.com"><i class="fa fa-facebook-f"></i> Facebook</a>
-                                <a class="dropdown-item" target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i> Twitter</a>
-                                <a class="dropdown-item" target="_blank" href="https://instagram.com"><i class="fa fa-instagram"></i> Instagram</a>
+                                <a class="dropdown-item" target="_blank" href="https://facebook.com/{{ $data->title }}"><i class="fa fa-facebook-f"></i> Facebook</a>
+                                <a class="dropdown-item" target="_blank" href="https://twitter.com/{{ $data->title }}"><i class="fa fa-twitter"></i> Twitter</a>
+                                <a class="dropdown-item" target="_blank" href="https://instagram.com/{{ $data->title }}"><i class="fa fa-instagram"></i> Instagram</a>
                             </span>
                         </span>
                         <span class="hover_out">
@@ -102,7 +108,7 @@
                                 <h3><i class="fa fa-file-text"></i> Description</h3>
                             </div>
                             <div class="card-shadow-body">
-                                <p>{{ $data->description }}</p>
+                                <p>{{ $data->description ?? "No Description"}}</p>
                             </div>
                         </div>
                         <!-- Description -->

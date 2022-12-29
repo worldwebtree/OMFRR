@@ -10,16 +10,6 @@
                         </div>
                         <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary">Know More</a></div>
                     </div>
-
-                    {{-- <div class="col-md">
-                        <div class="footer-widget">
-                            <h3 class="widget-title">Categories</h3>
-                            <ul class="list-unstyled icons-listing mb-0 widget-listing arrow">
-                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
-                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
 
@@ -76,7 +66,7 @@
                     © <a class="text-info" target="_blank" href="https://worldwebtree.com">WorldWebTree</a> 2022 All rights reserved.
                 </div>
                 <div class="col-md-auto col-12 copyrights-link ml-md-auto">
-                    <a href="javascript:">Home</a> | <a href="javascript:">About</a> | <a href="javascript:">Contact Us</a> | <a href="javascript:">Terms & Conditions</a> |   <a href="javascript:">Privacy Policy</a>
+                    <a href="{{ route('frontend.index.page') }}">Home</a> | <a href="{{ route('frontend.about.page') }}">About</a> | <a href="{{ route('frontend.restaurant-listening.page') }}">Restaurants</a> | <a href="{{ route('frontend.contact.page') }}">Contact Us</a>
                 </div>
             </div>
         </div>

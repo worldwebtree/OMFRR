@@ -80,7 +80,7 @@ class RestaurantFeedbackController extends Controller
             'post_restaurant_id' => $id,
             'username' => $user->name,
             'restaurant_name' => $restaurant_name,
-            'feedback' => ucfirst(strip_tags($request->service_feedback)),
+            'feedback' => ucfirst(strip_tags($request->food_feedback)),
             'category' => "Food",
         ]);
 

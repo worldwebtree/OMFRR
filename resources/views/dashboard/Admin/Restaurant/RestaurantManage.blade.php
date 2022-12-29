@@ -334,7 +334,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="card">
+                    <div class="card">
                         <div class="card-body text-capitalize">
                             <div class="card-title mb-5">
                                 <h1>
@@ -370,7 +370,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <div class="card">
                         <div class="card-body">
@@ -395,58 +395,70 @@
                                                 @php($Image = json_decode($restaurant->images))
                                             <tr>
                                                 <td>{{ $restaurant->title }}</td>
-                                                <td class="restaurantDescriptionText">{{ $restaurant->description }}</td>
-                                                <td>
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
-                                                        <img width="70" height="70" src="{{ asset('storage/Restaurant/images/' . $Image[0]) }}" alt="First Image" srcset="">
-                                                    </button>
+                                                <td class="restaurantDescriptionText">{{ $restaurant->description ?? "No Description" }}</td>
+                                                @if (is_array($restaurant->images))
+                                                    <td>
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
+                                                            <img width="70" height="70" src="{{ asset('storage/Restaurant/images/' . $Image[0]) }}" alt="First Image" srcset="">
+                                                        </button>
 
-                                                    <!-- Modal -->
-                                                    <div class="modal fade text-capitalize" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <div id="carouselId" class="carousel slide" data-ride="carousel">
-                                                                        @php($count = 0)
-                                                                        <ol class="carousel-indicators">
-                                                                            <li data-target="#carouselId" data-slide-to="{{ $count }}" class="active"></li>
-                                                                            @foreach ($Image as $key => $images)
-                                                                                @if ($key > 0)
-                                                                                    <li data-target="#carouselId" data-slide-to="{{ $key }}"></li>
-                                                                                @endif
-                                                                            @endforeach
-                                                                        </ol>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade text-capitalize" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <div id="carouselId" class="carousel slide" data-ride="carousel">
+                                                                            @php($count = 0)
+                                                                            <ol class="carousel-indicators">
+                                                                                <li data-target="#carouselId" data-slide-to="{{ $count }}" class="active"></li>
+                                                                                @foreach ($Image as $key => $images)
+                                                                                    @if ($key > 0)
+                                                                                        <li data-target="#carouselId" data-slide-to="{{ $key }}"></li>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </ol>
 
-                                                                        <div class="carousel-inner" role="listbox">
-                                                                            <div class="carousel-item active">
-                                                                                <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $Image[0]) }}" alt="First slide">
+                                                                            <div class="carousel-inner" role="listbox">
+                                                                                <div class="carousel-item active">
+                                                                                    <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $Image[0]) }}" alt="First slide">
+                                                                                </div>
+                                                                                @foreach ($Image as $key => $images)
+                                                                                    @if ($key > 0 )
+                                                                                        <div class="carousel-item">
+                                                                                            <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $images) }}" alt="restaurant_images" srcset="">
+                                                                                        </div>
+                                                                                    @endif
+                                                                                @endforeach
                                                                             </div>
-                                                                            @foreach ($Image as $key => $images)
-                                                                                @if ($key > 0 )
-                                                                                    <div class="carousel-item">
-                                                                                        <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $images) }}" alt="restaurant_images" srcset="">
-                                                                                    </div>
-                                                                                @endif
-                                                                            @endforeach
+                                                                            <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+                                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                <span class="sr-only text-dark">Previous</span>
+                                                                            </a>
+                                                                            <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                <span class="sr-only">Next</span>
+                                                                            </a>
                                                                         </div>
-                                                                        <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-                                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                                            <span class="sr-only text-dark">Previous</span>
-                                                                        </a>
-                                                                        <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-                                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                            <span class="sr-only">Next</span>
-                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
+                                                    </td>
+                                                    @elseif (!is_array($restaurant->images))
+                                                    <td>
+                                                        <a target="_blank" href="{{ str_replace('"', ' ', $restaurant->images) }}">
+                                                            <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
+                                                            width="70"
+                                                            height="70"
+                                                            alt="images link">
+                                                        </a>
+                                                    </td>
+                                                @endif
                                                 <td>{{ $restaurant->city }}</td>
                                                 <td>{{ $restaurant->address }}</td>
                                                 <td>{{ $restaurant->category }}</td>
+                                                <td>{{ $restaurant->overall_ratting }}</td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('admin.restaurant.management.destroy', $restaurant->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>

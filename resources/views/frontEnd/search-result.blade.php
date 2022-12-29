@@ -122,10 +122,18 @@
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $data->category }}</span>
                                                         </span>
-                                                        @php($Image = json_decode($data->images))
-                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
-                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
-                                                        </a>
+                                                        @if (is_array($data->images))
+                                                            @php($Image = json_decode($data->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
+                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                            </a>
+                                                            @elseif (!is_array($data->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
+                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
+                                                                alt="restaurant images"
+                                                                class="rounded">
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
@@ -133,6 +141,8 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">{{ $data->title }}</a></h3>
                                                             <div class="rating">
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $data->overall_ratting }}
+                                                                <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $data->city }}
                                                             </div>
                                                         </div>
@@ -152,10 +162,18 @@
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $restaurantData->category }}</span>
                                                         </span>
-                                                        @php($Image = json_decode($restaurantData->images))
-                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
-                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
-                                                        </a>
+                                                        @if (is_array($restaurantData->images))
+                                                            @php($Image = json_decode($restaurantData->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
+                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                            </a>
+                                                            @elseif (!is_array($restaurantData->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
+                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
+                                                                alt="restaurant images"
+                                                                class="rounded">
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
@@ -163,6 +181,8 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">{{ $restaurantData->title }}</a></h3>
                                                             <div class="rating">
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $restaurantData->overall_ratting }}
+                                                                <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $restaurantData->city }}
                                                             </div>
                                                         </div>
@@ -182,10 +202,18 @@
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $search->category }}</span>
                                                         </span>
-                                                        @php($Image = json_decode($search->images))
-                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
-                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
-                                                        </a>
+                                                        @if (is_array($search->images))
+                                                            @php($Image = json_decode($search->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
+                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                            </a>
+                                                            @elseif (!is_array($search->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
+                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
+                                                                alt="restaurant images"
+                                                                class="rounded">
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
@@ -193,6 +221,8 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">{{ $search->title }}</a></h3>
                                                             <div class="rating">
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $search->overall_ratting }}
+                                                                <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $search->city }}
                                                             </div>
                                                         </div>
@@ -212,10 +242,18 @@
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $searchCategory->category }}</span>
                                                         </span>
-                                                        @php($Image = json_decode($searchCategory->images))
-                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
-                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
-                                                        </a>
+                                                        @if (is_array($searchCategory->images))
+                                                            @php($Image = json_decode($searchCategory->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
+                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                            </a>
+                                                            @elseif (!is_array($searchCategory->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
+                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
+                                                                alt="restaurant images"
+                                                                class="rounded">
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
@@ -223,6 +261,8 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">{{ $searchCategory->title }}</a></h3>
                                                             <div class="rating">
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchCategory->overall_ratting }}
+                                                                <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchCategory->city }}
                                                             </div>
                                                         </div>
@@ -242,10 +282,18 @@
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $searchLocation->category }}</span>
                                                         </span>
-                                                        @php($Image = json_decode($searchLocation->images))
-                                                        <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
-                                                            <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
-                                                        </a>
+                                                        @if (is_array($searchLocation->images))
+                                                            @php($Image = json_decode($searchLocation->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
+                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                            </a>
+                                                            @elseif (!is_array($searchLocation->images))
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
+                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
+                                                                alt="restaurant images"
+                                                                class="rounded">
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
@@ -253,6 +301,8 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">{{ $searchLocation->title }}</a></h3>
                                                             <div class="rating">
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchLocation->overall_ratting }}
+                                                                <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchLocation->city }}
                                                             </div>
                                                         </div>

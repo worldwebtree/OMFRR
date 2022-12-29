@@ -23,6 +23,7 @@ class PostRestaurant extends Model
         'city',
         'address',
         'category',
+        'overall_ratting',
     ];
 
     /**

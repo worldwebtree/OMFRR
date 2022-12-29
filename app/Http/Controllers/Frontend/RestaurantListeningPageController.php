@@ -15,7 +15,7 @@ class RestaurantListeningPageController extends Controller
      */
     public function index(PostRestaurant $postRestaurant)
     {
-        $restaurants = $postRestaurant->paginate(15);
+        $restaurants = $postRestaurant->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurants'));
     }
@@ -46,7 +46,7 @@ class RestaurantListeningPageController extends Controller
         $restaurant = PostRestaurant::where([
             'category' => $request->category,
             'city' => $request->location,
-        ])->paginate(15);
+        ])->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurant'));
     }
@@ -67,7 +67,7 @@ class RestaurantListeningPageController extends Controller
         $restaurantsByName = PostRestaurant::where([
             'title' => ucwords($request->restaurant_name),
             'city' => ucfirst($request->restaurant_city),
-        ])->paginate(15);
+        ])->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurantsByName'));
     }
@@ -82,7 +82,7 @@ class RestaurantListeningPageController extends Controller
     {
         $restaurantsByCategory = PostRestaurant::where([
             'category' => $category,
-        ])->paginate(15);
+        ])->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurantsByCategory'));
     }
@@ -97,7 +97,7 @@ class RestaurantListeningPageController extends Controller
     {
         $restaurantsByLocation = PostRestaurant::where([
             'city' => $location,
-        ])->paginate(15);
+        ])->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurantsByLocation'));
     }

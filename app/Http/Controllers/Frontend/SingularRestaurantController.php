@@ -16,11 +16,13 @@ class SingularRestaurantController extends Controller
      */
     public function index(PostRestaurant $postRestaurant, $id)
     {
-        $restaurant = $postRestaurant->findOrFail($id)
+        $restaurant = $postRestaurant->where('id', $id)
         ->get();
 
         $feedbacks = UsersFeedback::where('post_restaurant_id', $id)
         ->paginate(10);
+
+        
 
         return view('frontEnd.listing-singular', compact('restaurant', 'feedbacks'));
     }
