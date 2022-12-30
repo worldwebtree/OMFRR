@@ -47,32 +47,22 @@ class SingularRestaurantController extends Controller
         $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->value('keyword_name');
         $negative_keywords = $rattingKeywords->where('keyword_status', 'negative')->value('keyword_name');
 
-        // dd($negative_match);
-        // exit();
-        $RestaurantFeedbacks->each(function($RestaurantFeedback) use ($positive_keywords, $negative_keywords)
-        {
-            $positive_match = str_contains($RestaurantFeedback, $positive_keywords);
-            $negative_match = str_contains($RestaurantFeedback, $negative_keywords);
-        });
-        // $positive_match =
-
-        // $positive_match = preg_match($positive_pattern, $RestaurantFeedbacks);
-        // $negative_match = preg_match($negative_pattern, $RestaurantFeedbacks);
+        $positive_match = str_contains($RestaurantFeedbacks, $positive_keywords);
+        $negative_match = str_contains($RestaurantFeedbacks, $negative_keywords);
 
         // If we find a positive match, assume the feedback is positive. Otherwise, assume it's negative.
-        // if ($positive_match) {
+        if ($positive_match === true) {
 
-        //     //  return 'positive';
-        //     count($positive_match);
+            //  dd('positive');
+             dd(count($RestaurantFeedbacks));
 
-        // }
-//         else if ($negative_match) {
+        } else if ($negative_match === true) {
 
-//             return 'negative';
-//    } else {
+                    dd('negative');
+        } else {
 
-//             return 'neutral';
-//    }
+                    dd('neutral');
+        }
     }
 
     /**
