@@ -18,6 +18,7 @@ class RattingKeywords extends Model
      */
     protected $fillable = [
         'keyword_name',
+        'keyword_status',
         'keyword_ratting'
     ];
 

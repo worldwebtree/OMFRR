@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('keyword_name');
+            $table->enum('keyword_status', ['positive', 'negative']);
             $table->integer('keyword_ratting');
 
             $table->timestamps();

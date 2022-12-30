@@ -58,6 +58,7 @@
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
                                             <th>keyword name</th>
+                                            <th>keyword status</th>
                                             <th>keyword ratting</th>
                                             <th>action</th>
                                         </tr>
@@ -66,6 +67,7 @@
                                             @foreach ($keywords as $keyword)
                                             <tr>
                                                 <td>{{ $keyword->keyword_name }}</td>
+                                                <td>{{ $keyword->keyword_status }}</td>
                                                 <td>{{ $keyword->keyword_ratting }}</td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('admin.keyword.management.destroy', $keyword->id) }}">

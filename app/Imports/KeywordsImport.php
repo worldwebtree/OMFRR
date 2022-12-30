@@ -16,7 +16,8 @@ class KeywordsImport implements ToModel
     {
         return new RattingKeywords([
             'keyword_name' => $row[0],
-            'keyword_ratting' => $row[1],
+            'keyword_status' => $row[1],
+            'keyword_ratting' => $row[2],
         ]);
     }
 }

@@ -247,11 +247,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <!-- Review Media -->
-
-                                <div class="text-center">
-                                    {{ $feedbacks->links() }}
-                                </div>
                             </div>
                         </div>
                         <!-- Reviews -->

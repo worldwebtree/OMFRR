@@ -22,9 +22,9 @@ class RestaurantData implements ToModel
         return new PostRestaurant([
             'title' => ucwords($row[0]),
             'description' => null,
-            'images' => $row[6],
-            'city' => $row[1],
-            'address' => ucwords($row[3]),
+            'images' => !empty($row[6]) ? $row[6] : null,
+            'city' => !empty($row[1]) ? $row[1] : null,
+            'address' => !empty($row[3]) ? ucwords($row[3]) : null,
             'category' => "Dine In & Take Away",
             'overall_ratting' => !empty($row[2]) ? $row[2] : null,
         ]);
