@@ -53,7 +53,7 @@
                     <div class="col-lg-6 mb-0">
                         <div class="profile-single">
                             <h3>{{ $data->title }}</h3>
-                            <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address }}"</p>
+                            <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
                             <div class="reviews">
                                 <span class="badge"><i class="fa fa-star"></i> 3.9</span> {{ $data->overall_ratting }} Reviews
                             </div>

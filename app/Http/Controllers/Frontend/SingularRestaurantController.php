@@ -23,7 +23,7 @@ class SingularRestaurantController extends Controller
         $feedbacks = UsersFeedback::where('post_restaurant_id', $id)
         ->get();
 
-        // $check = $this->match_keyword($feedbacks);
+        $check = $this->match_keyword($feedbacks);
         // dd($check);
         // exit();
 
@@ -40,17 +40,20 @@ class SingularRestaurantController extends Controller
         $negative_pattern = '/bad|terrible|awful|poor|shitty|horrible|outrageous/i';
 
         $RestaurantFeedbacks = $feedbacks->pluck('feedback');
+        // $string = "The service was outstanding";
 
         $rattingKeywords = new RattingKeywords();
 
-        $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->get();
-        $negative_keywords = $rattingKeywords->where('keyword_status', 'negative')->get();
+        $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->value('keyword_name');
+        $negative_keywords = $rattingKeywords->where('keyword_status', 'negative')->value('keyword_name');
 
-        $positive_match = str_contains($feedbacks, $positive_keywords);
-        $negative_match = str_contains($feedbacks, $negative_keywords);
-
-        dd($positive_match);
-        exit();
+        // dd($negative_match);
+        // exit();
+        $RestaurantFeedbacks->each(function($RestaurantFeedback) use ($positive_keywords, $negative_keywords)
+        {
+            $positive_match = str_contains($RestaurantFeedback, $positive_keywords);
+            $negative_match = str_contains($RestaurantFeedback, $negative_keywords);
+        });
         // $positive_match =
 
         // $positive_match = preg_match($positive_pattern, $RestaurantFeedbacks);
