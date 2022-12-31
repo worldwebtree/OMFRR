@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AboutUS;
+use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 
 class AboutUsPageController extends Controller
@@ -17,7 +18,9 @@ class AboutUsPageController extends Controller
     {
         $about = $aboutUs->value('description');
 
-        return view('frontEnd.about-us', compact('about'));
+        $feedbacks = UsersFeedback::with('user')->get();
+
+        return view('frontEnd.about-us', compact('about', 'feedbacks'));
     }
 
     /**

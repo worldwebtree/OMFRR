@@ -28,6 +28,11 @@ class UsersFeedback extends Model
         'category',
     ];
 
+    public static function getFeedbacks()
+    {
+        return UsersFeedback::with('user')->get();
+    }
+
     /**
      * Model Relationships
      * @return Illuminate\Database\Eloquent\Factories\Relationship

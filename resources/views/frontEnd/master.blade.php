@@ -15,7 +15,7 @@
 
         <!-- Titles
         ================================================== -->
-        <title>{{ config('app.name') }}- Home</title>
+        <title>{{ config('app.name') }}- @yield('title')</title>
 
         <!-- CSS ( Bootstrap + Owlcarouses + Fontawesome + Animate + Select2 + Custom Style )
         ======================================================================================= -->

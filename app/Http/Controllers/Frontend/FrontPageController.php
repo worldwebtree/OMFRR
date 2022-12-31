@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PostRestaurant;
+use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 
 class FrontPageController extends Controller

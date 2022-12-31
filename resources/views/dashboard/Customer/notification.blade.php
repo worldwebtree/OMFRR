@@ -1,5 +1,9 @@
 @extends('dashboard.master')
 
+@section('title')
+Notifications
+@endsection
+
 @push('css')
 <style>
     @media screen and (max-width: 425px) {

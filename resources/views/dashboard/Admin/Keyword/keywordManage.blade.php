@@ -1,5 +1,9 @@
 @extends('dashboard.master')
 
+@section('title')
+Keywords Management
+@endsection
+
 @push('css')
 
 @endpush

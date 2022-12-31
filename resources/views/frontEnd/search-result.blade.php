@@ -1,5 +1,9 @@
 @extends('frontEnd.master')
 
+@section('title')
+Restaurant Listning
+@endsection
+
 @push('css')
 
 @endpush
@@ -141,7 +145,7 @@
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">{{ $data->title }}</a></h3>
                                                             <div class="rating">
-                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $data->overall_ratting }}
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $data->overall_ratting ?? "wjsj" }}
                                                                 <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $data->city }}
                                                             </div>

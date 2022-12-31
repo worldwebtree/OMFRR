@@ -1,5 +1,9 @@
 @extends('dashboard.master')
 
+@section('title')
+Profile
+@endsection
+
 @push('css')
 <style>
     .avatar_text > span {

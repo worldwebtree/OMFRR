@@ -1,5 +1,9 @@
 @extends('frontEnd.master')
 
+@section('title')
+Restaurant Details
+@endsection
+
 @push('css')
 
 @endpush
@@ -55,7 +59,7 @@
                             <h3>{{ $data->title }}</h3>
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
                             <div class="reviews">
-                                <span class="badge"><i class="fa fa-star"></i> 3.9</span> {{ $data->overall_ratting }} Reviews
+                                <span class="badge"><i class="fa fa-star"></i> {{ round($final_decimal_ratting, 1) }}</span> {{ $count_overall_reviews }} Reviews
                             </div>
                         </div>
                     </div>
@@ -124,15 +128,8 @@
                                 <div class="no-gutters">
                                     <div class="col-md-auto">
                                         <div class="review-count">
-                                            <span>3.8</span>
+                                            <span>{{ round($final_decimal_ratting, 1) }}</span>
                                             <small>out of 5.0</small>
-                                            <div class="stars">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -141,14 +138,12 @@
                                             <div class="col-md-4">
                                                 <div class="review-option">
                                                     <div class="icon">
-                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
+                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">{{ round($service_ratting, 1) }}</span>
                                                     </div>
                                                     <div class="count">
                                                         <strong>Service</strong>
                                                         <div>
-                                                            <div class="bar-base">
-                                                                <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                            </div>
+                                                            <i class="fa fa-star text-warning" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,14 +154,12 @@
                                             <div class="col-md-4">
                                                 <div class="review-option">
                                                     <div class="icon">
-                                                        <i class="fa fa-cutlery" aria-hidden="true"></i> <span class="review-each-count">3.7</span>
+                                                        <i class="fa fa-cutlery" aria-hidden="true"></i> <span class="review-each-count">{{ round($food_ratting, 1) }}</span>
                                                     </div>
                                                     <div class="count">
                                                         <strong>Food</strong>
                                                         <div>
-                                                            <div class="bar-base">
-                                                                <div class="bar-filled" style="width: 67%;">&nbsp;</div>
-                                                            </div>
+                                                            <i class="fa fa-star text-warning" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
                                                 </div>

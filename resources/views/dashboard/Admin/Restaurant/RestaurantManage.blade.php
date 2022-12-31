@@ -1,5 +1,9 @@
 @extends('dashboard.master')
 
+@section('title')
+Post Restaurant
+@endsection
+
 @push('css')
 
 <style>

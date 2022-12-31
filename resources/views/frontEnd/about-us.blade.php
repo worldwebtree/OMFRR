@@ -1,5 +1,9 @@
 @extends('frontEnd.master')
 
+@section('title')
+About
+@endsection
+
 @push('css')
 
 @endpush
@@ -87,83 +91,27 @@
                     <p>Excepteur sint occaecat cupidatat non proident sunt</p>
                 </div>
                 <div class="owl-carousel owl-theme dots-black" id="slider-feedback">
-                    <!-- Customer Testimonials -->
-                    <div class="item">
-                        <div class="customer-feedback-wrap">
-                            <div class="content">
-                                <div class="icon"><i class="weddingdir_chat"></i></div>
-                                Sed ut perspiciatis unde omnis iste nat error sit voluptatem accusantium doau dantium totam rem aperiam eaque.
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
+                    @foreach ($feedbacks as $feedback)
+                        <div class="item">
+                            <div class="customer-feedback-wrap">
+                                <div class="content">
+                                    <div class="icon"><i class="weddingdir_chat"></i></div>
+                                    {{ $feedback->feedback }}
                                 </div>
-                            </div>
-                            <div class="name-wrap">
-                                <img src="assets/images/feedback_1.jpg" alt="">
-                                <div class="text">
-                                    <h3>Mark Hunter</h3>
-                                    <div>New York, USA</div>
+                                <div class="name-wrap p-3">
+                                    @if (empty($feedback->user->avatar) || $feedback->user->avarar = null)
+                                        <img style="width: 50px" src="{{ asset('frontend/images/avatar/user_icon-removebg-preview.png') }}" alt="avatar">
+                                    @elseif (!empty($feedback->user->avatar) || $feedback->user->avarar != null)
+                                        <img style="width: 50px" src="{{ asset('storage/Restaurant/images/'.$feedback->user->avatar) }}" alt="avatar">
+                                    @endif
+                                    <div class="text">
+                                        <h3>{{ $feedback->username }}</h3>
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
-                    </div>
-                    <!-- Customer Testimonials -->
-
-                    <!-- Customer Testimonials -->
-                    <div class="item">
-                        <div class="customer-feedback-wrap">
-                            <div class="content">
-                                <div class="icon"><i class="weddingdir_chat"></i></div>
-                                Sed ut perspiciatis unde omnis iste nat error sit voluptatem accusantium doau dantium totam rem aperiam eaque.
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                            <div class="name-wrap">
-                                <img src="assets/images/feedback_2.jpg" alt="">
-                                <div class="text">
-                                    <h3>Andrew Lincoln</h3>
-                                    <div>New York, USA</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Customer Testimonials -->
-
-                    <!-- Customer Testimonials -->
-                    <div class="item">
-                        <div class="customer-feedback-wrap">
-                            <div class="content">
-                                <div class="icon"><i class="weddingdir_chat"></i></div>
-                                Sed ut perspiciatis unde omnis iste nat error sit voluptatem accusantium doau dantium totam rem aperiam eaque.
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                            <div class="name-wrap">
-                                <img src="assets/images/feedback_3.jpg" alt="">
-                                <div class="text">
-                                    <h3>Mark Hunter</h3>
-                                    <div>New York, USA</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Customer Testimonials -->
+                    @endforeach
                 </div>
             </div>
         </section>

@@ -1,5 +1,9 @@
 @extends('dashboard.master')
 
+@section('title')
+Subscribed User Management
+@endsection
+
 @push('css')
 
 @endpush

@@ -1,5 +1,9 @@
 @extends('dashboard.master')
 
+@section('title')
+Feedbacks
+@endsection
+
 @push('css')
 
 @endpush

@@ -1,5 +1,9 @@
 @extends('frontEnd.master')
 
+@section('title')
+Contact
+@endsection
+
 @push('css')
 
 @endpush
