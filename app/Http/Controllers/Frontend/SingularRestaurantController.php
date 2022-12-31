@@ -20,49 +20,20 @@ class SingularRestaurantController extends Controller
         $restaurant = $postRestaurant->where('id', $id)
         ->get();
 
-        $feedbacks = UsersFeedback::where('post_restaurant_id', $id)
+        $usersFeedback =  new UsersFeedback();
+
+        $feedbacks = $usersFeedback->where('post_restaurant_id', $id)
         ->get();
 
-        $check = $this->match_keyword($feedbacks);
-        // dd($check);
-        // exit();
+        $positive_ratting = $usersFeedback->where('feedback_status', 'positive')
+        ->count();
+
+        $negative_ratting = $usersFeedback->where('feedback_status', 'negative')
+        ->count();
+
+        $positive_ratting - $negative_ratting;
 
         return view('frontEnd.listing-singular', compact('restaurant', 'feedbacks'));
-    }
-
-    /**
-     * This function will match the provided keywords with the user feedbacks
-     * @return string
-     */
-    public function match_keyword($feedbacks)
-    {
-        $positive_pattern = '/good|great|excellent|fantastic|marvelous|outstanding|awesome|amazing|gorgeous|attractive|wow/i';
-        $negative_pattern = '/bad|terrible|awful|poor|shitty|horrible|outrageous/i';
-
-        $RestaurantFeedbacks = $feedbacks->pluck('feedback');
-        // $string = "The service was outstanding";
-
-        $rattingKeywords = new RattingKeywords();
-
-        $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->value('keyword_name');
-        $negative_keywords = $rattingKeywords->where('keyword_status', 'negative')->value('keyword_name');
-
-        $positive_match = str_contains($RestaurantFeedbacks, $positive_keywords);
-        $negative_match = str_contains($RestaurantFeedbacks, $negative_keywords);
-
-        // If we find a positive match, assume the feedback is positive. Otherwise, assume it's negative.
-        if ($positive_match === true) {
-
-            //  dd('positive');
-             dd(count($RestaurantFeedbacks));
-
-        } else if ($negative_match === true) {
-
-                    dd('negative');
-        } else {
-
-                    dd('neutral');
-        }
     }
 
     /**

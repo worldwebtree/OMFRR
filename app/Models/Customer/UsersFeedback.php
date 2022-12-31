@@ -24,6 +24,7 @@ class UsersFeedback extends Model
         'username',
         'restaurant_name',
         'feedback',
+        'feedback_status',
         'category',
     ];
 

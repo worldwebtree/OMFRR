@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('username');
             $table->string('restaurant_name');
             $table->text('feedback');
+
+            $table->enum('feedback_status', ['positive', 'negative', 'neutral']);
             $table->enum('category', ['Service', 'Food']);
 
             $table->timestamps();
