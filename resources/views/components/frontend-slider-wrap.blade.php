@@ -27,9 +27,10 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-12 col-md-5">
                                     <select class="form-light-select theme-combo home-select-1" required name="category">
-                                        <option selected disabled>Choose Vendor Type</option>
+                                        <option selected disabled>Choose Restaurant Type</option>
                                         <option value="Dine In">Dine In</option>
                                         <option value="Take Away">Take Away</option>
+                                        <option value="Dine In & Take Away">Dine In & Take Away</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-5 left-border">
