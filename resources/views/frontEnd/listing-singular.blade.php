@@ -71,9 +71,9 @@ Restaurant Details
                             </a>
 
                             <span class="dropdown-menu">
-                                <a class="dropdown-item" target="_blank" href="https://facebook.com/{{ $data->title }}"><i class="fa fa-facebook-f"></i> Facebook</a>
-                                <a class="dropdown-item" target="_blank" href="https://twitter.com/{{ $data->title }}"><i class="fa fa-twitter"></i> Twitter</a>
-                                <a class="dropdown-item" target="_blank" href="https://instagram.com/{{ $data->title }}"><i class="fa fa-instagram"></i> Instagram</a>
+                                <a class="dropdown-item" target="_blank" href="https://facebook.com"><i class="fa fa-facebook-f"></i> Facebook</a>
+                                <a class="dropdown-item" target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i> Twitter</a>
+                                <a class="dropdown-item" target="_blank" href="https://instagram.com"><i class="fa fa-instagram"></i> Instagram</a>
                             </span>
                         </span>
                         <span class="hover_out">

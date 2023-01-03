@@ -102,7 +102,7 @@ About
                                     @if (empty($feedback->user->avatar) || $feedback->user->avarar = null)
                                         <img style="width: 50px" src="{{ asset('frontend/images/avatar/user_icon-removebg-preview.png') }}" alt="avatar">
                                     @elseif (!empty($feedback->user->avatar) || $feedback->user->avarar != null)
-                                        <img style="width: 50px" src="{{ asset('storage/Restaurant/images/'.$feedback->user->avatar) }}" alt="avatar">
+                                        <img style="width: 50px" src="{{ asset('storage/profile_img/'.$feedback->user->avatar) }}" alt="avatar">
                                     @endif
                                     <div class="text">
                                         <h3>{{ $feedback->username }}</h3>
