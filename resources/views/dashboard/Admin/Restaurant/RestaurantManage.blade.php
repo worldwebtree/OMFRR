@@ -400,7 +400,7 @@ Post Restaurant
                                             <tr>
                                                 <td>{{ $restaurant->title }}</td>
                                                 <td class="restaurantDescriptionText">{{ $restaurant->description ?? "No Description" }}</td>
-                                                @if (is_array($restaurant->images))
+                                                @if (is_array(json_decode($restaurant->images)))
                                                     <td>
                                                         <!-- Button trigger modal -->
                                                         <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
@@ -449,7 +449,7 @@ Post Restaurant
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    @elseif (!is_array($restaurant->images))
+                                                @else
                                                     <td>
                                                         <a target="_blank" href="{{ str_replace('"', ' ', $restaurant->images) }}">
                                                             <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"

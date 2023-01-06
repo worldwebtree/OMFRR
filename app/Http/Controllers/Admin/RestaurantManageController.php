@@ -51,9 +51,6 @@ class RestaurantManageController extends Controller
 
         $images = $request->file('restaurant_images');
 
-        // dd($images);
-        // exit();
-
         foreach ($images as $image) {
 
             // generating hashed file name
