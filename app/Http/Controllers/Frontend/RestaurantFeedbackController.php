@@ -45,6 +45,9 @@ class RestaurantFeedbackController extends Controller
 
         $user = $request->user();
 
+        if ($user->role === "admin")
+        return back()->with('not user', "Only users can give feedback on a restaurant");
+
         $restaurant_name = PostRestaurant::findOrFail($id)
         ->value('title');
 
@@ -88,6 +91,9 @@ class RestaurantFeedbackController extends Controller
         ]);
 
         $user = $request->user();
+
+        if ($user->role === "admin")
+        return back()->with('not user', "Only users can give feedback on a restaurant");
 
         $restaurant_name = PostRestaurant::findOrFail($id)
         ->value('title');

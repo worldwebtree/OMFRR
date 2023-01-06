@@ -94,13 +94,15 @@ Route::prefix('frontend')->group(function () {
      * This route will only be accessed by Authenticated and the user
      * that has the role user.
      */
-    Route::controller(RestaurantFeedbackController::class)->middleware(['auth', 'isCustomer'])
+    Route::controller(RestaurantFeedbackController::class)->middleware('auth')
     ->group(function () {
 
         Route::post('/restaurant/feedback/service/{id}', 'storeServiceFeedback')
+        ->middleware('isCustomer')
         ->name('frontend.restaurant.singular.feedback.page.service');
 
         Route::post('/restaurant/feedback/food/{id}', 'storeFoodFeedback')
+        ->middleware('isCustomer')
         ->name('frontend.restaurant.singular.feedback.page.food');
     });
 

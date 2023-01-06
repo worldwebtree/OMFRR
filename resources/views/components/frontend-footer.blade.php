@@ -5,8 +5,15 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="footer-logo">
-                            <h2 class="text-info">RateRestaurant</h2>
-                            <p>Sed ut perspiciatis unde mnis iste natus error sit ptatem accus antium doloremque lauda ntium.</p>
+                            <h2 class="text-info">{{ config('app.name') }}</h2>
+                            @php($about = App\Models\Admin\AboutUs::value('description'))
+                            <p
+                            style="width: 30rem;
+                            text-align:;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: clip;"
+                            >{{ $about }}</p>
                         </div>
                         <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary">Know More</a></div>
                     </div>

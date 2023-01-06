@@ -36,17 +36,20 @@ class RestaurantListeningPageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, PostRestaurant $postRestaurant)
     {
         $request->validate([
             'category' => ['required', 'string'],
             'location' => ['required', 'string'],
         ]);
 
-        $restaurant = PostRestaurant::where([
-            'category' => $request->category,
-            'city' => $request->location,
-        ])->paginate(100);
+        $categories = $postRestaurant->pluck('category');
+
+        if (str_contains($categories, $request->category))
+
+           $restaurant = $postRestaurant->where([
+                'city' => $request->location,
+            ])->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurant'));
     }
@@ -78,11 +81,13 @@ class RestaurantListeningPageController extends Controller
      * @param  string  $category
      * @return \Illuminate\Http\Response
      */
-    public function searchByCategory($category)
+    public function searchByCategory($category, PostRestaurant $postRestaurant)
     {
-        $restaurantsByCategory = PostRestaurant::where([
-            'category' => $category,
-        ])->paginate(100);
+        $categories = $postRestaurant->pluck('category');
+
+        if (str_contains($categories, $category))
+
+           $restaurantsByCategory = $postRestaurant->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurantsByCategory'));
     }

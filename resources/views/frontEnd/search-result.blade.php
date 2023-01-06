@@ -14,8 +14,9 @@ Restaurant Listning
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto">
-                    <h1>Find the Perfect Restaurant</h1>
-                    <p class="lead">Search over 360,000 Restaurants with reviews, pricing, availability and more</p>
+                    <h1 class="text-capitalize">find through name and city</h1>
+                    @php($totalRestaurants = App\Models\Admin\PostRestaurant::count())
+                    <p class="lead">Search over {{ $totalRestaurants }} Restaurants with reviews and more</p>
                     <form action="{{ route('frontend.restaurant-listening.searchByName') }}"
                         method="POST"
                         class="restaurant_search_form_with_name">
@@ -126,12 +127,12 @@ Restaurant Listning
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $data->category }}</span>
                                                         </span>
-                                                        @if (is_array($data->images))
+                                                        @if (is_array(json_decode($data->images)))
                                                             @php($Image = json_decode($data->images))
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @elseif (!is_array($data->images))
+                                                            @else
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
                                                                 <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
                                                                 alt="restaurant images"
@@ -166,12 +167,12 @@ Restaurant Listning
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $restaurantData->category }}</span>
                                                         </span>
-                                                        @if (is_array($restaurantData->images))
+                                                        @if (is_array(json_decode($restaurantData->images)))
                                                             @php($Image = json_decode($restaurantData->images))
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @elseif (!is_array($restaurantData->images))
+                                                            @else
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
                                                                 <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
                                                                 alt="restaurant images"
@@ -206,12 +207,12 @@ Restaurant Listning
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $search->category }}</span>
                                                         </span>
-                                                        @if (is_array($search->images))
+                                                        @if (is_array(json_decode($search->images)))
                                                             @php($Image = json_decode($search->images))
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @elseif (!is_array($search->images))
+                                                            @else
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
                                                                 <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
                                                                 alt="restaurant images"
@@ -246,12 +247,12 @@ Restaurant Listning
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $searchCategory->category }}</span>
                                                         </span>
-                                                        @if (is_array($searchCategory->images))
+                                                        @if (is_array(json_decode($searchCategory->images)))
                                                             @php($Image = json_decode($searchCategory->images))
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @elseif (!is_array($searchCategory->images))
+                                                            @else
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
                                                                 <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
                                                                 alt="restaurant images"
@@ -286,12 +287,12 @@ Restaurant Listning
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $searchLocation->category }}</span>
                                                         </span>
-                                                        @if (is_array($searchLocation->images))
+                                                        @if (is_array(json_decode($searchLocation->images)))
                                                             @php($Image = json_decode($searchLocation->images))
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @elseif (!is_array($searchLocation->images))
+                                                            @else
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
                                                                 <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
                                                                 alt="restaurant images"

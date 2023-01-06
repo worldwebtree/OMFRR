@@ -36,38 +36,38 @@ Contact Us
                                 <div class="form-group">
                                     <label for="Phone">phone</label>
                                     <input type="number"
-                                      class="form-control" name="phone" id="Phone" aria-describedby="helpId" placeholder="Enter Phone Number">
+                                      class="form-control" required name="phone" id="Phone" aria-describedby="helpId" placeholder="Enter Phone Number">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Email">email</label>
                                     <input type="email"
-                                      class="form-control" name="email" id="Email" aria-describedby="helpId" placeholder="Enter Email">
+                                      class="form-control" required name="email" id="Email" aria-describedby="helpId" placeholder="Enter Email">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Address">address</label>
                                     <input type="text"
-                                      class="form-control" name="address" id="Address" aria-describedby="helpId" placeholder="Enter Address">
+                                      class="form-control" required name="address" id="Address" aria-describedby="helpId" placeholder="Enter Address">
                                 </div>
 
                                 <div class="form-group">
                                   <label for="CustomerSupportEmail">customer suport email</label>
                                   <input type="email"
-                                    class="form-control" name="customer_support_email" id="CustomerSupportEmail" aria-describedby="helpId" placeholder="Enter Email for Customer Support">
+                                    class="form-control" required name="customer_support_email" id="CustomerSupportEmail" aria-describedby="helpId" placeholder="Enter Email for Customer Support">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="SocialLinks">social links</label>
                                     <div class="d-flex">
                                         <input type="text"
-                                            class="form-control m-2" name="facebook" value="https://facebook.com/">
+                                            class="form-control m-2" placeholder="Enter Facebook Page Url" required name="facebook">
                                         <input type="text"
-                                            class="form-control m-2" name="twitter" value="https://twitter.com/">
+                                            class="form-control m-2" placeholder="Enter Twitter Page Url" required name="twitter">
                                         <input type="text"
-                                            class="form-control m-2" name="instagram" value="https://instagram.com/">
+                                            class="form-control m-2" placeholder="Enter Instagram Page Url" required name="instagram">
                                         <input type="text"
-                                            class="form-control m-2" name="linkedin" value="https://linkedin.com/">
+                                            class="form-control m-2" placeholder="Enter Linkedin Page Url" required name="linkedin">
                                     </div>
                                   </div>
 
@@ -164,13 +164,13 @@ Contact Us
                                                                                 @endforeach
                                                                                 @else
                                                                                 <input type="text"
-                                                                                    class="form-control m-2" name="facebook" value="https://facebook.com/">
+                                                                                    class="form-control m-2" name="facebook">
                                                                                 <input type="text"
-                                                                                    class="form-control m-2" name="twitter" value="https://twitter.com/">
+                                                                                    class="form-control m-2" name="twitter">
                                                                                 <input type="text"
-                                                                                    class="form-control m-2" name="instagram" value="https://instagram.com/">
+                                                                                    class="form-control m-2" name="instagram">
                                                                                 <input type="text"
-                                                                                    class="form-control m-2" name="linkedin" value="https://linkedin.com/">
+                                                                                    class="form-control m-2" name="linkedin">
                                                                             @endif
                                                                         </div>
 

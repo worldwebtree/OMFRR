@@ -20,11 +20,13 @@ Restaurant Details
                 <div class="tab-pane show active" id="pills-hr-grid" role="tabpanel" aria-labelledby="pills-hr-grid-tab">
                     <div class="owl-carousel owl-theme" id="slider-vendor-single">
                             <!-- About Slider Images -->
-                        @if (is_array($data->images))
+                        @if (is_array(json_decode($data->images)))
+
                             @foreach (json_decode($data->images) as $image)
                             <div class="item" style="background-image: url({{ asset('storage/Restaurant/images/' . $image) }});"></div>
                             @endforeach
-                            @elseif (!is_array($data->images))
+
+                            @else
                             <a target="_blank" href="{{ str_replace('"', ' ', $data->images) }}">
                                 <div class="item" style="background-image: url({{ asset('frontend/images/default_restaurant_image/click-me.gif') }});"></div>
                             </a>

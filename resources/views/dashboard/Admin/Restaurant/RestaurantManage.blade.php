@@ -360,7 +360,7 @@ Post Restaurant
 
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" onchange="getXlsxFileName(this)"
+                                        <input type="file" required onchange="getXlsxFileName(this)"
                                             name="restaurant_file"
                                             class="custom-file-input"
                                             accept=".xlsx"

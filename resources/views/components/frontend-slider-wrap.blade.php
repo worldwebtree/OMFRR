@@ -14,7 +14,8 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-12 mx-auto">
                     <h1>Find Review the Perfect Restaurants</h1>
-                    <p class="lead txt-white text-center">Search over 360,000 restaurants with reviews, pricing, availability and more</p>
+                    @php($totalRestaurants = App\Models\Admin\PostRestaurant::count())
+                    <p class="lead txt-white text-center">Search over {{ $totalRestaurants }} restaurants with reviews and more</p>
                     <form action="{{ route('frontend.restaurant-listening.search') }}"
                         method="POST"
                         class="restaurant-search-form">
@@ -26,7 +27,7 @@
                         <div class="slider-form rounded">
                             <div class="row no-gutters align-items-center">
                                 <div class="col-12 col-md-5">
-                                    <select class="form-light-select theme-combo home-select-1" required name="category">
+                                    <select id="custom-select-input" class="form-light-select theme-combo home-select-1" required name="category">
                                         <option selected disabled>Choose Restaurant Type</option>
                                         <option value="Dine In">Dine In</option>
                                         <option value="Take Away">Take Away</option>

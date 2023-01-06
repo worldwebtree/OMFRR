@@ -36,7 +36,7 @@ Keywords Management
 
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" onchange="getFileName(this)"
+                                        <input type="file" required onchange="getFileName(this)"
                                             name="Keyword_file"
                                             class="custom-file-input"
                                             accept=".xlsx"
