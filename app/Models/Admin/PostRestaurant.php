@@ -37,6 +37,7 @@ class PostRestaurant extends Model
 
     public static function getRankedRestaurants()
     {
+
         return PostRestaurant::orderBy('overall_ratting', 'desc')
         ->limit(3)
         ->get();

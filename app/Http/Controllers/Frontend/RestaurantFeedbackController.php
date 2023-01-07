@@ -48,8 +48,7 @@ class RestaurantFeedbackController extends Controller
         if ($user->role === "admin")
         return back()->with('not user', "Only users can give feedback on a restaurant");
 
-        $restaurant_name = PostRestaurant::findOrFail($id)
-        ->value('title');
+        $restaurant_name = PostRestaurant::findOrFail($id);
 
         $positive_feedback_status = $this->PositiveAnalyze($request->service_feedback);
 
@@ -69,7 +68,7 @@ class RestaurantFeedbackController extends Controller
             'user_id' => $user->id,
             'post_restaurant_id' => $id,
             'username' => $user->name,
-            'restaurant_name' => $restaurant_name,
+            'restaurant_name' => $restaurant_name->title,
             'feedback' => ucfirst(strip_tags($request->service_feedback)),
             'feedback_status' => $feedback_status,
             'category' => "Service",
@@ -95,8 +94,7 @@ class RestaurantFeedbackController extends Controller
         if ($user->role === "admin")
         return back()->with('not user', "Only users can give feedback on a restaurant");
 
-        $restaurant_name = PostRestaurant::findOrFail($id)
-        ->value('title');
+        $restaurant_name = PostRestaurant::findOrFail($id);
 
         $positive_feedback_status = $this->PositiveAnalyze($request->food_feedback);
 
@@ -116,7 +114,7 @@ class RestaurantFeedbackController extends Controller
             'user_id' => $user->id,
             'post_restaurant_id' => $id,
             'username' => $user->name,
-            'restaurant_name' => $restaurant_name,
+            'restaurant_name' => $restaurant_name->title,
             'feedback' => ucfirst(strip_tags($request->food_feedback)),
             'feedback_status' => $feedback_status,
             'category' => "Food",

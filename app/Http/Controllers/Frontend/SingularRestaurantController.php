@@ -70,11 +70,17 @@ class SingularRestaurantController extends Controller
         }
 
         $service_ratting = $this->serviceRatting($postRestaurant, $id);
+
         $food_ratting = $this->foodRatting($postRestaurant, $id);
 
         $highest_ratting = str_starts_with($final_decimal_ratting, "6");
 
+        // dd(strlen($final_decimal_ratting));
+
         if ($highest_ratting === true) {
+            $final_decimal_ratting = 5;
+
+        } elseif (strlen($final_decimal_ratting) ===  6) {
             $final_decimal_ratting = 5;
         }
 
@@ -131,22 +137,20 @@ class SingularRestaurantController extends Controller
         if ($intLength === 5) {
             $final_decimal_ratting = $final_ratting / 10000;
 
-            return $final_decimal_ratting;
-
         } elseif ($intLength === 4) {
             $final_decimal_ratting = $final_ratting / 1000;
-
-            return $final_decimal_ratting;
 
         } elseif ($intLength === 1) {
             $final_decimal_ratting = $final_ratting / 1;
 
-            return $final_decimal_ratting;
-
         } else {
             $final_decimal_ratting = $final_ratting / 100;
+        }
 
-            return $final_decimal_ratting;
+        $highest_ratting = str_starts_with($final_decimal_ratting, "6");
+
+        if ($highest_ratting === true) {
+            return $final_decimal_ratting = 5;
         }
     }
 
@@ -192,22 +196,20 @@ class SingularRestaurantController extends Controller
         if ($intLength === 5) {
             $final_decimal_ratting = $final_ratting / 10000;
 
-            return $final_decimal_ratting;
-
         } elseif ($intLength === 4) {
             $final_decimal_ratting = $final_ratting / 1000;
-
-            return $final_decimal_ratting;
 
         } elseif ($intLength === 1) {
             $final_decimal_ratting = $final_ratting / 1;
 
-            return $final_decimal_ratting;
-
         } else {
             $final_decimal_ratting = $final_ratting / 100;
+        }
 
-            return $final_decimal_ratting;
+        $highest_ratting = str_starts_with($final_decimal_ratting, "6");
+
+        if ($highest_ratting === true) {
+            return $final_decimal_ratting = 5;
         }
     }
 

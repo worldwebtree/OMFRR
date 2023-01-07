@@ -9,7 +9,6 @@
                             @php($about = App\Models\Admin\AboutUs::value('description'))
                             <p
                             style="width: 30rem;
-                            text-align:;
                                 white-space: nowrap;
                                 overflow: hidden;
                                 text-overflow: clip;"

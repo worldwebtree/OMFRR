@@ -196,7 +196,7 @@ Restaurant Details
                                                             <small class="text-info">Reviewed on {{ $feedback->created_at->format('d-m-y') }}</small>
                                                         </div>
                                                     </div>
-                                                    <div id="review-option-toggle-1" class="collapse" >
+                                                    {{-- <div id="review-option-toggle-1" class="collapse" >
                                                         <div class="row">
                                                             <!-- review-option -->
                                                             <div class="col-md-4">
@@ -234,7 +234,7 @@ Restaurant Details
                                                             </div>
                                                             <!-- review-option -->
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                                 <p>{{ $feedback->feedback }}</p>
