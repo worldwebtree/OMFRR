@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-auto col-12">
-                    © <a class="text-info" target="_blank" href="https://worldwebtree.com">WorldWebTree</a> 2022 All rights reserved.
+                    © <a class="text-info" target="_blank" href="https://worldwebtree.com">{{ config('app.name') }}</a> 2022 All rights reserved.
                 </div>
                 <div class="col-md-auto col-12 copyrights-link ml-md-auto">
                     <a href="{{ route('frontend.index.page') }}">Home</a> | <a href="{{ route('frontend.about.page') }}">About</a> | <a href="{{ route('frontend.restaurant-listening.page') }}">Restaurants</a> | <a href="{{ route('frontend.contact.page') }}">Contact Us</a>

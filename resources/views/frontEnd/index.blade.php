@@ -98,7 +98,6 @@ Home
         <div class="container">
             <div class="section-title text-center">
                 <h1>feedback from our customers</h1>
-                <p>Excepteur sint occaecat cupidatat non proident sunt</p>
             </div>
             <div class="owl-carousel owl-theme dots-black" id="slider-feedback">
                 @php($feedbacks = App\Models\Customer\UsersFeedback::getFeedbacks())
