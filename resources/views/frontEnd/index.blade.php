@@ -51,11 +51,17 @@ Home
                                     <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $top_restaurant->id) }}">{{ $top_restaurant->title }}</a></h3>
                                     <div><i class="fa fa-map-marker"></i> {{ $top_restaurant->city }}</div>
                                 </div>
-                                <div class="reviews">
-                                    <span class="stars">
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    ({{ $top_restaurant->overall_ratting }} reviews)
+                                <div class="reviews d-flex justify-content-between">
+                                    <div class="rev">
+                                        <span class="stars">
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        ({{ $top_restaurant->overall_ratting }} reviews)
+                                    </div>
+                                    <div class="recomendation-section">
+                                        <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+                                        <span>Recomended</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
