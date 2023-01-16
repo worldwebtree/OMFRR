@@ -18,7 +18,7 @@ Home
     <section class="wide-tb-120 floral-bg">
         <div class="container">
             <div class="section-title text-center">
-                <h1>Top Restaurants Listings</h1>
+                <h1>Highest Rating Restaurants</h1>
             </div>
             <div class="row">
                 @php($top_restaurants = App\Models\Admin\PostRestaurant::getRankedRestaurants())
@@ -51,17 +51,16 @@ Home
                                     <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $top_restaurant->id) }}">{{ $top_restaurant->title }}</a></h3>
                                     <div><i class="fa fa-map-marker"></i> {{ $top_restaurant->city }}</div>
                                 </div>
-                                <div class="reviews d-flex justify-content-between">
+                                <div class="reviews text-center">
                                     <div class="rev">
-                                        <span class="stars">
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                        ({{ $top_restaurant->overall_ratting }} reviews)
+                                            <i class="fa fa-star text-warning"></i>
+                                        {{ $top_restaurant->overall_ratting }} reviews
+                                            <i class="fa fa-star text-warning"></i>
                                     </div>
-                                    <div class="recomendation-section">
+                                    {{-- <div class="recomendation-section">
                                         <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
                                         <span>Recomended</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Customer\UsersFeedback;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(2)->create();
+        $users = User::factory(100)->create();
 
         User::factory()->create([
             'name' => 'Admin',
@@ -29,5 +30,12 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'remember_token' => Str::random(10),
         ]);
+
+
+        $users->each(function($user) {
+
+            $user->users_feedback()->saveMany(UsersFeedback::factory(10)->create());
+
+        });
     }
 }
