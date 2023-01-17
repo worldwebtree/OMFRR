@@ -69,9 +69,9 @@ class SingularRestaurantController extends Controller
             $final_decimal_ratting = $final_ratting / 100;
         }
 
-        $service_ratting = $this->serviceRatting($postRestaurant, $id);
+        $service_ratting = $this->serviceRatting($id);
 
-        $food_ratting = $this->foodRatting($postRestaurant, $id);
+        $food_ratting = $this->foodRatting($id);
 
         $recommend = $this->recommended($id);
 
@@ -100,13 +100,8 @@ class SingularRestaurantController extends Controller
      *
      * @return int
      */
-    public function serviceRatting($postRestaurant, $id)
+    public function serviceRatting($id)
     {
-        $restaurant = $postRestaurant->where('id', $id)
-        ->get();
-
-        $restaurant_ratting = $restaurant->value('overall_ratting');
-
         $usersFeedback =  new UsersFeedback();
 
         // count positive ratting from user feedback table
@@ -117,9 +112,6 @@ class SingularRestaurantController extends Controller
         ])
         ->count();
 
-        // adding restaurant previous ratting with new positive ratting
-        $overall_ratting = $restaurant_ratting + $positive_ratting;
-
         // count negative ratting from user feedback table
         $negative_ratting = $usersFeedback->where([
             'post_restaurant_id' => $id,
@@ -128,30 +120,9 @@ class SingularRestaurantController extends Controller
         ])
         ->count();
 
-        // subtracting negative ratting from overall ratting
-        $final_ratting = $overall_ratting - $negative_ratting;
+        $overall_ratting = $positive_ratting + $negative_ratting;
 
-        $intLength = strlen($final_ratting);
-
-        // dividing final ratting by 100 to get value in decimal form
-        if ($intLength === 5) {
-            $final_decimal_ratting = $final_ratting / 10000;
-
-        } elseif ($intLength === 4) {
-            $final_decimal_ratting = $final_ratting / 1000;
-
-        } elseif ($intLength === 1) {
-            $final_decimal_ratting = $final_ratting / 1;
-
-        } else {
-            $final_decimal_ratting = $final_ratting / 100;
-        }
-
-        $highest_ratting = str_starts_with($final_decimal_ratting, "6") || str_starts_with($final_decimal_ratting, "7") || str_starts_with($final_decimal_ratting, "8");
-
-        if ($highest_ratting === true) {
-            return $final_decimal_ratting = 5;
-        }
+        return $overall_ratting;
     }
 
     /**
@@ -159,12 +130,8 @@ class SingularRestaurantController extends Controller
      *
      * @return int
      */
-    public function foodRatting($postRestaurant, $id)
+    public function foodRatting($id)
     {
-        $restaurant = $postRestaurant->where('id', $id)
-        ->get();
-
-        $restaurant_ratting = $restaurant->value('overall_ratting');
 
         $usersFeedback =  new UsersFeedback();
 
@@ -176,9 +143,6 @@ class SingularRestaurantController extends Controller
         ])
         ->count();
 
-        // adding restaurant previous ratting with new positive ratting
-        $overall_ratting = $restaurant_ratting + $positive_ratting;
-
         // count negative ratting from user feedback table
         $negative_ratting = $usersFeedback->where([
             'post_restaurant_id' => $id,
@@ -187,30 +151,9 @@ class SingularRestaurantController extends Controller
         ])
         ->count();
 
-        // subtracting negative ratting from overall ratting
-        $final_ratting = $overall_ratting - $negative_ratting;
+        $overall_ratting = $positive_ratting + $negative_ratting;
 
-        $intLength = strlen($final_ratting);
-
-        // dividing final ratting by 100 to get value in decimal form
-        if ($intLength === 5) {
-            $final_decimal_ratting = $final_ratting / 10000;
-
-        } elseif ($intLength === 4) {
-            $final_decimal_ratting = $final_ratting / 1000;
-
-        } elseif ($intLength === 1) {
-            $final_decimal_ratting = $final_ratting / 1;
-
-        } else {
-            $final_decimal_ratting = $final_ratting / 100;
-        }
-
-        $highest_ratting = str_starts_with($final_decimal_ratting, "6") || str_starts_with($final_decimal_ratting, "7") || str_starts_with($final_decimal_ratting, "8");
-
-        if ($highest_ratting === true) {
-            return $final_decimal_ratting = 5;
-        }
+        return $overall_ratting;
     }
 
     /**
@@ -236,7 +179,7 @@ class SingularRestaurantController extends Controller
         }elseif ($recommendFood > $recommendService) {
             return "food";
 
-        }elseif($recommendService = $recommendFood){
+        }elseif($recommendService & $recommendFood > 0 && $recommendService === $recommendFood){
             return "both";
 
         }else {

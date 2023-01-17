@@ -1,20 +1,29 @@
 <footer>
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-lg-7">
+            <div class="col-lg-3">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="footer-logo">
                             <h2 class="text-info">{{ config('app.name') }}</h2>
-                            @php($about = App\Models\Admin\AboutUs::value('description'))
-                            <p
-                            style="width: 30rem;
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: clip;"
-                            >{{ $about }}</p>
                         </div>
                         <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary">Know More</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="footer-logo">
+                            <h3 class="widget-title">Categories</h3>
+                        </div>
+                        <div class="restaurant-category">
+                            <ul class="list-unstyled">
+                                <li><a style="color: #b2b2b2" href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
+                                <li><a style="color: #b2b2b2" href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
+                                <li><a style="color: #b2b2b2" href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In & Take Away') }}">Dine In & Take Away</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,7 +78,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-auto col-12">
-                    © <a class="text-info" target="_blank" href="https://worldwebtree.com">{{ config('app.name') }}</a> 2022 All rights reserved.
+                    © <a class="text-info" href="/">{{ config('app.name') }}</a> 2022 All rights reserved.
                 </div>
                 <div class="col-md-auto col-12 copyrights-link ml-md-auto">
                     <a href="{{ route('frontend.index.page') }}">Home</a> | <a href="{{ route('frontend.about.page') }}">About</a> | <a href="{{ route('frontend.restaurant-listening.page') }}">Restaurants</a> | <a href="{{ route('frontend.contact.page') }}">Contact Us</a>

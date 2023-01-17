@@ -4,15 +4,6 @@
 
     var wporganic = {
 
-        loader: function () {
-
-            $(window).on('load', function () {
-
-                $('.status').fadeOut();
-                $('.preloader').delay(350).fadeOut('slow');
-            });
-        },
-        
         date_picker: function () {
             if ($('.datepicker').length) {
 
@@ -21,7 +12,7 @@
                 });
             }
         },
-        
+
         select_dark: function () {
             if ($('select').length) {
 
@@ -32,7 +23,7 @@
                 });
             }
         },
-       
+
         select_light: function () {
             if ($('.form-light-select').length) {
 
@@ -219,9 +210,9 @@
         slider_about : function(){
 
             if( $('#slider-about').length ){
-    
+
                 $('#slider-about').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 325,
                     margin: 30,
@@ -252,9 +243,9 @@
         slider_vendor_single : function(){
 
             if( $('#slider-vendor-single').length ){
-    
+
                 $('#slider-vendor-single').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 325,
                     margin: 0,
@@ -285,9 +276,9 @@
         slider_feedback : function(){
 
             if( $('#slider-feedback').length ){
-    
+
                 $('#slider-feedback').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 0,
                     margin: 30,
@@ -315,9 +306,9 @@
         slider_partners : function(){
 
             if( $('#slider-partners').length ){
-    
+
                 $('#slider-partners').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 0,
                     margin: 30,
@@ -348,9 +339,9 @@
         wedding_listing_single : function(){
 
             if( $('#wedding-listing-single').length ){
-    
+
                 $('#wedding-listing-single').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 0,
                     margin: 30,
@@ -369,9 +360,9 @@
         slider_home : function(){
 
             if( $('#slider-home').length ){
-    
+
                 $('#slider-home').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 0,
                     margin: 0,
@@ -392,9 +383,9 @@
         slider_catgories : function(){
 
             if( $('#slider-categories').length ){
-    
+
                 $('#slider-categories').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 0,
                     margin: 30,
@@ -428,9 +419,9 @@
         home_slider_listing : function(){
 
             if( $('#home-slider-listing').length ){
-    
+
                 $('#home-slider-listing').owlCarousel({
-    
+
                     loop: true,
                     stagePadding: 0,
                     margin: 30,
@@ -472,13 +463,13 @@
                         type: 'image',
                         gallery: {
                             enabled: true, // set to true to enable gallery
-                        
+
                             preload: [0,2], // read about this option in next Lazy-loading section
-                        
+
                             navigateByImgClick: true,
-                        
+
                             arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', // markup of an arrow button
-                        
+
                             tPrev: 'Previous (Left arrow key)', // title for left button
                             tNext: 'Next (Right arrow key)', // title for right button
                             tCounter: '<span class="mfp-counter">%curr% of %total%</span>' // markup of counter
@@ -514,7 +505,7 @@
                     removalDelay: 160,
                     preloader: true ,
                     fixedContentPos: true
-                });    
+                });
             }
         },
 
@@ -561,21 +552,21 @@
                 });
             }
         },
-        
+
         tab_scrolling: function( elm ){
 
             if( $(elm).length ){
 
                 $(elm).click(function(event) {
-                        
+
                     if ( location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname ) {
-                            
+
                         var target = $(this.hash);
 
                         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                            
+
                         if (target.length) {
-                        
+
                             event.preventDefault();
 
                             $('html, body').animate({
@@ -583,7 +574,7 @@
                                 scrollTop: target.offset().top - 40
 
                             }, 1000, function() {
-                        
+
                                 var $target = $(target);
 
                                 $target.focus();
@@ -593,7 +584,7 @@
                                     return false;
 
                                 } else {
-                                    
+
                                     $target.attr('tabindex', '-1');
                                     $target.focus();
                                 };
@@ -670,11 +661,11 @@
             this.slider_partners();
             this.vendor_gallery();
             this.vendor_video();
-            this.wedding_listing_single();     
+            this.wedding_listing_single();
             this.slider_home();
-            this.select_home_1();      
-            this.select_home_2(); 
-            this.slider_catgories();     
+            this.select_home_1();
+            this.select_home_2();
+            this.slider_catgories();
             this.home_slider_listing();
             this.select_map_1();
             this.select_map_2();
@@ -696,8 +687,6 @@
    Document ready function
    --------------------------------------------- */
     $(function () {
-
-        wporganic.loader();
         wporganic.initializ();
     });
 

@@ -28,10 +28,6 @@
 
     <!--body start-->
     <body>
-        <!-- preloader -->
-        <x-frontend-loader/>
-        <!-- end preloader -->
-
         <!-- header -->
         <x-frontend-header/>
 
@@ -62,7 +58,6 @@
         <script src="{{ asset('frontend/Styles/assets/library/jquery-ui/js/jquery.ui.touch-punch.min.js') }}"></script>
         <script src="{{ asset('frontend/Styles/assets/library/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
         <script src="{{ asset('frontend/Styles/assets/library/isotope-layout/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('frontend/Styles/assets/library/datepicker/js/datepicker.js') }}"></script>
         <script src="{{ asset('frontend/Styles/assets/js/script.js') }}"></script>
 
         {{-- CK editor CDN --}}

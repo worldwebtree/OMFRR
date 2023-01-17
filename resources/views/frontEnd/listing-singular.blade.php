@@ -66,15 +66,22 @@ Restaurant Details
                             <div class="recomendation-section">
                                 @if ($recommend === "service")
                                     <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-                                    <span>Recomended for Dine In</span>
+                                    <span>Recomended for Take Away</span>
 
                                     @elseif ($recommend === "food")
                                     <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-                                    <span>Recomended for Take Away</span>
+                                    <span>Recommended for Dine In</span>
+
+                                    @elseif ($recommend === "both")
+                                    <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+                                    <span>Recommended for Dine In & Take Away</span>
 
                                     @elseif ($recommend === "not ratted yet" && round($final_decimal_ratting, 1) == 5)
                                     <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-                                    <span>Recomended for Dine In & Take Away</span>
+                                    <span>Recommended for Dine In & Take Away</span>
+
+                                    @elseif ($recommend === "not ratted yet")
+                                    <span class="bg-info pt-2 pb-2 text-white pr-2 pl-2 rounded-pill">Not Recommended for any service yet</span>
                                 @endif
                             </div>
                         </div>
@@ -154,7 +161,7 @@ Restaurant Details
                                             <div class="col-md-4">
                                                 <div class="review-option">
                                                     <div class="icon">
-                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">{{ round($service_ratting, 1) }}</span>
+                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">{{ $service_ratting }}</span>
                                                     </div>
                                                     <div class="count">
                                                         <strong>Service</strong>
@@ -170,7 +177,7 @@ Restaurant Details
                                             <div class="col-md-4">
                                                 <div class="review-option">
                                                     <div class="icon">
-                                                        <i class="fa fa-cutlery" aria-hidden="true"></i> <span class="review-each-count">{{ round($food_ratting, 1) }}</span>
+                                                        <i class="fa fa-cutlery" aria-hidden="true"></i> <span class="review-each-count">{{ $food_ratting }}</span>
                                                     </div>
                                                     <div class="count">
                                                         <strong>Food</strong>
