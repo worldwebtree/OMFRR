@@ -62,6 +62,20 @@ Restaurant Details
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
                             <div class="reviews">
                                 <span class="badge"><i class="fa fa-star"></i> {{ round($final_decimal_ratting, 1) }}</span> {{ $count_overall_reviews }} Reviews
+                            </div><br>
+                            <div class="recomendation-section">
+                                @if ($recommend === "service")
+                                    <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+                                    <span>Recomended for Dine In</span>
+
+                                    @elseif ($recommend === "food")
+                                    <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+                                    <span>Recomended for Take Away</span>
+
+                                    @elseif ($recommend === "not ratted yet" && round($final_decimal_ratting, 1) == 5)
+                                    <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+                                    <span>Recomended for Dine In & Take Away</span>
+                                @endif
                             </div>
                         </div>
                     </div>

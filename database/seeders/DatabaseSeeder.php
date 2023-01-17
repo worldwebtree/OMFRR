@@ -32,10 +32,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        $users->each(function($user) {
+        // $users->each(function($user) {
 
-            $user->users_feedback()->saveMany(UsersFeedback::factory(10)->create());
+        //     $user->users_feedback()->saveMany(UsersFeedback::factory(10)->make());
 
-        });
+        // });
     }
 }

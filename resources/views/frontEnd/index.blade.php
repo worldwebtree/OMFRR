@@ -57,10 +57,6 @@ Home
                                         {{ $top_restaurant->overall_ratting }} reviews
                                             <i class="fa fa-star text-warning"></i>
                                     </div>
-                                    {{-- <div class="recomendation-section">
-                                        <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-                                        <span>Recomended</span>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
