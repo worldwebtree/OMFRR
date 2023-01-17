@@ -26,8 +26,8 @@ Restaurant Listning
                         <x-alert/>
 
                         <div class="input-group">
-                            <input type="text" name="restaurant_name" class="form-control form-light" placeholder="Enter restaurant name">
-                            <input type="text" name="restaurant_city" class="form-control form-light left-border" placeholder="Enter city name">
+                            <input type="text" name="restaurant_name" required class="form-control form-light" placeholder="Enter restaurant name">
+                            <input type="text" name="restaurant_city" required class="form-control form-light left-border" placeholder="Enter city name">
                             <div class="input-group-prepend">
                                 <button type="submit" class="btn btn-default">Search Now</button>
                             </div>

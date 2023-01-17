@@ -67,10 +67,10 @@ class RestaurantListeningPageController extends Controller
             'restaurant_city' => ['required', 'string'],
         ]);
 
-        $restaurantsByName = PostRestaurant::where([
-            'title' => ucwords($request->restaurant_name),
-            'city' => ucfirst($request->restaurant_city),
-        ])->paginate(100);
+        $restaurantsByName = PostRestaurant::query()
+            ->where('title', 'LIKE', ucwords($request->restaurant_name) .'%')
+            ->Where('city', ucfirst($request->restaurant_city))
+        ->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurantsByName'));
     }
