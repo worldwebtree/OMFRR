@@ -57,7 +57,7 @@ class RestaurantManageController extends Controller
             $restaurantImages = $image->hashName();
 
             // saving the file with hashed name in storage
-            $image->move(public_path('storage/Restaurant/images'), $restaurantImages);
+            $image->move(public_path('storage/Restaurant/images/'), $restaurantImages);
 
             $restaurantImagesArray[] = $restaurantImages;
         }
