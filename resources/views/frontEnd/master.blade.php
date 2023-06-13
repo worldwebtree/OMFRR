@@ -67,5 +67,4 @@
             @stack('js')
     </body>
 
-<!-- Mirrored from wporganic.com/html/weddingdir/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Feb 2022 17:27:44 GMT -->
 </html>

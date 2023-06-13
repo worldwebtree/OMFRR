@@ -43,13 +43,10 @@ class RestaurantListeningPageController extends Controller
             'location' => ['required', 'string'],
         ]);
 
-        $categories = $postRestaurant->pluck('category');
-
-        if (str_contains($categories, $request->category))
-
-           $restaurant = $postRestaurant->where([
-                'city' => $request->location,
-            ])->paginate(100);
+        $restaurant = $postRestaurant->where([
+            'category' => $request->category,
+            'city' => $request->location
+        ])->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurant'));
     }
@@ -83,11 +80,8 @@ class RestaurantListeningPageController extends Controller
      */
     public function searchByCategory($category, PostRestaurant $postRestaurant)
     {
-        $categories = $postRestaurant->pluck('category');
-
-        if (str_contains($categories, $category))
-
-           $restaurantsByCategory = $postRestaurant->paginate(100);
+        $restaurantsByCategory = $postRestaurant
+        ->where('category', 'LIKE', "%{$category}%")->paginate(100);
 
         return view('frontEnd.search-result', compact('restaurantsByCategory'));
     }

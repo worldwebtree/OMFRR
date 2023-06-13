@@ -3,12 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Admin\PostRestaurant;
-use Illuminate\Http\Testing\File as TestingFile;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use stdClass;
 
 class RestaurantData implements ToModel
 {

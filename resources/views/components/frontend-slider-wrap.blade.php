@@ -37,7 +37,7 @@
                                 <div class="col-12 col-md-5 left-border">
                                     @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
                                     <select class="form-light-select theme-combo home-select-2" required name="location">
-                                        <option selected disabled>Choose Location</option>
+                                        <option selected disabled>Choose City</option>
                                         @foreach ($location as $index => $name)
                                             <option value="{{ $name }}">{{ $name }}</option>
                                         @endforeach

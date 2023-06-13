@@ -22,7 +22,6 @@ use App\Http\Controllers\Frontend\FrontPageController;
 use App\Http\Controllers\Frontend\RestaurantFeedbackController;
 use App\Http\Controllers\Frontend\RestaurantListeningPageController;
 use App\Http\Controllers\Frontend\SingularRestaurantController;
-use App\Models\Admin\NewsLetterSubscribers;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -18,17 +18,12 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->text('description')
-            ->nullable();
-            $table->string('images', 10000)
-            ->nullable();
-            $table->string('city')
-            ->nullable();
-            $table->text('address', 1000)
-            ->nullable();
+            $table->text('description')->nullable();
+            $table->json('images', 10000)->nullable();
+            $table->string('city')->nullable();
+            $table->text('address', 1000)->nullable();
             $table->enum('category', ['Dine In', 'Take Away', 'Dine In & Take Away']);
-            $table->bigInteger('overall_ratting')
-            ->nullable();
+            $table->bigInteger('overall_ratting')->nullable();
 
             $table->timestamps();
         });
