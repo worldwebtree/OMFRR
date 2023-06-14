@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\Admin\RattingKeywords;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class KeywordsImport implements ToModel
+class KeywordsImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -15,9 +16,9 @@ class KeywordsImport implements ToModel
     public function model(array $row)
     {
         return new RattingKeywords([
-            'keyword_name' => $row[0],
-            'keyword_status' => $row[1],
-            'keyword_ratting' => $row[2],
+            'keyword_name' => $row['name'],
+            'keyword_status' => $row['status'],
+            'keyword_ratting' => $row['ratting'],
         ]);
     }
 }

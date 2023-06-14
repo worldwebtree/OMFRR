@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\Admin\PostRestaurant;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class RestaurantData implements ToModel
+class RestaurantData implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -15,13 +16,13 @@ class RestaurantData implements ToModel
     public function model(array $row)
     {
         return new PostRestaurant([
-            'title' => ucwords($row[0]),
-            'description' => null,
-            'images' => !empty($row[6]) ? $row[6] : null,
-            'city' => !empty($row[1]) ? $row[1] : null,
-            'address' => !empty($row[3]) ? ucwords($row[3]) : null,
-            'category' => "Dine In & Take Away",
-            'overall_ratting' => !empty($row[2]) ? $row[2] : null,
+            'title' => ucwords($row['title']),
+            'description' => $row['description'],
+            'images' => $row['images'],
+            'city' => $row['city'],
+            'address' => $row['address'],
+            'category' => $row['category'],
+            'overall_ratting' => !empty($row['overall_ratting']) ? $row['overall_ratting'] : null,
         ]);
     }
 }
