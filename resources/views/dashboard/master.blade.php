@@ -111,6 +111,8 @@
     {{-- CK editor CDN --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
 
+    <script src="{{ asset('frontend/js/plugins-init/bootstrap-show-password.js') }}"></script>
+
     <!-- Pushed JS from the Chiled Views -->
     @stack('js')
 

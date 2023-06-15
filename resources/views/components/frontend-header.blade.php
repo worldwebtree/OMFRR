@@ -66,13 +66,17 @@
                 </li>
                 @auth
 
-                    @if (auth()->user()->role == "admin")
+                    @if (auth()->user()->role === "admin")
 
                         @php($link = route('admin.dashboard'))
 
-                    @elseif (auth()->user()->role == "user")
+                    @elseif (auth()->user()->role === "user")
 
                         @php($link = route('customer.dashboard'))
+
+                    @elseif (auth()->user()->role === "restaurant")
+
+                        @php($link = route('restaurant.dashboard'))
 
                     @endif
                         <!-- Topbar Request Quote Start -->

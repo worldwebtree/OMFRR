@@ -16,12 +16,10 @@ class Administrator
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! $request->user()->role == "admin") {
-            return redirect()->route('customer.dashboard');
+        if ($request->user()->role === "admin") {
+            return $next($request);
         }
 
-        return $next($request);
-
-
+        return redirect()->route('frontend.index.page');
     }
 }

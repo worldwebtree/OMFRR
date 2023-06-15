@@ -16,20 +16,27 @@
                         <i class="fa fa-home text-light" aria-hidden="true"></i>
                     </a>
                 </li>
-                <li class="icons dropdown">
+                {{-- <li class="icons dropdown">
                     @php
-                        if (auth()->user()->role == "admin") {
+                        if (auth()->user()->role === "admin") {
                             $link = route('admin.notifications');
 
                             $notifications = auth()->user()->unreadNotifications->count();
 
-                            }elseif (auth()->user()->role == "user") {
+                            }elseif (auth()->user()->role === "user") {
 
                             $link = route('customer.notifications');
 
                             $notifications = auth()->user()->unreadNotifications->count();
+
+                        }elseif (auth()->user()->role === "restaurant") {
+
+                            $link = route('restaurant.notifications');
+
+                            $notifications = auth()->user()->unreadNotifications->count();
                         }
                     @endphp
+
                     <a href="{{ $link }}"
                         data-toggle="tooltip"
                         data-placement="bottom"
@@ -40,28 +47,24 @@
                             {{ $notifications }}
                         </span>
                     </a>
-                </li>
-                @php
-                    if (empty(auth()->user()->avatar) || auth()->user()->avatar == null) {
-                        $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
+                </li> --}}
 
-                        }elseif (!empty(auth()->user()->avatar) || auth()->user()->avatar !== null) {
-                        $src = asset('storage/profile_img/'.auth()->user()->avatar);
-                    }
-                @endphp
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                         <span class="activity active"></span>
-                        <img src="{{ $src }}" height="40" width="40" alt="default_user_icon">
+                        <img src="{{ asset('frontend/images/avatar/user_icon-removebg-preview.png') }}" height="40" width="40" alt="default_user_icon">
                     </div>
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">
                             @php
-                                if (auth()->user()->role == "admin") {
+                                if (auth()->user()->role === "admin") {
                                     $link = route('admin.profile');
 
-                                    }elseif (auth()->user()->role == "user") {
+                                    }elseif (auth()->user()->role === "user") {
                                     $link = route('customer.profile');
+
+                                    }elseif (auth()->user()->role === "restaurant") {
+                                    $link = route('restaurant.profile');
                                 }
                             @endphp
                             <ul>

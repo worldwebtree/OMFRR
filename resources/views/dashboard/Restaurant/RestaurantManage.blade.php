@@ -1,8 +1,6 @@
 @extends('dashboard.master')
 
-@section('title')
-Post Restaurant
-@endsection
+@section('title', 'Post Restaurant')
 
 @push('css')
 
@@ -31,20 +29,16 @@ Post Restaurant
                                     Post Restaurant <i class="fa fa-home" aria-hidden="true"></i>
                                 </h1>
                             </div>
-                            <form action="{{ route('admin.restaurant.management.store') }}" class="post_restaurant_form"
+                            <form action="{{ route('restaurant.management.store') }}" class="post_restaurant_form"
                                 enctype="multipart/form-data"
                                 method="POST">
                                 <x-error/>
                                 <x-alert/>
                                 @csrf
 
-                                <div class="form-title">
-                                    <h3>add restaurant post</h3>
-                                </div>
-
                                 <div class="form-group">
                                     <label for="RestaurantName">restaurant name</label>
-                                    <input type="text" name="restaurant_name" id="RestaurantName" class="form-control" required placeholder="Enter name" aria-describedby="helpId">
+                                    <input type="text" name="restaurant_name" id="RestaurantName" class="form-control" required placeholder="Enter name">
                                 </div>
 
                                 <div class="form-group">
@@ -317,7 +311,16 @@ Post Restaurant
 
                                 <div class="form-group">
                                     <label for="RestaurantAddress">restaurant address</label>
-                                    <input type="text" name="restaurant_address" id="RestaurantAddress" class="form-control" required placeholder="Enter address" aria-describedby="helpId">
+                                    <input type="text" name="restaurant_address" id="RestaurantAddress" class="form-control" required placeholder="Enter address">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Social Links</label>
+                                    <div class="d-md-flex justify-content-around">
+                                        <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://facebook.com/">
+                                        <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://twitter.com/">
+                                        <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://instagram.com/">
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -328,6 +331,11 @@ Post Restaurant
                                         <option value="Take Away">Take Away</option>
                                         <option value="Dine In & Take Away">Dine In & Take Away</option>
                                     </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="RestaurantAvailability">Availability</label>
+                                    <input type="time" class="form-control" name="restaurant_availability" id="RestaurantAvailability">
                                 </div>
 
                                 <div class="form-group">
@@ -423,9 +431,8 @@ Post Restaurant
                                                 <td>{{ $restaurant->city }}</td>
                                                 <td>{{ $restaurant->address }}</td>
                                                 <td>{{ $restaurant->category }}</td>
-                                                <td>{{ $restaurant->overall_ratting }}</td>
                                                 <td>
-                                                    <a class="DeleteUserBtn" href="{{ route('admin.restaurant.management.destroy', $restaurant->id) }}">
+                                                    <a class="DeleteUserBtn" href="{{ route('restaurant.management.destroy', $restaurant->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
@@ -504,50 +511,6 @@ Post Restaurant
 
         $(inputLabel).css("overflow", "hidden");
     }
-
-    function getXlsxFileName(input) {
-        let fileName = input.files[0].name;
-
-        $("#XlsxfileInputLabel").text(fileName);
-    }
 </script>
 @endpush
-
-                    {{-- <div class="card">
-                        <div class="card-body text-capitalize">
-                            <div class="card-title mb-5">
-                                <h1>
-                                    Or Upload .Xlsx file <i class="fa fa-home" aria-hidden="true"></i>
-                                </h1>
-                            </div>
-
-                            <form action="{{ route('admin.restaurant.management.upload') }}" class="post_restaurant_upload_form"
-                                enctype="multipart/form-data"
-                                method="POST">
-                                @csrf
-
-                                <x-error/>
-                                <x-alert/>
-
-                                <div class="form-title">
-                                    <h3>Upload restaurant data containing file</h3>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" required onchange="getXlsxFileName(this)"
-                                            name="restaurant_file"
-                                            class="custom-file-input"
-                                            accept=".xlsx"
-                                            id="customInput">
-                                        <label class="custom-file-label" id="XlsxfileInputLabel" for="customInput">Choose file...</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary w-100">Upload</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
 

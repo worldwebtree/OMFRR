@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
 use App\Imports\RestaurantData;
 use App\Models\Admin\PostRestaurant;
-use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -20,7 +19,7 @@ class RestaurantManageController extends Controller
     {
         $restaurants = $postRestaurant->paginate(10);
 
-        return view('dashboard.Admin.Restaurant.RestaurantManage', compact('restaurants'));
+        return view('dashboard.Restaurant.RestaurantManage', compact('restaurants'));
     }
 
     /**
@@ -63,15 +62,16 @@ class RestaurantManageController extends Controller
         }
 
         $postRestaurant->create([
+            'user_id' => $request->user()->id,
             'title' => ucwords($request->restaurant_name),
-            'description' => strip_tags($request->restaurant_description),
+            'description' => $request->restaurant_description,
             'images' => json_encode($restaurantImagesArray),
             'city' => $request->restaurant_city,
             'address' => ucwords($request->restaurant_address),
             'category' => $request->restaurant_category,
         ]);
 
-        return redirect()->route('admin.restaurant.management')
+        return redirect()->route('restaurant.management')
         ->with('created', 'Restaurant post has been created successfully');
     }
 
@@ -87,7 +87,7 @@ class RestaurantManageController extends Controller
 
         Excel::import(new RestaurantData, $file);
 
-        return redirect()->route('admin.restaurant.management')
+        return redirect()->route('restaurant.management')
         ->with('created', 'Restaurant post has been created successfully');
     }
 
@@ -137,7 +137,7 @@ class RestaurantManageController extends Controller
 
         $delete->delete();
 
-        return redirect()->route('admin.restaurant.management')
+        return redirect()->route('restaurant.management')
         ->with('deleted', 'Restaurant post has been deleted successfully');
 
     }

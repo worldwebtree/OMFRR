@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\NewsLetterSubscribersController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\RestaurantManageController;
 use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Admin\UserQueryController;
@@ -22,6 +21,9 @@ use App\Http\Controllers\Frontend\FrontPageController;
 use App\Http\Controllers\Frontend\RestaurantFeedbackController;
 use App\Http\Controllers\Frontend\RestaurantListeningPageController;
 use App\Http\Controllers\Frontend\SingularRestaurantController;
+use App\Http\Controllers\Restaurant\DashboardController as RestaurantDashboardController;
+use App\Http\Controllers\Restaurant\ProfileController as RestaurantProfileController;
+use App\Http\Controllers\Restaurant\RestaurantManageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,7 +63,7 @@ Route::prefix('frontend')->group(function () {
         Route::get('/contact', 'index')
         ->name('frontend.contact.page');
 
-        Route::post('/contact/send', 'store')->middleware(['auth', 'isCustomer'])
+        Route::post('/contact/send', 'store')->middleware(['auth', 'isUser'])
         ->name('frontend.contact.store');
     });
 
@@ -97,11 +99,11 @@ Route::prefix('frontend')->group(function () {
     ->group(function () {
 
         Route::post('/restaurant/feedback/service/{id}', 'storeServiceFeedback')
-        ->middleware('isCustomer')
+        ->middleware('isUser')
         ->name('frontend.restaurant.singular.feedback.page.service');
 
         Route::post('/restaurant/feedback/food/{id}', 'storeFoodFeedback')
-        ->middleware('isCustomer')
+        ->middleware('isUser')
         ->name('frontend.restaurant.singular.feedback.page.food');
     });
 
@@ -158,22 +160,6 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
         Route::get('/keywords/management/destroy/{id}', 'destroy')
         ->name('admin.keyword.management.destroy');
-
-    });
-
-    Route::controller(RestaurantManageController::class)->group(function () {
-
-        Route::get('/restaurant/management', 'index')
-        ->name('admin.restaurant.management');
-
-        Route::post('/restaurant/management/add', 'store')
-        ->name('admin.restaurant.management.store');
-
-        Route::post('/restaurant/management/upload/file', 'upload')
-        ->name('admin.restaurant.management.upload');
-
-        Route::get('/restaurant/management/destroy/{id}', 'destroy')
-        ->name('admin.restaurant.management.destroy');
 
     });
 
@@ -243,6 +229,45 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
         ->name('admin.subscribed.users.destroy');
     });
 });
+
+Route::prefix('restaurant')->name('restaurant.')
+    ->middleware(['auth', 'verified', 'isRestaurant'])
+    ->group(function () {
+
+        Route::controller(RestaurantDashboardController::class)->group(function () {
+            Route::get('/dashboard', 'index')
+            ->name('dashboard');
+        });
+
+        Route::controller(RestaurantProfileController::class)->group(function () {
+
+            Route::get('/profile', 'index')
+            ->name('profile');
+
+            Route::put('/profile/update', 'update')
+            ->name('profile.update');
+
+            Route::put('/password/reset', 'resetPassword')
+            ->name('password.reset');
+        });
+
+        Route::controller(RestaurantManageController::class)->group(function () {
+
+            Route::get('/restaurant/management', 'index')
+            ->name('management');
+
+            Route::post('/restaurant/management/add', 'store')
+            ->name('management.store');
+
+            Route::post('/restaurant/management/upload/file', 'upload')
+            ->name('management.upload');
+
+            Route::get('/restaurant/management/destroy/{id}', 'destroy')
+            ->name('management.destroy');
+
+        });
+
+    });
 
 /**
  * Customer Routes

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -60,5 +61,15 @@ class User extends Authenticatable
     public function users_feedback(): HasMany
     {
         return $this->hasMany(UsersFeedback::class);
+    }
+
+    /**
+     * User has one to many relationship with PostRestaurant
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function post_restaurant(): HasMany
+    {
+        return $this->hasMany(PostRestaurant::class);
     }
 }

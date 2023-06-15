@@ -50,16 +50,15 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
-            <!-- Confirm Password -->
+            <!-- Select Role -->
             <div class="mt-4">
-                <x-input-label for="gender" :value="__('Gender')" />
+                <x-input-label for="role" :value="__('Role')" />
 
-                <select name="gender"
+                <select name="role"
                         class="gender-input block mt-1 w-full rounded-3xl shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         id="">
-                    <option value="male">male</option>
-                    <option value="female">female</option>
-                    <option value="custom">custom</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="customer">Customer</option>
                 </select>
 
                 <x-input-error :messages="$errors->get('gender')" class="mt-2" />

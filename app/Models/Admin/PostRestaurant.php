@@ -3,8 +3,10 @@
 namespace App\Models\Admin;
 
 use App\Models\Customer\UsersFeedback;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PostRestaurant extends Model
@@ -17,6 +19,7 @@ class PostRestaurant extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'images',
@@ -44,16 +47,21 @@ class PostRestaurant extends Model
     }
 
     /**
-     * Model Relationships
-     * @return Illuminate\Database\Eloquent\Factories\Relationship
-     */
-
-    /**
       * PostRestaurant has a one to many relation with UsersFeedback model
       * @return Illuminate\Database\Eloquent\Relations\HasMany
       */
       public function users_feedback(): HasMany
       {
           return $this->hasMany(UsersFeedback::class);
+      }
+
+      /**
+       * PostRestaurant belongs to a user
+       *
+       * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+       */
+      public function user(): BelongsTo
+      {
+          return $this->belongsTo(User::class);
       }
 }

@@ -1,12 +1,15 @@
 <div class="nav-header">
     <div class="brand-logo">
         @php
-        if (auth()->user()->role == "admin"){
-                $link = route('admin.dashboard');
+            if (auth()->user()->role === "admin"){
+                    $link = route('admin.dashboard');
 
-            }elseif (auth()->user()->role == "user") {
-                $link = route('customer.dashboard');
-        }
+            }elseif (auth()->user()->role === "user") {
+                    $link = route('customer.dashboard');
+
+            }elseif (auth()->user()->role === "restaurant") {
+                    $link = route('restaurant.dashboard');
+            }
         @endphp
 
         <a href="{{ $link }}" class="text-white">
