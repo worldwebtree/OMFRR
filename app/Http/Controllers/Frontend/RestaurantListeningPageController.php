@@ -46,7 +46,7 @@ class RestaurantListeningPageController extends Controller
         $restaurant = $postRestaurant->where([
             'category' => $request->category,
             'city' => $request->location
-        ])->paginate(100);
+        ])->get();
 
         return view('frontEnd.search-result', compact('restaurant'));
     }
