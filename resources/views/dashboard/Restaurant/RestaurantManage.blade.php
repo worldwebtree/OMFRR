@@ -452,18 +452,22 @@
                                                 <td>{{ $restaurant->address }}</td>
                                                 <td style="width: 100px">
                                                     @foreach (json_decode($restaurant->social_links) as $icons => $links)
-                                                        <a href="{{ $links }}" class="mx-1">
+                                                        <a href="{{ $links }}" target="_blank" class="mx-1">
                                                             <i class="fa fa-{{ $icons }}"></i>
                                                         </a>
                                                     @endforeach
                                                 </td>
                                                 <td>{{ $restaurant->category }}</td>
-                                                <td>{{ json_decode($restaurant->availability) }}</td>
+                                                <td style="width: 200px">
+                                                    @foreach (json_decode($restaurant->availability) as $availability => $time)
+                                                        {{ $availability }}: {{ $time }}
+                                                    @endforeach
+                                                </td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('restaurant.management.destroy', $restaurant->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                     </a>
-                                                    <a class="DeleteUserBtn" href="{{ route('restaurant.management.edit', $restaurant->id) }}">
+                                                    <a class="" href="#editUserBtn">
                                                         <i class="fa fa-edit text-primary" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
