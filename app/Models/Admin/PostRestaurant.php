@@ -21,11 +21,13 @@ class PostRestaurant extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'description',
         'images',
+        'description',
         'city',
         'address',
+        'social_links',
         'category',
+        'availability',
         'overall_ratting',
     ];
 

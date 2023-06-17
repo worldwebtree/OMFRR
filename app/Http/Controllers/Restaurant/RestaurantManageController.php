@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
-use App\Imports\RestaurantData;
 use App\Models\Admin\PostRestaurant;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class RestaurantManageController extends Controller
 {
@@ -45,47 +43,47 @@ class RestaurantManageController extends Controller
             'restaurant_description' => ['required', 'string'],
             'restaurant_city' => ['required', 'string'],
             'restaurant_address' => ['required', 'string'],
+            'restaurant_social_links' => ['required', 'array'],
             'restaurant_category' => ['required', 'string'],
+            'restaurant_availability_from' => ['required'],
+            'restaurant_availability_to' => ['required'],
         ]);
 
         $images = $request->file('restaurant_images');
 
         foreach ($images as $image) {
-
             // generating hashed file name
             $restaurantImages = $image->hashName();
-
             // saving the file with hashed name in storage
             $image->move(public_path('storage/Restaurant/images/'), $restaurantImages);
 
             $restaurantImagesArray[] = $restaurantImages;
         }
 
+        $restaurantAvailabilities = array(
+            'from' => $request->restaurant_availability_from,
+            'to' => $request->restaurant_availability_to,
+        );
+
+        $socialMedia = array(
+            'facebook',
+            'twitter',
+            'instagram',
+        );
+
+        $socialLinks = array_combine($socialMedia, $request->restaurant_social_links);
+
         $postRestaurant->create([
             'user_id' => $request->user()->id,
             'title' => ucwords($request->restaurant_name),
-            'description' => $request->restaurant_description,
             'images' => json_encode($restaurantImagesArray),
+            'description' => $request->restaurant_description,
             'city' => $request->restaurant_city,
             'address' => ucwords($request->restaurant_address),
+            'social_links' => json_encode($socialLinks),
             'category' => $request->restaurant_category,
+            'availability' => json_encode($restaurantAvailabilities),
         ]);
-
-        return redirect()->route('restaurant.management')
-        ->with('created', 'Restaurant post has been created successfully');
-    }
-
-    /**
-     * Upload a data containing .xlsx file.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function upload(Request $request)
-    {
-        $file = $request->file('restaurant_file');
-
-        Excel::import(new RestaurantData, $file);
 
         return redirect()->route('restaurant.management')
         ->with('created', 'Restaurant post has been created successfully');
@@ -122,7 +120,7 @@ class RestaurantManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request, $id);
     }
 
     /**

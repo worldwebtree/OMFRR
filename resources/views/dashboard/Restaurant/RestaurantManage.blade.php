@@ -11,6 +11,14 @@
     .image-slider-btn:first-child img:hover {
         transform: scale(1.1);
     }
+
+    .restaurantDescriptionText {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
 </style>
 
 @endpush
@@ -58,7 +66,9 @@
 
                                 <div class="form-group">
                                     <label for="RestaurantDescription">restaurant description</label>
-                                    <textarea name="restaurant_description" id="editor" cols="30" rows="10" class="form-control"></textarea>
+                                    <textarea name="restaurant_description" id="editor" cols="30" rows="10" class="form-control">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sit fugit natus at non ab quia quis repellat possimus, saepe nulla voluptatem deleniti quasi? Eaque aliquam ut minus maiores laudantium quibusdam officia ipsum, natus odio, reprehenderit consequuntur odit accusantium libero vel exercitationem aut nobis ea necessitatibus, commodi ipsa. Modi earum tempora, tempore, distinctio nobis eius ut dolorum voluptatum debitis nemo facilis dolorem quos ducimus amet labore ea autem officia temporibus nostrum minima vero quam vel. Magnam natus ipsam ut unde eius consequuntur fugit quam non quisquam! A nam optio aliquam explicabo officia ab soluta! Sint doloribus nesciunt reiciendis perferendis voluptas magni iusto animi fuga tenetur id quia earum ullam rerum quibusdam, dolores dolorum. Minus quisquam odio reprehenderit sequi dolor similique hic id, eius iste incidunt distinctio suscipit itaque, quas voluptas delectus ab ducimus magni exercitationem soluta! Maiores deserunt error, assumenda, laudantium minus nisi quidem maxime dolores esse sapiente sequi unde laborum ex suscipit nesciunt amet voluptas modi? Iure voluptates mollitia inventore enim sit molestias quasi iste. Cumque iste iusto molestias. Repellat ea in nam tempore assumenda ad, nemo dolore temporibus nisi culpa a laudantium esse architecto rerum possimus expedita maiores corrupti, atque, eos provident officiis illum. Vero sit omnis ratione. Soluta voluptatibus eius delectus, eligendi blanditiis ducimus, corporis est asperiores distinctio necessitatibus itaque veniam inventore maiores eaque omnis, minus aspernatur a accusamus illum aut maxime repudiandae! Illum repudiandae qui impedit commodi corporis laborum mollitia, eius incidunt! Commodi voluptatibus aut blanditiis doloremque tenetur magni hic, quae officia voluptate consectetur minus cumque provident placeat laudantium dolorem accusamus deserunt quis ad. Provident laborum incidunt, dicta voluptatum dolorum illum cupiditate, earum est repellendus, accusantium repellat quas! Cumque animi officiis voluptates distinctio eligendi deserunt ea? Ullam ea nostrum itaque sunt magnam ab animi quisquam adipisci tempora nam? Quos totam aperiam doloremque cupiditate vel, laboriosam non pariatur impedit aspernatur est natus nihil modi tempore velit maiores ipsa placeat. Omnis perspiciatis sint aut maiores, enim voluptate at aliquam, atque delectus, aperiam error id excepturi ducimus magnam! Nam molestiae dolor, commodi aliquid doloremque consectetur at! Eveniet natus animi possimus aspernatur porro sunt doloremque ducimus veritatis. Eum, dignissimos harum doloremque labore similique repellat voluptatem voluptate. Fugiat perferendis ut, dignissimos minus perspiciatis quidem distinctio ea tenetur sed, voluptatum ullam esse veniam iste mollitia quos quasi aspernatur vero architecto numquam. Omnis ullam esse odit, aspernatur maxime dolore suscipit repellat enim illo incidunt aperiam perferendis aut dignissimos culpa accusamus? Non odio voluptas repellendus, sequi iure dolorum blanditiis, cupiditate esse alias reiciendis, assumenda similique magni exercitationem iste ipsam ullam rerum eveniet asperiores accusantium quasi? Tenetur, dolores ut impedit ullam corporis, maxime, sint provident architecto eligendi quidem iure labore nemo quo consequatur saepe vero modi ex beatae nisi recusandae. Dolore odio fugit harum dicta, accusamus cum sunt exercitationem ut incidunt? Pariatur voluptate dolore omnis est sunt accusantium, distinctio corporis magnam fuga tempore perspiciatis recusandae dolorem, optio eaque accusamus debitis, libero explicabo consequuntur obcaecati deserunt quaerat nobis! Magnam aspernatur dolor debitis ipsa neque quae est numquam! Eveniet unde iure deleniti sequi voluptas incidunt aliquam impedit.
+                                    </textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -334,8 +344,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="RestaurantAvailability">Availability</label>
-                                    <input type="time" class="form-control" name="restaurant_availability" id="RestaurantAvailability">
+                                    <label for="">Availability</label>
+                                    <div class="d-md-flex align-items-md-center">
+                                        <label for="">From</label>
+                                        <input type="time" class="form-control mx-2" name="restaurant_availability_from" id="RestaurantAvailabilityFrom">
+
+                                        <label for="">To</label>
+                                        <input type="time" class="form-control mx-2" name="restaurant_availability_to" id="RestaurantAvailabilityTo">
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -355,11 +371,13 @@
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
                                             <th>restaurant title</th>
-                                            <th>restaurant decription</th>
                                             <th>preview restaurant images</th>
+                                            <th>restaurant decription</th>
                                             <th>city</th>
                                             <th>address</th>
+                                            <th>social Links</th>
                                             <th>category</th>
+                                            <th>Availability</th>
                                             <th>action</th>
                                         </tr>
                                         </thead>
@@ -368,7 +386,6 @@
                                                 @php($Image = json_decode($restaurant->images))
                                             <tr>
                                                 <td>{{ $restaurant->title }}</td>
-                                                <td class="restaurantDescriptionText">{{ $restaurant->description ?? "No Description" }}</td>
                                                 @if (is_array(json_decode($restaurant->images)))
                                                     <td>
                                                         <!-- Button trigger modal -->
@@ -378,7 +395,7 @@
 
                                                         <!-- Modal -->
                                                         <div class="modal fade text-capitalize" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
+                                                            <div class="modal-dialog modal-lg" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-body">
                                                                         <div id="carouselId" class="carousel slide" data-ride="carousel">
@@ -428,12 +445,26 @@
                                                         </a>
                                                     </td>
                                                 @endif
+                                                <td class="restaurantDescriptionText">
+                                                    {!! $restaurant->description ?? "No Description" !!}
+                                                </td>
                                                 <td>{{ $restaurant->city }}</td>
                                                 <td>{{ $restaurant->address }}</td>
+                                                <td style="width: 100px">
+                                                    @foreach (json_decode($restaurant->social_links) as $icons => $links)
+                                                        <a href="{{ $links }}" class="mx-1">
+                                                            <i class="fa fa-{{ $icons }}"></i>
+                                                        </a>
+                                                    @endforeach
+                                                </td>
                                                 <td>{{ $restaurant->category }}</td>
+                                                <td>{{ json_decode($restaurant->availability) }}</td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('restaurant.management.destroy', $restaurant->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a class="DeleteUserBtn" href="{{ route('restaurant.management.edit', $restaurant->id) }}">
+                                                        <i class="fa fa-edit text-primary" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                             </tr>

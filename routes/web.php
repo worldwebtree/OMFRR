@@ -259,8 +259,8 @@ Route::prefix('restaurant')->name('restaurant.')
             Route::post('/restaurant/management/add', 'store')
             ->name('management.store');
 
-            Route::post('/restaurant/management/upload/file', 'upload')
-            ->name('management.upload');
+            Route::put('/restaurant/management/edit/{id}', 'update')
+            ->name('management.edit');
 
             Route::get('/restaurant/management/destroy/{id}', 'destroy')
             ->name('management.destroy');
