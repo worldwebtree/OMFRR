@@ -24,6 +24,7 @@ use App\Http\Controllers\Frontend\SingularRestaurantController;
 use App\Http\Controllers\Restaurant\DashboardController as RestaurantDashboardController;
 use App\Http\Controllers\Restaurant\ProfileController as RestaurantProfileController;
 use App\Http\Controllers\Restaurant\RestaurantManageController;
+use App\Http\Controllers\Restaurant\UsersFeedbackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -265,6 +266,12 @@ Route::prefix('restaurant')->name('restaurant.')
             Route::get('/restaurant/management/destroy/{id}', 'destroy')
             ->name('management.destroy');
 
+        });
+
+        Route::controller(UsersFeedbackController::class)->group(function () {
+
+            Route::get('/users/feedback', 'index')
+            ->name('users.feedback');
         });
 
     });

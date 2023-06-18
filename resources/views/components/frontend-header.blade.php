@@ -70,7 +70,7 @@
 
                         @php($link = route('admin.dashboard'))
 
-                    @elseif (auth()->user()->role === "user")
+                    @elseif (auth()->user()->role === "customer")
 
                         @php($link = route('customer.dashboard'))
 

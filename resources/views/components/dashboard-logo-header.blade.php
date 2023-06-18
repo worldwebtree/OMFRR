@@ -4,7 +4,7 @@
             if (auth()->user()->role === "admin"){
                     $link = route('admin.dashboard');
 
-            }elseif (auth()->user()->role === "user") {
+            }elseif (auth()->user()->role === "customer") {
                     $link = route('customer.dashboard');
 
             }elseif (auth()->user()->role === "restaurant") {

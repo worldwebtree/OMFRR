@@ -7,7 +7,7 @@ use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class UsersFeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,10 @@ class DashboardController extends Controller
     {
         $auth = Auth::user();
 
-        $restaurants = $auth->post_restaurant->count();
-
         $feedbacks = UsersFeedback::where('post_restaurant_id', $auth->post_restaurant->pluck('id'))
-        ->count();
+        ->paginate(20);
 
-        return view('dashboard.Restaurant.dashboard', compact('restaurants', 'feedbacks'));
+        return view('dashboard.Restaurant.userFeedback', compact('feedbacks'));
     }
 
     /**

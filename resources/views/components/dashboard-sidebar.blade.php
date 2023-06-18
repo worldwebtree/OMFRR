@@ -10,43 +10,43 @@
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.users.manage') }}" aria-expanded="false">
-                            <i class="fa fa-users" aria-hidden="true"></i><span class="nav-text">manage user</span>
+                            <i class="fa fa-users" aria-hidden="true"></i><span class="nav-text px-2">manage user</span>
                         </a>
                     </li>
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.keyword.management') }}" aria-expanded="false">
-                            <i class="fa fa-key" aria-hidden="true"></i><span class="nav-text">Add keyword</span>
+                            <i class="fa fa-key" aria-hidden="true"></i><span class="nav-text px-2">Add keyword</span>
                         </a>
                     </li>
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.users.feedback') }}" aria-expanded="false">
-                            <i class="fa fa-comment" aria-hidden="true"></i><span class="nav-text">manage user Feedback</span>
+                            <i class="fa fa-comment" aria-hidden="true"></i><span class="nav-text px-2">manage user Feedback</span>
                         </a>
                     </li>
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.about') }}" aria-expanded="false">
-                            <i class="fa fa-newspaper-o" aria-hidden="true"></i><span class="nav-text">about us</span>
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i><span class="nav-text px-2">about us</span>
                         </a>
                     </li>
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.contact') }}" aria-expanded="false">
-                            <i class="fa fa-phone" aria-hidden="true"></i><span class="nav-text">contact us</span>
+                            <i class="fa fa-phone" aria-hidden="true"></i><span class="nav-text px-2">contact us</span>
                         </a>
                     </li>
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.users.query') }}" aria-expanded="false">
-                            <i class="fa fa-question" aria-hidden="true"></i><span class="nav-text">user queries</span>
+                            <i class="fa fa-question" aria-hidden="true"></i><span class="nav-text px-2">user queries</span>
                         </a>
                     </li>
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.subscribed.users') }}" aria-expanded="false">
-                            <i class="fa fa-users" aria-hidden="true"></i><span class="nav-text">subscribed user's</span>
+                            <i class="fa fa-users" aria-hidden="true"></i><span class="nav-text px-2">subscribed user's</span>
                         </a>
                     </li>
                 </ul>
@@ -60,12 +60,18 @@
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('restaurant.management') }}" aria-expanded="false">
-                            <i class="fa fa-home" aria-hidden="true"></i><span class="nav-text">post restaurant</span>
+                            <i class="fa fa-home" aria-hidden="true"></i><span class="nav-text px-2">post restaurant</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-list-item">
+                        <a class="nav-anchor-item" href="{{ route('restaurant.users.feedback') }}" aria-expanded="false">
+                            <i class="fa fa-comments" aria-hidden="true"></i><span class="nav-text px-2">user feedbacks</span>
                         </a>
                     </li>
                 </ul>
 
-            @elseif (auth()->user()->role == 'user')
+            @elseif (auth()->user()->role == 'customer')
                 {{-- Sidebar links for customer dashbaord --}}
 
                 <ul class="metismenu text-capitalize" id="menu">
@@ -77,7 +83,7 @@
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('customer.restaurant.management.feedback') }}" aria-expanded="false">
-                            <i class="fa fa-comments"></i><span class="nav-text">Your Feedback's</span>
+                            <i class="fa fa-comments"></i><span class="nav-text px-2">Your Feedback's</span>
                         </a>
                     </li>
 

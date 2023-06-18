@@ -7,13 +7,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard - @yield('title')</title>
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+
     <!-- Pignose Calender -->
     <link href="{{ asset('frontend/plugins/pg-calendar/css/pignose.calendar.min.css') }}" rel="stylesheet">
+
     <!-- Chartist -->
     <link rel="stylesheet" href="{{ asset('frontend/plugins/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
     <!-- Custom Stylesheet -->
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
@@ -109,10 +115,11 @@
     <script src="{{ asset('frontend/js/dashboard/dashboard-1.js') }}"></script>
 
     {{-- CK editor CDN --}}
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script> --}}
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
     <script src="{{ asset('frontend/js/plugins-init/bootstrap-show-password.js') }}"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
 
     <!-- Pushed JS from the Chiled Views -->
     @stack('js')

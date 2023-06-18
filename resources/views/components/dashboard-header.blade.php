@@ -16,14 +16,14 @@
                         <i class="fa fa-home text-light" aria-hidden="true"></i>
                     </a>
                 </li>
-                {{-- <li class="icons dropdown">
+                <li class="icons dropdown">
                     @php
                         if (auth()->user()->role === "admin") {
                             $link = route('admin.notifications');
 
                             $notifications = auth()->user()->unreadNotifications->count();
 
-                            }elseif (auth()->user()->role === "user") {
+                            }elseif (auth()->user()->role === "customer") {
 
                             $link = route('customer.notifications');
 
@@ -47,7 +47,7 @@
                             {{ $notifications }}
                         </span>
                     </a>
-                </li> --}}
+                </li>
 
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative" data-toggle="dropdown">
@@ -60,7 +60,7 @@
                                 if (auth()->user()->role === "admin") {
                                     $link = route('admin.profile');
 
-                                    }elseif (auth()->user()->role === "user") {
+                                    }elseif (auth()->user()->role === "customer") {
                                     $link = route('customer.profile');
 
                                     }elseif (auth()->user()->role === "restaurant") {
