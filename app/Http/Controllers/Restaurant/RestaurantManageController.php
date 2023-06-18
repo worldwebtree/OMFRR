@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PostRestaurant;
+use App\Models\Admin\PostRestaurantMeta;
 use Illuminate\Http\Request;
 
 class RestaurantManageController extends Controller
@@ -51,15 +52,6 @@ class RestaurantManageController extends Controller
 
         $images = $request->file('restaurant_images');
 
-        foreach ($images as $image) {
-            // generating hashed file name
-            $restaurantImages = $image->hashName();
-            // saving the file with hashed name in storage
-            $image->move(public_path('storage/Restaurant/images/'), $restaurantImages);
-
-            $restaurantImagesArray[] = $restaurantImages;
-        }
-
         $restaurantAvailabilities = array(
             'from' => $request->restaurant_availability_from,
             'to' => $request->restaurant_availability_to,
@@ -73,16 +65,30 @@ class RestaurantManageController extends Controller
 
         $socialLinks = array_combine($socialMedia, $request->restaurant_social_links);
 
-        $postRestaurant->create([
+        $post = $postRestaurant->create([
             'user_id' => $request->user()->id,
             'title' => ucwords($request->restaurant_name),
-            'images' => json_encode($restaurantImagesArray),
             'description' => $request->restaurant_description,
             'city' => $request->restaurant_city,
             'address' => ucwords($request->restaurant_address),
             'social_links' => json_encode($socialLinks),
             'category' => $request->restaurant_category,
             'availability' => json_encode($restaurantAvailabilities),
+        ]);
+
+        foreach ($images as $image) {
+            // generating hashed file name
+            $restaurantImages = $image->hashName();
+            // saving the file with hashed name in storage
+            $image->move(public_path('storage/Restaurant/images/'), $restaurantImages);
+
+            $filename[] = $restaurantImages;
+        }
+
+        PostRestaurantMeta::create([
+            'post_restaurant_id' => $post->id,
+            'meta_key' => 'restaurant_images',
+            'meta_value' => json_encode($filename),
         ]);
 
         return redirect()->route('restaurant.management')
@@ -120,7 +126,65 @@ class RestaurantManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request, $id);
+        $request->validate([
+            'restaurant_name' => ['required', 'string'],
+            'restaurant_description' => ['required', 'string'],
+            'restaurant_city' => ['required', 'string'],
+            'restaurant_address' => ['required', 'string'],
+            'restaurant_social_links' => ['required', 'array'],
+            'restaurant_category' => ['required', 'string'],
+            'restaurant_availability_from' => ['required'],
+            'restaurant_availability_to' => ['required'],
+        ]);
+
+        $postRestaurant = PostRestaurant::findOrFail($id);
+
+        $restaurantAvailabilities = array(
+            'from' => $request->restaurant_availability_from,
+            'to' => $request->restaurant_availability_to,
+        );
+
+        $socialMedia = array(
+            'facebook',
+            'twitter',
+            'instagram',
+        );
+
+        $socialLinks = array_combine($socialMedia, $request->restaurant_social_links);
+
+        $postRestaurant->update([
+            'user_id' => $request->user()->id,
+            'title' => ucwords($request->restaurant_name),
+            'description' => $request->restaurant_description,
+            'city' => $request->restaurant_city,
+            'address' => ucwords($request->restaurant_address),
+            'social_links' => json_encode($socialLinks),
+            'category' => $request->restaurant_category,
+            'availability' => json_encode($restaurantAvailabilities),
+        ]);
+
+        if ($request->hasFile('restaurant_images')) {
+
+            $images = $request->file('restaurant_images');
+
+            foreach ($images as $image) {
+                // generating hashed file name
+                $restaurantImages = $image->hashName();
+                // saving the file with hashed name in storage
+                $image->move(public_path('storage/Restaurant/images/'), $restaurantImages);
+
+                $filename[] = $restaurantImages;
+            }
+
+            $postRestaurant
+            ->post_restaurant_meta()
+            ->update([
+                'meta_value' => json_encode($filename),
+            ]);
+        }
+
+        return redirect()->route('restaurant.management')
+        ->with('updated', 'Restaurant post has been updated successfully');
     }
 
     /**

@@ -22,7 +22,6 @@ return new class extends Migration
             ->cascadeOnDelete();
 
             $table->string('title');
-            $table->json('images', 10000);
             $table->text('description');
             $table->string('city');
             $table->text('address', 1000);

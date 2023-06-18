@@ -21,7 +21,6 @@ class PostRestaurant extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'images',
         'description',
         'city',
         'address',
@@ -65,5 +64,15 @@ class PostRestaurant extends Model
       public function user(): BelongsTo
       {
           return $this->belongsTo(User::class);
+      }
+
+      /**
+       * PostRestaurant has a one to many relation with post_restaurant_meta model
+       *
+       * @return \Illuminate\Database\Eloquent\Relations\HasMany
+       */
+      public function post_restaurant_meta(): HasMany
+      {
+          return $this->hasMany(PostRestaurantMeta::class,);
       }
 }

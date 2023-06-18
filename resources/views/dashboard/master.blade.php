@@ -109,7 +109,8 @@
     <script src="{{ asset('frontend/js/dashboard/dashboard-1.js') }}"></script>
 
     {{-- CK editor CDN --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
     <script src="{{ asset('frontend/js/plugins-init/bootstrap-show-password.js') }}"></script>
 
