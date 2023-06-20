@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\NewsLetterSubscribersController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RestaurantManageController as AdminRestaurantManageController;
 use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Admin\UserQueryController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\Frontend\SingularRestaurantController;
 use App\Http\Controllers\Restaurant\DashboardController as RestaurantDashboardController;
 use App\Http\Controllers\Restaurant\ProfileController as RestaurantProfileController;
 use App\Http\Controllers\Restaurant\RestaurantManageController;
+use App\Http\Controllers\Restaurant\RestaurantNotificationController;
 use App\Http\Controllers\Restaurant\UsersFeedbackController;
 use Illuminate\Support\Facades\Route;
 
@@ -151,6 +153,16 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
 
     });
 
+    Route::controller(AdminRestaurantManageController::class)->group(function () {
+
+        Route::get('/restaurants/manage', 'index')
+        ->name('admin.restaurants.manage');
+
+        Route::get('/restaurants/delete/{id}', 'destroy')
+        ->name('admin.restaurants.destroy');
+
+    });
+
     Route::controller(KeywordManageController::class)->group(function () {
 
         Route::get('/keywords/management', 'index')
@@ -274,7 +286,14 @@ Route::prefix('restaurant')->name('restaurant.')
             ->name('users.feedback');
         });
 
+        Route::controller(RestaurantNotificationController::class)->group(function () {
+
+            Route::get('/notifications', 'index')
+            ->name('notifications');
+        });
+
     });
+
 
 /**
  * Customer Routes

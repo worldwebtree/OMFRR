@@ -16,7 +16,9 @@ class RestaurantManageController extends Controller
      */
     public function index(PostRestaurant $postRestaurant)
     {
-        $restaurants = $postRestaurant->paginate(10);
+        $restaurants = $postRestaurant
+        ->where('user_id', auth()->user()->id)
+        ->paginate(10);
 
         return view('dashboard.Restaurant.RestaurantManage', compact('restaurants'));
     }

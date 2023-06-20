@@ -15,6 +15,12 @@
                     </li>
 
                     <li class="nav-list-item">
+                        <a class="nav-anchor-item" href="{{ route('admin.restaurants.manage') }}" aria-expanded="false">
+                            <i class="fas fa-utensils" aria-hidden="true"></i><span class="nav-text px-2">manage restaurant</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.keyword.management') }}" aria-expanded="false">
                             <i class="fa fa-key" aria-hidden="true"></i><span class="nav-text px-2">Add keyword</span>
                         </a>
@@ -28,7 +34,7 @@
 
                     <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.about') }}" aria-expanded="false">
-                            <i class="fa fa-newspaper-o" aria-hidden="true"></i><span class="nav-text px-2">about us</span>
+                            <i class="fa fa-newspaper" aria-hidden="true"></i><span class="nav-text px-2">about us</span>
                         </a>
                     </li>
 

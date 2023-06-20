@@ -1,8 +1,6 @@
 @extends('dashboard.master')
 
-@section('title')
-About Us
-@endsection
+@section('title', 'About Us')
 
 @push('css')
 
@@ -35,7 +33,7 @@ About Us
 
                                 <div class="form-group">
                                   <textarea type="text"
-                                    class="form-control" name="description" id="editor" cols="30" rows="10">
+                                    class="form-control editor" name="description" cols="30" rows="10">
                                   </textarea>
                                 </div>
 
@@ -92,7 +90,7 @@ About Us
 
                                                                     <div class="form-group">
                                                                         <textarea type="text"
-                                                                          class="form-control" name="description" id="secondEditor" cols="30" rows="10">
+                                                                          class="form-control editor" name="description" cols="30" rows="10">
                                                                           {{ $data->description }}
                                                                         </textarea>
                                                                     </div>
@@ -124,17 +122,23 @@ About Us
 @push('js')
 <script type="text/javascript">
 
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-    } );
+    let TextEditor = document.querySelectorAll('.editor');
 
-    ClassicEditor
-        .create( document.querySelector( '#secondEditor' ) )
-        .catch( error => {
-            console.error( error );
-    } );
+    TextEditor.forEach( (Etr) => {
+        CKEDITOR.replace(Etr);
+    });
+
+    // ClassicEditor
+    //     .create( document.querySelector( '#editor' ) )
+    //     .catch( error => {
+    //         console.error( error );
+    // } );
+
+    // ClassicEditor
+    //     .create( document.querySelector( '#secondEditor' ) )
+    //     .catch( error => {
+    //         console.error( error );
+    // } );
 
         // For warning alert message before deleting any records
     $(document).ready(function () {

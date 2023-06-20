@@ -35,6 +35,14 @@
             color: #7571f9 !important;
             transition: .2s ease;
         }
+
+        .restaurantDescriptionText {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
     <!-- Pushed Style Css from the Chile Views -->

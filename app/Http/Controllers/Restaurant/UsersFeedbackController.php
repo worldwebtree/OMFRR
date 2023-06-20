@@ -18,8 +18,14 @@ class UsersFeedbackController extends Controller
     {
         $auth = Auth::user();
 
-        $feedbacks = UsersFeedback::where('post_restaurant_id', $auth->post_restaurant->pluck('id'))
-        ->paginate(20);
+        $usersFeedback = new UsersFeedback();
+
+        if ($usersFeedback->get()->isNotEmpty())
+            $feedbacks = $usersFeedback
+            ->where('post_restaurant_id', $auth->post_restaurant->pluck('id'))
+            ->paginate(20);
+        else
+            $feedbacks = "";
 
         return view('dashboard.Restaurant.userFeedback', compact('feedbacks'));
     }

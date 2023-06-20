@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class RestaurantNotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,20 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $auth = Auth::user();
+        $notifications = Auth::user()->unreadNotifications;
 
-        $restaurants = $auth->post_restaurant->count();
-
-        $usersFeedback = new UsersFeedback();
-
-        if (! $usersFeedback->get()->isEmpty())
-            $feedbacks = $usersFeedback
-            ->where('post_restaurant_id', $auth->post_restaurant->pluck('id'))
-            ->count();
-        else
-            $feedbacks = 0;
-
-        return view('dashboard.Restaurant.dashboard', compact('restaurants', 'feedbacks'));
+        return view('dashboard.Restaurant.notifications', compact('notifications'));
     }
 
     /**

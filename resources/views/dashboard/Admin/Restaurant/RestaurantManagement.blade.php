@@ -1,9 +1,9 @@
 @extends('dashboard.master')
 
-@section('title', 'Users Management')
+@section('title', 'Restaurant Management')
 
 @push('css')
-
+{{--  --}}
 @endpush
 
 @section('content')
@@ -16,28 +16,44 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="card-title text-capitalize">
-                                user's management <i class="fa fa-users" aria-hidden="true"></i>
+                                restaurant's management <i class="fas fa-users" aria-hidden="true"></i>
                             </h1>
                             <div class="table-responsive">
                                 <table class="table table-striped table-inverse">
                                     <thead class="thead-inverse text-capitalize">
                                         <tr>
-                                            <th>name</th>
-                                            <th>email</th>
-                                            <th>password</th>
-                                            <th>role</th>
+                                            <th>username</th>
+                                            <th>restaurant name</th>
+                                            <th>restaurant description</th>
+                                            <th>restaurant city</th>
+                                            <th>restaurant address</th>
+                                            <th>restaurant social links</th>
+                                            <th>restaurant category</th>
+                                            <th>restaurant availability</th>
+                                            <th>restaurant ratting</th>
                                             <th>action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $user)
+                                            @foreach ($restaurants as $restaurant)
                                             <tr>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->password }}</td>
-                                                <td>{{ $user->role }}</td>
+                                                <td>{{ $restaurant->user->name }}</td>
+                                                <td>{{ $restaurant->title }}</td>
+                                                <td class="restaurantDescriptionText">{!! $restaurant->description !!}</td>
+                                                <td>{{ $restaurant->city }}</td>
+                                                <td>{{ $restaurant->address }}</td>
                                                 <td>
-                                                    <a class="DeleteUserBtn" href="{{ route('admin.users.destroy', $user->id) }}">
+                                                    @foreach (json_decode($restaurant->social_links) as $icons => $links)
+                                                        <a href="{{ $links }}">
+                                                            <i class="fab fa-{{ $icons }}"></i>
+                                                        </a>
+                                                    @endforeach
+                                                </td>
+                                                <td>{{ $restaurant->category }}</td>
+                                                <td>{{ $restaurant->availavility }}</td>
+                                                <td>{{ $restaurant->overall_ratting }}</td>
+                                                <td>
+                                                    <a class="DeleteUserBtn" href="{{ route('admin.restaurants.destroy', $restaurant->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
@@ -45,7 +61,7 @@
                                             @endforeach
                                         </tbody>
                                 </table>
-                                {{ $users->links() }}
+                                {{ $restaurants->links() }}
                             </div>
                         </div>
                     </div>

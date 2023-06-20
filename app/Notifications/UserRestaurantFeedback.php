@@ -6,9 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-use function PHPSTORM_META\map;
-
-class UserFeedbackNotification extends Notification
+class UserRestaurantFeedback extends Notification
 {
     use Queueable;
 
@@ -57,16 +55,12 @@ class UserFeedbackNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        $check = $this->users_feedback->map(function ($value) {
-            return  [
-                'name' => $value->username,
-                'feedback' => $value->feedback,
-                'restaurant' => $value->restaurant_name,
-                'title' => ucwords("feedback deleted"),
-                'message' => ucfirst("you'r feedback (".$value->feedback.") has been deleted from restaurant (".$value->restaurant_name.") due to some major reason.")
-            ];
-        });
-
-        return $check[0];
+        return  [
+            'name' => $this->users_feedback->username,
+            'feedback' => $this->users_feedback->feedback,
+            'restaurant' => $this->users_feedback->restaurant_name,
+            'title' => ucwords("feedback deleted"),
+            'message' => ucfirst("you'r feedback (".$this->users_feedback->feedback.") has been deleted from restaurant (".$this->users_feedback->restaurant_name.") due to some major reason.")
+        ];
     }
 }

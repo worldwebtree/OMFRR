@@ -3,16 +3,15 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-use function PHPSTORM_META\map;
-
-class UserFeedbackNotification extends Notification
+class NewRestaurantNotification extends Notification
 {
     use Queueable;
 
-    public $users_feedback;
+    public $user;
 
     /**
      * Create a new notification instance.
@@ -21,7 +20,7 @@ class UserFeedbackNotification extends Notification
      */
     public function __construct($user)
     {
-        $this->users_feedback = $user->users_feedback;
+        $this->user = $user;
     }
 
     /**
@@ -57,16 +56,14 @@ class UserFeedbackNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        $check = $this->users_feedback->map(function ($value) {
-            return  [
-                'name' => $value->username,
-                'feedback' => $value->feedback,
-                'restaurant' => $value->restaurant_name,
-                'title' => ucwords("feedback deleted"),
-                'message' => ucfirst("you'r feedback (".$value->feedback.") has been deleted from restaurant (".$value->restaurant_name.") due to some major reason.")
-            ];
-        });
+        if ($this->user->role === 'restaurant')
 
-        return $check[0];
+        $title = $this->user->post_restaurant->get('title');
+
+        return [
+            'name' => $title,
+            'title' => ucwords("new restaurant has been registered"),
+            'message' => ucfirst("go check out the new restaurant and provide your feedback!")
+        ];
     }
 }

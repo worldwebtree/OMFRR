@@ -29,17 +29,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($feedbacks as $feedback)
-                                                <tr>
-                                                    <td>{{ $feedback->user->name }}</td>
-                                                    <td>{{ $feedback->post_restaurant->title }}</td>
-                                                    <td>{{ $feedback->feedback }}</td>
-                                                    <td>{{ $feedback->category }}</td>
-                                                </tr>
-                                            @endforeach
+                                            @if (! empty($feedbacks))
+                                                @foreach ($feedbacks as $feedback)
+                                                    <tr>
+                                                        <td>{{ $feedback->user->name }}</td>
+                                                        <td>{{ $feedback->post_restaurant->title }}</td>
+                                                        <td>{{ $feedback->feedback }}</td>
+                                                        <td>{{ $feedback->category }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                         </tbody>
                                 </table>
-                                {{ $feedbacks->links() }}
+                                {{ empty($feedbacks) ? $feedbacks : $feedbacks->links() }}
                             </div>
                         </div>
                     </div>

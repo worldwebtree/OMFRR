@@ -11,14 +11,6 @@
     .image-slider-btn:first-child img:hover {
         transform: scale(1.1);
     }
-
-    .restaurantDescriptionText {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-    }
 </style>
 
 @endpush
@@ -457,7 +449,7 @@
                                                 <td style="width: 100px">
                                                     @foreach (json_decode($restaurant->social_links) as $icons => $links)
                                                         <a href="{{ $links }}" target="_blank" class="mx-1">
-                                                            <i class="fa fa-{{ $icons }}"></i>
+                                                            <i class="fab fa-{{ $icons }}"></i>
                                                         </a>
                                                     @endforeach
                                                 </td>

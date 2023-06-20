@@ -3,10 +3,12 @@
 namespace App\Listeners;
 
 use App\Models\User;
-use App\Notifications\UserFeedbackNotification;
+use App\Notifications\NewRestaurantNotification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Notification;
 
-class SendUserFeedbackNotification
+class SendNewRestaurantNotification
 {
     /**
      * Create the event listener.
@@ -28,6 +30,6 @@ class SendUserFeedbackNotification
     {
         $customers = User::where('role', 'customer')->get();
 
-        Notification::send($customers, new UserFeedbackNotification($event->user));
+        Notification::send($customers, new NewRestaurantNotification($event->user));
     }
 }
