@@ -41,8 +41,7 @@ class NotificationController extends Controller
         Auth::user()->unreadNotifications
         ->when($request->id, function ($query) use ($request) {
             return $query->where('id', $request->id);
-        })
-        ->markAsRead();
+        })->markAsRead();
 
         return response()->noContent();
     }

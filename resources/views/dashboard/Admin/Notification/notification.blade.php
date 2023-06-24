@@ -1,8 +1,6 @@
 @extends('dashboard.master')
 
-@section('title')
-Notifications
-@endsection
+@section('title', 'Notifications')
 
 @push('css')
 <style>

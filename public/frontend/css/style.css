@@ -7837,10 +7837,6 @@ sub {
   height: 2.5rem;
   padding: 0.625rem 0.8125rem; }
 
-.notification-content {
-  margin-left: 3.4375rem;
-  margin-right: 1.5625rem; }
-
 .user-avatar {
   margin-left: 0.625rem;
   font-size: 0.875rem;

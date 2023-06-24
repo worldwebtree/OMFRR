@@ -92,7 +92,7 @@
                 }
             });
 
-            return $.ajax("{{ route('admin.notifications.mark') }}", {
+            return $.ajax("{{ route('restaurant.notifications.mark') }}", {
                 method: 'POST',
                 data: { id }
             });

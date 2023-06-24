@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Restaurant;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PostRestaurant;
 use App\Models\Admin\PostRestaurantMeta;
+use App\Models\User;
+use App\Notifications\NewRestaurantNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class RestaurantManageController extends Controller
 {
@@ -92,6 +95,12 @@ class RestaurantManageController extends Controller
             'meta_key' => 'restaurant_images',
             'meta_value' => json_encode($filename),
         ]);
+
+        // sending notification to customers
+
+        $customers = User::where('role', 'customer')->get();
+
+        Notification::send($customers, new NewRestaurantNotification($post));
 
         return redirect()->route('restaurant.management')
         ->with('created', 'Restaurant post has been created successfully');

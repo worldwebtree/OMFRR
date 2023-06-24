@@ -38,7 +38,12 @@ class RestaurantNotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Auth::user()->unreadNotifications
+        ->when($request->id, function ($query) use ($request) {
+            return $query->where('id', $request->id);
+        })->markAsRead();
+
+        return response()->noContent();
     }
 
     /**

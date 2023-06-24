@@ -11,16 +11,16 @@ class NewRestaurantNotification extends Notification
 {
     use Queueable;
 
-    public $user;
+    public $post;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($post)
     {
-        $this->user = $user;
+        $this->post = $post;
     }
 
     /**
@@ -56,14 +56,13 @@ class NewRestaurantNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        if ($this->user->role === 'restaurant')
-
-        $title = $this->user->post_restaurant->get('title');
+        if ($this->post->user->role === 'restaurant')
 
         return [
-            'name' => $title,
-            'title' => ucwords("new restaurant has been registered"),
-            'message' => ucfirst("go check out the new restaurant and provide your feedback!")
+            'name' => $this->post->title,
+            'url' => 'frontend/singular-restaurant-listening/'.$this->post->id.'',
+            'title' => ucwords("new restaurant has been added"),
+            'message' => ucfirst("go check out the restaurant and provide your feedback!")
         ];
     }
 }

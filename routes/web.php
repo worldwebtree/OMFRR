@@ -121,128 +121,132 @@ Route::prefix('frontend')->group(function () {
 /**
  * Administrator Routes
  */
-Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])
+Route::prefix('admin')->name('admin.')
+    ->middleware(['auth', 'verified', 'isAdmin'])
     ->group(function() {
 
     Route::controller(DashboardController::class)->group(function () {
 
         Route::get('/dashboard', 'index')
-        ->name('admin.dashboard');
+        ->name('dashboard');
 
     });
 
     Route::controller(ProfileController::class)->group(function () {
 
         Route::get('/profile', 'index')
-        ->name('admin.profile');
+        ->name('profile');
 
         Route::put('/profile/update', 'update')
-        ->name('admin.profile.update');
+        ->name('profile.update');
 
         Route::put('/password/reset', 'resetPassword')
-        ->name('admin.password.reset');
+        ->name('password.reset');
     });
 
     Route::controller(UserManageController::class)->group(function () {
 
         Route::get('/users/manage', 'index')
-        ->name('admin.users.manage');
+        ->name('users.manage');
 
         Route::get('/users/delete/{id}', 'destroy')
-        ->name('admin.users.destroy');
+        ->name('users.destroy');
 
     });
 
     Route::controller(AdminRestaurantManageController::class)->group(function () {
 
         Route::get('/restaurants/manage', 'index')
-        ->name('admin.restaurants.manage');
+        ->name('restaurants.manage');
 
         Route::get('/restaurants/delete/{id}', 'destroy')
-        ->name('admin.restaurants.destroy');
+        ->name('restaurants.destroy');
 
     });
 
     Route::controller(KeywordManageController::class)->group(function () {
 
         Route::get('/keywords/management', 'index')
-        ->name('admin.keyword.management');
+        ->name('keyword.management');
 
         Route::post('/keywords/management/add', 'store')
-        ->name('admin.keyword.management.store');
+        ->name('keyword.management.store');
 
         Route::get('/keywords/management/destroy/{id}', 'destroy')
-        ->name('admin.keyword.management.destroy');
+        ->name('keyword.management.destroy');
 
     });
 
     Route::controller(UserFeedbackController::class)->group(function () {
 
         Route::get('/users/feedback', 'index')
-        ->name('admin.users.feedback');
+        ->name('users.feedback');
 
         Route::get('/users/feedback/destroy/{id}', 'destroy')
-        ->name('admin.users.feedback.destroy');
+        ->name('users.feedback.destroy');
     });
 
     Route::controller(NotificationController::class)->group(function () {
 
         Route::get('/notifications', 'index')
-        ->name('admin.notifications');
+        ->name('notifications');
 
         Route::post('/notifications/mark', 'store')
-        ->name('admin.notifications.mark');
+        ->name('notifications.mark');
     });
 
     Route::controller(AboutController::class)->group(function () {
 
         Route::get('/about', 'index')
-        ->name('admin.about');
+        ->name('about');
 
         Route::post('/about/add', 'store')
-        ->name('admin.about.store');
+        ->name('about.store');
 
         Route::put('/about/update/{id}', 'update')
-        ->name('admin.about.update');
+        ->name('about.update');
 
         Route::get('/about/destroy/{id}', 'destroy')
-        ->name('admin.about.destroy');
+        ->name('about.destroy');
     });
 
     Route::controller(ContactController::class)->group(function () {
 
         Route::get('/contact', 'index')
-        ->name('admin.contact');
+        ->name('contact');
 
         Route::post('/contact/add', 'store')
-        ->name('admin.contact.store');
+        ->name('contact.store');
 
         Route::put('/contact/update/{id}', 'update')
-        ->name('admin.contact.update');
+        ->name('contact.update');
 
         Route::get('/contact/destroy/{id}', 'destroy')
-        ->name('admin.contact.destroy');
+        ->name('contact.destroy');
     });
 
     Route::controller(UserQueryController::class)->group(function () {
 
         Route::get('users/contact/queries', 'index')
-        ->name('admin.users.query');
+        ->name('users.query');
 
         Route::get('users/contact/queries/destroy/{id}', 'destroy')
-        ->name('admin.users.query.destroy');
+        ->name('users.query.destroy');
     });
 
     Route::controller(NewsLetterSubscribersController::class)->group(function () {
 
         Route::get('subscribers', 'index')
-        ->name('admin.subscribed.users');
+        ->name('subscribed.users');
 
         Route::get('subscribers/destroy/{id}', 'destroy')
-        ->name('admin.subscribed.users.destroy');
+        ->name('subscribed.users.destroy');
     });
 });
 
+/**
+ * Restaurant Routes
+ */
 Route::prefix('restaurant')->name('restaurant.')
     ->middleware(['auth', 'verified', 'isRestaurant'])
     ->group(function () {
@@ -290,50 +294,57 @@ Route::prefix('restaurant')->name('restaurant.')
 
             Route::get('/notifications', 'index')
             ->name('notifications');
+
+            Route::post('/notifications/mark', 'store')
+            ->name('notifications.mark');
         });
 
-    });
-
+});
 
 /**
  * Customer Routes
  */
-Route::prefix('customer')->middleware(['auth', 'verified', 'isCustomer'])
+Route::prefix('customer')->name('customer.')
+    ->middleware(['auth', 'verified', 'isCustomer'])
     ->group(function() {
 
     Route::controller(CustomerDashboardController::class)->group(function () {
 
-        Route::get('/dashboard', 'index')->name('customer.dashboard');
+        Route::get('/dashboard', 'index')->name('dashboard');
 
     });
 
     Route::controller(CustomerProfileController::class)->group(function () {
 
         Route::get('/profile', 'index')
-        ->name('customer.profile');
+        ->name('profile');
 
         Route::put('/profile/update', 'update')
-        ->name('customer.profile.update');
+        ->name('profile.update');
 
         Route::put('/password/reset', 'resetPassword')
-        ->name('customer.password.reset');
+        ->name('password.reset');
     });
 
     Route::controller(RestaurantManagementController::class)->group(function () {
 
         Route::get('/restaurant/management/feedback', 'index')
-        ->name('customer.restaurant.management.feedback');
+        ->name('restaurant.management.feedback');
 
         Route::get('/restaurant/management/feedback/destroy/{id}', 'destroy')
-        ->name('customer.restaurant.management.feedback.destroy');
+        ->name('restaurant.management.feedback.destroy');
 
     });
 
     Route::controller(CustomerNotificationController::class)->group(function () {
 
         Route::get('/notifications', 'index')
-        ->name('customer.notifications');
+        ->name('notifications');
+
+        Route::post('/notifications/mark', 'store')
+        ->name('notifications.mark');
     });
 
 });
+
 require __DIR__.'/auth.php';
