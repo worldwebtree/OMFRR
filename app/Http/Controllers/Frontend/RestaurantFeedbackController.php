@@ -71,53 +71,6 @@ class RestaurantFeedbackController extends Controller
             'restaurant_name' => $restaurant_name->title,
             'feedback' => ucfirst(strip_tags($request->service_feedback)),
             'feedback_status' => $feedback_status,
-            'category' => "Service",
-        ]);
-
-        return redirect()->back();
-    }
-
-        /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeFoodFeedback(Request $request, $id)
-    {
-        $request->validate([
-            'food_feedback' => ['required', 'string'],
-        ]);
-
-        $user = $request->user();
-
-        if ($user->role === "admin")
-        return back()->with('not user', "Only users can give feedback on a restaurant");
-
-        $restaurant_name = PostRestaurant::findOrFail($id);
-
-        $positive_feedback_status = $this->PositiveAnalyze($request->food_feedback);
-
-        $negative_feedback_status = $this->NegativeAnalyze($request->food_feedback);
-
-        if ($positive_feedback_status === "positive") {
-            $feedback_status = "positive";
-
-        } elseif ($negative_feedback_status === "negative") {
-            $feedback_status = "negative";
-
-        } else {
-            $feedback_status = "neutral";
-        }
-
-        UsersFeedback::create([
-            'user_id' => $user->id,
-            'post_restaurant_id' => $id,
-            'username' => $user->name,
-            'restaurant_name' => $restaurant_name->title,
-            'feedback' => ucfirst(strip_tags($request->food_feedback)),
-            'feedback_status' => $feedback_status,
-            'category' => "Food",
         ]);
 
         return redirect()->back();

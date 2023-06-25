@@ -97,8 +97,7 @@ Route::prefix('frontend')->group(function () {
     /**
      * This route will only be accessed by Authenticated Customers.
      */
-    Route::controller(RestaurantFeedbackController::class)
-    ->middleware(['auth', 'isCustomer'])
+    Route::controller(RestaurantFeedbackController::class)->middleware(['auth', 'isCustomer'])
     ->group(function () {
 
         Route::post('/restaurant/feedback/{id}', 'feedback')

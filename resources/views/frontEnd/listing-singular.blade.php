@@ -26,19 +26,6 @@
                         <!-- About Slider Images -->
                     </div>
                 </div>
-                <div class="tab-pane" id="pills-streetview" role="tabpanel" aria-labelledby="pills-streetview-tab">
-                    <iframe src="https://www.google.com/maps/embed?pb=!4v1607331008276!6m8!1m7!1sCAoSLEFGMVFpcFByZ2V2ako1MG1HTW9fVEhtUlJzYlNUZUxUUDIwaTJxM0s1YS1M!2m2!1d33.8126567!2d-117.9189792!3f25.80201492461224!4f19.61613938587837!5f0.7820865974627469" height="597" width="100%" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                </div>
-                <div class="tab-pane" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                    <div class="slider-frame">
-                        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&amp;mute=1"></iframe>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                    <div class="slider-frame">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"></iframe>
-                    </div>
-                </div>
             </div>
 
         </section>
@@ -46,7 +33,7 @@
 
         <!-- Vendor Profile Single Start -->
         <div class="vendor-profile-single">
-            <div class="container pos-rel">
+            <div class="container">
                 <div class="row align-items-end">
                     <div class="col-lg-6 mb-0">
                         <div class="profile-single">
@@ -107,16 +94,7 @@
         </div>
         <!-- Vendor Profile Single End -->
 
-        <!-- Vendor Profile Navigation -->
-        <div class="container vendor-nav-sticky">
-            <div class="vendor-nav">
-                <a href="#description"><i class="fa fa-file-text"></i> Description</a>
-                <a href="#reviews"><i class="fa fa-star-half-full"></i> Reviews</a>
-            </div>
-        </div>
-        <!-- Vendor Profile Navigation -->
-
-        <section class="wide-tb-90 pt-0">
+        <section class="wide-tb-90 mt-5 pt-0">
             <div class="container">
                 <div class="row">
 
@@ -124,26 +102,31 @@
                     <div class="col-lg-12 col-md-12">
 
                         <!-- Description -->
-                        <div class="card-shadow pos-rel">
+                        <div class="mb-5">
                             <a id="description" class="anchor-fake"></a>
-                            <div class="card-shadow-header">
-                                <h3><i class="fa fa-file-text"></i> Description</h3>
+                            <div class="description-header text-info">
+                                <h2><i class="fa fa-file-text"></i> Who we are</h2>
                             </div>
-                            <div class="card-shadow-body">
+                            <div class="description-body">
                                 <p>{!! $data->description ?? "No Description" !!}</p>
                             </div>
                         </div>
                         <!-- Description -->
 
                         <!-- Reviews -->
-                        <div class="card-shadow pos-rel">
-                            <a id="reviews" class="anchor-fake"></a>
-                            <div class="card-shadow-header d-md-flex justify-content-between align-items-center">
-                                <h3><i class="fa fa-star-o"></i> Feedbacks</h3>
+                        <div class="">
+                            <div class="feedbacks-header text-info d-md-flex justify-content-between align-items-center">
+                                <h2><i class="fa fa-comments"></i> Feedbacks</h2>
                             </div>
-                            <div class="card-shadow-body border-bottom">
+
+                            <div class="overall-ratting mt-4">
                                 <div class="no-gutters">
                                     <div class="col-md-auto">
+                                        <h3 class="text-success text-center">
+                                            <i class="fa fa-star-o"></i>
+                                            Overall Ratting
+                                        </h3>
+
                                         <div class="review-count">
                                             <span>{{ round($final_decimal_ratting, 1) }}</span>
                                             <small>out of 5.0</small>
@@ -152,7 +135,7 @@
                                 </div>
                             </div>
 
-                            <div class="card-shadow-body border-top">
+                            <div class="card-shadow-body">
                                 <!-- Review Media -->
                                 @foreach ($feedbacks as $feedback)
                                     <div class="reviews-media">
@@ -176,7 +159,7 @@
                                 @endforeach
                             </div>
 
-                            <div class="card-shadow-body">
+                            <div class="write-feedback-body">
                                 <div class="write-feedback">
                                     <form action="{{ route('frontend.restaurant.singular.feedback', $data->id) }}" method="POST">
                                         @csrf
@@ -187,7 +170,7 @@
                                         <div class="row mt-4">
                                             <div class="col-md-12 mb-0">
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="food_feedback" id="SecondEditor" rows="5" placeholder="Your Comments"></textarea>
+                                                    <textarea class="form-control" name="feedback" id="" rows="4" placeholder="Write Your Feedback"></textarea>
                                                 </div>
                                             </div>
                                         </div>
