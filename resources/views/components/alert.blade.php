@@ -24,14 +24,5 @@
             icon: 'info',
         })
     </script>
-
-    @elseif (session('not user'))
-    <script type="text/javascript">
-        swal.fire({
-            title: 'Feedback Restriction',
-            text: "{{ session('not user') }}",
-            icon: 'info',
-        })
-    </script>
 @endif
 

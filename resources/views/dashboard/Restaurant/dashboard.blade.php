@@ -16,7 +16,7 @@
                     <div class="card-body text-capitalize">
                         <h3 class="card-title text-white">restaurants</h3>
                         <div class="d-inline-block">
-                            <h2 class="text-white">{{ $restaurants }}</h2>
+                            <h2 class="text-white">{{ $restaurants->count() }}</h2>
                         </div>
                         <span class="float-right display-5 opacity-5">
                             <i class="fas fa-utensils"></i>
@@ -30,7 +30,9 @@
                     <div class="card-body text-capitalize">
                         <h3 class="card-title text-white">feedbacks</h3>
                         <div class="d-inline-block">
-                            <h2 class="text-white">{{ $feedbacks }}</h2>
+                            @foreach ($restaurants as $restaurant)
+                                <h2 class="text-white">{{ $restaurant->users_feedback->count('id') }}</h2>
+                            @endforeach
                         </div>
                         <span class="float-right display-5 opacity-5">
                             <i class="fas fa-comments"></i>

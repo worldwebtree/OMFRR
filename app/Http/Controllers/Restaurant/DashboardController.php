@@ -18,18 +18,9 @@ class DashboardController extends Controller
     {
         $auth = Auth::user();
 
-        $restaurants = $auth->post_restaurant->count();
+        $restaurants = $auth->post_restaurant;
 
-        $usersFeedback = new UsersFeedback();
-
-        if (! $usersFeedback->get()->isEmpty())
-            $feedbacks = $usersFeedback
-            ->where('post_restaurant_id', $auth->post_restaurant->pluck('id'))
-            ->count();
-        else
-            $feedbacks = 0;
-
-        return view('dashboard.Restaurant.dashboard', compact('restaurants', 'feedbacks'));
+        return view('dashboard.Restaurant.dashboard', compact('restaurants'));
     }
 
     /**

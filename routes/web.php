@@ -47,7 +47,7 @@ Route::get('/', function () {
 /**
  * Frontend Routes
  */
-Route::prefix('frontend')->group(function () {
+Route::prefix('MyReview')->group(function () {
 
     Route::controller(FrontPageController::class)->group(function () {
 
