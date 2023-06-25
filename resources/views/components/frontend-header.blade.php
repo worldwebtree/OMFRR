@@ -14,7 +14,11 @@
                         <div class="social-icons">
                             <ul class="list-unstyled">
                                 @foreach (json_decode($data->social_links) as $name => $link)
-                                    <li><a href="{{ $link }}"><i class=" fa fa-{{ $name }}"></i></a></li>
+                                    <li>
+                                        <a href="{{ $link }}">
+                                            <i class=" fa fa-{{ $name }}"></i>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>

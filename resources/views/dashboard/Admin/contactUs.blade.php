@@ -60,13 +60,13 @@ Contact Us
                                 <div class="form-group">
                                     <label for="SocialLinks">social links</label>
                                     <div class="d-flex">
-                                        <input type="text"
+                                        <input type="url"
                                             class="form-control m-2" placeholder="Enter Facebook Page Url" required name="facebook">
-                                        <input type="text"
+                                        <input type="url"
                                             class="form-control m-2" placeholder="Enter Twitter Page Url" required name="twitter">
-                                        <input type="text"
+                                        <input type="url"
                                             class="form-control m-2" placeholder="Enter Instagram Page Url" required name="instagram">
-                                        <input type="text"
+                                        <input type="url"
                                             class="form-control m-2" placeholder="Enter Linkedin Page Url" required name="linkedin">
                                     </div>
                                   </div>
@@ -102,7 +102,14 @@ Contact Us
                                                 <td>{{ $data->email }}</td>
                                                 <td>{{ $data->address }}</td>
                                                 <td>{{ $data->customer_support_email }}</td>
-                                                <td>{{ $data->social_links }}</td>
+                                                <td>
+                                                    @foreach (json_decode($data->social_links) as $icons => $links)
+
+                                                            <a href="{{ $links }}" class="px-1">
+                                                                <i class="fab fa-{{ $icons }}"></i>
+                                                            </a>
+                                                    @endforeach
+                                                </td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('admin.contact.destroy', $data->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>

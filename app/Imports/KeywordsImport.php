@@ -16,7 +16,7 @@ class KeywordsImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new RattingKeywords([
-            'keyword_name' => $row['name'],
+            'keyword_name' => $row['words'],
             'keyword_status' => $row['status'],
             'keyword_ratting' => $row['ratting'],
         ]);

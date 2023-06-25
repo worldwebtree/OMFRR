@@ -43,7 +43,7 @@ class AboutController extends Controller
         ]);
 
         AboutUS::create([
-            'description' => strip_tags($request->description),
+            'description' => $request->description,
         ]);
 
         return redirect()->route('admin.about')

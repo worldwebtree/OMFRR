@@ -28,7 +28,7 @@
                                 <x-alert/>
 
                                 <div class="form-title">
-                                    <h3>Add Website About Description</h3>
+                                    <h3>Add Website About</h3>
                                 </div>
 
                                 <div class="form-group">
@@ -60,7 +60,7 @@
                                         <tbody>
                                             @foreach ($about as $data)
                                             <tr>
-                                                <td>{{ $data->description }}</td>
+                                                <td>{!! $data->description !!}</td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('admin.about.destroy', $data->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
@@ -73,7 +73,7 @@
                                                 </td>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="UpdateAboutModel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-dialog modal-lg" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-body text-capitalize">
                                                                 <form action="{{ route('admin.about.update', $data->id) }}" class="about_update_form"
@@ -85,7 +85,7 @@
                                                                     <x-alert/>
 
                                                                     <div class="form-title">
-                                                                        <h3>update about information</h3>
+                                                                        <h3>update about</h3>
                                                                     </div>
 
                                                                     <div class="form-group">

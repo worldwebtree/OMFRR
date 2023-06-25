@@ -31,7 +31,7 @@ Keywords Management
                                 <x-alert/>
 
                                 <div class="form-title">
-                                    <h3>Upload keyword file</h3>
+                                    <h3>Bulk Upload keywords</h3>
                                 </div>
 
                                 <div class="form-group">

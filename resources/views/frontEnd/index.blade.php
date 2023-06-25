@@ -1,8 +1,6 @@
 @extends('frontEnd.master')
 
-@section('title')
-Home
-@endsection
+@section('title', 'Home')
 
 @push('css')
 
@@ -21,9 +19,7 @@ Home
                 <h1>Highest Rating Restaurants</h1>
             </div>
             <div class="row">
-                @php($top_restaurants = App\Models\Admin\PostRestaurant::getRankedRestaurants())
-
-                @foreach ($top_restaurants as $top_restaurant)
+                @foreach (getRankedRestaurants() as $top_restaurant)
                     <div class="col-lg-4 col-md-6">
                         <div class="wedding-listing">
                             <div class="img">
