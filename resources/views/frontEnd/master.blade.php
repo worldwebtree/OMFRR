@@ -17,7 +17,7 @@
         ================================================== -->
         <title>{{ config('app.name') }}- @yield('title')</title>
 
-        <!-- CSS ( Bootstrap + Owlcarouses + Fontawesome + Animate + Select2 + Custom Style )
+        <!-- CSS ( Bootstrap + Owlcarouses  + Animate + Select2 + Custom Style )
         ======================================================================================= -->
         <link href="{{ asset('frontend/Styles/assets/css/base.css') }}" rel="stylesheet">
 

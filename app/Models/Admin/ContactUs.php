@@ -21,9 +21,4 @@ class ContactUs extends Model
         'customer_support_email',
         'social_links'
     ];
-
-    public static function getContactInformation()
-    {
-        return ContactUs::get();
-    }
 }

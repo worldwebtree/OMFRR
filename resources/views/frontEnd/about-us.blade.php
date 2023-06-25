@@ -1,8 +1,6 @@
 @extends('frontEnd.master')
 
-@section('title')
-About
-@endsection
+@section('title', 'About')
 
 @push('css')
 
@@ -33,7 +31,7 @@ About
                         <div class="text-center">
                             <h2 class="fw-7">Who we are</h2>
                             <p>
-                                {{ $about }}
+                                {!! $about !!}
                             </p>
                         </div>
                     </div>

@@ -37,10 +37,10 @@ class RestaurantFeedbackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeServiceFeedback(Request $request, $id)
+    public function feedback(Request $request, $id)
     {
         $request->validate([
-            'service_feedback' => ['required', 'string'],
+            'feedback' => ['required', 'string'],
         ]);
 
         $user = $request->user();

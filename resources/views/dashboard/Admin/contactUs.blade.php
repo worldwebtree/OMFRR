@@ -1,8 +1,6 @@
 @extends('dashboard.master')
 
-@section('title')
-Contact Us
-@endsection
+@section('title', 'Contact Us')
 
 @push('css')
 

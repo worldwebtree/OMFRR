@@ -1,11 +1,9 @@
 @extends('frontEnd.master')
 
-@section('title')
-Restaurant Details
-@endsection
+@section('title', 'Restaurant Details')
 
 @push('css')
-
+{{--  --}}
 @endpush
 
 @section('content')
@@ -19,19 +17,13 @@ Restaurant Details
                 </div>
                 <div class="tab-pane show active" id="pills-hr-grid" role="tabpanel" aria-labelledby="pills-hr-grid-tab">
                     <div class="owl-carousel owl-theme" id="slider-vendor-single">
-                            <!-- About Slider Images -->
-                        @if (is_array(json_decode($data->images)))
-
-                            @foreach (json_decode($data->images) as $image)
-                            <div class="item" style="background-image: url({{ asset('storage/Restaurant/images/' . $image) }});"></div>
+                        <!-- About Slider Images -->
+                        @foreach ($data->post_restaurant_meta as $meta_data)
+                            @foreach (json_decode($meta_data->meta_value) as $images)
+                                <div class="item" style="background-image: url({{ asset('storage/Restaurant/images/' . $images) }});"></div>
                             @endforeach
-
-                            @else
-                            <a target="_blank" href="{{ str_replace('"', ' ', $data->images) }}">
-                                <div class="item" style="background-image: url({{ asset('frontend/images/default_restaurant_image/click-me.gif') }});"></div>
-                            </a>
-                        @endif
-                            <!-- About Slider Images -->
+                        @endforeach
+                        <!-- About Slider Images -->
                     </div>
                 </div>
                 <div class="tab-pane" id="pills-streetview" role="tabpanel" aria-labelledby="pills-streetview-tab">
@@ -94,9 +86,12 @@ Restaurant Details
                             </a>
 
                             <span class="dropdown-menu">
-                                <a class="dropdown-item" target="_blank" href="https://facebook.com"><i class="fa fa-facebook-f"></i> Facebook</a>
-                                <a class="dropdown-item" target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i> Twitter</a>
-                                <a class="dropdown-item" target="_blank" href="https://instagram.com"><i class="fa fa-instagram"></i> Instagram</a>
+                                @foreach (json_decode($data->social_links) as $icons => $links)
+                                    <a class="dropdown-item" target="_blank" href="{{ $links }}">
+                                        <i class="fa fa-{{ $icons }}"></i>
+                                        {{ $icons }}
+                                    </a>
+                                @endforeach
                             </span>
                         </span>
                         <span class="hover_out">
@@ -135,7 +130,7 @@ Restaurant Details
                                 <h3><i class="fa fa-file-text"></i> Description</h3>
                             </div>
                             <div class="card-shadow-body">
-                                <p>{{ $data->description ?? "No Description"}}</p>
+                                <p>{!! $data->description ?? "No Description" !!}</p>
                             </div>
                         </div>
                         <!-- Description -->
@@ -144,8 +139,7 @@ Restaurant Details
                         <div class="card-shadow pos-rel">
                             <a id="reviews" class="anchor-fake"></a>
                             <div class="card-shadow-header d-md-flex justify-content-between align-items-center">
-                                <h3><i class="fa fa-star-o"></i> Reviews</h3>
-                                <a href="#review-form" class="btn btn-sm btn-dark mt-3 mt-md-0" id="write-review-form">Write A Review</a>
+                                <h3><i class="fa fa-star-o"></i> Feedbacks</h3>
                             </div>
                             <div class="card-shadow-body border-bottom">
                                 <div class="no-gutters">
@@ -155,58 +149,14 @@ Restaurant Details
                                             <small>out of 5.0</small>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="row justify-content-around">
-                                            <!-- review-option -->
-                                            <div class="col-md-4">
-                                                <div class="review-option">
-                                                    <div class="icon">
-                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">{{ $service_ratting }}</span>
-                                                    </div>
-                                                    <div class="count">
-                                                        <strong>Service</strong>
-                                                        <div>
-                                                            <i class="fa fa-star text-warning" aria-hidden="true"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- review-option -->
-
-                                            <!-- review-option -->
-                                            <div class="col-md-4">
-                                                <div class="review-option">
-                                                    <div class="icon">
-                                                        <i class="fa fa-cutlery" aria-hidden="true"></i> <span class="review-each-count">{{ $food_ratting }}</span>
-                                                    </div>
-                                                    <div class="count">
-                                                        <strong>Food</strong>
-                                                        <div>
-                                                            <i class="fa fa-star text-warning" aria-hidden="true"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- review-option -->
-                                        </div>
-                                    </div>
                                 </div>
-
                             </div>
+
                             <div class="card-shadow-body border-top">
                                 <!-- Review Media -->
                                 @foreach ($feedbacks as $feedback)
                                     <div class="reviews-media">
                                         <div class="media">
-                                            @php
-                                                if (empty(auth()->user()->avatar) || auth()->user()->avarar = null) {
-                                                    $src = asset('frontend/images/avatar/user_icon-removebg-preview.png');
-
-                                                    }elseif (!empty(auth()->user()->avatar) || auth()->user()->avarar != null) {
-                                                    $src = asset('storage/profile_img/'.auth()->user()->avatar);
-                                                }
-                                            @endphp
-                                            <img class="thumb" src="{{ $src }}" alt="avatar">
                                             <div class="media-body">
                                                 <div class="heading-wrap no-gutters">
                                                     <div class="heading">
@@ -217,45 +167,6 @@ Restaurant Details
                                                             <small class="text-info">Reviewed on {{ $feedback->created_at->format('d-m-y') }}</small>
                                                         </div>
                                                     </div>
-                                                    {{-- <div id="review-option-toggle-1" class="collapse" >
-                                                        <div class="row">
-                                                            <!-- review-option -->
-                                                            <div class="col-md-4">
-                                                                <div class="review-option">
-                                                                    <div class="icon">
-                                                                        <i class="fa fa-smile-o"></i> <span class="review-each-count">4.9</span>
-                                                                    </div>
-                                                                    <div class="count">
-                                                                        <strong>Service</strong>
-                                                                        <div>
-                                                                            <div class="bar-base">
-                                                                                <div class="bar-filled" style="width: 80%;">&nbsp;</div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- review-option -->
-
-                                                            <!-- review-option -->
-                                                            <div class="col-md-4">
-                                                                <div class="review-option">
-                                                                    <div class="icon">
-                                                                        <i class="fa fa-cutlery"></i> <span class="review-each-count">3.7</span>
-                                                                    </div>
-                                                                    <div class="count">
-                                                                        <strong>Food</strong>
-                                                                        <div>
-                                                                            <div class="bar-base">
-                                                                                <div class="bar-filled" style="width: 67%;">&nbsp;</div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- review-option -->
-                                                        </div>
-                                                    </div> --}}
                                                 </div>
 
                                                 <p>{{ $feedback->feedback }}</p>
@@ -264,133 +175,31 @@ Restaurant Details
                                     </div>
                                 @endforeach
                             </div>
-                        </div>
-                        <!-- Reviews -->
 
-                        <!-- Write A Review -->
-                        <style>
-                            .card {
-                                background-color: #ffffff;
-                                border: 1px solid rgba(0, 34, 51, 0.1);
-                                box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);
-                                border-radius: 0.15rem;
-                                margin-bottom: 2rem;
-                            }
+                            <div class="card-shadow-body">
+                                <div class="write-feedback">
+                                    <form action="{{ route('frontend.restaurant.singular.feedback', $data->id) }}" method="POST">
+                                        @csrf
 
-                            /* Tabs Card */
-
-                            .tab-card {
-                                border:1px solid #eee;
-                            }
-
-                            .tab-card-header {
-                                background:none;
-                            }
-                            /* Default mode */
-                            .tab-card-header > .nav-tabs {
-                                border: none;
-                                margin: 0px;
-                            }
-                            .tab-card-header > .nav-tabs > li {
-                                margin-right: 2px;
-                            }
-                            .tab-card-header > .nav-tabs > li > a {
-                                border: 0;
-                                border-bottom:2px solid transparent;
-                                margin-right: 0;
-                                color: #737373;
-                                padding: 2px 15px;
-                            }
-
-                            .tab-card-header > .nav-tabs > li .active {
-                                color: #ffffff;
-                                background-color: #00aeaf;
-                            }
-                            .tab-card-header > .nav-tabs > li > a:hover {
-                                color: #ffffff;
-                                background-color: #00aeaf;
-                            }
-
-                            .tab-card-header > .tab-content {
-                            padding-bottom: 0;
-                            }
-                        </style>
-
-                        <div class="col-12">
-                            <div class="card mt-3 tab-card">
-                              <div class="card-header tab-card-header">
-                                <ul class="nav nav-tabs card-header-tabs d-flex justify-content-center" id="myTab" role="tablist">
-                                  <li class="nav-item active">
-                                      <a class="nav-link" id="service-tab" data-toggle="tab" href="#Service" role="tab" aria-controls="Service" aria-selected="true">Service</a>
-                                  </li>
-                                  <li class="nav-item">
-                                      <a class="nav-link" id="food-tab" data-toggle="tab" href="#Food" role="tab" aria-controls="Food" aria-selected="false">Food</a>
-                                  </li>
-                                </ul>
-                              </div>
-
-                              <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active p-3" id="Service" role="tabpanel" aria-labelledby="service-tab">
-                                    <div class="card-shadow pos-rel">
-                                        <a id="review-form" class="anchor-fake" tabindex="-1"></a>
-                                        <div class="card-shadow-header">
-                                            <h3><i class="fa fa-pencil"></i> Write Your Feedback About Service</h3>
-                                        </div>
-                                        <div class="card-shadow-body">
-                                            <form action="{{ route('frontend.restaurant.singular.feedback.page.service', $data->id) }}" method="POST">
-                                                @csrf
-
-                                                <x-error/>
-                                                <x-alert/>
-                                                <!-- Leave a Reply -->
-                                                  <div class="row mt-4">
-                                                      <div class="col-md-12 mb-0">
-                                                          <div class="form-group">
-                                                              <textarea class="form-control" name="service_feedback" id="editor" rows="5" placeholder="Your Comments"></textarea>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="mt-3">
-                                                      <button type="submit" class="btn btn-primary">Post Your Comment</button>
-                                                  </div>
-                                                  <!-- Leave a Reply -->
-                                              </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade p-3" id="Food" role="tabpanel" aria-labelledby="food-tab">
-                                    <div class="card-shadow pos-rel">
-                                        <a id="review-form" class="anchor-fake" tabindex="-1"></a>
-                                        <div class="card-shadow-header">
-                                            <h3><i class="fa fa-pencil"></i> Write Your Feedback About Food</h3>
-                                        </div>
-                                        <div class="card-shadow-body">
-                                            <form action="{{ route('frontend.restaurant.singular.feedback.page.food', $data->id) }}" method="POST">
-                                                @csrf
-
-                                                <x-error/>
-                                                <x-alert/>
-                                              <!-- Leave a Reply -->
-                                                <div class="row mt-4">
-                                                    <div class="col-md-12 mb-0">
-                                                        <div class="form-group">
-                                                            <textarea class="form-control" name="food_feedback" id="SecondEditor" rows="5" placeholder="Your Comments"></textarea>
-                                                        </div>
-                                                    </div>
+                                        <x-error/>
+                                        <x-alert/>
+                                    <!-- Leave a Reply -->
+                                        <div class="row mt-4">
+                                            <div class="col-md-12 mb-0">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="food_feedback" id="SecondEditor" rows="5" placeholder="Your Comments"></textarea>
                                                 </div>
-                                                <div class="mt-3">
-                                                    <button type="submit" class="btn btn-primary">Post Your Comment</button>
-                                                </div>
-                                                <!-- Leave a Reply -->
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary">Post Feedback</button>
+                                        </div>
+                                        <!-- Leave a Reply -->
+                                    </form>
                                 </div>
-                              </div>
                             </div>
                         </div>
-                        <!-- Write A Review -->
+                        <!-- Reviews -->
 
                     </div>
                     <!-- Vendor Single Content -->
@@ -404,16 +213,6 @@ Restaurant Details
 
 @push('js')
 <script type="text/javascript">
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-    });
-
-    ClassicEditor
-        .create( document.querySelector( '#SecondEditor' ) )
-        .catch( error => {
-            console.error( error );
-    });
+    //
 </script>
 @endpush

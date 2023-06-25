@@ -30,8 +30,7 @@
 
             <div class="col-lg-5 mr-top-footer">
                 <div class="row">
-                @php($contact = App\Models\Admin\ContactUs::getContactInformation())
-                @foreach ($contact as $contactData)
+                @foreach (getContactInformation() as $contactData)
                     <div class="col-md-6 col-12">
                         <div class="footer-widget">
                             <h3 class="widget-title">Contact Us</h3>

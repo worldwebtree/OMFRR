@@ -23,17 +23,13 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="wedding-listing">
                             <div class="img">
-                                @if (is_array($top_restaurant->images))
-                                    @php($Image = json_decode($top_restaurant->images))
-                                    <a href="{{ route('frontend.singular.restaurant.listening.page', $top_restaurant->id) }}">
-                                        <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images">
-                                    </a>
-                                    @elseif (!is_array($top_restaurant->images))
-                                    <a href="{{ route('frontend.singular.restaurant.listening.page', $top_restaurant->id) }}">
-                                        <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                        alt="restaurant images">
-                                    </a>
-                                @endif
+                                @foreach ($top_restaurant->post_restaurant_meta as $restaurant_meta)
+
+                                    @php($Image = json_decode($restaurant_meta->meta_value))
+
+                                    <img class="w-100" height="200" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images">
+
+                                @endforeach
                                 <div class="img-content">
                                     <div class="bottom">
                                         <a class="tags">
@@ -44,7 +40,11 @@
                             </div>
                             <div class="content">
                                 <div class="gap">
-                                    <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $top_restaurant->id) }}">{{ $top_restaurant->title }}</a></h3>
+                                    <h3>
+                                        <a href="{{ route('frontend.singular.restaurant.listening.page', [$top_restaurant->id, $top_restaurant->title]) }}">
+                                            {{ $top_restaurant->title }}
+                                        </a>
+                                    </h3>
                                     <div><i class="fa fa-map-marker"></i> {{ $top_restaurant->city }}</div>
                                 </div>
                                 <div class="reviews text-center">

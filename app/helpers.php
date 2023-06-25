@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\ContactUs;
 use App\Models\Admin\PostRestaurant;
 
     if (! function_exists('getRestaurantLocation')) {
@@ -19,6 +20,13 @@ use App\Models\Admin\PostRestaurant;
             return PostRestaurant::orderBy('overall_ratting', 'desc')
             ->limit(3)
             ->get();
+        }
+    }
+
+    if (! function_exists('getContactInformation')) {
+
+        function getContactInformation() {
+            return ContactUs::get();
         }
     }
 ?>

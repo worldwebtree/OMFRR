@@ -26,8 +26,8 @@ Restaurant Listning
                         <x-alert/>
 
                         <div class="input-group">
-                            <input type="text" name="restaurant_name" required class="form-control form-light" placeholder="Enter restaurant name">
-                            <input type="text" name="restaurant_city" required class="form-control form-light left-border" placeholder="Enter city name">
+                            <input type="text" name="restaurant_name" required class="form-control form-light" placeholder="Enter Restaurant Name">
+                            <input type="text" name="restaurant_city" required class="form-control form-light left-border" placeholder="Enter City Name">
                             <div class="input-group-prepend">
                                 <button type="submit" class="btn btn-default">Search Now</button>
                             </div>
@@ -79,10 +79,11 @@ Restaurant Listning
                                         <div>
                                             <div class="inner">
                                                 <ul class="list-unstyled">
-                                                    @php($location = App\Models\Admin\PostRestaurant::getRestaurantLocation())
-                                                    @foreach ($location as $index => $name)
+                                                    @foreach (getRestaurantLocation() as $index => $name)
                                                         <li>
-                                                            <a href="{{ route('frontend.restaurant-listening.search.by.location', $name) }}">{{ $name }}</a>
+                                                            <a href="{{ route('frontend.restaurant-listening.search.by.location', $name) }}">
+                                                                {{ $name }}
+                                                            </a>
                                                         </li>
                                                     @endforeach
                                                 </ul>

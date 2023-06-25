@@ -83,11 +83,12 @@ html {
   font-size: 16px;
 }
 body {
-  font-family: "Helvetica" !important;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: #444444;
-  overflow-x: hidden;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Merienda', cursive;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #444444;
+    overflow-x: hidden;
 }
 img {
   max-width: 100%;
@@ -112,22 +113,12 @@ a:focus {
   text-decoration: none;
 }
 
-/* Heading */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lora", serif !important;
-  color: #121212;
-}
 h1 {
   font-size: 2.5rem;
 }
+
 h1 small {
   display: block;
-  font-family: "mulilight";
   color: #444444;
   font-size: 1.2rem;
   padding-top: 0.5rem;
@@ -161,14 +152,12 @@ h6 {
   font-display: block;
 }
 @font-face {
-  font-family: "muliregular";
   src: url("fonts/muli-webfont.woff2") format("woff2"),
     url("fonts/muli-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "mulibold";
   src: url("fonts/muli-bold-webfont.woff2") format("woff2"),
     url("fonts/muli-bold-webfont.woff") format("woff");
   font-weight: normal;
@@ -196,7 +185,6 @@ h6 {
   font-style: normal;
 }
 @font-face {
-  font-family: "muliregularitalic";
   src: url("fonts/muli-italic-webfont.woff2") format("woff2"),
     url("fonts/muli-italic-webfont.woff") format("woff");
   font-weight: normal;
@@ -217,7 +205,6 @@ h6 {
   font-style: normal;
 }
 @font-face {
-  font-family: "mulisemibold";
   src: url("fonts/muli-semibold-webfont.woff2") format("woff2"),
     url("fonts/muli-semibold-webfont.woff") format("woff");
   font-weight: normal;
@@ -232,7 +219,6 @@ h6 {
 }
 i[class*="weddingdir_"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -715,7 +701,6 @@ Background Color / Color
 .section-title {
   margin-bottom: 3.5rem;
   color: #444444;
-  font-family: "mulisemibold";
 }
 .section-title h1 {
   text-transform: uppercase;
@@ -760,7 +745,6 @@ Background Color / Color
 .btn {
   display: inline-block;
   padding: 0.7rem 1.3rem 0.7rem;
-  font-family: "mulisemibold";
   font-size: 1rem;
   outline: none;
   align-items: center;
@@ -1387,7 +1371,6 @@ Background Color / Color
   display: block;
   color: #302d34;
   font-weight: 600;
-  font-family: "mulisemibold";
 }
 .sidebar-nav ul li a i {
   color: #b4b4b5;
@@ -1513,7 +1496,6 @@ blockquote,
   margin: 0 0 30px 0;
   position: relative;
   font-size: 1.5rem;
-  font-family: "Lora", serif;
   border-radius: 7px;
   font-style: italic;
   color: #333333;
@@ -1549,7 +1531,6 @@ blockquote footer cite,
   font-size: 1.25rem;
   padding: 2rem 2rem 2rem 5rem;
   line-height: 1.4;
-  font-family: "Lora", serif;
   border-radius: 7px;
   font-style: italic;
   color: #00aeaf;
@@ -1743,7 +1724,6 @@ header {
   font-weight: 700;
   display: flex;
   align-items: center;
-  font-family: "Lora", serif;
 }
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-item:hover > a {
@@ -1779,7 +1759,6 @@ header {
   color: #565656;
   border-bottom: 1px solid #f0f0f0;
   text-decoration: none;
-  font-family: "mulisemibold";
   display: flex;
   align-items: center;
   position: relative;
@@ -1822,7 +1801,7 @@ header {
 .breadcrumbs-page {
   background-image: url(../images/restaurants/animated_about.gif);
   background-repeat: no-repeat;
-  padding: 30rem 0 0 0;
+  padding: 20rem 0 0 0;
   background-position: top;
   position: relative;
   margin-bottom: 1rem;
@@ -1844,7 +1823,6 @@ header {
 .breadcrumb {
   background: transparent;
   padding: 1.131rem;
-  font-family: "mulisemibold";
   font-size: 1rem;
   color: #303030;
   border-radius: 5px;
@@ -1906,7 +1884,6 @@ header {
   left: 50%;
 }
 .slider-content h1 {
-  font-family: "Lora", serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
@@ -1978,7 +1955,6 @@ header {
   display: inline-flex;
   align-items: center;
   max-width: max-content;
-  font-family: "Lora", serif;
 }
 .slider-category a i {
   margin-right: 7px;
@@ -2120,7 +2096,6 @@ header {
 .icon-box-style-2 a.btn-link {
   text-transform: uppercase;
   font-size: 0.875rem;
-  font-family: "Lora", serif !important;
   font-weight: 700;
   padding: 0;
 
@@ -2150,7 +2125,6 @@ header {
   text-align: center;
   font-size: 0.9375rem;
   margin-bottom: 1.5rem;
-  font-family: "mulisemibold";
 }
 .icon-box-style-3 i {
   width: 40px;
@@ -2221,7 +2195,6 @@ header {
 
 /*---- 7.3 Tabbing ---*/
 .theme-tabbing.nav-pills .nav-link {
-  font-family: "mulibold";
   border-radius: 5.25rem;
   color: #b0b0b0;
   padding: 0.5rem 1.5rem;
@@ -2249,7 +2222,6 @@ header {
 .theme-tabbing-vertical .nav-link {
   color: #00aeaf;
   font-size: 1.125rem;
-  font-family: "Lora", serif;
   border-left: 2px solid transparent;
   border-radius: 0;
   margin: 7px 0;
@@ -2271,7 +2243,6 @@ header {
 .horizontal-tab-second .nav-link {
   color: #00aeaf;
   font-size: 1.125rem;
-  font-family: "Lora", serif;
   border-bottom: 3px solid transparent;
   border-radius: 0;
   margin: 0 7px;
@@ -2947,7 +2918,6 @@ header {
 .pricing-table-wrap .plan-price {
   color: #00aeaf;
   font-size: 2.5rem;
-  font-family: "Lora", serif;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -2994,7 +2964,6 @@ header {
 /*---- 9.3  Error Page Start ---*/
 .tags a {
   padding: 0.5rem 1rem;
-  font-family: "muliregularitalic";
   color: #27304b;
   display: inline-block;
   font-size: 0.87rem;
@@ -3024,7 +2993,6 @@ header {
 }
 .left-navbar .nav-item .nav-link {
   font-size: 1.25rem;
-  font-family: "Lora", serif;
   color: #00aeaf;
   font-weight: 500;
   padding: 0.9rem 1.2rem;
@@ -3122,7 +3090,6 @@ header {
   color: #fff;
   display: inline-block;
   font-size: 0.8125rem;
-  font-family: "Lora", serif;
 }
 .post-content .meta-date {
   background-color: #666666;
@@ -3138,7 +3105,6 @@ header {
   line-height: 1.7;
 }
 .post-content .read-more a {
-  font-family: "Lora", serif;
   padding: 0;
   font-weight: 600;
   text-transform: uppercase;
@@ -3272,7 +3238,6 @@ header {
 }
 .popular-post ul li h6 {
   margin: 0;
-  font-family: "mulisemibold" !important;
 }
 .popular-post ul li h6 a {
   font-size: 1rem;
@@ -3310,7 +3275,6 @@ header {
 }
 .commnets-reply .media h4 {
   color: #00aeaf;
-  font-family: "mulisemibold" !important;
 }
 .commnets-reply .thumb {
   width: 75px;
@@ -3366,7 +3330,6 @@ header {
   font-size: 0.775rem;
   color: #0f0f0f;
   font-style: italic;
-  font-family: "muliregularitalic";
 }
 
 .post-linking {
@@ -3390,7 +3353,6 @@ header {
   font-size: 0.75rem;
   color: #0f0f0f;
   text-transform: capitalize;
-  font-family: "muliregularitalic";
 }
 .post-linking .next-post,
 .post-linking .previous-post {
@@ -3429,7 +3391,6 @@ header {
 .post-tags a {
   color: #27304b;
   font-weight: 600;
-  font-family: "muliregularitalic";
 }
 .post-tags a:hover {
   color: #f48f00;
@@ -3816,7 +3777,6 @@ header {
 .vendor-profile-single {
   background: #f6f6f7;
   padding: 3rem 0 5rem;
-  font-family: "mulisemibold";
 }
 .profile-single h3 {
   color: #f39108;
@@ -3829,7 +3789,6 @@ header {
 }
 .profile-single .reviews {
   color: #444444;
-  font-family: "mulisemibold";
   font-size: 0.875rem;
 }
 .profile-single .reviews .badge {
@@ -3855,7 +3814,6 @@ header {
 }
 .vendor-nav a {
   color: #b0b0b0;
-  font-family: "mulibold";
   font-size: 00.875rem;
   text-transform: uppercase;
 }
@@ -4018,7 +3976,6 @@ header {
   color: #f29008;
 }
 .tagged-vendors h3 {
-  font-family: "mulisemibold" !important;
   font-size: 1.25rem;
   color: #00aeaf;
 }
@@ -4049,7 +4006,6 @@ header {
 .profile-avatar .content {
   font-size: 1.125rem;
   color: #f48f00;
-  font-family: "mulisemibold";
 }
 .profile-avatar .content small {
   display: block;
@@ -4357,7 +4313,6 @@ header {
   text-transform: uppercase;
   color: #fff;
   padding: 0.6rem 1rem;
-  font-family: "Lora", serif;
   font-size: 0.875rem;
   line-height: 1;
 }
@@ -4451,7 +4406,6 @@ header {
   flex-direction: column;
   font-size: 1.8rem;
   font-weight: 200;
-  font-family: "Lora", serif;
   font-style: italic;
   opacity: 0;
   pointer-events: none;
@@ -4479,7 +4433,6 @@ header {
   color: #fff;
   font-size: 1.125rem;
   font-weight: 600;
-  font-family: "Lora", serif;
   pointer-events: none;
 }
 .real-wedding .gallery {
@@ -4510,7 +4463,6 @@ header {
   color: #fff;
   font-size: 1.125rem;
   font-weight: 600;
-  font-family: "Lora", serif;
   line-height: 1;
 }
 .real-wedding-single-wrap {
@@ -4636,7 +4588,6 @@ header {
 }
 .gallery-sorting a {
   color: #333;
-  font-family: "mulisemibold";
 }
 .gallery-sorting a:hover,
 .gallery-sorting a.mixitup-control-active {
@@ -4731,7 +4682,6 @@ header {
 .view-by {
   background: transparent;
   padding: 0.4rem 1.131rem;
-  font-family: "mulisemibold";
   font-size: 1rem;
   color: #303030;
   border-radius: 5px;
@@ -4990,7 +4940,6 @@ header {
 }
 .popular-locations .overlay-box h3 span {
   display: block;
-  font-family: "muliregular";
   padding-top: 4px;
   font-size: 0.875rem;
 }
@@ -5481,7 +5430,6 @@ header {
   color: #333333;
   text-align: center;
   font-size: 1.25rem;
-  font-family: "Lora", serif;
   font-style: italic;
   padding: 2rem 2rem 7rem 2rem;
 }
@@ -5528,7 +5476,6 @@ header {
 }
 .customer-feedback-alternate .content .text {
   font-size: 1.25rem;
-  font-family: "Lora", serif;
   font-style: italic;
   margin-top: -0.5rem;
 }
@@ -5618,7 +5565,6 @@ header {
 }
 
 .reviews-media h3 {
-  font-family: "mulisemibold" !important;
 }
 .reviews-media .media {
   padding: 1.2rem;
@@ -5632,7 +5578,6 @@ header {
 }
 .reviews-media .media h4 {
   color: #00aeaf;
-  font-family: "mulisemibold" !important;
 }
 .reviews-media .thumb {
 width: 5%;
@@ -5713,7 +5658,6 @@ margin-right: 20px;
 .typo-head {
   color: #1f2c36;
   font-size: 1.375rem;
-  font-family: "mulisemibold";
   line-height: 1.6rem;
 }
 .typo-border {
@@ -5730,7 +5674,6 @@ margin-right: 20px;
   margin-bottom: 0;
 }
 .typo-border h3 {
-  font-family: "muliregular";
 }
 .typo-border .color-pallete-box {
   margin: 0 0 2.5rem 0;
@@ -5903,7 +5846,6 @@ footer {
   padding-top: 5rem;
 }
 .footer-logo {
-  font-family: "mulisemibold";
 }
 .footer-logo img {
   margin-bottom: 1rem;

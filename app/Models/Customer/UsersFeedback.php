@@ -25,7 +25,6 @@ class UsersFeedback extends Model
         'restaurant_name',
         'feedback',
         'feedback_status',
-        'category',
     ];
 
     public static function getFeedbacks()

@@ -90,24 +90,19 @@ Route::prefix('frontend')->group(function () {
 
     Route::controller(SingularRestaurantController::class)->group(function () {
 
-        Route::get('/singular-restaurant-listening/{id}', 'index')
+        Route::get('/singular-restaurant-listening/{id}/{title}', 'index')
         ->name('frontend.singular.restaurant.listening.page');
     });
 
     /**
-     * This route will only be accessed by Authenticated and the user
-     * that has the role user.
+     * This route will only be accessed by Authenticated Customers.
      */
-    Route::controller(RestaurantFeedbackController::class)->middleware('auth')
+    Route::controller(RestaurantFeedbackController::class)
+    ->middleware(['auth', 'isCustomer'])
     ->group(function () {
 
-        Route::post('/restaurant/feedback/service/{id}', 'storeServiceFeedback')
-        ->middleware('isUser')
-        ->name('frontend.restaurant.singular.feedback.page.service');
-
-        Route::post('/restaurant/feedback/food/{id}', 'storeFoodFeedback')
-        ->middleware('isUser')
-        ->name('frontend.restaurant.singular.feedback.page.food');
+        Route::post('/restaurant/feedback/{id}', 'feedback')
+        ->name('frontend.restaurant.singular.feedback');
     });
 
 
@@ -119,7 +114,7 @@ Route::prefix('frontend')->group(function () {
 });
 
 /**
- * Administrator Routes
+ * Administrator Dashboard Routes
  */
 Route::prefix('admin')->name('admin.')
     ->middleware(['auth', 'verified', 'isAdmin'])
@@ -245,7 +240,7 @@ Route::prefix('admin')->name('admin.')
 });
 
 /**
- * Restaurant Routes
+ * Restaurant Dashboard Routes
  */
 Route::prefix('restaurant')->name('restaurant.')
     ->middleware(['auth', 'verified', 'isRestaurant'])
@@ -302,7 +297,7 @@ Route::prefix('restaurant')->name('restaurant.')
 });
 
 /**
- * Customer Routes
+ * Customer Dashboard Routes
  */
 Route::prefix('customer')->name('customer.')
     ->middleware(['auth', 'verified', 'isCustomer'])
