@@ -6,7 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Dashboard - @yield('title')</title>
+    @if (auth()->user()->role === 'admin')
+        <title>Admin Dashboard - @yield('title')</title>
+
+        @elseif (auth()->user()->role === 'restaurant')
+        <title>Restaurant Dashboard - @yield('title')</title>
+
+        @elseif (auth()->user()->role === 'customer')
+        <title>Customer Dashboard - @yield('title')</title>
+    @endif
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">

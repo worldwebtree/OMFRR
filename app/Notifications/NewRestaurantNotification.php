@@ -60,7 +60,7 @@ class NewRestaurantNotification extends Notification
 
         return [
             'name' => $this->post->title,
-            'url' => 'frontend/singular-restaurant-listening/'.$this->post->id.'',
+            'url' => 'MyReview/singular-restaurant-listening/'.$this->post->id.'/'.$this->post->title.'',
             'title' => ucwords("new restaurant has been added"),
             'message' => ucfirst("go check out the restaurant and provide your feedback!")
         ];

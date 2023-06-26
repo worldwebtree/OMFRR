@@ -74,33 +74,14 @@ class ProfileController extends AuthenticatedSessionController
     {
         $request->validate([
             'name' => ['required', 'string'],
-            'gender' => ['required'],
         ]);
 
         // retrieving authenticated user
         $user = $request->user();
 
-        // checking if the $request variable contain's a file named avatar
-        if (!$request->hasFile('avatar')) {
-
-            $avatarName = $user->avatar;
-
-        } else {
-
-            $file = $request->file('avatar');
-
-            // generating hashed file name
-            $avatarName = $file->hashName();
-
-            // saving the file with hashed name in storage
-            $file->move(public_path('storage/profile_img/'), $avatarName);
-        }
-
         // updating authenticated user's credentials
         $user->update([
             'name' => $request['name'],
-            'gender' => $request['gender'],
-            'avatar' => $avatarName
         ]);
 
         return redirect()->route('admin.profile')

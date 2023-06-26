@@ -8,6 +8,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                <x-error/>
+                <x-alert/>
 
                 <div class="card">
                     <div class="card-body text-capitalize">
@@ -16,15 +18,12 @@
                         </div>
                         <form action="{{ route('admin.profile.update') }}" class="update_profile_form"
                             method="POST" enctype="multipart/form-data">
-                            <x-error/>
-                            <x-alert/>
-
                             @method('PUT')
                             @csrf
 
                             <div class="form-group">
                                 <label for="Name">name</label>
-                                <input type="text" name="name" id="Name" value="{{ auth()->user()->name }}" class="form-control" placeholder="Enter name" aria-describedby="helpId">
+                                <input type="text" name="name" id="Name" value="{{ auth()->user()->name }}" class="form-control" required placeholder="Enter name" aria-describedby="helpId">
                                 </div>
 
                             <div class="form-group">
@@ -46,10 +45,8 @@
                         </div>
                         <form action="{{ route('admin.password.reset') }}" class="password_reset_form" method="POST">
                             @method('PUT')
-
-                            <x-error/>
-                            <x-alert/>
                             @csrf
+
                             <div class="form-group">
                                 <label for="New_Password">old password</label>
                                 <div class="input-group">

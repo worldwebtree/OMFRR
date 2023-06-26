@@ -3,13 +3,13 @@
 @section('title', 'Notifications')
 
 @push('css')
-<style>
-    @media screen and (max-width: 768px) {
-        .mark-as-read {
-            text-align: right;
+    <style>
+        @media screen and (max-width: 768px) {
+            .mark-as-read {
+                text-align: right;
+            }
         }
-    }
-</style>
+    </style>
 @endpush
 
 @section('content')
@@ -32,20 +32,27 @@
                                         <div class="d-md-flex align-items-md-center justify-content-md-between p-3">
                                             <div class="notification-content">
                                                 <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['title'] }}</strong></h6>
-                                                    <span class="notification-text">
 
-                                                        @php
-                                                            $url = str_replace('customer/notifications', '', url()->current());
-                                                            $restaurantUrl = $url.$notification->data['url'];
-                                                        @endphp
+                                                <span class="notification-text">
 
-                                                        <strong class="">
+                                                    @php
+                                                        $url = str_replace('customer/notifications', '', url()->current());
+                                                        $restaurantUrl = $url.$notification->data['url'];
+                                                    @endphp
+
+                                                    <strong class="">
+                                                        @if ($notification->data['url'])
                                                             <a class="text-primary" style="text-decoration: underline"
                                                                 href="{{ $restaurantUrl }}">
                                                                 {{ $notification->data['name'] }}
                                                             </a>
-                                                        </strong> {{ $notification->data['message'] }}
-                                                    </span><br>
+
+                                                            @else
+                                                            <strong class="text-primary">{{ $notification->data['name'] }}</strong>
+                                                        @endif
+                                                    </strong> {{ $notification->data['message'] }}
+                                                </span><br>
+
                                                 <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
                                             </div>
 

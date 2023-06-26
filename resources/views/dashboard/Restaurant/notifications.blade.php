@@ -3,30 +3,13 @@
 @section('title', 'Notifications')
 
 @push('css')
-<style>
-    @media screen and (max-width: 425px) {
-        .notification {
-            overflow-x: scroll;
+    <style>
+        @media screen and (max-width: 768px) {
+            .mark-as-read {
+                text-align: right;
+            }
         }
-        .notification-body {
-            display: block !important;
-        }
-        .markAsReadBtn {
-            float: right;
-        }
-        hr {
-            margin-top: 3rem;
-        }
-        .card .card-body {
-            padding: 2rem 1rem;
-        }
-    }
-
-    .markAsReadBtn:hover {
-        background-color: #7571f9 !important;
-        transition: .2s ease;
-    }
-</style>
+    </style>
 @endpush
 
 @section('content')
@@ -36,40 +19,36 @@
     <div class="container-fluid">
         <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title mb-5 text-capitalize">
-                                <h1>
-                                    you'r notification's <i class="fa fa-bell" aria-hidden="true"></i>
-                                </h1>
-                            </div>
-                            <div class="card-body notification">
-                                <ul class="notification-ul">
-                                    @foreach ($notifications as $notification)
-                                        <li class="notification-li">
-                                            <div class="notification-body d-flex align-items-center justify-content-between">
-                                                <div class="d-flex align-items-center p-3">
-                                                    <i class="fa fa-bell-o text-white bg-primary p-2 rounded-circle" aria-hidden="true"></i>
-                                                    <div class="notification-content">
-                                                        <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['title'] }}</strong></h6>
-                                                            <span class="notification-text">
-                                                                <strong class="text-primary">{{ $notification->data['name'] }}</strong> {{ $notification->data['message'] }}
-                                                            </span><br>
-                                                        <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="mark-as-read" data-id="{{ $notification->id }}">
-                                                    <small class="text-white bg-danger p-2 rounded markAsReadBtn">
-                                                        Mark as read
-                                                    </small>
-                                                </a>
+                    <div class="notification-title mb-5 text-capitalize">
+                        <h1>
+                            you'r notification's <i class="fas fa-bell" aria-hidden="true"></i>
+                        </h1>
+                    </div>
+                    <div class="notification">
+                        <ul class="notification-ul">
+                            @foreach ($notifications as $notification)
+                            <li class="notification-li bg-white rounded my-4">
+                                <div class="notification-body">
+                                        <div class="d-md-flex align-items-md-center justify-content-md-between p-3">
+                                            <div class="notification-content">
+                                                <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['title'] }}</strong></h6>
+                                                    <span class="notification-text">
+                                                        <strong class="text-primary">{{ $notification->data['name'] }}</strong> {{ $notification->data['message'] }}
+                                                    </span><br>
+                                                <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
                                             </div>
-                                            <hr>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+                                        </div>
+
+                                        <div class="mark-as-read">
+                                            <a href="#markAsRead" class="mark-as-read-btn text-white bg-danger p-2 rounded markAsReadBtn" data-id="{{ $notification->id }}">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -98,7 +77,7 @@
             });
         }
 
-        $(".mark-as-read").click(function () {
+        $(".mark-as-read-btn").click(function () {
 
             let request = sendMarkRequest($(this).data('id'));
 

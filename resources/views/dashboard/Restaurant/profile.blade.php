@@ -14,7 +14,7 @@
                         <div class="card-title">
                             <h1>update profile</h1>
                         </div>
-                        <form action="{{ route('admin.profile.update') }}" class="update_profile_form"
+                        <form action="{{ route('restaurant.profile.update') }}" class="update_profile_form"
                             method="POST" enctype="multipart/form-data">
                             <x-error/>
                             <x-alert/>
@@ -44,7 +44,7 @@
                         <div class="card-title">
                             <h1>password reset</h1>
                         </div>
-                        <form action="{{ route('admin.password.reset') }}" class="password_reset_form" method="POST">
+                        <form action="{{ route('restaurant.password.reset') }}" class="password_reset_form" method="POST">
                             @method('PUT')
 
                             <x-error/>
