@@ -43,16 +43,13 @@ class RestaurantFeedbackController extends Controller
             'feedback' => ['required', 'string'],
         ]);
 
-        dd($request);
-        exit();
-
         $user = $request->user();
 
         $restaurant_name = PostRestaurant::findOrFail($id);
 
-        $positive_feedback_status = $this->PositiveAnalyze($request->service_feedback);
+        $positive_feedback_status = $this->PositiveAnalyze($request->feedback);
 
-        $negative_feedback_status = $this->NegativeAnalyze($request->service_feedback);
+        $negative_feedback_status = $this->NegativeAnalyze($request->feedback);
 
         if ($positive_feedback_status === "positive") {
             $feedback_status = "positive";

@@ -15,7 +15,6 @@
 @section('content')
 <div class="content-body">
     <!-- row -->
-
     <div class="container-fluid">
         <div class="row">
                 <div class="col-12">
