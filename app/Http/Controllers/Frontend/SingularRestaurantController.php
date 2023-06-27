@@ -19,8 +19,6 @@ class SingularRestaurantController extends Controller
         $restaurant = $postRestaurant->where('id', $id)
         ->get();
 
-        $restaurant_ratting = $restaurant->value('overall_ratting');
-
         $usersFeedback =  new UsersFeedback();
 
         $feedbacks = $usersFeedback->where('post_restaurant_id', $id)
@@ -33,9 +31,6 @@ class SingularRestaurantController extends Controller
         ])
         ->count();
 
-        // adding restaurant previous ratting with new positive ratting
-        $overall_ratting = $restaurant_ratting + $positive_ratting;
-
         // count negative ratting from user feedback table
         $negative_ratting = $usersFeedback->where([
             'post_restaurant_id' => $id,
@@ -43,10 +38,8 @@ class SingularRestaurantController extends Controller
             ])
         ->count();
 
-        $count_overall_reviews = $restaurant_ratting + $positive_ratting + $negative_ratting;
-
         // subtracting negative ratting from overall ratting
-        $final_ratting = $overall_ratting - $negative_ratting;
+        $final_ratting = $positive_ratting - $negative_ratting;
 
         $postRestaurant->findOrFail($id)
         ->update([
@@ -69,10 +62,6 @@ class SingularRestaurantController extends Controller
             $final_decimal_ratting = $final_ratting / 100;
         }
 
-        $service_ratting = $this->serviceRatting($id);
-
-        $food_ratting = $this->foodRatting($id);
-
         $recommend = $this->recommended($id);
 
         $highest_ratting = str_starts_with($final_decimal_ratting, "6") || str_starts_with($final_decimal_ratting, "7") || str_starts_with($final_decimal_ratting, "8");
@@ -93,67 +82,6 @@ class SingularRestaurantController extends Controller
                 'food_ratting',
                 'recommend'
         ));
-    }
-
-    /**
-     * This function will calculate review ratting for the service category
-     *
-     * @return int
-     */
-    public function serviceRatting($id)
-    {
-        $usersFeedback =  new UsersFeedback();
-
-        // count positive ratting from user feedback table
-        $positive_ratting = $usersFeedback->where([
-            'post_restaurant_id' => $id,
-            'feedback_status' => 'positive',
-            'category' => 'service',
-        ])
-        ->count();
-
-        // count negative ratting from user feedback table
-        $negative_ratting = $usersFeedback->where([
-            'post_restaurant_id' => $id,
-            'feedback_status'=> 'negative',
-            'category' => 'service',
-        ])
-        ->count();
-
-        $overall_ratting = $positive_ratting + $negative_ratting;
-
-        return $overall_ratting;
-    }
-
-    /**
-     * This function will calculate review ratting for the food category
-     *
-     * @return int
-     */
-    public function foodRatting($id)
-    {
-
-        $usersFeedback =  new UsersFeedback();
-
-        // count positive ratting from user feedback table
-        $positive_ratting = $usersFeedback->where([
-            'post_restaurant_id' => $id,
-            'feedback_status' => 'positive',
-            'category' => 'food',
-        ])
-        ->count();
-
-        // count negative ratting from user feedback table
-        $negative_ratting = $usersFeedback->where([
-            'post_restaurant_id' => $id,
-            'feedback_status'=> 'negative',
-            'category' => 'food',
-        ])
-        ->count();
-
-        $overall_ratting = $positive_ratting + $negative_ratting;
-
-        return $overall_ratting;
     }
 
     /**

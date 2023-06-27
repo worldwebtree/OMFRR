@@ -7,7 +7,6 @@ use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 use App\Traits\AnalyzeFeedback;
-use Sentiment\Analyzer;
 
 class RestaurantFeedbackController extends Controller
 {
@@ -48,16 +47,16 @@ class RestaurantFeedbackController extends Controller
 
         $restaurant_name = PostRestaurant::findOrFail($id);
 
-        $analyzer = new Analyzer();
+        dd($request);
 
-        $check_feedback = $analyzer->getSentiment($request->feedback);
+        $positive_feedback_status = $this->PositiveAnalyze($request->feedback);
 
-        dd($check_feedback);
+        $negative_feedback_status = $this->NegativeAnalyze($request->feedback);
 
-        if ($check_feedback['compound'] === "positive") {
+        if ($positive_feedback_status === "positive") {
             $feedback_status = "positive";
 
-        } elseif ($check_feedback === "negative") {
+        } elseif ($negative_feedback_status === "negative") {
             $feedback_status = "negative";
 
         } else {
