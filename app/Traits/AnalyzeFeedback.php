@@ -17,26 +17,16 @@ trait AnalyzeFeedback
 
         $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->get('keyword_name');
 
-        // If we find a positive match, assume the feedback is positive. Otherwise, assume it's negative.
+        // If we find a positive match, assume the feedback is positive. Otherwise, assume it's or neutral.
         $check = $positive_keywords->map(function ($keyword) use ($feedback){
             $positive_rate = str_contains(strip_tags($feedback), $keyword->keyword_name);
 
-            return $positive_rate === true ? $keyword->keyword_name : 'false';
+            return $positive_rate === true ? $keyword->keyword_name : false;
 
         });
 
-        dd($check);
+        dd($check->count());
         exit();
-
-        foreach ($positive_keywords as $keyword) {
-            $positive_rate = str_contains(strip_tags($feedback), $keyword->keyword_name);
-
-            dd($positive_rate === true ? $keyword->keyword_name : 'false');
-
-            if ($positive_rate === true) {
-                return "positive";
-            }
-        }
     }
 
     /**
@@ -51,7 +41,7 @@ trait AnalyzeFeedback
 
         $negative_keywords = $rattingKeywords->where('keyword_status', 'negative')->get('keyword_name');
 
-        // If we find a negative match, assume the feedback is negative. Otherwise, assume it's positive.
+        // If we find a negative match, assume the feedback is negative. Otherwise, assume it's positive or neutral.
         foreach ($negative_keywords as $keyword) {
             $negative_rate = str_contains(strip_tags($feedback), $keyword->keyword_name);
 
