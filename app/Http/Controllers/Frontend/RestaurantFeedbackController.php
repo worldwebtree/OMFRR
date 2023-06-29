@@ -7,6 +7,7 @@ use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 use App\Traits\AnalyzeFeedback;
+use Sentiment\Analyzer;
 
 class RestaurantFeedbackController extends Controller
 {
@@ -45,28 +46,45 @@ class RestaurantFeedbackController extends Controller
 
         $user = $request->user();
 
-        $restaurant_name = PostRestaurant::findOrFail($id);
+        $post_restaurant = PostRestaurant::findOrFail($id);
 
-        $positive_feedback_status = $this->PositiveAnalyze($request->feedback);
+        $analyzer = new Analyzer();
 
-        $negative_feedback_status = $this->NegativeAnalyze($request->feedback);
+        $get_sentiment = $analyzer->getSentiment($request->feedback);
 
-        if ($positive_feedback_status === "positive") {
+        switch ($get_sentiment) {
+            case $get_sentiment['pos'] > $get_sentiment['neg']:
+
+                $get_feedback = 'positive';
+                break;
+
+            case $get_sentiment['neg'] > $get_sentiment['pos']:
+
+                $get_feedback = 'negative';
+                break;
+
+            case $get_sentiment['neu'] > $get_sentiment['pos'] && $get_sentiment['neg']:
+
+                $get_feedback = 'neutral';
+                break;
+        }
+
+        if ($get_feedback === "positive") {
             $feedback_status = "positive";
 
-        } elseif ($negative_feedback_status === "negative") {
+        } elseif ($get_feedback === "negative") {
             $feedback_status = "negative";
 
-        } else {
+        } elseif($get_feedback === "neutral") {
             $feedback_status = "neutral";
         }
 
         UsersFeedback::create([
             'user_id' => $user->id,
-            'post_restaurant_id' => $id,
+            'post_restaurant_id' => $post_restaurant->id,
             'username' => $user->name,
-            'restaurant_name' => $restaurant_name->title,
-            'feedback' => ucfirst(strip_tags($request->service_feedback)),
+            'restaurant_name' => $post_restaurant->title,
+            'feedback' => ucfirst(strip_tags($request->feedback)),
             'feedback_status' => $feedback_status,
         ]);
 

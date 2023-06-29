@@ -28,9 +28,9 @@ return new class extends Migration
             ->cascadeOnDelete();
 
             $table->string('username');
-            $table->string('restaurant_name');
+            $table->string('restaurant');
             $table->text('feedback');
-            $table->enum('feedback_status', ['positive', 'negative', 'neutral']);
+            $table->enum('status', ['positive', 'negative', 'neutral']);
 
             $table->timestamps();
         });

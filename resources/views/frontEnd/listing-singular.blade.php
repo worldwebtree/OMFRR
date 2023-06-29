@@ -43,7 +43,7 @@
                                 <span class="badge"><i class="fa fa-star"></i> {{ round($final_decimal_ratting, 1) }}</span>
                                 {{-- {{ $count_overall_reviews }} Reviews --}}
                             </div><br>
-                            <div class="recomendation-section">
+                            {{-- <div class="recomendation-section">
                                 @if ($recommend === "service")
                                     <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
                                     <span>Recomended for Take Away</span>
@@ -63,7 +63,7 @@
                                     @elseif ($recommend === "not ratted yet")
                                     <span class="bg-info pt-2 pb-2 text-white pr-2 pl-2 rounded-pill">Not Recommended for any service yet</span>
                                 @endif
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 

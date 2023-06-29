@@ -27,14 +27,14 @@ class SingularRestaurantController extends Controller
         // count positive ratting from user feedback table
         $positive_ratting = $usersFeedback->where([
             'post_restaurant_id' => $id,
-            'feedback_status' => 'positive',
+            'status' => 'positive',
         ])
         ->count();
 
         // count negative ratting from user feedback table
         $negative_ratting = $usersFeedback->where([
             'post_restaurant_id' => $id,
-            'feedback_status' => 'negative',
+            'status' => 'negative',
             ])
         ->count();
 
@@ -62,7 +62,7 @@ class SingularRestaurantController extends Controller
             $final_decimal_ratting = $final_ratting / 100;
         }
 
-        $recommend = $this->recommended($id);
+        // $recommend = $this->recommended($id);
 
         $highest_ratting = str_starts_with($final_decimal_ratting, "6") || str_starts_with($final_decimal_ratting, "7") || str_starts_with($final_decimal_ratting, "8");
 
@@ -76,8 +76,7 @@ class SingularRestaurantController extends Controller
         return view('frontEnd.listing-singular',
         compact('restaurant',
                 'feedbacks',
-                'final_decimal_ratting',
-                'recommend'));
+                'final_decimal_ratting'));
     }
 
     /**

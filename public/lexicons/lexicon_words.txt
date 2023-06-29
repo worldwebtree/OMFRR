@@ -1,0 +1,4 @@
+good    positive
+great   positive
+bad     negative
+filthy  negative

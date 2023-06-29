@@ -13,9 +13,6 @@ trait AnalyzeFeedback
      */
     public function PositiveAnalyze($feedback)
     {
-        // $rattingKeywords = new RattingKeywords();
-
-        // $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->get('keyword_name');
         $positive_keywords = $this->Keywords();
 
         // dd($this->Keywords());
@@ -23,15 +20,17 @@ trait AnalyzeFeedback
 
         // If we find a positive match, assume the feedback is positive.
         // Otherwise, assume it's negative or neutral.
+
+        $check = [];
+
         foreach ($positive_keywords as $words => $status) {
 
             // $check = str_contains(strip_tags($feedback), $words);
-            $check = array_key_exists(['good', 'great'], $positive_keywords);
-
-            dd($check);
+            $check = str_contains(strip_tags($feedback), $words);
 
             // dd($check == true ? $words : false);
         }
+
     }
 
     /**
