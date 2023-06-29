@@ -76,12 +76,8 @@ class SingularRestaurantController extends Controller
         return view('frontEnd.listing-singular',
         compact('restaurant',
                 'feedbacks',
-                'count_overall_reviews',
                 'final_decimal_ratting',
-                'service_ratting',
-                'food_ratting',
-                'recommend'
-        ));
+                'recommend'));
     }
 
     /**

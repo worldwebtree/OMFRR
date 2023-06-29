@@ -47,8 +47,6 @@ class RestaurantFeedbackController extends Controller
 
         $restaurant_name = PostRestaurant::findOrFail($id);
 
-        dd($request);
-
         $positive_feedback_status = $this->PositiveAnalyze($request->feedback);
 
         $negative_feedback_status = $this->NegativeAnalyze($request->feedback);

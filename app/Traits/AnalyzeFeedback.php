@@ -13,21 +13,25 @@ trait AnalyzeFeedback
      */
     public function PositiveAnalyze($feedback)
     {
-        $rattingKeywords = new RattingKeywords();
+        // $rattingKeywords = new RattingKeywords();
 
-        $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->get('keyword_name');
+        // $positive_keywords = $rattingKeywords->where('keyword_status', 'positive')->get('keyword_name');
+        $positive_keywords = $this->Keywords();
+
+        // dd($this->Keywords());
+        // exit();
 
         // If we find a positive match, assume the feedback is positive.
         // Otherwise, assume it's negative or neutral.
-        $check = $positive_keywords->map(function ($keyword) use ($feedback){
-            $positive_rate = str_contains(strip_tags($feedback), $keyword->keyword_name);
+        foreach ($positive_keywords as $words => $status) {
 
-            return $positive_rate === true ? $keyword->keyword_name : false;
+            // $check = str_contains(strip_tags($feedback), $words);
+            $check = array_key_exists(['good', 'great'], $positive_keywords);
 
-        });
+            dd($check);
 
-        dd($check->count());
-        exit();
+            // dd($check == true ? $words : false);
+        }
     }
 
     /**
@@ -51,5 +55,21 @@ trait AnalyzeFeedback
                 return "negative";
             }
         }
+    }
+
+    /**
+     * This function contains all the keywords good or bad that can exist in customer's feedback
+     * @return array
+     */
+    public function Keywords()
+    {
+        $keywords = array(
+            'great' => 'positive',
+            'good' => 'positive',
+            'filthy' => 'negative',
+            'bad' => 'negative',
+        );
+
+        return $keywords;
     }
 }
