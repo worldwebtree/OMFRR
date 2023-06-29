@@ -53,19 +53,15 @@ class RestaurantFeedbackController extends Controller
         $get_sentiment = $analyzer->getSentiment($request->feedback);
 
         switch ($get_sentiment) {
-            case $get_sentiment['pos'] > $get_sentiment['neg']:
+
+            case $get_sentiment['compound'] === '0':
 
                 $get_feedback = 'positive';
                 break;
 
-            case $get_sentiment['neg'] > $get_sentiment['pos']:
+            case $get_sentiment['compound'] === '-0':
 
                 $get_feedback = 'negative';
-                break;
-
-            case $get_sentiment['neu'] > $get_sentiment['pos'] && $get_sentiment['neg']:
-
-                $get_feedback = 'neutral';
                 break;
         }
 
@@ -83,7 +79,7 @@ class RestaurantFeedbackController extends Controller
             'user_id' => $user->id,
             'post_restaurant_id' => $post_restaurant->id,
             'username' => $user->name,
-            'restaurant_name' => $post_restaurant->title,
+            'restaurant' => $post_restaurant->title,
             'feedback' => ucfirst(strip_tags($request->feedback)),
             'feedback_status' => $feedback_status,
         ]);

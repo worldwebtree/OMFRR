@@ -22,9 +22,9 @@ class UsersFeedback extends Model
         'user_id',
         'post_restaurant_id',
         'username',
-        'restaurant_name',
+        'restaurant',
         'feedback',
-        'feedback_status',
+        'status',
     ];
 
     public static function getFeedbacks()
