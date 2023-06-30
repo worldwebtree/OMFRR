@@ -136,6 +136,29 @@
                                 </div>
                             </div>
 
+                            <div class="write-feedback-body">
+                                <div class="write-feedback">
+                                    <form action="{{ route('frontend.restaurant.singular.feedback', $data->id) }}" method="POST">
+                                        @csrf
+
+                                        <x-error/>
+                                        <x-alert/>
+                                    <!-- Leave a Reply -->
+                                        <div class="row mt-4">
+                                            <div class="col-md-12 mb-0">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="feedback" id="" rows="4" placeholder="Write Your Feedback"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary">Post Feedback</button>
+                                        </div>
+                                        <!-- Leave a Reply -->
+                                    </form>
+                                </div>
+                            </div>
+
                             <div class="card-shadow-body">
                                 <!-- Review Media -->
                                 @foreach ($feedbacks as $feedback)
@@ -158,29 +181,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>
-
-                            <div class="write-feedback-body">
-                                <div class="write-feedback">
-                                    <form action="{{ route('frontend.restaurant.singular.feedback', $data->id) }}" method="POST">
-                                        @csrf
-
-                                        <x-error/>
-                                        <x-alert/>
-                                    <!-- Leave a Reply -->
-                                        <div class="row mt-4">
-                                            <div class="col-md-12 mb-0">
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="feedback" id="" rows="4" placeholder="Write Your Feedback"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary">Post Feedback</button>
-                                        </div>
-                                        <!-- Leave a Reply -->
-                                    </form>
-                                </div>
                             </div>
                         </div>
                         <!-- Reviews -->

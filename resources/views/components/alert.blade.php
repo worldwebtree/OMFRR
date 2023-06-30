@@ -24,5 +24,14 @@
             icon: 'info',
         })
     </script>
+
+    @elseif (session('exists'))
+    <script type="text/javascript">
+        swal.fire({
+            title: 'Exists',
+            text: "{{ session('exists') }}",
+            icon: 'info',
+        })
+    </script>
 @endif
 

@@ -22,6 +22,7 @@ class UsersFeedback extends Model
         'user_id',
         'post_restaurant_id',
         'username',
+        'user_ip',
         'restaurant',
         'feedback',
         'status',

@@ -47,6 +47,7 @@ class RestaurantFeedbackController extends Controller
         $user = $request->user();
 
         $post_restaurant = PostRestaurant::findOrFail($id);
+        $users_feedback = new UsersFeedback();
 
         $analyzer = new Analyzer();
 
@@ -70,10 +71,16 @@ class RestaurantFeedbackController extends Controller
                 break;
         }
 
-        UsersFeedback::create([
+        $exits = $users_feedback->where('user_ip', $request->ip())->exists();
+
+        if ($exits === true)
+        return redirect()->back()->with('exists', 'You already provided your feedback.');
+
+        $users_feedback->create([
             'user_id' => $user->id,
             'post_restaurant_id' => $post_restaurant->id,
             'username' => $user->name,
+            'user_ip' => $request->ip(),
             'restaurant' => $post_restaurant->title,
             'feedback' => ucfirst(strip_tags($request->feedback)),
             'status' => $feedback_status,
