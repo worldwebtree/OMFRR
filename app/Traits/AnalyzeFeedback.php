@@ -21,14 +21,10 @@ trait AnalyzeFeedback
         // If we find a positive match, assume the feedback is positive.
         // Otherwise, assume it's negative or neutral.
 
-        $check = [];
-
         foreach ($positive_keywords as $words => $status) {
+            preg_match("/$words/i", $feedback, $matches, PREG_OFFSET_CAPTURE);
 
-            // $check = str_contains(strip_tags($feedback), $words);
-            $check = str_contains(strip_tags($feedback), $words);
-
-            // dd($check == true ? $words : false);
+            return $status;
         }
 
     }

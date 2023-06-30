@@ -28,7 +28,7 @@ return new class extends Migration
             $table->json('social_links', 10000)->nullable();
             $table->enum('category', ['Dine In', 'Take Away', 'Dine In & Take Away']);
             $table->json('availability');
-            $table->bigInteger('overall_ratting')->nullable();
+            $table->bigInteger('reviews')->nullable()->default(0);
 
             $table->timestamps();
         });

@@ -17,7 +17,7 @@ use App\Models\Admin\PostRestaurant;
     if (! function_exists('getRankedRestaurants')) {
 
         function getRankedRestaurants() {
-            return PostRestaurant::orderBy('overall_ratting', 'desc')
+            return PostRestaurant::orderBy('reviews', 'desc')
             ->limit(3)
             ->get();
         }

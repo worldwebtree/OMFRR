@@ -54,25 +54,20 @@ class RestaurantFeedbackController extends Controller
 
         switch ($get_sentiment) {
 
-            case $get_sentiment['compound'] === '0':
+            case $get_sentiment['compound'] > 0:
 
-                $get_feedback = 'positive';
+                $feedback_status = 'positive';
                 break;
 
-            case $get_sentiment['compound'] === '-0':
+            case $get_sentiment['compound'] < 0:
 
-                $get_feedback = 'negative';
+                $feedback_status = 'negative';
                 break;
-        }
 
-        if ($get_feedback === "positive") {
-            $feedback_status = "positive";
+            case $get_sentiment['compound'] === 0.0:
 
-        } elseif ($get_feedback === "negative") {
-            $feedback_status = "negative";
-
-        } elseif($get_feedback === "neutral") {
-            $feedback_status = "neutral";
+                $feedback_status = 'neutral';
+                break;
         }
 
         UsersFeedback::create([
@@ -81,8 +76,15 @@ class RestaurantFeedbackController extends Controller
             'username' => $user->name,
             'restaurant' => $post_restaurant->title,
             'feedback' => ucfirst(strip_tags($request->feedback)),
-            'feedback_status' => $feedback_status,
+            'status' => $feedback_status,
         ]);
+
+        if ($post_restaurant->reviews === 0) {
+
+            $post_restaurant->update(['reviews' => 1]);
+        }else {
+            $post_restaurant->increment('reviews');
+        }
 
         return redirect()->back();
     }

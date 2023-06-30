@@ -27,7 +27,7 @@ class PostRestaurant extends Model
         'social_links',
         'category',
         'availability',
-        'overall_ratting',
+        'reviews',
     ];
 
     /**
