@@ -74,7 +74,7 @@ class RestaurantFeedbackController extends Controller
         $exits = $users_feedback->where('user_ip', $request->ip())->exists();
 
         if ($exits === true)
-        return response()->json(['exists' => 'You already provided your review.']);
+        return response()->json('exists', 409);
 
         $users_feedback->create([
             'user_id' => $user->id,

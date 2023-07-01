@@ -215,25 +215,22 @@
                 url: "{{ route('frontend.restaurant.singular.feedback', $data->id) }}",
                 data: {feedback:feedbackReview},
                 success: function (response) {
+                    location.reload();
+                },
+                error: function (jqXHR, exeption) {
 
-                    $("#feedback_form").trigger('reset');
-
-                    if (response.exists) {
+                    if (jqXHR.status === 409) {
                         swal.fire({
                             title: 'Already Reviewed',
-                            text: ""+response.exists+"",
+                            text: "You already provided your review.",
                             icon: 'info',
                         })
                     }
 
-                },
-                error: function (response) {
-                    console.log(response.responseJSON.errors.feedback);
-
-                    if (response.responseJSON.errors.feedback) {
+                    if (jqXHR.status === 422) {
                         swal.fire({
                             title: 'Field Empty',
-                            text: ""+response.responseJSON.errors.feedback+"",
+                            text: "Feedback is required",
                             icon: 'info',
                         })
                     }
