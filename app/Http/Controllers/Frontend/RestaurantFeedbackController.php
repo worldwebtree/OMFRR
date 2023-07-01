@@ -76,7 +76,7 @@ class RestaurantFeedbackController extends Controller
         if ($exits === true)
         return response()->json('exists', 409);
 
-        $users_feedback->create([
+        $get_feedback = $users_feedback->create([
             'user_id' => $user->id,
             'post_restaurant_id' => $post_restaurant->id,
             'username' => $user->name,
@@ -93,7 +93,7 @@ class RestaurantFeedbackController extends Controller
             $post_restaurant->increment('reviews');
         }
 
-        return response()->json();
+        return response()->json(['feedback' => $get_feedback]);
     }
 
     /**

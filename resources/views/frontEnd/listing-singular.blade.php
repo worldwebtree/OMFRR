@@ -159,7 +159,7 @@
                                 </div>
                             </div>
 
-                            <div class="card-shadow-body">
+                            <div class="card-shadow-body" id="appendFeedback">
                                 <!-- Review Media -->
                                 @foreach ($feedbacks as $feedback)
                                     <div class="reviews-media">
@@ -215,14 +215,16 @@
                 url: "{{ route('frontend.restaurant.singular.feedback', $data->id) }}",
                 data: {feedback:feedbackReview},
                 success: function (response) {
-                    location.reload();
+
+                    console.log(response.feedback.username);
+
+                    $("#appendFeedback").append('<div class="reviews-media"><div class="media"><div class="media-body"><div class="heading-wrap no-gutters"><div class="heading"><div class="col pl-0"><h4 class="mb-0">'+response.feedback.username+'</h4></div><div class="col-auto"><small class="text-info">Reviewed on '+response.feedback.created_at+'</small></div></div></div><p>'+response.feedback.feedback+'</p></div></div></div>');
                 },
                 error: function (jqXHR, exeption) {
-
                     if (jqXHR.status === 409) {
                         swal.fire({
                             title: 'Already Reviewed',
-                            text: "You already provided your review.",
+                            text: "You connot provide more then 1 feedback.",
                             icon: 'info',
                         })
                     }
@@ -231,7 +233,21 @@
                         swal.fire({
                             title: 'Field Empty',
                             text: "Feedback is required",
+                            icon: 'error',
+                        })
+                    }
+
+                    if (jqXHR.status === 401) {
+                        swal.fire({
+                            title: 'UnAuthorised',
+                            text: "You have to login to provide feedback",
                             icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonText: 'Login'
+                        }).then(result => {
+                            if (result.isConfirmed) {
+                                window.location.href = "{{ route('login') }}";
+                            }
                         })
                     }
                 }
