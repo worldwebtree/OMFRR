@@ -16,7 +16,7 @@ class SingularRestaurantController extends Controller
      */
     public function index(PostRestaurant $postRestaurant, $id)
     {
-        $restaurant = $postRestaurant->where('id', $id)
+        $restaurant = $postRestaurant->findOrFail($id)
         ->get();
 
         $usersFeedback =  new UsersFeedback();
@@ -24,59 +24,55 @@ class SingularRestaurantController extends Controller
         $feedbacks = $usersFeedback->where('post_restaurant_id', $id)
         ->get();
 
-        // count positive ratting from user feedback table
-        $positive_ratting = $usersFeedback->where([
+        // count feedbacks from users feedback
+        $total_reviews = $usersFeedback->where([
             'post_restaurant_id' => $id,
-            'status' => 'positive',
-        ])
-        ->count();
-
-        // count negative ratting from user feedback table
-        $negative_ratting = $usersFeedback->where([
-            'post_restaurant_id' => $id,
-            'status' => 'negative',
-            ])
-        ->count();
-
-        // subtracting negative ratting from overall ratting
-        $final_ratting = $positive_ratting - $negative_ratting;
+        ])->count();
 
         $postRestaurant->findOrFail($id)
         ->update([
-            'overall_ratting' => $final_ratting,
+            'reviews' => $total_reviews,
         ]);
 
-        $intLength = strlen($final_ratting);
+        $positive_ratting = $usersFeedback
+        ->where(['post_restaurant_id' => $id, 'status' => 'positive'])
+        ->count();
 
-        // dividing final ratting by 100 to get value in decimal form
-        if ($intLength === 5) {
-            $final_decimal_ratting = $final_ratting / 10000;
+        $total_ratting = $postRestaurant->findOrFail($id)->reviews;
 
-        } elseif ($intLength === 4) {
-            $final_decimal_ratting = $final_ratting / 1000;
+        $star_reviews = 5 * $positive_ratting / $total_ratting;
 
-        } elseif ($intLength === 1) {
-            $final_decimal_ratting = $final_ratting / 1;
+        // $intLength = strlen($final_ratting);
 
-        } else {
-            $final_decimal_ratting = $final_ratting / 100;
-        }
+        // // dividing final ratting by 100 to get value in decimal form
+        // if ($intLength === 5) {
+        //     $final_decimal_ratting = $final_ratting / 10000;
+
+        // } elseif ($intLength === 4) {
+        //     $final_decimal_ratting = $final_ratting / 1000;
+
+        // } elseif ($intLength === 1) {
+        //     $final_decimal_ratting = $final_ratting / 1;
+
+        // } else {
+        //     $final_decimal_ratting = $final_ratting / 100;
+        // }
 
         // $recommend = $this->recommended($id);
 
-        $highest_ratting = str_starts_with($final_decimal_ratting, "6") || str_starts_with($final_decimal_ratting, "7") || str_starts_with($final_decimal_ratting, "8");
+        // $highest_ratting = str_starts_with($final_decimal_ratting, "6") || str_starts_with($final_decimal_ratting, "7") || str_starts_with($final_decimal_ratting, "8");
 
-        if ($highest_ratting === true) {
-            $final_decimal_ratting = 5;
+        // if ($highest_ratting === true) {
+        //     $final_decimal_ratting = 5;
 
-        } elseif (strlen($final_decimal_ratting) ===  6) {
-            $final_decimal_ratting = 5;
-        }
+        // } elseif (strlen($final_decimal_ratting) ===  6) {
+        //     $final_decimal_ratting = 5;
+        // }
 
         return view('frontEnd.listing-singular',
         compact('restaurant',
                 'feedbacks',
-                'final_decimal_ratting'));
+                'star_reviews'));
     }
 
     /**

@@ -40,7 +40,7 @@
                             <h3>{{ $data->title }}</h3>
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
                             <div class="reviews">
-                                <span class="badge"><i class="fa fa-star"></i> {{ round($final_decimal_ratting, 1) }}</span>
+                                <span class="badge"><i class="fa fa-star"></i> {{ round($star_reviews, 1) }}</span>
                                 {{-- {{ $count_overall_reviews }} Reviews --}}
                             </div><br>
                             {{-- <div class="recomendation-section">
@@ -129,7 +129,7 @@
                                         </h3>
 
                                         <div class="review-count">
-                                            <span>{{ round($final_decimal_ratting, 1) }}</span>
+                                            <span>{{ round($star_reviews, 1) }}</span>
                                             <small>out of 5.0</small>
                                         </div>
                                     </div>
