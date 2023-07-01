@@ -138,7 +138,7 @@
 
                             <div class="write-feedback-body">
                                 <div class="write-feedback">
-                                    <form action="{{ route('frontend.restaurant.singular.feedback', $data->id) }}" method="POST">
+                                    <form id="feedback_form">
                                         @csrf
 
                                         <x-error/>
@@ -147,7 +147,7 @@
                                         <div class="row mt-4">
                                             <div class="col-md-12 mb-0">
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="feedback" id="" rows="4" placeholder="Write Your Feedback"></textarea>
+                                                    <textarea class="form-control" name="feedback" id="feedback_review" rows="4" placeholder="Write Your Feedback"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                                             <h4 class="mb-0">{{ $feedback->username }}</h4>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <small class="text-info">Reviewed on {{ $feedback->created_at->format('d-m-y') }}</small>
+                                                            <small class="text-info">Reviewed on {{ $feedback->created_at->format('d-M-Y') }}</small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -197,6 +197,50 @@
 
 @push('js')
 <script type="text/javascript">
-    //
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $("#feedback_form").submit(function (e) {
+            e.preventDefault();
+
+            let feedbackReview = $("#feedback_review").val();
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('frontend.restaurant.singular.feedback', $data->id) }}",
+                data: {feedback:feedbackReview},
+                success: function (response) {
+
+                    $("#feedback_form").trigger('reset');
+
+                    if (response.exists) {
+                        swal.fire({
+                            title: 'Already Reviewed',
+                            text: ""+response.exists+"",
+                            icon: 'info',
+                        })
+                    }
+
+                },
+                error: function (response) {
+                    console.log(response.responseJSON.errors.feedback);
+
+                    if (response.responseJSON.errors.feedback) {
+                        swal.fire({
+                            title: 'Field Empty',
+                            text: ""+response.responseJSON.errors.feedback+"",
+                            icon: 'info',
+                        })
+                    }
+                }
+            });
+
+        });
+    });
 </script>
 @endpush

@@ -28,7 +28,7 @@
     @elseif (session('exists'))
     <script type="text/javascript">
         swal.fire({
-            title: 'Exists',
+            title: 'Already Reviewed',
             text: "{{ session('exists') }}",
             icon: 'info',
         })
