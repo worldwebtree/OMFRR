@@ -40,8 +40,8 @@
                             <h3>{{ $data->title }}</h3>
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
                             <div class="reviews">
-                                <span class="badge"><i class="fa fa-star"></i> {{ round($star_reviews, 1) }}</span>
-                                out of {{ count($feedbacks) }} Reviews
+                                <span class="badge"><i class="fa fa-star"></i> {{ round($star_reviews, 1) > 5.0 ? 5 : round($star_reviews, 1) }}</span>
+                                Out Of {{ count($feedbacks) }} Reviews
                             </div><br>
                             <div class="recomendation-section">
                                 @if (round($star_reviews, 1) > 3.5)
@@ -56,7 +56,7 @@
 
                         <div class="restaurant-availability col-lg-8 mb-sm-0">
 
-                            @php
+                            {{-- @php
                                 foreach (json_decode($data->availability) as $availability => $time) {
 
                                     if ($availability === "from") {
@@ -70,11 +70,9 @@
                                 $close = \Carbon\Carbon::createFromFormat('H:i a', $to);
 
                                 $checkAvailability = \Carbon\Carbon::now()->between($open, $close, true)
-                            @endphp
+                            @endphp --}}
 
-                            {{ \Carbon\Carbon::now() }}
-
-                            @if ($checkAvailability)
+                            @if (getAvailability($data))
                                 <span class="bg-success text-white py-1 px-2 rounded-pill text-capitalize">
                                     open
                                 </span>
@@ -120,7 +118,7 @@
                 <div class="row">
 
                     <!-- Vendor Single Content -->
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-12">
 
                         <!-- Description -->
                         <div class="mb-5">
@@ -140,42 +138,64 @@
                                 <h2><i class="fa fa-comments"></i> Feedbacks</h2>
                             </div>
 
-                            <div class="overall-ratting mt-4">
-                                <div class="no-gutters">
-                                    <div class="col-md-auto">
-                                        <h3 class="text-success text-center">
-                                            <i class="fa fa-star-o"></i>
-                                            Overall Ratting
-                                        </h3>
+                            <div class="d-lg-flex align-items-lg-top">
+                                <div class="overall-ratting mt-4 col-lg-3">
+                                    <div class="no-gutters">
+                                        <div class="col-md-auto">
 
-                                        <div class="review-count">
-                                            <span>{{ round($star_reviews, 1) }}</span>
-                                            <small>out of 5.0</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            <div class="review-count">
+                                                <span>{{ round($star_reviews, 1) > 5.0 ? 5 : round($star_reviews, 1) }}</span>
+                                                <small>out of 5</small>
 
-                            <div class="write-feedback-body">
-                                <div class="write-feedback">
-                                    <form id="feedback_form">
-                                        @csrf
-
-                                        <x-error/>
-                                        <x-alert/>
-                                    <!-- Leave a Reply -->
-                                        <div class="row mt-4">
-                                            <div class="col-md-12 mb-0">
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="feedback" id="feedback_review" rows="4" placeholder="Write Your Feedback"></textarea>
+                                                <div class="review-stars mt-4 text-center">
+                                                    @if (str_starts_with(round($star_reviews, 1), 1))
+                                                            <i class="fa fa-star text-warning"></i>
+                                                        @elseif (str_starts_with(round($star_reviews, 1), 2))
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                        @elseif (str_starts_with(round($star_reviews, 1), 3))
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                        @elseif (str_starts_with(round($star_reviews, 1), 4))
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                        @elseif (str_starts_with(round($star_reviews, 1), 5))
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star text-warning"></i>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary">Post Feedback</button>
-                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="write-feedback-body col-lg-9">
+                                    <div class="write-feedback">
+                                        <form id="feedback_form">
+                                            @csrf
+
+                                            <x-error/>
+                                            <x-alert/>
                                         <!-- Leave a Reply -->
-                                    </form>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12 mb-0">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" name="feedback" id="feedback_review" rows="4" placeholder="Write Your Feedback"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <button type="submit" class="btn btn-primary">Post Feedback</button>
+                                            </div>
+                                            <!-- Leave a Reply -->
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
 
@@ -235,9 +255,7 @@
                 url: "{{ route('frontend.restaurant.singular.feedback', $data->id) }}",
                 data: {feedback:feedbackReview},
                 success: function (response) {
-
-                    console.log(response.feedback.username);
-
+                    $("#feedback_form").trigger("reset");
                     $("#appendFeedback").append('<div class="reviews-media"><div class="media"><div class="media-body"><div class="heading-wrap no-gutters"><div class="heading"><div class="col pl-0"><h4 class="mb-0">'+response.feedback.username+'</h4></div><div class="col-auto"><small class="text-info">Reviewed on '+response.feedback.created_at+'</small></div></div></div><p>'+response.feedback.feedback+'</p></div></div></div>');
                 },
                 error: function (jqXHR, exeption) {

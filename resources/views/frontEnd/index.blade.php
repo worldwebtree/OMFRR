@@ -47,13 +47,6 @@
                                     </h3>
                                     <div><i class="fa fa-map-marker"></i> {{ $top_restaurant->city }}</div>
                                 </div>
-                                <div class="reviews text-center">
-                                    <div class="rev">
-                                            <i class="fa fa-star text-warning"></i>
-                                        {{ $top_restaurant->overall_ratting }} reviews
-                                            <i class="fa fa-star text-warning"></i>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

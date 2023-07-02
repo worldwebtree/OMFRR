@@ -145,9 +145,13 @@ Restaurant Listning
                                                 <div class="col-md-8">
                                                     <div class="content">
                                                         <div class="head">
-                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">{{ $data->title }}</a></h3>
+                                                            <h3>
+                                                                <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
+                                                                    {{ $data->title }}
+                                                                </a>
+                                                            </h3>
                                                             <div class="rating">
-                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $data->overall_ratting ?? "wjsj" }}
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $data->reviews ?? "wjsj" }}
                                                                 <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $data->city }}
                                                             </div>
@@ -168,26 +172,24 @@ Restaurant Listning
                                                         <span class="featured text-white bg-info">
                                                             <span>{{ $restaurantData->category }}</span>
                                                         </span>
-                                                        @if (is_array(json_decode($restaurantData->images)))
+                                                        {{-- @if (is_array(json_decode($restaurantData->images))) --}}
                                                             @php($Image = json_decode($restaurantData->images))
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', [$restaurantData->id, $restaurantData->title]) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @else
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">
-                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                                                alt="restaurant images"
-                                                                class="rounded">
-                                                            </a>
-                                                        @endif
+                                                        {{-- @endif --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="content">
                                                         <div class="head">
-                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $restaurantData->id) }}">{{ $restaurantData->title }}</a></h3>
+                                                            <h3>
+                                                                <a href="{{ route('frontend.singular.restaurant.listening.page', [$restaurantData->id, $restaurantData->title]) }}">
+                                                                    {{ $restaurantData->title }}
+                                                                </a>
+                                                            </h3>
                                                             <div class="rating">
-                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $restaurantData->overall_ratting }}
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $restaurantData->reviews }}
                                                                 <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $restaurantData->city }}
                                                             </div>
@@ -227,7 +229,7 @@ Restaurant Listning
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">{{ $search->title }}</a></h3>
                                                             <div class="rating">
-                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $search->overall_ratting }}
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $search->reviews }}
                                                                 <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $search->city }}
                                                             </div>
@@ -267,7 +269,7 @@ Restaurant Listning
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">{{ $searchCategory->title }}</a></h3>
                                                             <div class="rating">
-                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchCategory->overall_ratting }}
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchCategory->reviews }}
                                                                 <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchCategory->city }}
                                                             </div>
@@ -307,7 +309,7 @@ Restaurant Listning
                                                         <div class="head">
                                                             <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">{{ $searchLocation->title }}</a></h3>
                                                             <div class="rating">
-                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchLocation->overall_ratting }}
+                                                                <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchLocation->reviews }}
                                                                 <br>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>  {{ $searchLocation->city }}
                                                             </div>

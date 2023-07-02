@@ -381,7 +381,7 @@
                                                 @foreach ($restaurant->post_restaurant_meta as $restaurant_meta)
                                                     @php($Image = json_decode($restaurant_meta->meta_value))
 
-                                                    @if (is_array(json_decode($restaurant_meta->meta_value)))
+                                                    {{-- @if (is_array(json_decode($restaurant_meta->meta_value))) --}}
                                                         <td>
                                                             <!-- Button trigger modal -->
                                                             <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
@@ -394,7 +394,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">
                                                                             <div id="carouselId" class="carousel slide" data-ride="carousel">
-                                                                                @php($count = 0)
+                                                                                {{-- @php($count = 0)
                                                                                 <ol class="carousel-indicators">
                                                                                     <li data-target="#carouselId" data-slide-to="{{ $count }}" class="active"></li>
                                                                                     @foreach ($Image as $key => $images)
@@ -402,18 +402,16 @@
                                                                                             <li data-target="#carouselId" data-slide-to="{{ $key }}"></li>
                                                                                         @endif
                                                                                     @endforeach
-                                                                                </ol>
+                                                                                </ol> --}}
 
                                                                                 <div class="carousel-inner" role="listbox">
-                                                                                    <div class="carousel-item active">
+                                                                                    {{-- <div class="carousel-item active">
                                                                                         <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $Image[0]) }}" alt="First slide">
-                                                                                    </div>
-                                                                                    @foreach ($Image as $key => $images)
-                                                                                        @if ($key > 0 )
-                                                                                            <div class="carousel-item">
-                                                                                                <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $images) }}" alt="restaurant_images" srcset="">
-                                                                                            </div>
-                                                                                        @endif
+                                                                                    </div> --}}
+                                                                                    @foreach (json_decode($restaurant_meta->meta_value) as $images)
+                                                                                        <div class="carousel-item @if ($loop->first) active @endif">
+                                                                                            <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $images) }}" alt="restaurant_images" srcset="">
+                                                                                        </div>
                                                                                     @endforeach
                                                                                 </div>
                                                                                 <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
@@ -430,16 +428,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                    @else
-                                                        <td>
-                                                            <a target="_blank" href="{{ str_replace('"', ' ', $restaurant->images) }}">
-                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                                                width="70"
-                                                                height="70"
-                                                                alt="images link">
-                                                            </a>
-                                                        </td>
-                                                    @endif
+                                                    {{-- @endif --}}
                                                 @endforeach
                                                 <td class="restaurantDescriptionText">
                                                     {!! $restaurant->description ?? "No Description" !!}

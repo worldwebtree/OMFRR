@@ -71,7 +71,10 @@ class RestaurantFeedbackController extends Controller
                 break;
         }
 
-        $exits = $users_feedback->where('user_ip', $request->ip())->exists();
+        $exits = $users_feedback->where([
+            'post_restaurant_id' => $post_restaurant->id,
+            'user_ip' => $request->ip()
+        ])->exists();
 
         if ($exits === true)
         return response()->json('exists', 409);

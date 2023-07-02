@@ -28,7 +28,7 @@ return new class extends Migration
             ->cascadeOnDelete();
 
             $table->string('username');
-            $table->string('user_ip')->unique();
+            $table->string('user_ip');
             $table->string('restaurant');
             $table->text('feedback');
             $table->enum('status', ['positive', 'negative', 'neutral']);

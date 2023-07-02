@@ -30,4 +30,23 @@ use Carbon\Carbon;
             return ContactUs::get();
         }
     }
+
+    if (! function_exists('getAvailability')) {
+        function getAvailability($data) {
+
+            foreach (json_decode($data->availability) as $availability => $time) {
+
+                if ($availability === "from") {
+                    $from = $time;
+                }elseif ($availability === "to") {
+                    $to = $time;
+                }
+            }
+
+            $open = Carbon::createFromFormat('H:i a', $from);
+            $close = Carbon::createFromFormat('H:i a', $to);
+
+            return Carbon::now()->between($open, $close, true);
+        }
+    }
 ?>
