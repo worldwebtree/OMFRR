@@ -282,6 +282,9 @@ Route::prefix('restaurant')->name('restaurant.')
 
             Route::get('/users/feedback', 'index')
             ->name('users.feedback');
+
+            Route::get('/users/feedback/destroy/{id}', 'destroy')
+            ->name('users.feedback.destroy');
         });
 
         Route::controller(RestaurantNotificationController::class)->group(function () {

@@ -16,16 +16,15 @@ class UsersFeedbackController extends Controller
      */
     public function index()
     {
-        $auth = Auth::user();
+        $user = Auth::user();
 
         $usersFeedback = new UsersFeedback();
 
-        if ($usersFeedback->get()->isNotEmpty())
-            $feedbacks = $usersFeedback
-            ->where('post_restaurant_id', $auth->post_restaurant->pluck('id'))
+        foreach ($user->post_restaurant as $restaurant) {
+
+            $feedbacks = $usersFeedback->where('post_restaurant_id', $restaurant->id)
             ->paginate(20);
-        else
-            $feedbacks = "";
+        }
 
         return view('dashboard.Restaurant.userFeedback', compact('feedbacks'));
     }
@@ -93,6 +92,11 @@ class UsersFeedbackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usersFeedback = UsersFeedback::findOrFail($id);
+
+        $usersFeedback->delete();
+
+        return redirect()->route('restaurant.users.feedback')
+        ->with('deleted', 'Feedback deleted successfully');
     }
 }

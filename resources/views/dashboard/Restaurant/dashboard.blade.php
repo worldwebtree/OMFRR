@@ -31,7 +31,7 @@
                         <h3 class="card-title text-white">feedbacks</h3>
                         <div class="d-inline-block">
                             @foreach ($restaurants as $restaurant)
-                                <h2 class="text-white">{{ $restaurant->users_feedback->count('id') }}</h2>
+                                <h2 class="text-white">{{ $restaurant->users_feedback->count() }}</h2>
                             @endforeach
                         </div>
                         <span class="float-right display-5 opacity-5">

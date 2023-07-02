@@ -35,7 +35,7 @@
         <div class="vendor-profile-single">
             <div class="container">
                 <div class="row align-items-end">
-                    <div class="col-lg-6 mb-0">
+                    <div class="col-12 mb-0">
                         <div class="profile-single">
                             <h3>{{ $data->title }}</h3>
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
@@ -52,28 +52,63 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 text-lg-right mt-lg-0 mt-4">
-                        <span class="dropdown hover_out">
-                            <a class="btn btn-outline-white mb-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-share-alt"></i> Share
-                            </a>
+                    <div class="col-12 d-lg-flex justity-content-lg-between align-items-lg-center mt-lg-0 mt-4 p-0">
 
-                            <span class="dropdown-menu">
-                                @foreach (json_decode($data->social_links) as $icons => $links)
-                                    <a class="dropdown-item" target="_blank" href="{{ $links }}">
-                                        <i class="fa fa-{{ $icons }}"></i>
-                                        {{ $icons }}
-                                    </a>
-                                @endforeach
+                        <div class="restaurant-availability col-lg-8 mb-sm-0">
+
+                            @php
+                                foreach (json_decode($data->availability) as $availability => $time) {
+
+                                    if ($availability === "from") {
+                                        $from = $time;
+                                    }elseif ($availability === "to") {
+                                        $to = $time;
+                                    }
+                                }
+
+                                $open = \Carbon\Carbon::createFromFormat('H:i a', $from);
+                                $close = \Carbon\Carbon::createFromFormat('H:i a', $to);
+
+                                $checkAvailability = \Carbon\Carbon::now()->between($open, $close, true)
+                            @endphp
+
+                            {{ \Carbon\Carbon::now() }}
+
+                            @if ($checkAvailability)
+                                <span class="bg-success text-white py-1 px-2 rounded-pill text-capitalize">
+                                    open
+                                </span>
+                                @else
+                                <span class="bg-danger text-white py-1 px-2 rounded-pill text-capitalize">
+                                    closed
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="share-and-location-section col-lg-4 mt-4">
+                            <span class="dropdown hover_out">
+                                <a class="btn btn-outline-white mb-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-share-alt"></i> Share
+                                </a>
+
+                                <span class="dropdown-menu">
+                                    @foreach (json_decode($data->social_links) as $icons => $links)
+                                        <a class="dropdown-item" target="_blank" href="{{ $links }}">
+                                            <i class="fa fa-{{ $icons }}"></i>
+                                            {{ $icons }}
+                                        </a>
+                                    @endforeach
+                                </span>
                             </span>
-                        </span>
-                        <span class="hover_out">
-                            <a href="https://www.google.com/maps/search/{{ $data->title }} {{ $data->city }}"
-                                target="_blank"
-                                class="btn btn-outline-white mb-2">
-                                <i class="fa fa-map-marker"></i> Location
-                            </a>
-                        </span>
+
+                            <span class="hover_out">
+                                <a href="https://www.google.com/maps/search/{{ $data->title }} {{ $data->city }}"
+                                    target="_blank"
+                                    class="btn btn-outline-white mb-2">
+                                    <i class="fa fa-map-marker"></i> Location
+                                </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

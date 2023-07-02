@@ -51,15 +51,15 @@ class RestaurantManageController extends Controller
             'restaurant_address' => ['required', 'string'],
             'restaurant_social_links' => ['required', 'array'],
             'restaurant_category' => ['required', 'string'],
-            'restaurant_availability_from' => ['required'],
+            'restaurant_availability_from' => ['required', ''],
             'restaurant_availability_to' => ['required'],
         ]);
 
         $images = $request->file('restaurant_images');
 
         $restaurantAvailabilities = array(
-            'from' => $request->restaurant_availability_from,
-            'to' => $request->restaurant_availability_to,
+            'from' => $request->restaurant_availability_from < 12 ? $request->restaurant_availability_from.' '."AM" : $request->restaurant_availability_from.' '."PM",
+            'to' => $request->restaurant_availability_to < 12 ? $request->restaurant_availability_to.' '."AM" : $request->restaurant_availability_to.' '."PM",
         );
 
         $socialMedia = array(
@@ -96,10 +96,8 @@ class RestaurantManageController extends Controller
             'meta_value' => json_encode($filename),
         ]);
 
-        // sending notification to customers
-
         $customers = User::where('role', 'customer')->get();
-
+        // sending notification to customers
         Notification::send($customers, new NewRestaurantNotification($post));
 
         return redirect()->route('restaurant.management')
@@ -151,8 +149,8 @@ class RestaurantManageController extends Controller
         $postRestaurant = PostRestaurant::findOrFail($id);
 
         $restaurantAvailabilities = array(
-            'from' => $request->restaurant_availability_from,
-            'to' => $request->restaurant_availability_to,
+            'from' => $request->restaurant_availability_from < 12 ? $request->restaurant_availability_from.' '."AM" : $request->restaurant_availability_from.' '."PM",
+            'to' => $request->restaurant_availability_to < 12 ? $request->restaurant_availability_to.' '."AM" : $request->restaurant_availability_to.' '."PM",
         );
 
         $socialMedia = array(

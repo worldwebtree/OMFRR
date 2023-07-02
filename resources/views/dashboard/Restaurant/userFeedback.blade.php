@@ -25,7 +25,7 @@
                                             <th>username</th>
                                             <th>restaurant</th>
                                             <th>feedback</th>
-                                            <th>feedback category</th>
+                                            <th>action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -35,13 +35,17 @@
                                                         <td>{{ $feedback->user->name }}</td>
                                                         <td>{{ $feedback->post_restaurant->title }}</td>
                                                         <td>{{ $feedback->feedback }}</td>
-                                                        <td>{{ $feedback->category }}</td>
+                                                        <td>
+                                                            <a class="text-danger" href="{{ route('restaurant.users.feedback.destroy', $feedback->id) }}">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             @endif
                                         </tbody>
                                 </table>
-                                {{ empty($feedbacks) ? $feedbacks : $feedbacks->links() }}
+                                {{ $feedbacks->links() }}
                             </div>
                         </div>
                     </div>
