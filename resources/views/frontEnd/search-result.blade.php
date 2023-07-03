@@ -1,11 +1,9 @@
 @extends('frontEnd.master')
 
-@section('title')
-Restaurant Listning
-@endsection
+@section('title', 'Restaurants Listening')
 
 @push('css')
-
+{{--  --}}
 @endpush
 
 @section('content')
@@ -15,8 +13,9 @@ Restaurant Listning
             <div class="row">
                 <div class="col-lg-9 mx-auto">
                     <h1 class="text-capitalize">find through name and city</h1>
-                    @php($totalRestaurants = App\Models\Admin\PostRestaurant::count())
-                    <p class="lead">Search over {{ $totalRestaurants }} Restaurants with reviews and more</p>
+
+                    <p class="lead text-white">Search over {{ countRestaurants() }} Restaurants with reviews and more</p>
+
                     <form action="{{ route('frontend.restaurant-listening.searchByName') }}"
                         method="POST"
                         class="restaurant_search_form_with_name">
@@ -25,11 +24,25 @@ Restaurant Listning
                         <x-error/>
                         <x-alert/>
 
-                        <div class="input-group">
-                            <input type="text" name="restaurant_name" required class="form-control form-light" placeholder="Enter Restaurant Name">
-                            <input type="text" name="restaurant_city" required class="form-control form-light left-border" placeholder="Enter City Name">
-                            <div class="input-group-prepend">
-                                <button type="submit" class="btn btn-default">Search Now</button>
+                        <div class="row no-gutters align-items-center justify-content-around">
+                            <div class="col-12 col-md-4">
+                                <select id="custom-select-input" class="form-light-select theme-combo home-select-1" required name="restaurant_name">
+                                    <option selected disabled>Choose Restaurant</option>
+                                    @foreach (getRestaurants() as $titles)
+                                        <option value="{{ $titles->title }}">{{ $titles->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-4 my-2">
+                                <select class="form-light-select theme-combo home-select-2" required name="restaurant_city">
+                                    <option selected disabled>Choose City</option>
+                                    @foreach (getRestaurantLocation() as $index => $name)
+                                        <option value="{{ $name }}">{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <button class="btn px-0 btn-default text-nowrap btn-block" type="submit">Search Now</button>
                             </div>
                         </div>
                     </form>
@@ -43,61 +56,59 @@ Restaurant Listning
         <section class="wide-tb-50">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <aside class="row sidebar-widgets">
-                            <!-- Sidebar Primary Start -->
-                            <div class="sidebar-primary col-lg-12 col-md-6">
+                    <div class="col-md-4">
+                        <!-- Sidebar Primary Start -->
+                        <div class="sidebar-primary">
 
-                                <!-- Widget Wrap -->
-                                <div class="widget search-result-toggle">
-                                    <a data-toggle="collapse" href="#categoriestypes" role="button" aria-expanded="false" class="link" aria-controls="categoriestypes">
-                                        <h3 class="widget-title">Types of Categories <i class="fa fa-angle-up"></i></h3>
-                                    </a>
+                            <!-- Widget Wrap -->
+                            <div class="widget search-result-toggle">
+                                <a data-toggle="collapse" href="#categoriestypes" role="button" aria-expanded="false" class="link" aria-controls="categoriestypes">
+                                    <h3 class="widget-title">Types of Categories <i class="fa fa-angle-up"></i></h3>
+                                </a>
 
-                                    <div class="collapse show" id="categoriestypes">
-                                        <div>
-                                            <div class="inner">
-                                                <ul class="list-unstyled">
-                                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
-                                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
-                                                    <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In & Take Away') }}">Dine In & Take Away</a></li>
-                                                </ul>
-                                            </div>
-
+                                <div class="collapse show" id="categoriestypes">
+                                    <div>
+                                        <div class="inner">
+                                            <ul class="list-unstyled">
+                                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
+                                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
+                                                <li><a href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In & Take Away') }}">Dine In & Take Away</a></li>
+                                            </ul>
                                         </div>
+
                                     </div>
                                 </div>
-                                <!-- Widget Wrap -->
-
-                                <!-- Widget Wrap -->
-                                <div class="widget search-result-toggle">
-                                    <a data-toggle="collapse" href="#city" role="button" aria-expanded="false" class="link" aria-controls="city">
-                                        <h3 class="widget-title">City<i class="fa fa-angle-up"></i></h3>
-                                    </a>
-
-                                    <div class="collapse show" id="city">
-                                        <div>
-                                            <div class="inner">
-                                                <ul class="list-unstyled">
-                                                    @foreach (getRestaurantLocation() as $index => $name)
-                                                        <li>
-                                                            <a href="{{ route('frontend.restaurant-listening.search.by.location', $name) }}">
-                                                                {{ $name }}
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Widget Wrap -->
                             </div>
-                            <!-- Sidebar Primary End -->
+                            <!-- Widget Wrap -->
 
-                        </aside>
+                            <!-- Widget Wrap -->
+                            <div class="widget search-result-toggle">
+                                <a data-toggle="collapse" href="#city" role="button" aria-expanded="false" class="link" aria-controls="city">
+                                    <h3 class="widget-title">City<i class="fa fa-angle-up"></i></h3>
+                                </a>
+
+                                <div class="collapse show" id="city">
+                                    <div>
+                                        <div class="inner">
+                                            <ul class="list-unstyled">
+                                                @foreach (getRestaurantLocation() as $index => $name)
+                                                    <li>
+                                                        <a href="{{ route('frontend.restaurant-listening.search.by.location', $name) }}">
+                                                            {{ $name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Widget Wrap -->
+                        </div>
+                        <!-- Sidebar Primary End -->
+
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-md-8">
                         <div class="result-count">
                             @isset($restaurant)
                                 <strong>{{ $restaurant->count() }} results:</strong>
@@ -125,31 +136,28 @@ Restaurant Listning
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
-                                                        <span class="featured text-white bg-info">
-                                                            <span>{{ $data->category }}</span>
-                                                        </span>
-                                                        @if (is_array(json_decode($data->images)))
-                                                            @php($Image = json_decode($data->images))
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
+                                                        @foreach ($data->post_restautant_meta as $meda_data)
+                                                            @php($Image = json_decode($meta_data->meta_value))
+
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', [$data->id, $data->title]) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @else
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
-                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                                                alt="restaurant images"
-                                                                class="rounded">
-                                                            </a>
-                                                        @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="content">
                                                         <div class="head">
                                                             <h3>
-                                                                <a href="{{ route('frontend.singular.restaurant.listening.page', $data->id) }}">
+                                                                <a href="{{ route('frontend.singular.restaurant.listening.page', [$data->id, $data->title]) }}">
                                                                     {{ $data->title }}
                                                                 </a>
                                                             </h3>
+
+                                                            <span class="featured bg-info">
+                                                                <span>{{ $data->category }}</span>
+                                                            </span>
+
                                                             <div class="rating">
                                                                 <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $data->reviews ?? "wjsj" }}
                                                                 <br>
@@ -169,15 +177,13 @@ Restaurant Listning
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
-                                                        <span class="featured text-white bg-info">
-                                                            <span>{{ $restaurantData->category }}</span>
-                                                        </span>
-                                                        {{-- @if (is_array(json_decode($restaurantData->images))) --}}
-                                                            @php($Image = json_decode($restaurantData->images))
+                                                        @foreach ($restaurantData->post_restaurant_meta as $restaurantMetaData)
+                                                            @php($Image = json_decode($restaurantMetaData->meta_value))
+
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$restaurantData->id, $restaurantData->title]) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                        {{-- @endif --}}
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
@@ -188,6 +194,11 @@ Restaurant Listning
                                                                     {{ $restaurantData->title }}
                                                                 </a>
                                                             </h3>
+
+                                                            <span class="featured bg-info">
+                                                                <span>{{ $restaurantData->category }}</span>
+                                                            </span>
+
                                                             <div class="rating">
                                                                 <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $restaurantData->reviews }}
                                                                 <br>
@@ -207,27 +218,28 @@ Restaurant Listning
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
-                                                        <span class="featured text-white bg-info">
-                                                            <span>{{ $search->category }}</span>
-                                                        </span>
-                                                        @if (is_array(json_decode($search->images)))
-                                                            @php($Image = json_decode($search->images))
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
+                                                        @foreach ($search->post_restaurant_meta as $search_meta)
+                                                            @php($Image = json_decode($search_meta->meta_value))
+
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', [$search->id, $search->title]) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @else
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">
-                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                                                alt="restaurant images"
-                                                                class="rounded">
-                                                            </a>
-                                                        @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="content">
                                                         <div class="head">
-                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $search->id) }}">{{ $search->title }}</a></h3>
+                                                            <h3>
+                                                                <a href="{{ route('frontend.singular.restaurant.listening.page', [$search->id, $search->title]) }}">
+                                                                    {{ $search->title }}
+                                                                </a>
+                                                            </h3>
+
+                                                            <span class="featured bg-info">
+                                                                <span>{{ $search->category }}</span>
+                                                            </span>
+
                                                             <div class="rating">
                                                                 <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $search->reviews }}
                                                                 <br>
@@ -247,27 +259,24 @@ Restaurant Listning
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
-                                                        <span class="featured text-white bg-info">
-                                                            <span>{{ $searchCategory->category }}</span>
-                                                        </span>
-                                                        @if (is_array(json_decode($searchCategory->images)))
-                                                            @php($Image = json_decode($searchCategory->images))
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
+                                                        @foreach ($searchCategory->post_restaurant_meta as $searchCategoryMeta)
+                                                            @php($Image = json_decode($searchCategoryMeta->meta_value))
+
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchCategory->id, $searchCategory->title]) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @else
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">
-                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                                                alt="restaurant images"
-                                                                class="rounded">
-                                                            </a>
-                                                        @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="content">
                                                         <div class="head">
-                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchCategory->id) }}">{{ $searchCategory->title }}</a></h3>
+                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', [$searchCategory->id, $searchCategory->title]) }}">{{ $searchCategory->title }}</a></h3>
+
+                                                            <span class="featured bg-info">
+                                                                <span>{{ $searchCategory->category }}</span>
+                                                            </span>
+
                                                             <div class="rating">
                                                                 <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchCategory->reviews }}
                                                                 <br>
@@ -287,27 +296,29 @@ Restaurant Listning
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
-                                                        <span class="featured text-white bg-info">
-                                                            <span>{{ $searchLocation->category }}</span>
-                                                        </span>
-                                                        @if (is_array(json_decode($searchLocation->images)))
-                                                            @php($Image = json_decode($searchLocation->images))
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
+                                                        @foreach ($searchLocation->post_restaurant_meta as $searchLocationMeta)
+                                                            @php($Image = json_decode($searchLocationMeta->meta_value))
+
+                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchLocation->id, $searchLocation->title]) }}">
                                                                 <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
                                                             </a>
-                                                            @else
-                                                            <a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">
-                                                                <img src="{{ asset('frontend/images/default_restaurant_image/cartoon-businessman-notebook-order-food-restaurant-vector-25076401.jpg') }}"
-                                                                alt="restaurant images"
-                                                                class="rounded">
-                                                            </a>
-                                                        @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-8">
                                                     <div class="content">
                                                         <div class="head">
-                                                            <h3><a href="{{ route('frontend.singular.restaurant.listening.page', $searchLocation->id) }}">{{ $searchLocation->title }}</a></h3>
+                                                            <h3>
+                                                                <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchLocation->id, $searchLocation->title]) }}">
+                                                                    {{ $searchLocation->title }}
+                                                                </a>
+                                                            </h3>
+
+                                                            <span class="featured bg-info">
+                                                                <span>{{ $searchLocation->category }}</span>
+                                                            </span>
+
                                                             <div class="rating">
                                                                 <i class="fa fa-star text-warning" aria-hidden="true"></i> {{ $searchLocation->reviews }}
                                                                 <br>
@@ -354,7 +365,6 @@ Restaurant Listning
     </main>
 @endsection
 
-
 @push('js')
-
+{{--  --}}
 @endpush

@@ -14,8 +14,9 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-12 mx-auto">
                     <h1>Find Review the Perfect Restaurants</h1>
-                    @php($totalRestaurants = App\Models\Admin\PostRestaurant::count())
-                    <p class="lead txt-white text-center">Search over {{ $totalRestaurants }} restaurants with reviews and more</p>
+
+                    <p class="lead txt-white text-center">Search over {{ countRestaurants() }} restaurants with reviews and more</p>
+
                     <form action="{{ route('frontend.restaurant-listening.search') }}"
                         method="POST"
                         class="restaurant-search-form">

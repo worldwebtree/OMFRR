@@ -49,4 +49,16 @@ use Carbon\Carbon;
             return Carbon::now()->between($open, $close, true);
         }
     }
+
+    if (! function_exists('countRestaurants')) {
+        function countRestaurants() {
+            return PostRestaurant::count();
+        }
+    }
+
+    if (! function_exists('getRestaurants')) {
+        function getRestaurants() {
+            return PostRestaurant::get('title');
+        }
+    }
 ?>
