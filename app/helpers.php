@@ -2,6 +2,7 @@
 
 use App\Models\Admin\ContactUs;
 use App\Models\Admin\PostRestaurant;
+use App\Models\Customer\UsersFeedback;
 use Carbon\Carbon;
 
     if (! function_exists('getRestaurantLocation')) {
@@ -59,6 +60,12 @@ use Carbon\Carbon;
     if (! function_exists('getRestaurants')) {
         function getRestaurants() {
             return PostRestaurant::get('title');
+        }
+    }
+
+    if (! function_exists('getFeedbacks')) {
+        function getFeedbacks() {
+            return UsersFeedback::get();
         }
     }
 ?>

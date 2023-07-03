@@ -32,11 +32,11 @@
                                             @foreach ($feedbacks as $feedback)
                                                 @foreach ($feedback->users_feedback as $feed)
                                                 <tr>
-                                                    <td>{{ $feedback->user->name }}</td>
+                                                    <td>{{ $feed->username }}</td>
                                                     <td>{{ $feedback->title }}</td>
                                                         <td>{{ $feed->feedback }}</td>
                                                     <td>
-                                                        <a class="text-danger" href="{{ route('restaurant.users.feedback.destroy', $feedback->id) }}">
+                                                        <a class="text-danger" href="{{ route('restaurant.users.feedback.destroy', $feed->id) }}">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                     </td>

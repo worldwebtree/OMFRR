@@ -87,9 +87,9 @@ class UserFeedbackController extends Controller
     {
         $delete = $usersFeedback->findOrFail($id);
 
-        $user = $delete->user;
+        $users_feedback = $delete;
 
-        Notification::send($user, new UserFeedbackNotification($user));
+        Notification::send($users_feedback->user, new UserFeedbackNotification($users_feedback));
 
         $delete->delete();
 

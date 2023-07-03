@@ -23,28 +23,36 @@
                             you'r notification's <i class="fas fa-bell" aria-hidden="true"></i>
                         </h1>
                     </div>
-                    <div class="notification">
+                    <div class="notifications">
                         <ul class="notification-ul">
                             @foreach ($notifications as $notification)
-                            <li class="notification-li bg-white rounded my-4">
-                                <div class="notification-body">
+                                <li class="notification-li bg-white rounded my-4">
+                                    <div class="notification-body">
                                         <div class="d-md-flex align-items-md-center justify-content-md-between p-3">
                                             <div class="notification-content">
-                                                <h6 class="notification-heading"> <strong class="text-primary">{{ $notification->data['title'] }}</strong></h6>
-                                                    <span class="notification-text">
-                                                        <strong class="text-primary">{{ $notification->data['name'] }}</strong> {{ $notification->data['message'] }}
-                                                    </span><br>
-                                                <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
+                                                <h6 class="notification-heading">
+                                                    <strong class="text-primary">{{ $notification->data['title'] }}</strong>
+                                                </h6>
+
+                                                <span class="notification-text">
+                                                    <strong class="">
+                                                        @if (isset($notification->data['name']))
+                                                            <strong class="text-primary">{{ $notification->data['name'] }}</strong>
+                                                        @endif
+
+                                                    </strong> {{ $notification->data['message'] }}
+                                                </span><br>
+
+                                                <span class="notification-text">{{ ($notification->created_at)->format("d-M-Y") }}</span>
+                                            </div>
+
+                                            <div class="mark-as-read">
+                                                <a href="#markAsRead" class="mark-as-read-btn text-white bg-danger p-2 rounded markAsReadBtn" data-id="{{ $notification->id }}">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </div>
                                         </div>
-
-                                        <div class="mark-as-read">
-                                            <a href="#markAsRead" class="mark-as-read-btn text-white bg-danger p-2 rounded markAsReadBtn" data-id="{{ $notification->id }}">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </div>
                                     </div>
-                                    <hr>
                                 </li>
                             @endforeach
                         </ul>

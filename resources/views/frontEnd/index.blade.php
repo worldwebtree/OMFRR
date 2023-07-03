@@ -93,26 +93,15 @@
                 <h1>feedback from our customers</h1>
             </div>
             <div class="owl-carousel owl-theme dots-black" id="slider-feedback">
-                @php($feedbacks = App\Models\Customer\UsersFeedback::getFeedbacks())
                 <!-- Customer Testimonials -->
-                @foreach ($feedbacks as $feedback)
+                @foreach (getFeedbacks() as $feedback)
                     <div class="item">
-                        <div class="customer-feedback-wrap">
-                            <div class="content">
-                                <div class="icon"><i class="weddingdir_chat"></i></div>
-                                {{ $feedback->feedback }}
+                        <div class="card text-center bg-light">
+                            <i class="fa fa-comments text-info fa-5x"></i>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $feedback->username }}</h4>
+                                <p class="card-text">{{ $feedback->feedback }}</p>
                             </div>
-                            <div class="name-wrap p-3">
-                                @if (empty($feedback->user->avatar) || $feedback->user->avarar = null)
-                                    <img style="width: 50px" src="{{ asset('frontend/images/avatar/user_icon-removebg-preview.png') }}" alt="avatar">
-                                @elseif (!empty($feedback->user->avatar) || $feedback->user->avarar != null)
-                                    <img style="width: 50px" src="{{ asset('storage/profile_img/'.$feedback->user->avatar) }}" alt="avatar">
-                                @endif
-                                <div class="text">
-                                    <h3>{{ $feedback->username }}</h3>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 @endforeach

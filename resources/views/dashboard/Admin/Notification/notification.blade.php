@@ -37,7 +37,7 @@
                                                     <strong class="text-primary">{{ $notification->data['name'] }}</strong> {{ $notification->data['message'] }}
                                                 </span><br>
 
-                                                <span class="notification-text">{{ ($notification->created_at)->format("d-m-Y") }}</span>
+                                                <span class="notification-text">{{ ($notification->created_at)->format("d-M-Y") }}</span>
                                             </div>
 
                                             <div class="mark-as-read">

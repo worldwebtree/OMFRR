@@ -17,9 +17,9 @@ class UserRestaurantFeedback extends Notification
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($users_feedback)
     {
-        $this->users_feedback = $user->users_feedback;
+        $this->users_feedback = $users_feedback;
     }
 
     /**
@@ -57,10 +57,9 @@ class UserRestaurantFeedback extends Notification
     {
         return  [
             'name' => $this->users_feedback->username,
-            'feedback' => $this->users_feedback->feedback,
-            'restaurant' => $this->users_feedback->restaurant_name,
+            'restaurant' => $this->users_feedback->restaurant,
             'title' => ucwords("feedback deleted"),
-            'message' => ucfirst("you'r feedback (".$this->users_feedback->feedback.") has been deleted from restaurant (".$this->users_feedback->restaurant_name.") due to some major reason.")
+            'message' => ucfirst("you'r feedback (".$this->users_feedback->feedback.") has been deleted from restaurant (".$this->users_feedback->restaurant.") due to some major reason.")
         ];
     }
 }

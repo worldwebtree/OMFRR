@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
+use App\Notifications\NotifyRestaurantUserFeedback;
 use Illuminate\Http\Request;
 use App\Traits\AnalyzeFeedback;
+use Illuminate\Support\Facades\Notification;
 use Sentiment\Analyzer;
 
 class RestaurantFeedbackController extends Controller
@@ -88,6 +90,9 @@ class RestaurantFeedbackController extends Controller
             'feedback' => ucfirst(strip_tags($request->feedback)),
             'status' => $feedback_status,
         ]);
+
+        // notify the restaurant about new feedback
+        Notification::send($post_restaurant->user, new NotifyRestaurantUserFeedback($get_feedback));
 
         if ($post_restaurant->reviews === 0) {
 

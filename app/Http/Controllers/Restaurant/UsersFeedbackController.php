@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Restaurant;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
+use App\Notifications\UserRestaurantFeedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class UsersFeedbackController extends Controller
 {
@@ -20,14 +22,6 @@ class UsersFeedbackController extends Controller
         $user = Auth::user();
 
         $feedbacks = PostRestaurant::where('user_id', $user->id)->paginate(20);
-
-        // $usersFeedback = new UsersFeedback();
-
-        // foreach ($user->post_restaurant as $restaurant) {
-
-        //     $feedbacks = $usersFeedback->where('post_restaurant_id', $restaurant->id)
-        //     ->paginate(20);
-        // }
 
         return view('dashboard.Restaurant.userFeedback', compact('feedbacks'));
     }
@@ -96,6 +90,8 @@ class UsersFeedbackController extends Controller
     public function destroy($id)
     {
         $usersFeedback = UsersFeedback::findOrFail($id);
+
+        Notification::send($usersFeedback->user, new UserRestaurantFeedback($usersFeedback));
 
         $usersFeedback->delete();
 

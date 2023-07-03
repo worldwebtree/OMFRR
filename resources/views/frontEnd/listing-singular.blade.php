@@ -191,7 +191,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-3">
-                                                <button type="submit" class="btn btn-primary">Post Feedback</button>
+                                                <button type="submit" class="btn btn-primary w-100">Post Feedback</button>
                                             </div>
                                             <!-- Leave a Reply -->
                                         </form>
@@ -258,7 +258,10 @@
                     $("#feedback_form").trigger("reset");
                     $("#appendFeedback").append('<div class="reviews-media"><div class="media"><div class="media-body"><div class="heading-wrap no-gutters"><div class="heading"><div class="col pl-0"><h4 class="mb-0">'+response.feedback.username+'</h4></div><div class="col-auto"><small class="text-info">Reviewed on '+response.feedback.created_at+'</small></div></div></div><p>'+response.feedback.feedback+'</p></div></div></div>');
                 },
-                error: function (jqXHR, exeption) {
+                error: function (response, jqXHR, exeption) {
+
+                    console.log(response);
+
                     if (jqXHR.status === 409) {
                         swal.fire({
                             title: 'Already Reviewed',

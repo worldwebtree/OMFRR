@@ -1,32 +1,4 @@
 <header class="header-anim">
-    <div class="top-bar-stripe">
-        <div class="container">
-            @foreach (getContactInformation() as $data)
-                <div class="row align-items-center">
-                    <div class="col-lg-auto col-sm-12">
-                        <div class="top-icons">
-                            <span><i class="fa fa-map-marker"></i> {{ $data->address }}</span>
-                            <span><i class="fa fa-envelope"></i> {{ $data->customer_support_email }}</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg">
-                        <div class="social-icons">
-                            <ul class="list-unstyled">
-                                @foreach (json_decode($data->social_links) as $name => $link)
-                                    <li>
-                                        <a href="{{ $link }}">
-                                            <i class="fa fa-{{ $name }}"></i>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
     <!-- Main Navigation Start -->
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-transparent p-0">
