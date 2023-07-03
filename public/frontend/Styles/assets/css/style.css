@@ -1873,7 +1873,7 @@ header {
 }
 .slider-content {
   position: absolute;
-  width: 80%;
+  width: 100%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -1885,12 +1885,7 @@ header {
   color: #fff;
   text-align: center;
 }
-.slider-content .slider-form {
-  background: #fff;
-  margin: 1.5rem 0;
-}
 .slider-content
-  .slider-form
   .select2-container--form-light.select2-container
   .select2-selection--single {
   box-shadow: none;
@@ -1909,11 +1904,6 @@ header {
 }
 .slider-content h4 {
   font-size: 1.313rem;
-}
-.slider-content .btn {
-  min-height: 48px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 .home-slider {
   position: relative;
@@ -4306,10 +4296,11 @@ header {
   font-size: 0.875rem;
   line-height: 1;
 }
-.wedding-listing .img .img-content .bottom .tags:hover,
-.wedding-listing .img .img-content .bottom .favorite:hover {
-  background: #f48f00;
+
+.wedding-listing .location-icon > i {
+    color: #00aeaf;
 }
+
 .wedding-listing .img .img-content .bottom .favorite {
   width: 36px;
   height: 36px;
@@ -4636,7 +4627,6 @@ header {
   position: relative;
   margin-bottom: 1rem;
   background-size: cover;
-  text-align: center;
 }
 .search-result-header:after {
   content: "";
@@ -6191,10 +6181,7 @@ footer .widget-listing li {
   }
 
   /* Home Styles */
-  .slider-content .slider-form {
-    background: none;
-  }
-  .slider-content .slider-form .col-md-5,
+  .slider-content .col-md-5,
   .slider-wrap.style-second .form-bg .col-md-5 {
     margin-bottom: 1rem;
   }

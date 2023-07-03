@@ -381,44 +381,31 @@
                                                 @foreach ($restaurant->post_restaurant_meta as $restaurant_meta)
                                                     @php($Image = json_decode($restaurant_meta->meta_value))
 
-                                                    {{-- @if (is_array(json_decode($restaurant_meta->meta_value))) --}}
                                                         <td>
                                                             <!-- Button trigger modal -->
-                                                            <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId">
+                                                            <button type="button" class="btn text-capitalize bg-light image-slider-btn" data-toggle="modal" data-target="#modelId{{ $restaurant->id }}">
                                                                 <img width="70" height="70" src="{{ asset('storage/Restaurant/images/' . $Image[0]) }}" alt="First Image" srcset="">
                                                             </button>
 
                                                             <!-- Modal -->
-                                                            <div class="modal fade text-capitalize" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                            <div class="modal fade text-capitalize" id="modelId{{ $restaurant->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">
-                                                                            <div id="carouselId" class="carousel slide" data-ride="carousel">
-                                                                                {{-- @php($count = 0)
-                                                                                <ol class="carousel-indicators">
-                                                                                    <li data-target="#carouselId" data-slide-to="{{ $count }}" class="active"></li>
-                                                                                    @foreach ($Image as $key => $images)
-                                                                                        @if ($key > 0)
-                                                                                            <li data-target="#carouselId" data-slide-to="{{ $key }}"></li>
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                </ol> --}}
-
+                                                                            <div id="carouselId{{ $restaurant->id }}" class="carousel slide" data-ride="carousel">
                                                                                 <div class="carousel-inner" role="listbox">
-                                                                                    {{-- <div class="carousel-item active">
-                                                                                        <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $Image[0]) }}" alt="First slide">
-                                                                                    </div> --}}
                                                                                     @foreach (json_decode($restaurant_meta->meta_value) as $images)
                                                                                         <div class="carousel-item @if ($loop->first) active @endif">
                                                                                             <img class="w-100" height="350" src="{{ asset('storage/Restaurant/images/'. $images) }}" alt="restaurant_images" srcset="">
                                                                                         </div>
                                                                                     @endforeach
                                                                                 </div>
-                                                                                <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+
+                                                                                <a class="carousel-control-prev" href="#carouselId{{ $restaurant->id }}" role="button" data-slide="prev">
                                                                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                                                     <span class="sr-only text-dark">Previous</span>
                                                                                 </a>
-                                                                                <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                                                                                <a class="carousel-control-next" href="#carouselId{{ $restaurant->id }}" role="button" data-slide="next">
                                                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                                                     <span class="sr-only">Next</span>
                                                                                 </a>

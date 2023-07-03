@@ -29,20 +29,20 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @if (! empty($feedbacks))
-                                                @foreach ($feedbacks as $feedback)
-                                                    <tr>
-                                                        <td>{{ $feedback->user->name }}</td>
-                                                        <td>{{ $feedback->post_restaurant->title }}</td>
-                                                        <td>{{ $feedback->feedback }}</td>
-                                                        <td>
-                                                            <a class="text-danger" href="{{ route('restaurant.users.feedback.destroy', $feedback->id) }}">
-                                                                <i class="fa fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                            @foreach ($feedbacks as $feedback)
+                                                @foreach ($feedback->users_feedback as $feed)
+                                                <tr>
+                                                    <td>{{ $feedback->user->name }}</td>
+                                                    <td>{{ $feedback->title }}</td>
+                                                        <td>{{ $feed->feedback }}</td>
+                                                    <td>
+                                                        <a class="text-danger" href="{{ route('restaurant.users.feedback.destroy', $feedback->id) }}">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
-                                            @endif
+                                            @endforeach
                                         </tbody>
                                 </table>
                                 {{ $feedbacks->links() }}

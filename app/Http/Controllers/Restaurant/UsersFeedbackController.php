@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PostRestaurant;
 use App\Models\Customer\UsersFeedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,15 @@ class UsersFeedbackController extends Controller
     {
         $user = Auth::user();
 
-        $usersFeedback = new UsersFeedback();
+        $feedbacks = PostRestaurant::where('user_id', $user->id)->paginate(20);
 
-        foreach ($user->post_restaurant as $restaurant) {
+        // $usersFeedback = new UsersFeedback();
 
-            $feedbacks = $usersFeedback->where('post_restaurant_id', $restaurant->id)
-            ->paginate(20);
-        }
+        // foreach ($user->post_restaurant as $restaurant) {
+
+        //     $feedbacks = $usersFeedback->where('post_restaurant_id', $restaurant->id)
+        //     ->paginate(20);
+        // }
 
         return view('dashboard.Restaurant.userFeedback', compact('feedbacks'));
     }

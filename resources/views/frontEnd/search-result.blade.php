@@ -11,10 +11,10 @@
     <section class="search-result-header">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 mx-auto">
-                    <h1 class="text-capitalize">find through name and city</h1>
+                <div class="w-100 mx-auto">
+                    <h1 class="text-capitalize text-center">find through name and city</h1>
 
-                    <p class="lead text-white">Search over {{ countRestaurants() }} Restaurants with reviews and more</p>
+                    <p class="lead text-white text-center">Search over {{ countRestaurants() }} Restaurants with reviews and more</p>
 
                     <form action="{{ route('frontend.restaurant-listening.searchByName') }}"
                         method="POST"
@@ -136,7 +136,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-4">
                                                     <div class="img">
-                                                        @foreach ($data->post_restautant_meta as $meda_data)
+                                                        @foreach ($data->post_restaurant_meta as $meta_data)
                                                             @php($Image = json_decode($meta_data->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$data->id, $data->title]) }}">

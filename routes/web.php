@@ -75,16 +75,16 @@ Route::prefix('MyReview')->group(function () {
         Route::get('/restaurant-listening', 'index')
         ->name('frontend.restaurant-listening.page');
 
-        Route::post('/restaurant-listening/search/category', 'store')
+        Route::post('/restaurant-listening/search-restaurants-by-category', 'store')
         ->name('frontend.restaurant-listening.search');
 
-        Route::post('/restaurant-listening/search', 'searchByName')
+        Route::post('/restaurant-listening/search-restaurants-by-name', 'searchByName')
         ->name('frontend.restaurant-listening.searchByName');
 
-        Route::get('/restaurant-listening/search/by/category/{category}', 'searchByCategory')
+        Route::get('/restaurant-listening/search-restaurants-by-category/{category}', 'searchByCategory')
         ->name('frontend.restaurant-listening.search.by.category');
 
-        Route::get('/restaurant-listening/search/by/location/{location}', 'searchByLocation')
+        Route::get('/restaurant-listening/search-restaurants-by-location/{location}', 'searchByLocation')
         ->name('frontend.restaurant-listening.search.by.location');
     });
 

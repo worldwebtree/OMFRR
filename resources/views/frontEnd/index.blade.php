@@ -45,7 +45,10 @@
                                             {{ $top_restaurant->title }}
                                         </a>
                                     </h3>
-                                    <div><i class="fa fa-map-marker"></i> {{ $top_restaurant->city }}</div>
+                                    <div class="location-icon">
+                                        <i class="fa fa-map-marker"></i>
+                                        {{ $top_restaurant->city }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
