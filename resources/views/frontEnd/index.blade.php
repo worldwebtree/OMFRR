@@ -11,7 +11,6 @@
 <x-frontend-slider-wrap/>
 
 <main id="body-content">
-
     <!-- Top Wedding Listings Start -->
     <section class="wide-tb-120">
         <div class="container">
@@ -30,15 +29,12 @@
                                     <img class="w-100" height="200" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images">
 
                                 @endforeach
-                                <div class="img-content">
-                                    <div class="bottom">
-                                        <a class="tags">
-                                            {{ $top_restaurant->category }}
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                             <div class="content">
+                                <a class="tags">
+                                    {{ $top_restaurant->category }}
+                                </a>
+
                                 <div class="gap">
                                     <h3>
                                         <a href="{{ route('frontend.singular.restaurant.listening.page', [$top_restaurant->id, $top_restaurant->title]) }}">

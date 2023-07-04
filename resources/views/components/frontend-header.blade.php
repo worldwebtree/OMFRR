@@ -1,7 +1,7 @@
 <header class="header-anim">
     <!-- Main Navigation Start -->
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light header-nav">
             <a class="navbar-brand" href="{{ route('frontend.index.page') }}">
                 <span>
                     <strong>

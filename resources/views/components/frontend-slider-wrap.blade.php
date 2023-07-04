@@ -1,14 +1,4 @@
 <section class="slider-wrap">
-    <div class="owl-carousel owl-theme" id="slider-home">
-        <!-- Home Slider Images -->
-        <div class="item">
-            <div class="home-slider">
-                <img height="650" src="{{ asset('frontend/Styles/assets/images/restaurants/25459d1991189f8c04c6e63678f09336.gif') }}" alt="slider image 1">
-            </div>
-        </div>
-        <!-- Home Slider Images -->
-    </div>
-
     <div class="slider-content">
         <div class="container">
             <div class="row">

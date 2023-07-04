@@ -1,61 +1,13 @@
 @extends('frontEnd.master')
 
-@section('title')
-Contact
-@endsection
+@section('title', 'Contact')
 
 @push('css')
-
+{{--  --}}
 @endpush
 
 @section('content')
 <main id="body-content">
-
-    <!-- Contact Details Start -->
-    <section>
-
-        @foreach (getContactInformation() as $data)
-            <div class="container">
-                <div class="row mt-4">
-                    <!-- Contact Details Wrap -->
-                    <div class="col-md-4">
-                        <div class="contact-details-wrap">
-                            <i class="fa fa-phone"></i>
-                            <h3 class="txt-primary">Customer Support</h3>
-                            <p class="my-4">Call our 24-hour helpline.</p>
-                            <div>Phone number: <a href="javascript:" class="btn-link btn-link-default">{{ $data->phone }}</a></div>
-                            <div>Email Us: <a class="btn-link btn-link-primary">{{ $data->customer_support_email }}</a> </div>
-                        </div>
-                    </div>
-                    <!-- Contact Details Wrap -->
-
-                    <!-- Contact Details Wrap -->
-                    <div class="col-md-4">
-                        <div class="contact-details-wrap">
-                            <i class="fa fa-location-arrow"></i>
-                            <h3 class="txt-primary">Our Address</h3>
-                            <p class="my-4">Our offices are located in..</p>
-                            <div>Address: {{ $data->address }}</div>
-                        </div>
-                    </div>
-                    <!-- Contact Details Wrap -->
-
-                    <!-- Contact Details Wrap -->
-                    <div class="col-md-4">
-                        <div class="contact-details-wrap">
-                            <i class="fa fa-envelope"></i>
-                            <h3 class="txt-primary">Other Enquiries</h3>
-                            <p class="my-4">Please contact us at the email below for all other inquiries.</p>
-                            <div>Email Us: <a class="btn-link btn-link-primary">{{ $data->email }}</a> </div>
-                        </div>
-                    </div>
-                    <!-- Contact Details Wrap -->
-                </div>
-            </div>
-        @endforeach
-    </section>
-
-
     <section class="wide-tb-90">
         <div class="container">
 
@@ -112,5 +64,5 @@ Contact
 
 
 @push('js')
-
+{{--  --}}
 @endpush
