@@ -1,32 +1,20 @@
 <header class="header-anim">
     <!-- Main Navigation Start -->
     <div class="container">
-        <nav class="navbar navbar-expand-lg bg-transparent p-0">
-            <div class="container text-nowrap bdr-nav px-0">
-                <div class="d-flex mr-auto">
-                    <a class="navbar-brand" href="{{ route('frontend.index.page') }}">
-                        <span>
-                            <strong>
-                                {{ config('app.name') }}
-                            </strong>
-                        </span>
-                    </a>
-                </div>
-            </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="{{ route('frontend.index.page') }}">
+                <span>
+                    <strong>
+                        {{ config('app.name') }}
+                    </strong>
+                </span>
+            </a>
 
-            <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Toggle Button End -->
 
-            <!-- Topbar Request Quote End -->
-
-            <div class="collapse navbar-collapse" id="navbarCollapse" data-hover="dropdown"
-                data-animations="slideInUp slideInUp slideInUp slideInUp">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('frontend.index.page') }}">Home</a>
@@ -70,8 +58,6 @@
                         <!-- Toggle Button Start -->
                     @endguest
                 </ul>
-                <!-- Main Navigation End -->
-            </div>
             </div>
         </nav>
     </div>

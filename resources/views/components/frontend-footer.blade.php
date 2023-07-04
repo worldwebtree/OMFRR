@@ -43,19 +43,21 @@
 
             <div class="col-md-6 col-lg-3">
                 <div class="footer-widget">
-                    <h3 class="widget-title">News Letter</h3>
-                    <p>Subscribe to our news letter  to receive every new restaurant entry information.</p>
-                    <form action="{{ route('frontend.restaurant.news.letter.subscribe') }}" method="POST">
-                        @csrf
-
-                        <x-error/>
-                        <x-alert/>
-
-                        <div class="mb-3">
-                            <input type="email" required name="email" class="form-control form-light" id="exampleFormControlInput1" placeholder="Enter Email Address">
-                        </div>
-                        <button type="submit" class="btn btn-default w-100">Subscribe</button>
-                    </form>
+                    <h3 class="widget-title">Site</h3>
+                    <ul class="footer-nav p-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('frontend.index.page') }}">home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('frontend.about.page') }}">about</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('frontend.restaurant-listening.page') }}">restaurant</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('frontend.contact.page') }}">contact</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

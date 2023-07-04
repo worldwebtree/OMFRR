@@ -13,7 +13,7 @@
 <main id="body-content">
 
     <!-- Top Wedding Listings Start -->
-    <section class="wide-tb-120 floral-bg">
+    <section class="wide-tb-120">
         <div class="container">
             <div class="section-title text-center">
                 <h1>Highest Rating Restaurants</h1>

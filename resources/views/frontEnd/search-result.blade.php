@@ -18,7 +18,7 @@
 
                     <form action="{{ route('frontend.restaurant-listening.searchByName') }}"
                         method="POST"
-                        class="restaurant_search_form_with_name">
+                        class="restaurant_search_form_with_name px-4">
                         @csrf
 
                         <x-error/>

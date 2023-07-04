@@ -5770,11 +5770,21 @@ footer {
   color: #bebebf;
   padding-top: 5rem;
 }
-.footer-logo {
-}
 .footer-logo img {
   margin-bottom: 1rem;
   width: 200px;
+}
+.footer-nav > .nav-item {
+    list-style-type: none;
+}
+.footer-nav > .nav-item > .nav-link {
+    padding: 0;
+    color: #bebebf;
+    text-transform: capitalize;
+    transition: 0.3s ease;
+}
+.footer-nav > .nav-item > .nav-link:hover {
+    color: #17a2b8;
 }
 footer .widget-title {
   color: #ffffff;
