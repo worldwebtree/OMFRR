@@ -50,11 +50,11 @@
                         </a>
                     </li>
 
-                    <li class="nav-list-item">
+                    {{-- <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.subscribed.users') }}" aria-expanded="false">
                             <i class="fa fa-users" aria-hidden="true"></i><span class="nav-text px-2">subscribed user's</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
             @elseif (auth()->user()->role == 'restaurant')

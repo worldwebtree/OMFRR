@@ -66,7 +66,7 @@ Route::prefix('MyReview')->group(function () {
         Route::get('/contact', 'index')
         ->name('frontend.contact.page');
 
-        Route::post('/contact/send', 'store')->middleware(['auth', 'isUser'])
+        Route::post('/contact/send', 'store')->middleware(['auth', 'isCustomer'])
         ->name('frontend.contact.store');
     });
 

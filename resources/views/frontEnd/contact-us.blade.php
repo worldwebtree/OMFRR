@@ -13,15 +13,14 @@ Contact
 
     <!-- Contact Details Start -->
     <section>
-        @php($contact = App\Models\Admin\ContactUs::getContactInformation())
 
-        @foreach ($contact as $data)
+        @foreach (getContactInformation() as $data)
             <div class="container">
                 <div class="row mt-4">
                     <!-- Contact Details Wrap -->
                     <div class="col-md-4">
                         <div class="contact-details-wrap">
-                            <i class="weddingdir_support"></i>
+                            <i class="fa fa-phone"></i>
                             <h3 class="txt-primary">Customer Support</h3>
                             <p class="my-4">Call our 24-hour helpline.</p>
                             <div>Phone number: <a href="javascript:" class="btn-link btn-link-default">{{ $data->phone }}</a></div>
@@ -33,7 +32,7 @@ Contact
                     <!-- Contact Details Wrap -->
                     <div class="col-md-4">
                         <div class="contact-details-wrap">
-                            <i class="weddingdir_location"></i>
+                            <i class="fa fa-location-arrow"></i>
                             <h3 class="txt-primary">Our Address</h3>
                             <p class="my-4">Our offices are located in..</p>
                             <div>Address: {{ $data->address }}</div>
@@ -44,7 +43,7 @@ Contact
                     <!-- Contact Details Wrap -->
                     <div class="col-md-4">
                         <div class="contact-details-wrap">
-                            <i class="weddingdir_mail"></i>
+                            <i class="fa fa-envelope"></i>
                             <h3 class="txt-primary">Other Enquiries</h3>
                             <p class="my-4">Please contact us at the email below for all other inquiries.</p>
                             <div>Email Us: <a class="btn-link btn-link-primary">{{ $data->email }}</a> </div>

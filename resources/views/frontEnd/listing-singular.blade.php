@@ -56,23 +56,7 @@
 
                         <div class="restaurant-availability col-lg-8 mb-sm-0">
 
-                            {{-- @php
-                                foreach (json_decode($data->availability) as $availability => $time) {
-
-                                    if ($availability === "from") {
-                                        $from = $time;
-                                    }elseif ($availability === "to") {
-                                        $to = $time;
-                                    }
-                                }
-
-                                $open = \Carbon\Carbon::createFromFormat('H:i a', $from);
-                                $close = \Carbon\Carbon::createFromFormat('H:i a', $to);
-
-                                $checkAvailability = \Carbon\Carbon::now()->between($open, $close, true)
-                            @endphp --}}
-
-                            @if (getAvailability($data))
+                            @if (getAvailability($data) === true)
                                 <span class="bg-success text-white py-1 px-2 rounded-pill text-capitalize">
                                     open
                                 </span>

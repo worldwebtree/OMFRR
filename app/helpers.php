@@ -44,10 +44,12 @@ use Carbon\Carbon;
                 }
             }
 
-            $open = Carbon::createFromFormat('H:i a', $from);
-            $close = Carbon::createFromFormat('H:i a', $to);
+            $open = Carbon::createFromTimeString($from);
+            $close = Carbon::createFromTimeString($to);
 
-            return Carbon::now()->between($open, $close, true);
+            $currentTime = Carbon::now();
+
+            return $currentTime->between($open, $close);
         }
     }
 

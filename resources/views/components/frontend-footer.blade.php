@@ -43,7 +43,7 @@
 
             <div class="col-md-6 col-lg-3">
                 <div class="footer-widget">
-                    <h3 class="widget-title">Site</h3>
+                    <h3 class="widget-title">Pages</h3>
                     <ul class="footer-nav p-0">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('frontend.index.page') }}">home</a>
