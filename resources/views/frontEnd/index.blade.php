@@ -73,7 +73,7 @@
                         <div class="section-title">
                             <h1>The Best Restaurants Review System</h1>
                         </div>
-                        <p class="lead">Have any queries!</p>
+                        <p class="lead text-white">Have any queries!</p>
                         <a href="{{ route('frontend.contact.page') }}" class="btn btn-default btn-rounded btn-lg">Contact Us</a>
                     </div>
                 </div>

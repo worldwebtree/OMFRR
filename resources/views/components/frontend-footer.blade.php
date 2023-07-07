@@ -66,6 +66,7 @@
 
     <div class="copyrights">
         <div class="container">
+            <hr class="bg-white">
             <div class="row">
                 <div class="col-12 text-center">
                     © <a class="text-info" href="{{ route('frontend.index.page') }}">{{ config('app.name') }}</a> 2022 All rights reserved.

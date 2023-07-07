@@ -2,9 +2,6 @@
     <div class="slider-content">
         <div class="container">
             <div class="row align-items-center">
-                <div class="slider-vector col-lg-6">
-                    <img src="{{ asset('frontend/images/slider/OMFRR-Banner.png') }}" alt="">
-                </div>
                 <div class="w-100 mx-auto col-lg-6">
                     <h1>Find Review the Perfect Restaurants</h1>
 
@@ -42,6 +39,10 @@
                             </div>
                         </div>
                     </form>
+                </div>
+
+                <div class="slider-vector col-lg-6">
+                    <img src="{{ asset('frontend/images/slider/OMFRR-Banner.png') }}" alt="">
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
 <header class="header-anim">
     <!-- Main Navigation Start -->
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light header-nav">
-            <a class="navbar-brand" href="{{ route('frontend.index.page') }}">
+        <nav class="navbar navbar-expand-lg navbar-light header-nav py-4">
+            <a class="navbar-brand text-white" href="{{ route('frontend.index.page') }}">
                 <span>
                     <strong>
                         {{ config('app.name') }}
@@ -14,7 +14,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse header-nav-links" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('frontend.index.page') }}">Home</a>
@@ -52,8 +52,10 @@
 
                     @guest
                         <!-- Topbar Request Quote Start -->
-                        <li class="nav-item text-uppercase">
-                            <a class="nav-link text-warning" href="{{ route('login') }}">login</a>
+                        <li class="nav-item">
+                            <button class="btn btn-sm login-btn">
+                                <a class="text-white" href="{{ route('login') }}">login</a>
+                            </button>
                         </li>
                         <!-- Toggle Button Start -->
                     @endguest
