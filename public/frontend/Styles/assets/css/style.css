@@ -232,6 +232,7 @@ i[class*="weddingdir_"] {
 
 .slider-wrap {
     background-color: #18273F;
+    height: 100vh;
 }
 
 .weddingdir_support:before {
@@ -1575,14 +1576,7 @@ header {
 }
 
 .header-anim {
-    position: relative;
-}
-
-.header-nav {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    background-color: #18273F;
 }
 /*---- Header Regular End ---*/
 
@@ -1883,9 +1877,6 @@ header {
 -------------------------------------------------------------------*/
 
 /*---- 6.1 Main Home Slider Slider ---*/
-.slider-content {
-    padding: 5rem 0rem;
-}
 .slider-content h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -2571,7 +2562,7 @@ header {
   padding: 0.8rem;
   height: auto;
   border: 1px solid #acacac;
-  border-radius: 5px;
+  border-radius: 2rem;
   background: #f8f8f9;
   z-index: 3;
   position: relative;
@@ -2665,7 +2656,6 @@ header {
   padding: 0.8rem;
   height: auto;
   box-shadow: 0px 0px 147px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 5px;
   background: #fff;
   z-index: 3;
   position: relative;
@@ -5984,14 +5974,6 @@ footer .widget-listing li {
   /* Home Styles */
   .slider-wrap {
     margin-top: 0;
-  }
-  .slider-content {
-    position: relative;
-    top: 0;
-    transform: none;
-    left: 0;
-    width: 100%;
-    padding: 4rem 0;
   }
   .slider-content h1,
   .slider-content .txt-white {
