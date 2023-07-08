@@ -45,7 +45,9 @@
                         @endif
                             <!-- Topbar Request Quote Start -->
                             <li class="nav-item text-uppercase">
-                                <a class="nav-link text-warning" href="{{ $link }}">dashboard</a>
+                                <button class="btn btn-sm btn-default login-btn rounded-pill">
+                                    <a class="text-white" href="{{ $link }}">dashboard</a>
+                                </button>
                             </li>
                             <!-- Toggle Button Start -->
                     @endauth

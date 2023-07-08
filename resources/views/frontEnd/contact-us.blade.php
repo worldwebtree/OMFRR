@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                    <button type="submit" class="btn btn-default rounded-pill">Send Message</button>
                                 </div>
                             </div>
                         </form>

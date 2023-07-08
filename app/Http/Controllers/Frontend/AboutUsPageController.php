@@ -18,9 +18,7 @@ class AboutUsPageController extends Controller
     {
         $about = $aboutUs->value('description');
 
-        $feedbacks = UsersFeedback::with('user')->get();
-
-        return view('frontEnd.about-us', compact('about', 'feedbacks'));
+        return view('frontEnd.about-us', compact('about'));
     }
 
     /**

@@ -40,12 +40,14 @@
                             <h3>{{ $data->title }}</h3>
                             <p><i class="fa fa-map-marker"></i> {{ $data->city }} "{{ $data->address ?? "No Address" }}"</p>
                             <div class="reviews">
-                                <span class="badge"><i class="fa fa-star"></i> {{ round($star_reviews, 1) > 5.0 ? 5 : round($star_reviews, 1) }}</span>
+                                <span class="badge">
+                                    <i class="fa fa-star"></i> {{ round($star_reviews, 1) > 5.0 ? 5 : round($star_reviews, 1) }}
+                                </span>
                                 Out Of {{ count($feedbacks) }} Reviews
                             </div><br>
-                            <div class="recomendation-section">
+                            <div class="recomendation-section text-white bg-info d-inline py-1 px-2 rounded-pill">
                                 @if (round($star_reviews, 1) > 3.5)
-                                    <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+                                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                     <span>Recomended</span>
                                 @endif
                             </div>
@@ -97,7 +99,7 @@
         </div>
         <!-- Vendor Profile Single End -->
 
-        <section class="wide-tb-90 mt-5 pt-0">
+        <section class="wide-tb-90 pt-5">
             <div class="container">
                 <div class="row">
 
@@ -110,7 +112,7 @@
                             <div class="description-header text-info">
                                 <h2><i class="fa fa-file-text"></i> Who we are</h2>
                             </div>
-                            <div class="description-body">
+                            <div class="description-body text-white">
                                 <p>{!! $data->description ?? "No Description" !!}</p>
                             </div>
                         </div>
@@ -129,29 +131,29 @@
 
                                             <div class="review-count">
                                                 <span>{{ round($star_reviews, 1) > 5.0 ? 5 : round($star_reviews, 1) }}</span>
-                                                <small>out of 5</small>
+                                                <small class="py-2">out of 5</small>
 
                                                 <div class="review-stars mt-4 text-center">
                                                     @if (str_starts_with(round($star_reviews, 1), 1))
-                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star"></i>
                                                         @elseif (str_starts_with(round($star_reviews, 1), 2))
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
                                                         @elseif (str_starts_with(round($star_reviews, 1), 3))
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
                                                         @elseif (str_starts_with(round($star_reviews, 1), 4))
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
                                                         @elseif (str_starts_with(round($star_reviews, 1), 5))
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
-                                                            <i class="fa fa-star text-warning"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
                                                     @endif
                                                 </div>
                                             </div>
@@ -183,7 +185,7 @@
                                 </div>
                             </div>
 
-                            <div class="card-shadow-body" id="appendFeedback">
+                            <div class="card-shadow-body mt-5" id="appendFeedback">
                                 <!-- Review Media -->
                                 @foreach ($feedbacks as $feedback)
                                     <div class="reviews-media">
@@ -242,9 +244,7 @@
                     $("#feedback_form").trigger("reset");
                     $("#appendFeedback").append('<div class="reviews-media"><div class="media"><div class="media-body"><div class="heading-wrap no-gutters"><div class="heading"><div class="col pl-0"><h4 class="mb-0">'+response.feedback.username+'</h4></div><div class="col-auto"><small class="text-info">Reviewed on '+response.feedback.created_at+'</small></div></div></div><p>'+response.feedback.feedback+'</p></div></div></div>');
                 },
-                error: function (response, jqXHR, exeption) {
-
-                    console.log(response);
+                error: function (jqXHR, exeption) {
 
                     if (jqXHR.status === 409) {
                         swal.fire({

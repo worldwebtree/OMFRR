@@ -5,7 +5,7 @@
                 <div class="footer-logo">
                     <h2 class="text-info">{{ config('app.name') }}</h2>
                 </div>
-                <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary">Know More</a></div>
+                <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary rounded-pill">Know More</a></div>
             </div>
 
             <div class="col-md-6 col-lg-3">
@@ -33,7 +33,7 @@
                         <div class="social-icons-footers">
                             <ul class="list-unstyled">
                                 @foreach (json_decode($contactData->social_links) as $name => $link)
-                                    <li><a href="{{ $link }}"><i class=" fa fa-{{ $name }}"></i></a></li>
+                                    <li><a class="rounded-circle" href="{{ $link }}"><i class=" fa fa-{{ $name }}"></i></a></li>
                                 @endforeach
                             </ul>
                         </div>

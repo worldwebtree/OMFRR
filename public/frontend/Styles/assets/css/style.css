@@ -1477,7 +1477,7 @@ Background Color / Color
   right: 20px;
   z-index: 99;
   padding: 0;
-  background-color: #f8f8f8;
+  background-color: #f48f00;
   display: none;
   height: 50px;
   width: 50px;
@@ -1796,28 +1796,6 @@ header {
 /*---- Navigation Regular End ---*/
 
 /*---- 5.4 Page Header ---*/
-.breadcrumbs-page {
-  background-image: url(../images/restaurants/animated_about.gif);
-  background-repeat: no-repeat;
-  padding: 20rem 0 0 0;
-  background-position: top;
-  position: relative;
-  margin-bottom: 1rem;
-  background-size: cover;
-}
-.breadcrumbs-page:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-.breadcrumbs-page .container {
-  position: relative;
-  z-index: 2;
-}
 .breadcrumb {
   background: transparent;
   padding: 1.131rem;
@@ -2030,6 +2008,7 @@ header {
 
 .icon-box-style-2 {
   border: 2px solid #efefef;
+  border-radius: 1rem;
   -webkit-transition: all 400ms ease-in-out;
   -moz-transition: all 400ms ease-in-out;
   -o-transition: all 400ms ease-in-out;
@@ -2770,6 +2749,12 @@ header {
 /*------------------------------------------*/
 
 /*---- 9.1  About Us Start ---*/
+.about-page-section {
+    background-color: #18273F;
+}
+.about-content {
+    color: #fff;
+}
 #slider-about .item {
   background: #000;
   -webkit-transition: all 400ms ease-in-out;
@@ -3140,8 +3125,8 @@ header {
   transition: all 0.3s ease-in-out;
 }
 .widget {
-  box-shadow: 0px 0px 147px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 7px;
+    background-color: #18273F;
+  border-radius: 1rem;
   padding: 1.5rem;
 }
 .sidebar-secondary .widget:not(:last-child),
@@ -3743,7 +3728,7 @@ header {
 }
 
 .vendor-profile-single {
-  background: #f6f6f7;
+  background: #18273f;
   padding: 3rem 0;
 }
 .profile-single h3 {
@@ -3751,16 +3736,16 @@ header {
   font-weight: 600;
   font-size: 24px;
 }
-.profile-single p i {
-  color: #00aeaf;
+.profile-single p{
+  color: #17a2b8;
   padding-right: 5px;
 }
 .profile-single .reviews {
-  color: #444444;
+  color: #fff;
   font-size: 0.875rem;
 }
 .profile-single .reviews .badge {
-  background: #99cc32;
+  background: #f48f00;
   font-size: 0.875rem;
   color: #fff;
   margin-right: 4px;
@@ -4525,26 +4510,10 @@ header {
 
 /*----  9.10  Search Result Start ---*/
 .search-result-header {
-  background-image: url(../images/restaurants/f3079065302403.5c7536075b74a.gif);
-  background-repeat: no-repeat;
-  padding: 5rem 0 10rem 0;
-  background-position: top center;
-  position: relative;
-  margin-bottom: 1rem;
-  background-size: cover;
+    background-color: #18273F;
 }
-.search-result-header:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-.search-result-header .container {
-  position: relative;
-  z-index: 2;
+.restaurant-listening-main-section {
+    background-color: #0D131D;
 }
 .search-result-header .form-control,
 .search-result-header .form-control:focus {
@@ -4592,7 +4561,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8f8f8;
+  background: #fff;
+  border-radius: 1rem;
   margin-bottom: 1.5rem;
 }
 .list-style-map.theme-tabbing.nav-pills .nav-link{
@@ -4636,13 +4606,14 @@ header {
 .result-list .content .head h3 a {
   font-size: 1.125rem;
   font-weight: 700;
+  color: #fff;
 }
 .result-list .content .head h3 a:hover {
   color: #f48f00;
 }
 .result-list .content .rating {
   margin: 1rem 0rem;
-  color: #555555;
+  color: #0998b0;
   font-size: 00.875rem;
 }
 .result-list .content .rating .stars {
@@ -4680,6 +4651,9 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 0;
+}
+.search-result-toggle .list-unstyled > li > a {
+    color: #fff;
 }
 .search-result-toggle .list-unstyled li:not(:last-child) {
   margin-bottom: 10px;
@@ -5343,8 +5317,7 @@ header {
 /*------------------------------------------*/
 .review-count {
   text-align: center;
-  border-radius: 6px;
-  color: #17a2b8;
+  color: #f48f00;
 }
 .review-count span {
   font-size: 2.75rem;

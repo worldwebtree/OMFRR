@@ -11,8 +11,8 @@
     <section class="search-result-header">
         <div class="container">
             <div class="row">
-                <div class="w-100 mx-auto">
-                    <h1 class="text-capitalize text-center">find through name and city</h1>
+                <div class="w-100 mx-auto my-5">
+                    <h1 class="text-capitalize text-center">find by name and city</h1>
 
                     <p class="lead text-white text-center">Search over {{ countRestaurants() }} Restaurants with reviews and more</p>
 
@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                             <div class="col-12 col-md-2">
-                                <button class="btn px-0 btn-default text-nowrap btn-block" type="submit">Search Now</button>
+                                <button class="btn px-0 btn-default text-nowrap btn-block rounded-pill" type="submit">Search Now</button>
                             </div>
                         </div>
                     </form>
@@ -53,7 +53,7 @@
     <!--  Search Result Header End -->
 
     <main id="body-content">
-        <section class="wide-tb-50">
+        <section class="wide-tb-50 restaurant-listening-main-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -140,7 +140,7 @@
                                                             @php($Image = json_decode($meta_data->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$data->id, $data->title]) }}">
-                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -181,7 +181,7 @@
                                                             @php($Image = json_decode($restaurantMetaData->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$restaurantData->id, $restaurantData->title]) }}">
-                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -222,7 +222,7 @@
                                                             @php($Image = json_decode($search_meta->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$search->id, $search->title]) }}">
-                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -263,7 +263,7 @@
                                                             @php($Image = json_decode($searchCategoryMeta->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchCategory->id, $searchCategory->title]) }}">
-                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -300,7 +300,7 @@
                                                             @php($Image = json_decode($searchLocationMeta->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchLocation->id, $searchLocation->title]) }}">
-                                                                <img src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
                                                             </a>
                                                         @endforeach
                                                     </div>
