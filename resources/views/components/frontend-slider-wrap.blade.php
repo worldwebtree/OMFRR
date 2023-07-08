@@ -1,8 +1,8 @@
 <section class="slider-wrap">
     <div class="slider-content">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="w-100 mx-auto col-lg-6">
+            <div class="row align-items-center slider-section-contents">
+                <div class="w-100 mx-auto col-lg-6 slider-form">
                     <h1>Find Review the Perfect Restaurants</h1>
 
                     <p class="lead txt-white text-center">Search over {{ countRestaurants() }} restaurants with reviews and more</p>

@@ -5968,7 +5968,7 @@ footer .widget-listing li {
   }
   .slider-content h1,
   .slider-content .txt-white {
-    color: #121212;
+    color: #fff;
   }
   .slider-wrap.style-second {
     display: flex;
@@ -6003,6 +6003,14 @@ footer .widget-listing li {
   }
   .anchor-fake {
     top: -85px;
+  }
+
+  .slider-vector {
+    display: none;
+  }
+
+  .slider-form {
+    margin: 5rem 0;
   }
 }
 
