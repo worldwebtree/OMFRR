@@ -11,7 +11,7 @@
     <section class="search-result-header">
         <div class="container">
             <div class="row">
-                <div class="w-100 mx-auto my-5">
+                <div class="w-100 mx-auto my-5" style="padding: 0 15px">
                     <h1 class="text-capitalize text-center">find by name and city</h1>
 
                     <p class="lead text-white text-center">Search over {{ countRestaurants() }} Restaurants with reviews and more</p>

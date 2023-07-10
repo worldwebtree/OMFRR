@@ -55,7 +55,7 @@
                     @guest
                         <!-- Topbar Request Quote Start -->
                         <li class="nav-item">
-                            <button class="btn btn-sm btn-default login-btn rounded-pill">
+                            <button class="btn btn-sm login-btn rounded-pill">
                                 <a class="text-white" href="{{ route('login') }}">login</a>
                             </button>
                         </li>

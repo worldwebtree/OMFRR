@@ -109,7 +109,7 @@
                         <!-- Description -->
                         <div class="mb-5">
                             <a id="description" class="anchor-fake"></a>
-                            <div class="description-header text-white">
+                            <div class="description-header text-white text-center">
                                 <h1 style="font-weight: 700"><i class="fa fa-file-text"></i> Who we are</h1>
                             </div>
                             <div class="description-body text-white">
@@ -121,7 +121,7 @@
                         <!-- Reviews -->
                         <hr class="bg-white">
                         <div class="mt-5">
-                            <div class="feedbacks-header text-white d-md-flex justify-content-between align-items-center">
+                            <div class="feedbacks-header text-white text-center">
                                 <h1 style="font-weight: 700"><i class="fa fa-comments"></i> Feedbacks</h1>
                             </div>
 

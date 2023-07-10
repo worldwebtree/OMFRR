@@ -15,7 +15,7 @@
                         <x-error/>
                         <x-alert/>
 
-                        <div class="slider-form rounded">
+                        <div class="rounded">
                             <div class="no-gutters align-items-center justify-content-around">
                                 <div class="">
                                     <select id="custom-select-input" class="form-light-select theme-combo home-select-1 rounded-pill" required name="category">
