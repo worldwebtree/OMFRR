@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 d-lg-flex justity-content-lg-between align-items-lg-center mt-lg-0 mt-4 p-0">
+                    <div class="col-12 d-lg-flex justity-content-lg-between align-items-lg-baseline mt-lg-0 mt-4 p-0">
 
                         <div class="restaurant-availability col-lg-8 mb-sm-0">
 
@@ -89,7 +89,7 @@
                                 <a href="https://www.google.com/maps/search/{{ $data->title }} {{ $data->city }}"
                                     target="_blank"
                                     class="btn btn-outline-white mb-2">
-                                    <i class="fa fa-map-marker"></i> Location
+                                    <i class="fa fa-map-marker"></i> Get Directions
                                 </a>
                             </span>
                         </div>
@@ -109,8 +109,8 @@
                         <!-- Description -->
                         <div class="mb-5">
                             <a id="description" class="anchor-fake"></a>
-                            <div class="description-header text-info">
-                                <h2><i class="fa fa-file-text"></i> Who we are</h2>
+                            <div class="description-header text-white">
+                                <h1 style="font-weight: 700"><i class="fa fa-file-text"></i> Who we are</h1>
                             </div>
                             <div class="description-body text-white">
                                 <p>{!! $data->description ?? "No Description" !!}</p>
@@ -119,9 +119,10 @@
                         <!-- Description -->
 
                         <!-- Reviews -->
-                        <div class="">
-                            <div class="feedbacks-header text-info d-md-flex justify-content-between align-items-center">
-                                <h2><i class="fa fa-comments"></i> Feedbacks</h2>
+                        <hr class="bg-white">
+                        <div class="mt-5">
+                            <div class="feedbacks-header text-white d-md-flex justify-content-between align-items-center">
+                                <h1 style="font-weight: 700"><i class="fa fa-comments"></i> Feedbacks</h1>
                             </div>
 
                             <div class="d-lg-flex align-items-lg-top">

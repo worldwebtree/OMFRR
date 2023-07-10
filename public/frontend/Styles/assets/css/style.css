@@ -709,6 +709,7 @@ Background Color / Color
 }
 .section-title h1 {
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .callout-main {
@@ -4196,7 +4197,7 @@ header {
 
 /*---- 9.8  Wedding Listing Start ---*/
 .wedding-listing {
-  border-radius: 10%;
+  border-radius: 1rem;
   overflow: hidden;
   background: #18273F;
 }
@@ -4587,9 +4588,10 @@ header {
 }
 
 .result-list {
-  padding-bottom: 1.5rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #e2e2e2;
+  background-color: #18273F;
+  border-radius: 1rem;
 }
 .result-list .content .featured {
   padding: 5px 10px;

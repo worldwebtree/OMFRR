@@ -3,9 +3,9 @@
         <div class="row no-gutters">
             <div class="col-md-6 col-lg-3">
                 <div class="footer-logo">
-                    <h2 class="text-info">{{ config('app.name') }}</h2>
+                    <h2 class="">{{ config('app.name') }}</h2>
                 </div>
-                <div><a href="{{ route('frontend.about.page') }}" class="btn btn-primary rounded-pill">Know More</a></div>
+                <div><a href="{{ route('frontend.about.page') }}" class="btn btn-default rounded-pill">Know More</a></div>
             </div>
 
             <div class="col-md-6 col-lg-3">
