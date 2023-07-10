@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 .main-div{
-    background: linear-gradient(to bottom right, #1fc5a8, #faee9e);
+    background: linear-gradient(to bottom right, #18273F, #0D131D);
+    /* padding: 0 5rem; */
 }
 
 .login-btn{
-    background-color: #50a496;
+    background-color: #f48f00;
 }
 
 .login-btn:hover{
-    background-color: #1fc5a8;
+    background-color: #f48e00af;
 }
 .auth-forms input, .gender-input{
-    border-color: #1fc5a8;
+    border-color: #f48f00;
 }
