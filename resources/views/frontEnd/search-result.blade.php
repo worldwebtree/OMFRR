@@ -33,7 +33,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-12 col-md-4 my-2">
+                            <div class="col-12 col-md-4 my-3">
                                 <select class="form-light-select theme-combo home-select-2" required name="restaurant_city">
                                     <option selected disabled>Choose City</option>
                                     @foreach (getRestaurantLocation() as $index => $name)
@@ -41,8 +41,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-12 col-md-2">
-                                <button class="btn px-0 btn-default text-nowrap btn-block rounded-pill" type="submit">Search Now</button>
+                            <div class="col-12 col-md-2 text-center">
+                                <button class="btn px-0 btn-default text-nowrap search-result-form-btn w-100 rounded-pill" type="submit">Search Now</button>
                             </div>
                         </div>
                     </form>
@@ -63,10 +63,10 @@
                             <!-- Widget Wrap -->
                             <div class="widget search-result-toggle">
                                 <a data-toggle="collapse" href="#categoriestypes" role="button" aria-expanded="false" class="link" aria-controls="categoriestypes">
-                                    <h3 class="widget-title">Types of Categories <i class="fa fa-angle-up"></i></h3>
+                                    <span class="widget-title">Types of Categories <i class="fa fa-angle-up"></i></span>
                                 </a>
 
-                                <div class="collapse show" id="categoriestypes">
+                                <div class="collapse" id="categoriestypes">
                                     <div>
                                         <div class="inner">
                                             <ul class="list-unstyled">
@@ -84,10 +84,10 @@
                             <!-- Widget Wrap -->
                             <div class="widget search-result-toggle">
                                 <a data-toggle="collapse" href="#city" role="button" aria-expanded="false" class="link" aria-controls="city">
-                                    <h3 class="widget-title">City<i class="fa fa-angle-up"></i></h3>
+                                    <span class="widget-title">City<i class="fa fa-angle-up"></i></span>
                                 </a>
 
-                                <div class="collapse show" id="city">
+                                <div class="collapse" id="city">
                                     <div>
                                         <div class="inner">
                                             <ul class="list-unstyled">
@@ -109,7 +109,7 @@
 
                     </div>
                     <div class="col-md-8">
-                        <div class="result-count">
+                        <div class="result-count d-inline">
                             @isset($restaurant)
                                 <strong>{{ $restaurant->count() }} results:</strong>
                             @endisset
@@ -140,7 +140,7 @@
                                                             @php($Image = json_decode($meta_data->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$data->id, $data->title]) }}">
-                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100 cover-img-fit">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -181,7 +181,7 @@
                                                             @php($Image = json_decode($restaurantMetaData->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$restaurantData->id, $restaurantData->title]) }}">
-                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100 cover-img-fit">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -222,7 +222,7 @@
                                                             @php($Image = json_decode($search_meta->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$search->id, $search->title]) }}">
-                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100 cover-img-fit">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -263,7 +263,7 @@
                                                             @php($Image = json_decode($searchCategoryMeta->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchCategory->id, $searchCategory->title]) }}">
-                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100 cover-img-fit">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -300,7 +300,7 @@
                                                             @php($Image = json_decode($searchLocationMeta->meta_value))
 
                                                             <a href="{{ route('frontend.singular.restaurant.listening.page', [$searchLocation->id, $searchLocation->title]) }}">
-                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100">
+                                                                <img height="150" src="{{ asset('storage/Restaurant/images/'.$Image[0]) }}" alt="restaurant images" class="rounded w-100 cover-img-fit">
                                                             </a>
                                                         @endforeach
                                                     </div>

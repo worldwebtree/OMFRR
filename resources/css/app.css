@@ -4,7 +4,10 @@
 
 .main-div{
     background: linear-gradient(to bottom right, #18273F, #0D131D);
-    /* padding: 0 5rem; */
+}
+
+.auth-card-box {
+    background-color: #18273F;
 }
 
 .login-btn{

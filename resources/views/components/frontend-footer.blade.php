@@ -13,10 +13,10 @@
                     <h3 class="widget-title">Categories</h3>
                 </div>
                 <div class="restaurant-category">
-                    <ul class="list-unstyled">
-                        <li><a style="color: #b2b2b2" href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
-                        <li><a style="color: #b2b2b2" href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
-                        <li><a style="color: #b2b2b2" href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In & Take Away') }}">Dine In & Take Away</a></li>
+                    <ul class="footer-nav p-0">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In') }}">Dine In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('frontend.restaurant-listening.search.by.category', 'Take Away') }}">Take Away</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('frontend.restaurant-listening.search.by.category', 'Dine In & Take Away') }}">Dine In & Take Away</a></li>
                     </ul>
                 </div>
             </div>

@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-lg-7 mx-auto col-md-8">
                     <div class="text-center">
-                        <h3 class="txt-default fw-7">If Any Query Feel Free To Contact Us</h3>
+                        <h2 class="txt-white fw-7">If Any Query Feel Free To Contact Us</h2>
                         <form action="{{ route('frontend.contact.store') }}" method="POST">
                             @csrf
 

@@ -411,7 +411,9 @@ i[class*="weddingdir_"] {
 }
 
 /* Wedding Icons Set */
-
+.cover-img-fit {
+    object-fit: cover;
+}
 .hover_out > .dropdown-menu {
   font-size: 0.875rem;
   background: #fff;
@@ -5645,7 +5647,7 @@ a.ui-button:active,
 -------------------------------------------------------------------*/
 footer {
   background: #18273F;
-  color: #bebebf;
+  color: #fff;
   padding-top: 5rem;
 }
 .footer-logo img {
@@ -5657,7 +5659,7 @@ footer {
 }
 .footer-nav > .nav-item > .nav-link {
     padding: 0;
-    color: #bebebf;
+    color: #fff;
     text-transform: capitalize;
     transition: 0.3s ease;
 }
@@ -5695,11 +5697,11 @@ footer .widget-listing li {
   display: flex;
 }
 .social-icons-footers a {
-  color: #b5b4b6;
+  color: #00adae;
   margin-right: 0.4rem;
   font-size: 14px;
   padding: 0;
-  background: #4f4c52;
+  background: #fff;
   width: 35px;
   height: 35px;
   display: flex;
@@ -5723,6 +5725,12 @@ footer .widget-listing li {
 }
 .copyrights-link a:hover {
   color: #00aeaf;
+}
+.slider-vector > img{
+    transition: 0.3s ease;
+}
+.slider-vector > img:hover {
+    padding: 2rem;
 }
 
 /*-------------------------------------------------------------------
@@ -6290,6 +6298,9 @@ footer .widget-listing li {
   }
   .select2-container--form-light .select2-dropdown {
     left: 37.5px;
+}
+.search-result-form-btn {
+    width: 50% !important;
 }
 }
 @media (max-width: 320px) {

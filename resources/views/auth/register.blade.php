@@ -55,7 +55,7 @@
                 <x-input-label for="role" :value="__('Role')" />
 
                 <select name="role"
-                        class="gender-input block mt-1 w-full rounded-3xl shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="gender-input block mt-1 w-full bg-transparent rounded-3xl shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         id="">
                     <option value="restaurant">Restaurant</option>
                     <option value="customer">Customer</option>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <a class="underline text-sm text-white hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

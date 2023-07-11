@@ -45,12 +45,12 @@
                                 </span>
                                 Out Of {{ count($feedbacks) }} Reviews
                             </div><br>
-                            <div class="recomendation-section text-white bg-info d-inline py-1 px-2 rounded-pill">
-                                @if (round($star_reviews, 1) > 3.5)
-                                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                    <span>Recomended</span>
-                                @endif
-                            </div>
+                            @if (round($star_reviews, 1) > 3.5)
+                                <div class="recomendation-section text-white bg-info d-inline py-1 px-2 rounded-pill">
+                                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                        <span>Recomended</span>
+                                </div>
+                            @endif
                         </div>
                     </div>
 
@@ -155,6 +155,12 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
+                                                        @elseif (str_starts_with(round($star_reviews, 1), 0))
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
                                                     @endif
                                                 </div>
                                             </div>
