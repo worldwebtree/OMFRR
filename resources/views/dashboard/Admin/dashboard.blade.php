@@ -25,17 +25,6 @@ Home
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <div class="card gradient-2">
-                    <div class="card-body">
-                        <h3 class="card-title text-white">Keywords Added</h3>
-                        <div class="d-inline-block">
-                            <h2 class="text-white">{{ $keywords }}</h2>
-                        </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-key"></i></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
                 <div class="card gradient-3">
                     <div class="card-body">
                         <h3 class="card-title text-white">Restaurants Post's</h3>
@@ -66,18 +55,6 @@ Home
                             <h2 class="text-white">{{ $queries }}</h2>
                         </div>
                         <span class="float-right display-5 opacity-5"><i class="fa fa-question"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="card gradient-6">
-                    <div class="card-body">
-                        <h3 class="card-title text-white">Subscribed User's</h3>
-                        <div class="d-inline-block">
-                            <h2 class="text-white">{{ $subscribers }}</h2>
-                        </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-thumbs-up"></i></span>
                     </div>
                 </div>
             </div>

@@ -21,12 +21,6 @@
                     </li>
 
                     <li class="nav-list-item">
-                        <a class="nav-anchor-item" href="{{ route('admin.keyword.management') }}" aria-expanded="false">
-                            <i class="fa fa-key" aria-hidden="true"></i><span class="nav-text px-2">Add keyword</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-list-item">
                         <a class="nav-anchor-item" href="{{ route('admin.users.feedback') }}" aria-expanded="false">
                             <i class="fa fa-comment" aria-hidden="true"></i><span class="nav-text px-2">manage user Feedback</span>
                         </a>

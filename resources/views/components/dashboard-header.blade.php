@@ -13,7 +13,7 @@
                         data-toggle="tooltip"
                         data-placement="bottom"
                         title="Home">
-                        <i class="fa fa-home text-light" aria-hidden="true"></i>
+                        <i class="fa fa-home text-primary" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li class="icons dropdown">
@@ -50,9 +50,8 @@
                 </li>
 
                 <li class="icons dropdown">
-                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                        <span class="activity active"></span>
-                        <img src="{{ asset('frontend/images/avatar/user_icon-removebg-preview.png') }}" height="40" width="40" alt="default_user_icon">
+                    <div class="c-pointer" data-toggle="dropdown">
+                        <i class="fa fa-user-circle fa-2x"></i>
                     </div>
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">

@@ -8,6 +8,7 @@ use App\Models\Customer\UsersFeedback;
 use App\Notifications\NotifyRestaurantUserFeedback;
 use Illuminate\Http\Request;
 use App\Traits\AnalyzeFeedback;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Sentiment\Analyzer;
 
@@ -101,7 +102,13 @@ class RestaurantFeedbackController extends Controller
             $post_restaurant->increment('reviews');
         }
 
-        return response()->json(['feedback' => $get_feedback]);
+        $feedback = array(
+            'username' => $get_feedback->username,
+            'feedback' => $get_feedback->feedback,
+            'created_at' => $get_feedback->created_at->format('d-M-Y'),
+        );
+
+        return response()->json(['feedback' => $feedback]);
     }
 
     /**

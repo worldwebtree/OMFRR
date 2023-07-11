@@ -69,7 +69,7 @@
             <hr class="bg-white">
             <div class="row">
                 <div class="col-12 text-center">
-                    © <a class="text-info" href="{{ route('frontend.index.page') }}">{{ config('app.name') }}</a> 2022 All rights reserved.
+                    © <a class="text-info" href="{{ route('frontend.index.page') }}">{{ config('app.name') }}</a> 2022, Developed By <a class="text-info" href="https://worldwebtree.com">WorldWebTree</a> All rights reserved.
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@ Users Feedback Management
                                             <th>username</th>
                                             <th>restaurant</th>
                                             <th>feedback</th>
-                                            <th>feedback category</th>
+                                            <th>status</th>
                                             <th>action</th>
                                         </tr>
                                         </thead>
@@ -37,7 +37,7 @@ Users Feedback Management
                                                     <td>{{ $feedback->user->name }}</td>
                                                     <td>{{ $feedback->post_restaurant->title }}</td>
                                                     <td>{{ $feedback->feedback }}</td>
-                                                    <td>{{ $feedback->category }}</td>
+                                                    <td>{{ $feedback->status }}</td>
                                                     <td>
                                                         <a class="DeleteUserBtn" href="{{ route("admin.users.feedback.destroy", $feedback->id) }}">
                                                             <i class="fa fa-trash text-danger" aria-hidden="true"></i>

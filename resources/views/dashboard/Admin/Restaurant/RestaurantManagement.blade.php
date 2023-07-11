@@ -50,8 +50,18 @@
                                                     @endforeach
                                                 </td>
                                                 <td>{{ $restaurant->category }}</td>
-                                                <td>{{ $restaurant->availavility }}</td>
-                                                <td>{{ $restaurant->overall_ratting }}</td>
+                                                <td>
+                                                    @if (getAvailability($restaurant) === true)
+                                                        <span class="bg-success text-white py-1 px-2 rounded-pill text-capitalize">
+                                                            open
+                                                        </span>
+                                                        @else
+                                                        <span class="bg-danger text-white py-1 px-2 rounded-pill text-capitalize">
+                                                            closed
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $restaurant->reviews }}</td>
                                                 <td>
                                                     <a class="DeleteUserBtn" href="{{ route('admin.restaurants.destroy', $restaurant->id) }}">
                                                         <i class="fa fa-trash text-danger" aria-hidden="true"></i>

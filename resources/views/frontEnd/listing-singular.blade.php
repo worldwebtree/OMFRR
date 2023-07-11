@@ -250,8 +250,11 @@
                 success: function (response) {
                     $("#feedback_form").trigger("reset");
                     $("#appendFeedback").append('<div class="reviews-media"><div class="media"><div class="media-body"><div class="heading-wrap no-gutters"><div class="heading"><div class="col pl-0"><h4 class="mb-0">'+response.feedback.username+'</h4></div><div class="col-auto"><small class="text-info">Reviewed on '+response.feedback.created_at+'</small></div></div></div><p>'+response.feedback.feedback+'</p></div></div></div>');
+                    // location.reload();
                 },
-                error: function (jqXHR, exeption) {
+                error: function (response, jqXHR, exeption) {
+
+                    console.log(response);
 
                     if (jqXHR.status === 409) {
                         swal.fire({
@@ -271,7 +274,7 @@
 
                     if (jqXHR.status === 401) {
                         swal.fire({
-                            title: 'UnAuthorised',
+                            title: 'UnAuthenticated',
                             text: "You have to login to provide feedback",
                             icon: 'info',
                             showCancelButton: true,
