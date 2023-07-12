@@ -39,15 +39,8 @@ class RestaurantListeningPageController extends Controller
     public function store(Request $request, PostRestaurant $postRestaurant)
     {
         $request->validate([
-            'category' => ['required', 'string'],
             'location' => ['required', 'string'],
         ]);
-
-        $categoryExists = $postRestaurant->each(function ($items, $key) use ($request) {
-            return str_contains($items->category, $request->category);
-        });
-
-        if ($categoryExists === true)
 
         $restaurant = $postRestaurant->where([
             'city' => $request->location

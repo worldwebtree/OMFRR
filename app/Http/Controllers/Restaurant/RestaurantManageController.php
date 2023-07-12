@@ -7,6 +7,7 @@ use App\Models\Admin\PostRestaurant;
 use App\Models\Admin\PostRestaurantMeta;
 use App\Models\User;
 use App\Notifications\NewRestaurantNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 
@@ -55,11 +56,13 @@ class RestaurantManageController extends Controller
             'restaurant_availability_to' => ['required'],
         ]);
 
+        $carbon = new Carbon();
+
         $images = $request->file('restaurant_images');
 
         $restaurantAvailabilities = array(
             'from' => $request->restaurant_availability_from < 12 ? $request->restaurant_availability_from.' '."AM" : $request->restaurant_availability_from.' '."PM",
-            'to' => $request->restaurant_availability_to < 12 ? $request->restaurant_availability_to.' '."AM" : $request->restaurant_availability_to.' '."PM",
+            'to' => $request->restaurant_availability_to < 12 ? $request->restaurant_availability_to.' '."AM" : $carbon->parse($request->restaurant_availability_to)->format('h:i').' '."PM",
         );
 
         $socialMedia = array(
@@ -147,11 +150,13 @@ class RestaurantManageController extends Controller
             'restaurant_availability_to' => ['required'],
         ]);
 
+        $carbon = new Carbon();
+
         $postRestaurant = PostRestaurant::findOrFail($id);
 
         $restaurantAvailabilities = array(
             'from' => $request->restaurant_availability_from < 12 ? $request->restaurant_availability_from.' '."AM" : $request->restaurant_availability_from.' '."PM",
-            'to' => $request->restaurant_availability_to < 12 ? $request->restaurant_availability_to.' '."AM" : $request->restaurant_availability_to.' '."PM",
+            'to' => $request->restaurant_availability_to < 12 ? $request->restaurant_availability_to.' '."AM" : $carbon->parse($request->restaurant_availability_to)->format('h:i').' '."PM",
         );
 
         $socialMedia = array(

@@ -17,14 +17,14 @@
 
                         <div class="rounded">
                             <div class="no-gutters align-items-center justify-content-around">
-                                <div class="">
+                                {{-- <div class="">
                                     <select id="custom-select-input" class="form-light-select theme-combo home-select-1 rounded-pill" required name="category">
                                         <option selected disabled>Choose Restaurant Type</option>
                                         <option value="Dine In">Dine In</option>
                                         <option value="Take Away">Take Away</option>
                                         <option value="Dine In & Take Away">Dine In & Take Away</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="my-3">
                                     <select class="form-light-select theme-combo home-select-2 rounded-pill" required name="location">
                                         <option selected disabled>Choose City</option>
