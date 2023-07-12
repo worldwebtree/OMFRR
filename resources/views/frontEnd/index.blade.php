@@ -66,7 +66,7 @@
     <section class="callout-main">
         <div class="container-fluid pl-0">
             <div class="row">
-                <div class="col-lg-6" style="background: url({{ asset('frontend/Styles/assets/images/restaurants/d5ec9c42cade6c696ef244cc33efedd3.gif') }}) center center no-repeat; background-size: cover;">
+                <div class="col-lg-6" style="background: url({{ asset('frontend/images/displeased-foodie-character-sitting-chair-with-laptop-making-reviews-restaurant-meals-food-blogger-critic_87771-21203.png') }}) no-repeat; background-size: cover;">
                 </div>
                 <div class="col-md-12 col-lg-6">
                     <div class="callout-text">

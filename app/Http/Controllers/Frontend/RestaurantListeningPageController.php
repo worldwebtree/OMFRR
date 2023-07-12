@@ -43,8 +43,13 @@ class RestaurantListeningPageController extends Controller
             'location' => ['required', 'string'],
         ]);
 
+        $categoryExists = $postRestaurant->each(function ($items, $key) use ($request) {
+            return str_contains($items->category, $request->category);
+        });
+
+        if ($categoryExists === true)
+
         $restaurant = $postRestaurant->where([
-            'category' => $request->category,
             'city' => $request->location
         ])->paginate(100);
 

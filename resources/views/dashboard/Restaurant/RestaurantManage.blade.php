@@ -323,6 +323,7 @@
                                         <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://facebook.com/">
                                         <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://twitter.com/">
                                         <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://instagram.com/">
+                                        <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1" placeholder="https://website.com">
                                     </div>
                                 </div>
 
@@ -425,7 +426,11 @@
                                                 <td style="width: 100px">
                                                     @foreach (json_decode($restaurant->social_links) as $icons => $links)
                                                         <a href="{{ $links }}" target="_blank" class="mx-1">
-                                                            <i class="fab fa-{{ $icons }}"></i>
+                                                            @if ($icons === "globe")
+                                                                <i class="fa fa-{{ $icons }}"></i>
+                                                                @else
+                                                                <i class="fab fa-{{ $icons }}"></i>
+                                                            @endif
                                                         </a>
                                                     @endforeach
                                                 </td>
@@ -759,6 +764,7 @@
                                                                     <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1 embed_facebook_link" placeholder="https://facebook.com/">
                                                                     <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1 embed_twitter_link" placeholder="https://twitter.com/">
                                                                     <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1 embed_instagram_link" placeholder="https://instagram.com/">
+                                                                    <input type="url" name="restaurant_social_links[]" id="" class="form-control mx-1 embed_website_link" placeholder="https://website.com">
                                                                 </div>
                                                             </div>
 
@@ -838,6 +844,7 @@
         $(".embed_facebook_link").val(RestaurantSocialLinks.facebook);
         $(".embed_twitter_link").val(RestaurantSocialLinks.twitter);
         $(".embed_instagram_link").val(RestaurantSocialLinks.instagram);
+        $(".embed_website_link").val(RestaurantSocialLinks.globe);
 
         $(".availability_from").val(RestaurantAvailability.from);
         $(".availability_to").val(RestaurantAvailability.to);

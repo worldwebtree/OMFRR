@@ -66,6 +66,7 @@ class RestaurantManageController extends Controller
             'facebook',
             'twitter',
             'instagram',
+            'globe'
         );
 
         $socialLinks = array_combine($socialMedia, $request->restaurant_social_links);
@@ -157,6 +158,7 @@ class RestaurantManageController extends Controller
             'facebook',
             'twitter',
             'instagram',
+            'globe'
         );
 
         $socialLinks = array_combine($socialMedia, $request->restaurant_social_links);
