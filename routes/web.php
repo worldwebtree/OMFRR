@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\KeywordManageController;
 use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\NewsLetterSubscribersController;
 use App\Http\Controllers\Admin\NotificationController;
@@ -12,6 +11,8 @@ use App\Http\Controllers\Admin\RestaurantManageController as AdminRestaurantMana
 use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Admin\UserQueryController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\NotificationController as CustomerNotificationController;
 use App\Http\Controllers\Customer\ProfileController as CustomerProfileController;
@@ -44,6 +45,13 @@ Route::get('/', function () {
     return view('frontEnd.index');
 })->name('welcome');
 
+/**
+ * Social Login Routes
+ */
+Route::get('auth/google', [SocialLoginController::class, 'redirectToGoogle'])
+->name('social.auth.login');
+Route::get('auth/google/callback', [SocialLoginController::class, 'handleGoogleCallback'])
+->name('social.auth.login.callback');
 /**
  * Frontend Routes
  */
@@ -156,19 +164,6 @@ Route::prefix('admin')->name('admin.')
 
         Route::get('/restaurants/delete/{id}', 'destroy')
         ->name('restaurants.destroy');
-
-    });
-
-    Route::controller(KeywordManageController::class)->group(function () {
-
-        Route::get('/keywords/management', 'index')
-        ->name('keyword.management');
-
-        Route::post('/keywords/management/add', 'store')
-        ->name('keyword.management.store');
-
-        Route::get('/keywords/management/destroy/{id}', 'destroy')
-        ->name('keyword.management.destroy');
 
     });
 

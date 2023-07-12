@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\NewsLetterSubscribers;
 use App\Models\Admin\PostRestaurant;
-use App\Models\Admin\RattingKeywords;
 use App\Models\Admin\UserContact;
 use App\Models\Customer\UsersFeedback;
 use App\Models\User;
@@ -18,21 +17,20 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, RattingKeywords $rattingKeywords,
+    public function index(User $user,
                             PostRestaurant $postRestaurant,
                             UsersFeedback $usersFeedback,
                             UserContact $userContact,
                             NewsLetterSubscribers $newsLetterSubscribers)
     {
         $users = $user->where('role', 'user')->count();
-        $keywords = $rattingKeywords->count();
         $posts = $postRestaurant->count();
         $feedbacks = $usersFeedback->count();
         $queries = $userContact->count();
         $subscribers = $newsLetterSubscribers->count();
 
         return view('dashboard.Admin.dashboard',
-        compact('users', 'keywords', 'posts', 'feedbacks', 'queries', 'subscribers'));
+        compact('users', 'posts', 'feedbacks', 'queries', 'subscribers'));
     }
 
     /**

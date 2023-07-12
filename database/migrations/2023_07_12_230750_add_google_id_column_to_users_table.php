@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ratting_keywords', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('keyword_name');
-            $table->enum('keyword_status', ['positive', 'negative']);
-            $table->integer('keyword_ratting');
-
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('google_id')->nullable();
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratting_keywords');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('google_id')->nullable();
+        });
     }
 };
