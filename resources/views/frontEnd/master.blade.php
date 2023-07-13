@@ -26,6 +26,12 @@
 
         {{-- Sweet Alerts JS CDN--}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
+
+        <style>
+            .restaurants-social-links > a:hover {
+                color: #17a2b8 !important;
+            }
+        </style>
     </head>
     <!-- end head -->
 

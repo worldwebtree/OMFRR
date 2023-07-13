@@ -45,6 +45,13 @@
                                 </span>
                                 Out Of {{ count($feedbacks) }} Reviews
                             </div><br>
+                            <span class="restaurants-social-links">
+                                @foreach (json_decode($data->social_links) as $icons => $links)
+                                    <a class="text-white" target="_blank" href="{{ $links }}">
+                                        <i class="fa fa-{{ $icons }} fa-1x px-1"></i>
+                                    </a>
+                                @endforeach
+                            </span><br><br>
                             @if (round($star_reviews, 1) > 3.5)
                                 <div class="recomendation-section text-white bg-info d-inline py-1 px-2 rounded-pill">
                                         <i class="fa fa-check-circle-o" aria-hidden="true"></i>
@@ -71,18 +78,18 @@
 
                         <div class="share-and-location-section col-lg-4 mt-4">
                             <span class="dropdown hover_out">
-                                <a class="btn btn-outline-white mb-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{-- <a class="btn btn-outline-white mb-2" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-share-alt"></i> Share
-                                </a>
+                                </a> --}}
 
-                                <span class="dropdown-menu">
+                                {{-- <span class="dropdown-menu">
                                     @foreach (json_decode($data->social_links) as $icons => $links)
                                         <a class="dropdown-item" target="_blank" href="{{ $links }}">
                                             <i class="fa fa-{{ $icons }}"></i>
                                             {{ $icons }}
                                         </a>
                                     @endforeach
-                                </span>
+                                </span> --}}
                             </span>
 
                             <span class="hover_out">
@@ -252,9 +259,7 @@
                     $("#appendFeedback").append('<div class="reviews-media"><div class="media"><div class="media-body"><div class="heading-wrap no-gutters"><div class="heading"><div class="col pl-0"><h4 class="mb-0">'+response.feedback.username+'</h4></div><div class="col-auto"><small class="text-info">Reviewed on '+response.feedback.created_at+'</small></div></div></div><p>'+response.feedback.feedback+'</p></div></div></div>');
                     // location.reload();
                 },
-                error: function (response, jqXHR, exeption) {
-
-                    console.log(response);
+                error: function (jqXHR, exeption) {
 
                     if (jqXHR.status === 409) {
                         swal.fire({
